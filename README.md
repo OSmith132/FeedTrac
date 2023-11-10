@@ -1,7 +1,7 @@
 # FeedTrac
 2023/24 Team Software Engineering Project
 
-##HOW TO ACCESS THE DATABSE:
+## HOW TO ACCESS THE DATABSE:
   step 1:  Install XAMPP package and run application<br>
   step 2:  Start both Apache and MySql servers from the control pannel<br>
   step 3:  Open browser and type 'localhost' into url search bar<br>
