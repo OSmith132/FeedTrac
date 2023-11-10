@@ -6,9 +6,10 @@
   step 2:  Start both Apache and MySql servers from the control pannel<br>
   step 3:  Open browser and type 'localhost' into url search bar<br>
   step 4:  Click on PhpMyAdmin in the top right corner of the page<br>
-  step 5:  Click import and select the file provided in the 'Database' folder on github<br>
-  step 6:  ??<br>
-  step 7:  Profit $$<br>
+  step 5:  Create a new database (call it whatever you want)<br>
+  step 6:  Click import and select the file provided in the 'Database' folder on github<br>
+  step 7:  ??<br>
+  step 8:  Profit $$<br>
 
   NOTE:   If you want to view database MySql Workbench go to 'Database' -> 'Connect to database' and select localhost (127.0.0.1:3306)<br>
           If you want to view ERD in MySql Workbench go to 'Database' -> 'Reverse Engineer' and connect to localhost (127.0.0.1:3306)<br>
