@@ -17,3 +17,5 @@
 
 
 I don't know the standard way of splitting up frontend and backend codebases in a repo so im going to leave it for now.
+
+https://www.freecodecamp.org/news/how-to-use-git-and-github-in-a-team-like-a-pro/
