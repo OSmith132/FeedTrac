@@ -11,8 +11,9 @@
   http://localhost/feedtrac
   
 ### HOW TO VIEW  DATABASE:
-  **phpMyAdmin:**        http://localhost/phpmyadmin/
-  **MySql Workbench:**   Go to 'Database' -> 'Connect to database' and select localhost (127.0.0.1:3306)
+  **phpMyAdmin:**        http://localhost/phpmyadmin/<br>
+  **MySql Workbench:**   Go to 'Database' -> 'Connect to database' and select localhost (127.0.0.1:3306)<br>
+
 
   
-https://www.freecodecamp.org/news/how-to-use-git-and-github-in-a-team-like-a-pro/
+_https://www.freecodecamp.org/news/how-to-use-git-and-github-in-a-team-like-a-pro/_
