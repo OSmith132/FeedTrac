@@ -1,21 +1,18 @@
 # FeedTrac
 2023/24 Team Software Engineering Project
 
-## HOW TO ACCESS THE DATABSE:
-  step 1:  Install XAMPP package and run application<br>
-  step 2:  Start both Apache and MySql servers from the control pannel<br>
-  step 3:  Open browser and type 'localhost' into url search bar<br>
-  step 4:  Click on PhpMyAdmin in the top right corner of the page<br>
-  step 5:  Create a new database (call it whatever you want)<br>
-  step 6:  Click import and select the file provided in the 'Database' folder on github<br>
-  step 7:  ??<br>
-  step 8:  Profit $$<br>
+## HOW TO SET UP THE WEBSITE LOCALLY:
+  step 1:  Install XAMPP package<br>
+  step 2:  Download FeedtracDB and Feedtrac folders from this repo<br>
+  step 3:  Place the feedtracDB folder in the **..xampp\mysql\data** directory<br>
+  step 4:  Place the feedtrac folder in the **..xampp\htdocs** directory<br>
 
-  NOTE:   If you want to view database MySql Workbench go to 'Database' -> 'Connect to database' and select localhost (127.0.0.1:3306)<br>
-          If you want to view ERD in MySql Workbench go to 'Database' -> 'Reverse Engineer' and connect to localhost (127.0.0.1:3306)<br>
+### HOW TO VIEW WEBSITE: 
+  http://localhost/feedtrac
+  
+### HOW TO VIEW  DATABASE:
+  **phpMyAdmin:**        http://localhost/phpmyadmin/
+  **MySql Workbench:**   Go to 'Database' -> 'Connect to database' and select localhost (127.0.0.1:3306)
 
-
-
-I don't know the standard way of splitting up frontend and backend codebases in a repo so im going to leave it for now.
-
+  
 https://www.freecodecamp.org/news/how-to-use-git-and-github-in-a-team-like-a-pro/
