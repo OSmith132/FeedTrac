@@ -16,10 +16,12 @@ graph TD;
     C:::toBeDone
     D:::toBeDone
     
-    A[Start]-->B[Working Frontend];
-    A-->C[Working Backend];
-    B-->D;
-    C-->D[Working FeedTrac];
+    A[Start]-->B5;
+    A-->C5[Create Database Relationships];
+    C5-->C10[Working Backend];
+    B5[Mockup Webiste]-->B10[Working Frontend];
+    B10-->D;
+    C10-->D[Working FeedTrac];
     
     
 ```
