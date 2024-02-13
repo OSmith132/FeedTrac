@@ -46,7 +46,7 @@
 <summary> 
   Work
 </summary>
-  
+  Lorem ipsum bla bla bla.
 </details>
 
 ## Harry
