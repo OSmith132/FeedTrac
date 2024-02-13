@@ -12,7 +12,17 @@
 ## Oliver
 <details>
 <summary> 
-  Work
+  
+  * _8/11/23:_
+    * Created server and database through XAMPP to test usability with this project.
+    * Created crude databse design using MyPhpAdmin and MySQLWorkbench.
+    * Created Github Repo to share with group.
+
+  * _7/2/24:_
+    * Revised database schema to allign more with the project scope.
+    * Developed basic web pages for use as homepage, login, and signup interfaces.
+    * Implemented basic web functionality (using PHP) to connect website to database, manage session data post-login, and handle redirections as needed.
+
 </summary>
   
 </details>
