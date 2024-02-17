@@ -57,6 +57,7 @@ Log Of Tasks Completed:
   Log
 </summary>
  * 17/2/24 - Researching PHP and PHP encryption, created a branch.
+ * Implemented password hashing encryption, tested successfully.  
 </details>
 
 ## Harry
