@@ -25,6 +25,12 @@ Log Of Tasks Completed:
     * Developed basic web pages for use as homepage, login, and signup interfaces.
     * Implemented basic web functionality (using PHP) to connect website to database, manage session data post-login, and handle redirections as needed.
 
+* ### _17/02/24:_
+    * Added new constraints and tables to database. It is now better suited for a working model of the website. although will require some more work to make it suitable for deployment.
+    * Changed the way the database is stored to two .sql files (for schema and data). This should streamline the process of building and uploading different versions of the database.
+    * Created the 'Features and pages' file to list the needed pages and features that we need to discuss in our weekly meetings.
+    * Reorganised the repo to make it easier to work with.
+   
 </details>
 
 ## Earl
