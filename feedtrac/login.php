@@ -14,32 +14,27 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 	if(!empty($username) && !empty($password)){
 
-		// Check that username and password match db
-		$query = "SELECT * FROM user WHERE username = '$username' /*AND passwordHash = '$password'*/ LIMIT 1";
-		$result = mysqli_query($con, $query);
+        $query = "SELECT * FROM user WHERE username = '$username' LIMIT 1";
+        $result = mysqli_query($con, $query);
 
-        if($result)
-        {
-            
-            if(mysqli_num_rows($result) > 0)
-            {
-                $user_data = mysqli_fetch_assoc($result);
-                
-                // Check that the password matches the hashed password in the db ---------------------------------------
-                if(/*$user_data['passwordHash'] === $password*/ true ) // remove the or true when we have hashed passwords
-                {
-                    $_SESSION['userID'] = $user_data['userID'];
-                    header("Location: index.php");
-                    die;
-                }
-                
+        if($result && mysqli_num_rows($result) > 0) {
+            $user_data = mysqli_fetch_assoc($result);
+            $passwordHash = $user_data['passwordHash'];
+
+            // Verify the password
+            if(password_verify($password, $passwordHash)) {
+                $_SESSION['userID'] = $user_data['userID'];
+                header("Location: index.php");
+                die;
+            } else {
+                echo "Incorrect password";
             }
+        } else {
+            echo "No User Found In Database";
         }
-
-		echo "Please enter a valid username and password";
-	}else{
-		echo "No User Found In Database";
-	}
+    } else {
+        echo "Please enter a valid username and password";
+    }
 }
 ?>
 

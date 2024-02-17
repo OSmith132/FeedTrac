@@ -23,9 +23,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 	if(!empty($email) && !empty($username) && !empty($password) && !empty($fname) && !empty($lname) && !empty($course) && !empty($yearOfStudy) && !empty($pronouns) && !empty($position)){
 
 		//save to database (userID is an auto-incrementing integer, so we don't need to specify it in the query)
-		// We will hash the password before saving it to the database at a later time
+        // Password encryption implementation, usign password hash, by assigning Password_default as the algo, the latest best algorithm for encryption will be picked, even if updated.
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 		// change query to input correct course id
-		$query = "INSERT INTO user (email, username, passwordHash, fname, lname, courseID, yearOfStudy, pronouns, position) VALUES ('$email', '$username', '$password', '$fname', '$lname', 0, '$yearOfStudy', '$pronouns', '$position')";
+		$query = "INSERT INTO user (email, username, passwordHash, fname, lname, courseID, yearOfStudy, pronouns, position) VALUES ('$email', '$username', '$hashed_password', '$fname', '$lname', 0, '$yearOfStudy', '$pronouns', '$position')";
 
 		mysqli_query($con, $query);
 
