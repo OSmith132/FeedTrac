@@ -5,7 +5,8 @@
   step 1:  Install XAMPP package<br>
   step 2:  Download FeedtracDB and Feedtrac folders from this repo<br>
   step 3:  Place the feedtracDB folder in the **..xampp\mysql\data** directory<br>
-  step 4:  Place the feedtrac folder in the **..xampp\htdocs** directory<br>
+  step 4:  Create a new database table in MyPHPAdmin and import the feedtracdb.SQL file<br>
+  step 5:  Import the database Data from data.SQL<br>
 
 ### HOW TO VIEW WEBSITE: 
   http://localhost/feedtrac
