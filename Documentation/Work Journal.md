@@ -54,9 +54,9 @@ Log Of Tasks Completed:
 ## Marco
 <details>
 <summary> 
-  Work
+  Log
 </summary>
-  Lorem ipsum bla bla bla.
+ * 17/2/24 - Researching PHP and PHP encryption, created a branch.
 </details>
 
 ## Harry
