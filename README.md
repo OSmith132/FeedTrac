@@ -6,7 +6,7 @@
   step 2:  Download FeedtracDB and Feedtrac folders from this repo<br>
   step 3:  Place the feedtracDB folder in the **..xampp\mysql\data** directory<br>
   step 4:  Create a new database table in MyPHPAdmin and import the feedtracdb.SQL file<br>
-  step 5:  Import the database Data from data.SQL<br>
+  step 5:  Import the database Data from data.SQL (THIS WILL TRUNCATE ALL CURRENT DATA IN THE DB)<br>
 
 ### HOW TO VIEW WEBSITE: 
   http://localhost/feedtrac  (You many need to clear cache and site data after downloading new versions)
