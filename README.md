@@ -9,7 +9,7 @@
   step 5:  Import the database Data from data.SQL<br>
 
 ### HOW TO VIEW WEBSITE: 
-  http://localhost/feedtrac
+  http://localhost/feedtrac  (You many need to clear cache and site data after downloading new versions)
   
 ### HOW TO VIEW  DATABASE:
   **phpMyAdmin:**        http://localhost/phpmyadmin/<br>
