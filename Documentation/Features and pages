@@ -21,5 +21,10 @@
 * Search Page
   * Maybe could be added to home or course pages?
 
+## TODO:
+### Frontend
+* Update current pages 
 
-
+### Backend
+* Ensure usernames are unique
+* Allow for course selection
