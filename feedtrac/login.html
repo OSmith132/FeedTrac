@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<body>
+
+<!-- Title -->
+<head>
+    <title>FeedTrac</title>
+    <link rel="stylesheet" type="text/css" href="login.css">
+
+</head>
+
+<!-- Header -->
+<h1>This is the login page</h1>
+<a href="signup.php">Sign Up</a>
+
+<!-- Login Form -->
+<h2>Login:</h2>
+<div class="login">
+    <form action="login.php" method="post">
+
+        Username:<br>
+        <input type="text" name="username">
+        <br>
+
+        Password:<br>
+        <input type="text" name="password">
+        <br><br>
+
+        <input type="submit" value="Login">
+    </form><br><br>
+
+</div>
+
+
+
+
+
+<!-- Change Dark/Light Modes -->
+
+<style>
+    body {
+        padding: 15px;
+        background-color: #353535;
+        color: white;
+        font-size: 15px;
+    }
+
+    .dark-mode {
+        background-color: #353535;
+        color: white;
+    }
+
+    .light-mode {
+        background-color: white;
+        color: black;
+    }
+</style>
+
+<h3 id="DarkModetext">Dark Mode is ON</h3>
+<button onclick="darkMode()">Dark Mode</button>
+<button onclick="lightMode()">Light Mode</button>
+
+<script>
+    function darkMode() {
+        let element = document.body;
+        let content = document.getElementById("DarkModetext");
+        element.className = "dark-mode";
+        content.innerText = "Dark Mode is ON";
+    }
+    function lightMode() {
+        let element = document.body;
+        let content = document.getElementById("DarkModetext");
+        element.className = "light-mode";
+        content.innerText = "Dark Mode is OFF";
+    }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+
+
+.dark-mode {
+    background-color: #353535;
+    color: white;
+}
+
+.light-mode {
+    background-color: white;
+    color: black;
+}
+
+
+.login
+ {
+    width: 200px;
+    height: 400px;
+    shape-outside: circle();
+}
