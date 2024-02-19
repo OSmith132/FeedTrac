@@ -30,3 +30,5 @@
 * Ensure usernames are unique
 * Allow for course selection
 * Forgot password feature
+
+could add an observer to subscribe and get updates to courses and comments
