@@ -23,8 +23,10 @@
 
 ## TODO:
 ### Frontend
-* Update current pages 
+* Update current pages
+* Add new pages
 
 ### Backend
 * Ensure usernames are unique
 * Allow for course selection
+* Forgot password feature
