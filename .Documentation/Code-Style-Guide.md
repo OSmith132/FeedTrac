@@ -1,12 +1,12 @@
 # Code Style Guide
 
 ## HTML Styles
-  * Pascal case for class names   (eg: <div class = "ExampleClass"></div>)
+  * Pascal case for class names   (eg: _\<div class = "ExampleClass">\</div>_)
 
 ## PHP Styles
-  * Snake case for function names (eg: $example_function)
-  * Camel case for variable names (eg: $exampleVariable)
-  * Pascal case for class names   (eg: class ExampleClass)
+  * Snake case for function names (eg: _$example_function_)
+  * Camel case for variable names (eg: _$exampleVariable_)
+  * Pascal case for class names   (eg: _class ExampleClass_)
 
 ## SQL Styles
   * No quotation marks for column names
