@@ -1,7 +1,7 @@
 # Code Style Guide
 
 ## HTML Styles
-  * Pascal case for class names   (eg: _\<div class = "ExampleClass">\</div>_)
+  * Dash case for class names   (eg: _\<div class = "example-class">\</div>_)
 
 ## PHP Styles
   * Snake case for function names (eg: _$example_function_)
