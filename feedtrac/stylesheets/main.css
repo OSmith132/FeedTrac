@@ -1,0 +1,158 @@
+:root {
+    --a: #111;
+    --b: #222;
+    --c: #333;
+    --d: #444;
+    --e: #555;
+    --f: #666;
+    --g: #777;
+    --h: #888;
+    --accent-bright: hotpink;
+    --accent-pale: pink;
+}
+
+.rubik-font {
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+::selection {
+    background-color: var(--accent-pale);
+}
+
+body {
+    margin: 0;
+
+    font-family: "Rubik", sans-serif;
+
+    background-color: var(--b);
+    color: white;
+}
+
+h1, p {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+a:hover {
+    color: var(--accent-bright);
+    text-decoration: underline;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 16px;
+
+    background-color: var(--a);
+    border-bottom: 1px solid var(--e);
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.logo h1 {
+    font-size: 24px;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.header-right button {
+    background: none;
+    border-radius: 8px;
+    border: 1px solid var(--e);
+    color: var(--h);
+    cursor: pointer;
+    font-size: 16px;
+    height: 32px;
+    width: 32px;
+}
+.header-right button:hover {
+    background-color: var(--b);
+    border-color: var(--e);
+}
+.avatar {
+    display: block;
+    border-radius: 16px;
+}
+
+.main {
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.list-header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+.search-bar {
+    background-color: var(--a);
+    border-radius: 8px;
+    border: 1px solid var(--e);
+    color: var(--h);
+    flex-grow: 1;
+    font-size: 16px;
+    padding: 8px;
+}
+.list-header button {
+    background-color: var(--accent-bright);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    padding: 8px;
+}
+.list-header button:hover {
+    background-color: var(--accent-pale);
+    cursor: pointer;
+}
+
+table, th, td {
+    border: 1px solid var(--e);
+    border-collapse: collapse;
+}
+th, td {
+    padding: 8px;
+}
+th, tr:hover {
+    background-color: var(--c);
+}
+
+.comment {
+    border-radius: 8px;
+    border: 1px solid var(--e);
+}
+.comment-header {
+    padding: 16px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom: 1px solid var(--e);
+    background-color: var(--c);
+}
+.comment-main {
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+
+    color: var(--h);
+}
