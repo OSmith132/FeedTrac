@@ -30,6 +30,19 @@ Log Of Tasks Completed:
     * Changed the way the database is stored to two .sql files (for schema and data). This should streamline the process of building and uploading different versions of the database.
     * Created the 'Features and pages' file to list the needed pages and features that we need to discuss in our weekly meetings.
     * Reorganised the repo to make it easier to work with.
+ 
+* ### _10/03/2024:_
+    * The able on the homepage table now reads directly from the database. This code can be used elsewhere with a little modification
+    * Added the associative arrays 'get_urgency_string' and 'get_resolved_status' to return the level of urgency / resolved status in a string format
+    * Added the 'shorten' php function
+    * Updated the style guides with some provisional rules
+ 
+* ### _13/03/2024:_
+    * Reorganised the file structure for ease of use
+    * Added the scripts to give the light / dark mode bulb functionality. the scripts and CSS for this are located in the _main.js_ and _main.css_ respectively so the button can remain functional when copy & pasted
+    * Changed the way we connect to the database by creating a wrapper class for mysqli
+    * Changed the way the _POST is handeled in _login.php_ and _signup.php_
+
    
 </details>
 
