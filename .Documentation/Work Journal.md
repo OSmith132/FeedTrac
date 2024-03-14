@@ -77,10 +77,15 @@ Log Of Tasks Completed:
 </summary>
 
 
-* ### _17/2/24:_
+* ### _17/02/24:_
     * Researched PHP and PHP encryption, created a branch.
     * Database troubleshooting with Oliver, changed password field to varchar 255 datatype.
     * Implemented password hashing encryption, tested successfully.
+ 
+* ### _14/03/24:_
+    * Started work on forgot password implementation. Going with a simple memorable word prompt as a first attempt.
+    * Researching into doing email verification.
+    
 
 </details>
 
