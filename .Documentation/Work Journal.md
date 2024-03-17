@@ -90,6 +90,9 @@ Log Of Tasks Completed:
 * ### _14/03/24:_
     * Started work on forgot password implementation. Going with a simple memorable word prompt as a first attempt.
     * Researching into doing email verification.
+
+* ### _17/03/24:_
+    * DB troubleshooting, created new php page for password recovery bashing it on login page.
     
 
 </details>
