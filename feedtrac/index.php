@@ -1,18 +1,17 @@
-
-<?php 
+<?php
 
 session_start();
 
-	include("classes/connection.php");
-	include("scripts/functions.php");
+include("classes/Database.class.php");
+include("scripts/functions.php");
 
-    $database = new database();
+$database = new database();
 
-	$user_data = $database->check_login();
-    
+$user_data = $database->check_login();
 
-    $reportRows = $database -> query("SELECT resolved, urgency, title, `report`.text, `report`.date, `report`.ratingPoints, COUNT(commentID) as number_of_comments FROM `report` JOIN `comment` ON `report`.reportID = `comment`.reportID");
-     
+
+
+
 
 ?>
 
@@ -22,6 +21,7 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="en-gb">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,6 +38,7 @@ session_start();
 
     <script src="https://kit.fontawesome.com/7e1870387e.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <div class="header">
         <a class="logo" title="Homepage" href="index.php">
@@ -47,7 +48,7 @@ session_start();
         </a>
 
         <div class="header-right">
-          <button title="Toggle Dark Mode" id="lightbulb-toggle" onclick="lightMode()"> <!-- Frontend crew might want to change the id to a class if you want to use this function for multiple elements -->
+            <button title="Toggle Dark Mode" id="lightbulb-toggle" onclick="lightMode()"> <!-- Frontend crew might want to change the id to a class if you want to use this function for multiple elements -->
                 <i id="lightbulb-symbol" class="fa-regular fa-lightbulb"></i>
             </button>
 
@@ -69,57 +70,82 @@ session_start();
         </div>
 
         <div class="table">
-        <table>
+            <table>
 
-            <!-- Table Headers -->
-            <tr>
-                <th>Status</th>         <!-- Resolved + Urgency -->
-                <th>Title</th>
-                <th>Text</th>           <!-- Short snippet of report content -->
-                <th>Date</th>
-                <th>Rating Points</th>  <!-- RatingPoints -->
-                <th>Coments</th>        <!-- Number of comments -->
-            </tr>
+                <!-- Table Headers -->
+                <tr>
+                    <th>Status</th> <!-- Resolved + Urgency -->
+                    <th>Title</th>
+                    <th>Text</th> <!-- Short snippet of feedback content -->
+                    <th>Date</th>
+                    <th>Rating Points</th> <!-- RatingPoints -->
+                    <th>Coments</th> <!-- Number of comments -->
+                </tr>
 
-            <tr class = "clickable-row" data-href="feedback.php">
-            <?php
-                while($row = mysqli_fetch_assoc($reportRows))
-                {
-            ?>
-                <td><?php echo  $get_resolved_string[$row['resolved']] . "<br>"      // Resolved Status - Refer to functins.php for the array
-                                . $get_urgency_string[$row['urgency']] . " Urgency"; // Urgency Level   - Refer to functins.php for the array
-                    ?>
-                </td>
 
-                <td><?php echo shorten($row['title'], 50); ?></td>
-                <td><?php echo shorten($row['text'], 75); ?></td>  <!-- shortens the text to 15 characters -->
-                <td><?php echo $row['date']; ?></td>
-                <td><?php echo $row['ratingPoints']; ?></td>
-                <td><?php echo $row['number_of_comments']; ?></td>
-
-                
-            </tr>       
+                <!-- Get result from database to fill table -->
                 <?php
-                    }
+                 $feedbackRows = $database->query("SELECT resolved, urgency, title, `feedback`.text, `feedback`.date, `feedback`.ratingPoints, COUNT(commentID) as number_of_comments FROM `feedback` LEFT JOIN `comment` ON `feedback`.feedbackID = `comment`.feedbackID GROUP BY `feedback`.feedbackID;");
                 ?>
 
-           
-            
-        </table>
 
-        <div class="footer">
-            <p>© 2024 The FeedTrac Team</p>
+                <tr class="clickable-row" data-href="feedback.php">
+                    <?php
+                    while ($row = mysqli_fetch_assoc($feedbackRows)) {
+                    ?>
+                        <td><?php echo  $get_resolved_string[$row['resolved']] . "<br>"      // Resolved Status - Refer to functins.php for the array
+                                . $get_urgency_string[$row['urgency']] . " Urgency"; // Urgency Level   - Refer to functins.php for the array
+                            ?>
+                        </td>
 
-            <a href="#">Terms</a>
+                        <td><?php echo shorten($row['title'], 50); ?></td>
+                        <td><?php echo shorten($row['text'], 75); ?></td> <!-- shortens the text to 15 characters -->
+                        <td><?php echo $row['date']; ?></td>
+                        <td><?php echo $row['ratingPoints']; ?></td>
+                        <td><?php echo $row['number_of_comments']; ?></td>
+                </tr>
 
-            <a href="#">Privacy</a>
+            <?php
+                    }
+            ?>
 
-            <a href="https://github.com/OSmith132/FeedTrac/">Source</a>
+            <script>
+                const rows = document.querySelectorAll(".clickable-row");
+                rows.forEach(row => {
+                    row.addEventListener("click", () => {
+                        window.location.href = row.dataset.href;
+                    });
+                });
 
-            <a href="#">Contact</a>
+            </script>
+
+            <style>
+                tr[data-href] {
+                    cursor: pointer;
+                }
+            </style>
+
+
+
+
+
+
+            </table>
+
+            <div class="footer">
+                <p>© 2024 The FeedTrac Team</p>
+
+                <a href="#">Terms</a>
+
+                <a href="#">Privacy</a>
+
+                <a href="https://github.com/OSmith132/FeedTrac/">Source</a>
+
+                <a href="#">Contact</a>
+            </div>
         </div>
-    </div>
 
-    <script src="scripts/main.js"></script>
+        <script src="scripts/main.js"></script>
 </body>
+
 </html>

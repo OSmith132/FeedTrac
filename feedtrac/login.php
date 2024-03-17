@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include("classes/connection.php");
+include("classes/Database.class.php");
 include("scripts/functions.php");
 
 $database = new database();

@@ -2,7 +2,7 @@
 
 session_start();
 
-include("classes/connection.php");
+include("classes/Database.class.php");
 include("scripts/functions.php");
 $database = new database();
 
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 			//save to database (userID is an auto-incrementing integer, so we don't need to specify it in the query)
 			// Password encryption implementation, usign password hash, by assigning Password_default as the algo, the latest best algorithm for encryption will be picked, even if updated.
-			$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+			$hashed_password = password_hash($password1, PASSWORD_DEFAULT);
 			// change query to input correct course id
 			$database->query("INSERT INTO user (email, username, passwordHash, fname, lname, courseID, yearOfStudy, pronouns, position) VALUES ('$email', '$username', '$hashed_password', '$fname', '$lname', 0, '$yearOfStudy', '$pronouns', '$position')");
 

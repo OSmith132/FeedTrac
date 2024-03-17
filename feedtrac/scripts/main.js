@@ -27,3 +27,15 @@ function lightMode() {
 }
 
 
+// For making table rows with an href clickable
+function clickableRow() {
+    const rows = document.querySelectorAll(".clickable-row");
+    rows.forEach(row => {
+        row.addEventListener("click", () => {
+            window.location.href = row.dataset.href;
+        });
+    });
+}
+
+
+
