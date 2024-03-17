@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2024 at 07:43 PM
+-- Generation Time: Mar 17, 2024 at 07:37 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -35,21 +35,6 @@ CREATE TABLE `building` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comments`
---
-
-CREATE TABLE `comments` (
-  `commentID` int(10) UNSIGNED NOT NULL,
-  `userID` int(10) UNSIGNED NOT NULL,
-  `feedbackID` int(10) UNSIGNED NOT NULL,
-  `text` varchar(500) NOT NULL,
-  `date` date NOT NULL,
-  `ratingPoints` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `course`
 --
 
@@ -68,37 +53,6 @@ CREATE TABLE `course` (
 CREATE TABLE `department` (
   `departmentID` int(10) UNSIGNED NOT NULL,
   `name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `report`
---
-
-CREATE TABLE `report` (
-  `reportID` int(10) UNSIGNED NOT NULL,
-  `userID` int(10) UNSIGNED NOT NULL,
-  `courseID` int(10) UNSIGNED NOT NULL,
-  `roomID` int(10) UNSIGNED DEFAULT NULL,
-  `date` date NOT NULL,
-  `urgency` tinyint(3) NOT NULL,
-  `resolved` tinyint(1) NOT NULL,
-  `closed` tinyint(1) NOT NULL,
-  `title` varchar(30) NOT NULL,
-  `text` varchar(500) NOT NULL,
-  `ratingPoints` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `report_tags`
---
-
-CREATE TABLE `report_tags` (
-  `reportID` int(10) UNSIGNED NOT NULL,
-  `tagID` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -154,14 +108,6 @@ ALTER TABLE `building`
   ADD PRIMARY KEY (`buildingID`);
 
 --
--- Indexes for table `comments`
---
-ALTER TABLE `comments`
-  ADD PRIMARY KEY (`commentID`),
-  ADD KEY `Comments_Feedback` (`feedbackID`),
-  ADD KEY `Comments_User` (`userID`);
-
---
 -- Indexes for table `course`
 --
 ALTER TABLE `course`
@@ -173,22 +119,6 @@ ALTER TABLE `course`
 --
 ALTER TABLE `department`
   ADD PRIMARY KEY (`departmentID`);
-
---
--- Indexes for table `report`
---
-ALTER TABLE `report`
-  ADD PRIMARY KEY (`reportID`),
-  ADD KEY `Report_Course` (`courseID`) USING BTREE,
-  ADD KEY `Report_Room` (`roomID`) USING BTREE,
-  ADD KEY `Report_User` (`userID`) USING BTREE;
-
---
--- Indexes for table `report_tags`
---
-ALTER TABLE `report_tags`
-  ADD PRIMARY KEY (`reportID`,`tagID`),
-  ADD KEY `Tags_Report` (`tagID`);
 
 --
 -- Indexes for table `room`
@@ -221,12 +151,6 @@ ALTER TABLE `building`
   MODIFY `buildingID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `comments`
---
-ALTER TABLE `comments`
-  MODIFY `commentID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
@@ -237,12 +161,6 @@ ALTER TABLE `course`
 --
 ALTER TABLE `department`
   MODIFY `departmentID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `report`
---
-ALTER TABLE `report`
-  MODIFY `reportID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `room`
@@ -261,32 +179,10 @@ ALTER TABLE `user`
 --
 
 --
--- Constraints for table `comments`
---
-ALTER TABLE `comments`
-  ADD CONSTRAINT `Comments_Feedback` FOREIGN KEY (`feedbackID`) REFERENCES `report` (`reportID`),
-  ADD CONSTRAINT `Comments_User` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
-
---
 -- Constraints for table `course`
 --
 ALTER TABLE `course`
   ADD CONSTRAINT `Course_Department` FOREIGN KEY (`departmentID`) REFERENCES `department` (`departmentID`);
-
---
--- Constraints for table `report`
---
-ALTER TABLE `report`
-  ADD CONSTRAINT `Feedback_Course` FOREIGN KEY (`courseID`) REFERENCES `course` (`courseID`),
-  ADD CONSTRAINT `Feedback_Room` FOREIGN KEY (`roomID`) REFERENCES `room` (`roomID`),
-  ADD CONSTRAINT `Feedback_User` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
-
---
--- Constraints for table `report_tags`
---
-ALTER TABLE `report_tags`
-  ADD CONSTRAINT `Report_Tags` FOREIGN KEY (`reportID`) REFERENCES `report` (`reportID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `Tags_Report` FOREIGN KEY (`tagID`) REFERENCES `tags` (`tagID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `room`
