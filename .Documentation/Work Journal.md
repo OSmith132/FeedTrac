@@ -92,7 +92,7 @@ Log Of Tasks Completed:
     * Researching into doing email verification.
 
 * ### _17/03/24:_
-    * DB troubleshooting, created new php page for password recovery bashing it on login page.
+    * DB troubleshooting, created new php page for password recovery basing it on login page.
     
 
 </details>
