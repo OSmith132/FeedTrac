@@ -3,10 +3,13 @@
 
 ## HOW TO SET UP THE WEBSITE LOCALLY:
   step 1:  Install XAMPP package<br>
-  step 2:  Download FeedtracDB and Feedtrac folders from this repo<br>
-  step 3:  Place the feedtracDB folder in the **..xampp\mysql\data** directory<br>
-  step 4:  Create a new database table in MyPHPAdmin and import the feedtracdb.SQL file<br>
-  step 5:  Import the database Data from data.SQL (THIS WILL TRUNCATE ALL CURRENT DATA IN THE DB)<br>
+  step 2:  Download the Feedtrac folder from this repo<br>
+  setp 3:  Place the feedtrac folder in the **..xampp\htdocs** directory<br>
+
+## HOW TO SET UP THE DATABASE:  
+  step 1:  Download the **feedtracdb.sql** and **data.sql** files from this repo<br>
+  step 2:  Create a new database table in MyPHPAdmin and import the feedtracdb.sql file<br>
+  step 3:  (Optionally) import the database data from data.sql file (THIS WILL TRUNCATE ALL DATA IN YOUR LOCAL DATABASE)<br>
 
 
 ### HOW TO VIEW WEBSITE: 
