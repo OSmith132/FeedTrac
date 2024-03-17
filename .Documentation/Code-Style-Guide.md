@@ -9,8 +9,7 @@
   * Pascal case for class names   (eg: _class ExampleClass_)
 
 ## SQL Styles
-  * No quotation marks for column names
-  * Backticks for table names
+  * No quotation marks / backticks for column / table names
   * Snake case for table, index and constraint names
   * Singular table names
 
