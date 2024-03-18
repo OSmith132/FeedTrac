@@ -47,7 +47,13 @@ Log Of Tasks Completed:
     * Started work on the PHP handler, controller and View classess for the feedback reports. This can be used for getting, updating and creating enw feedback reports.
     * Started work on making a clickable-row class that will link to the relevant feedback report page when clicked on. This is currently only implemented in index.php.
     * Added the protected connect() function to the Database class. This can be used by child classes to establish a conection with the database
-    * Changed some databas table structures and renamed all occurrences (in both the database and codebase) of the word _report_ with _feedback_ for continuity throughout the app and documentation.   
+    * Changed some databas table structures and renamed all occurrences (in both the database and codebase) of the word _report_ with _feedback_ for continuity throughout the app and documentation.
+ 
+* ### _18/03/2024:_
+    * Finished working on the PHP handler class for feedback reports.
+    * Fixed some minor bugs within the signup and login pages
+    * Added the _'comment_user_rating'_ and _'feedback_user_rating'_tables to track if a user has liked / disliked a coment or feedback report before
+    * Changed the Database class to make it static and changed the _'connect()'_ function to establish and return a connection to the database
    
 </details>
 
