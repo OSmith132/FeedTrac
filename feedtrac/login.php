@@ -74,6 +74,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             Password:<br>
             <input type="password" name="password">
             <br><br>
+
+            <a href="recover_password.php">Forgot password?</a>
+            <br><br>
             
             <input type="submit" value="Login">
         </form><br><br>

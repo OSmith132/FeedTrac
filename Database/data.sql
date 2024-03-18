@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2024 at 07:44 PM
+-- Generation Time: Mar 17, 2024 at 07:39 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -27,10 +27,12 @@ SET time_zone = "+00:00";
 
 TRUNCATE TABLE `building`;
 --
--- Truncate table before insert `comments`
+-- Dumping data for table `building`
 --
 
-TRUNCATE TABLE `comments`;
+INSERT INTO `building` (`buildingID`, `buildingName`) VALUES
+(0, 'Default Building');
+
 --
 -- Truncate table before insert `course`
 --
@@ -56,20 +58,17 @@ INSERT INTO `department` (`departmentID`, `name`) VALUES
 (0, 'Default Department');
 
 --
--- Truncate table before insert `report`
---
-
-TRUNCATE TABLE `report`;
---
--- Truncate table before insert `report_tags`
---
-
-TRUNCATE TABLE `report_tags`;
---
 -- Truncate table before insert `room`
 --
 
 TRUNCATE TABLE `room`;
+--
+-- Dumping data for table `room`
+--
+
+INSERT INTO `room` (`roomID`, `roomName`, `buildingID`) VALUES
+(0, 'Default Room', 0);
+
 --
 -- Truncate table before insert `tags`
 --
@@ -85,7 +84,13 @@ TRUNCATE TABLE `user`;
 --
 
 INSERT INTO `user` (`userID`, `courseID`, `email`, `username`, `passwordHash`, `fName`, `lName`, `yearOfStudy`, `pronouns`, `position`) VALUES
-(1, 0, '26357261@students.lincoln.ac.uk', 'Oliver_Smith', '$2y$10$QPf3iCF2jkZ6J/52ho/w9.9y2X9tucyYNJ8FTqQIUTFZRTznD47g6', 'Oliver', 'Smith', 2, 'hehim', 'admin');
+(1, 0, '26357261@students.lincoln.ac.uk', 'Oliver_Smith', '$2y$10$QPf3iCF2jkZ6J/52ho/w9.9y2X9tucyYNJ8FTqQIUTFZRTznD47g6', 'Oliver', 'Smith', 2, 'hehim', 'admin'),
+(2, 0, '1234@gmail.com', 'Oliver_Smith', 'feedtrac', 'Oliver', 'Smith', 4, 'hehim', 'Admin'),
+(3, 0, '26357261@students.lincoln.ac.uk', 'Oliver_smith_2', '$2y$10$llceTeX.qiz7f5/yLhe/o.nR3ctP43hStF949L/tZCG8x/8zEfEp2', 'Oliver', 'Smith', 3, 'sheher', 'student'),
+(4, 0, '26357261@students.lincoln.ac.uk', 'Oliver_Smith_3', '$2y$10$KJFCq.qNYcjbrR6mrbAL2u9Ib7G0GxeBYHImUTF/lwwuQuqgGsWG2', 'Oliver', 'Smith', 4, 'sheher', 'staff'),
+(5, 0, '26357261@students.lincoln.ac.uk', 'Oliver_Smith_3', '$2y$10$3w90ThloObWAwgSh8doQyODfWpQBSWKccDu2hlVjHlgcA4rAFBnca', 'Oliver', 'Smith', 4, 'sheher', 'staff'),
+(6, 0, '26357261@students.lincoln.ac.uk', 'Oliver_Smith_4', '$2y$10$LGqPKXSPr/LSagioSOwBjeFo8Gb8QegqTdv.04zuwEkdKMINLvLv.', 'Oliver', 'Smith', 1, 'hehim', 'student'),
+(7, 0, '26357261@students.lincoln.ac.uk', 'Oliver_Smith_5', '$2y$10$VdvqDP5xUCYbS53kQpi9SuljKxxKz2VbGIpJ4tFWSZIMAXiNlxTfC', 'oliver', 'smith', 1, 'hehim', 'student');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
