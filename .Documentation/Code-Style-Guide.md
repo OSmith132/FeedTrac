@@ -8,6 +8,8 @@
   * Camel case for variable names (eg: _$exampleVariable_)
   * Pascal case for class names   (eg: _class ExampleClass_)
 
+  * Classes should follow the MVC (Model-View-Controller) approach and inherit from the _'Database'_ class
+
 ## SQL Styles
   * No quotation marks / backticks for column / table names
   * Snake case for table, index and constraint names
