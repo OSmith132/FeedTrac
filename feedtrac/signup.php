@@ -2,13 +2,21 @@
 
 session_start();
 
-include("classes/Database.class.php");
-include("scripts/functions.php");
-//$database = new Database();
-Database::connect();
+include ("classes/Database.class.php");
+include ("classes/login.class.php");
+include ("classes/LoginContr.class.php");
+include ("classes/Feedback.class.php");
+include ("classes/FeedbackContr.class.php");
+include ("scripts/functions.php");
+
+$Login_Controller = new LoginContr();
 
 // Check user isn't logged in
-Database::force_logout();
+$Login_Controller->check_login();
+
+
+
+
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	//something was posted
@@ -25,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		$password2 = $postData['password2'];
 		$fname = $postData['fname'];
 		$lname = $postData['lname'];
-		$course = $postData['course'];
+		$courseID = $postData['course'];
 		$yearOfStudy = $postData['yearOfStudy'];
 		$pronouns = $postData['pronouns'];
 		$position = $postData['position'];
@@ -33,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 		// Check if the username or email is already taken
-		if (Database::query("SELECT * FROM USER WHERE username = '$username'") -> num_rows == 0  &&  Database::query("SELECT * FROM USER WHERE email = '$email'") -> num_rows == 0) {
+		if (!$Login_Controller->exists_username_email($username, $email)) {
 
 			// Check if the passwords match
 			if ($password1 == $password2) {
@@ -42,8 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 				// Password encryption implementation, usign password hash, by assigning Password_default as the algo, the latest best algorithm for encryption will be picked, even if updated.
 				$hashed_password = password_hash($password1, PASSWORD_DEFAULT);
 				// change query to input correct course id
-				Database::query("INSERT INTO user (email, username, passwordHash, fname, lname, courseID, yearOfStudy, pronouns, position) VALUES ('$email', '$username', '$hashed_password', '$fname', '$lname', 0, '$yearOfStudy', '$pronouns', '$position')");
-
+				$Login_Controller->sign_up($email, $username, $hashed_password, $fname, $lname, $courseID, $yearOfStudy, $pronouns, $position);
 
 				header("Location: login.php");
 				die;
@@ -112,12 +119,26 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			<input type="text" name="lname" >
 			<br><br>
 
+
+			
+
 			<!-- Maybe add reading avalable courses from the DB -->
 			<select name="course">
 				<option selected disabled hidden>Select Course</option>
-				<option value="computer science" >Computer Science</option>
-				<option value="games computing" >Games Computing (ew)</option>
-				<option value="dentistry" >Dentistry</option>
+
+				<?php 
+					// Get all courses from the database
+					$courses = $Login_Controller->get_courses();
+					
+					// Get each course
+					foreach ($courses as $course) {?>
+
+						<option value= <?php echo $course["courseID"] ?> > <?php echo $course["name"] ?></option> 
+
+					<?php } ?>
+				
+				
+
 			</select><br><br>
 
 			<select name="yearOfStudy">

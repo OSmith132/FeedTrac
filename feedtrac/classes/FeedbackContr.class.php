@@ -81,7 +81,3 @@ class FeedbackContr extends Feedback {
         // Update the rating points of a feedback item
         return $this->get_all_rows();
     }
-
-    
-
-}
