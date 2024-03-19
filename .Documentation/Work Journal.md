@@ -47,7 +47,19 @@ Log Of Tasks Completed:
     * Started work on the PHP handler, controller and View classess for the feedback reports. This can be used for getting, updating and creating enw feedback reports.
     * Started work on making a clickable-row class that will link to the relevant feedback report page when clicked on. This is currently only implemented in index.php.
     * Added the protected connect() function to the Database class. This can be used by child classes to establish a conection with the database
-    * Changed some databas table structures and renamed all occurrences (in both the database and codebase) of the word _report_ with _feedback_ for continuity throughout the app and documentation.   
+    * Changed some databas table structures and renamed all occurrences (in both the database and codebase) of the word _report_ with _feedback_ for continuity throughout the app and documentation.
+
+* ### _17/03/2024:_
+    * Reorganised Github repo with hopes for others to start work
+    * Made some minor changes to the database schema to fix some issues Marco was having with using the new code
+    * Fixed some minor bugs relating to database table names and connection. Planning to fix this my implementing a login and signup class
+ 
+* ### _18/03/2024:_
+    * Finished the first version of the feedback model and controller classes. Planning to work on view class when frontend has caught up.
+    * Started and finished the first version of the model and controller classes for Login.
+    * Organised all classes into namespaces and tried unsuccessfully to set up an autoloader.
+    * Fully redesigned all previous PHP in the login and index pages to utilize the new classes
+    * Overall a very long day (~10 hours total work) 
    
 </details>
 
