@@ -152,4 +152,3 @@ class Login extends Database {
         $results = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $results;
     }
-}

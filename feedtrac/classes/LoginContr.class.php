@@ -105,4 +105,3 @@ public function get_courses(){
 
     return $this->get_all_courses();
  }
-}

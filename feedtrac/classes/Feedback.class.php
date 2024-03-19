@@ -1,4 +1,5 @@
-<?php 
+
+<?php
 
 class Feedback extends Database {
 
@@ -157,9 +158,3 @@ class Feedback extends Database {
         
         
     }
-    
-
-
-
-
-}
