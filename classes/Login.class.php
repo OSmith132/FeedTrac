@@ -32,7 +32,41 @@ class Login extends Database {
         
     }
 
-  
+
+    // Add new user to database
+    protected function create_user($email, $username, $hashed_password, $fname, $lname, $courseID, $yearOfStudy, $pronouns, $position){
+
+         // prepare the SQL query
+         $stmt = $this->connect()->prepare("INSERT INTO user (email, username, passwordHash, fname, lname, courseID, yearOfStudy, pronouns, position) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+         // Check if the SQL query is valid
+         if(!$stmt->execute([$email, $username, $hashed_password, $fname, $lname, $courseID, $yearOfStudy, $pronouns, $position])){
+             header("location: login.php?error=BadSQLQuery");
+             exit();
+         }
+ 
+         // return true if the user was created successfully
+         return true;
+    }
+
+
+    // private function get_courseid($courseName){
+
+    //     $stmt = $this->connect()->prepare("SELECT courseID FROM course WHERE courseName = ?");
+
+    //     // Check if the SQL query is valid
+    //     if(!$stmt->execute([$courseName])){
+    //         header("location: login.php?error=BadCourseName");
+    //         exit();
+    //     }
+
+    //     // return true if the user exists
+    //     $results = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    //     return $results;
+
+    // }
+
+    // Check if the user exists
     protected function check_user_exists($username){ // username: string
 
         // prepare the SQL query
@@ -40,7 +74,7 @@ class Login extends Database {
 
         // Check if the SQL query is valid
         if(!$stmt->execute([$username])){
-            header("location: profile.php?error=BadSQLQuery");
+            header("location: login.php?error=BadSQLQuery");
             exit();
         }
 
@@ -50,7 +84,25 @@ class Login extends Database {
 
     }
 
+    // Check if the username and email are unique
+    protected function check_unique_email_username($username, $email){ // username: string, email: string
 
+        // prepare the SQL query
+        $stmt = $this->connect()->prepare("SELECT * FROM user WHERE username = ? OR email = ? LIMIT 1");
+
+        // Check if the SQL query is valid
+        if(!$stmt->execute([$username, $email])){
+            header("location: login.php?error=BadSQLQuery");
+            exit();
+        }
+
+        // return true if the user exists
+        $result = $stmt->get_result(); 
+        return $result->num_rows > 0;
+
+    }
+
+    // Check the passwords match
     protected function compare_password($username, $password){ // username: string
 
         // prepare the SQL query
@@ -58,7 +110,7 @@ class Login extends Database {
 
         // Check if the SQL query is valid
         if(!$stmt->execute([$username])){
-            header("location: profile.php?error=BadSQLQuery");
+            header("location: login.php?error=BadSQLQuery");
             exit();
         }
 
@@ -68,19 +120,36 @@ class Login extends Database {
 
     }
 
-
+    // Get the user ID from username
     protected function get_id($username){
 
         //prepare the SQL query
-        $stmt = $this->connect()->prepare('SELECT userID FROM user WHERE username = ?');
+        $stmt = $this->connect()->prepare("SELECT userID FROM user WHERE username = ?");
 
         // Check if the SQL query is valid
         if(!$stmt->execute([$username])){
-            header("location: profile.php?error=BadSQLQuery");
+            header("location: login.php?error=BadSQLQuery");
             exit();
         }
 
         $result = $stmt->get_result()->fetch_assoc()['userID'];
         return $result;
+    }
+
+
+    // Gets all values for courses in the database
+    protected function get_all_courses(){
+
+       //prepare the SQL query
+       $stmt = $this->connect()->prepare("SELECT * FROM course");
+
+        // Check if the SQL query is valid
+        if(!$stmt->execute()){
+            header("location: login.php?error=BadSQLQuery");
+            exit();
+        }
+
+        $results = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $results;
     }
 }

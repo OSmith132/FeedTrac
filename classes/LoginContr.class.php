@@ -30,9 +30,12 @@ class LoginContr extends Login {
         if(isset($_SESSION['user_id'])){
             header("Location: index.php");
         }
+
+        return false;
     }
 
 
+    // Check if the user exists
     public function user_exists($userID){
 
          // Check if any input is empty
@@ -45,7 +48,33 @@ class LoginContr extends Login {
 
     }
 
+    // Sign up a user
+    public function sign_up($email, $username, $hashed_password, $fname, $lname, $courseID, $yearOfStudy, $pronouns, $position){
 
+        if ($this->empty_input_check($email, $username, $hashed_password, $fname, $lname, $courseID, $yearOfStudy, $pronouns, $position)){
+            header("location: feedback.php?error=emptyinput");
+            exit();
+        }
+
+        return $this->create_user($email, $username, $hashed_password, $fname, $lname, $courseID, $yearOfStudy, $pronouns, $position);
+   }
+
+
+   // Check if the username and email are unique
+    public function exists_username_email($username, $email){ // username: string, email: string
+
+        // Check if any input is empty
+        if ($this->empty_input_check($username)){
+            header("location: feedback.php?error=emptyinput");
+            exit();     
+        }
+
+        return $this->check_unique_email_username($username, $email);
+
+    }
+
+
+    // Check the password is correct
     public function check_password($username, $password){
 
         // Check if any input is empty
@@ -69,4 +98,11 @@ class LoginContr extends Login {
 
     return $this->get_id($username);
 }
+
+
+// Get all course data
+public function get_courses(){
+
+    return $this->get_all_courses();
+ }
 }
