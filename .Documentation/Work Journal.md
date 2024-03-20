@@ -106,7 +106,14 @@ Log Of Tasks Completed:
 * ### _17/03/24:_
     * DB troubleshooting, created new php page for password recovery basing it on login page.
     
+* ### _18/03/24:_
+    * I set an email server up to test the early version of password recovery by sending a unique token to email address associated with account it successfully sent emails upon request by website so it's a working proof of concept, the server at some point stopped working, setting up mercury proved to be a very complex time consuming task so it's on hold for now, but it did work. First half of password recovery system was concluded a new password recovery page was created with relevant forms.
+ 
+* ### _20/03/24:_ 
+  *  Finished the password recovery system, the whole recovery process works. Two new pages were created recovery password and reregister password. Created a new recovery table in database to store a temporary token and created a relation to user ID matching a specified email address.
 
+
+      
 </details>
 
 ## Harry
