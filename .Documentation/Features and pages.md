@@ -28,6 +28,8 @@
 
 ### Backend
 * Allow for course selection
+* Add an observer to subscribe and get updates to courses and comments
+
 
 ## In progress:
 * Ensure usernames are unique - Marco
@@ -36,4 +38,3 @@
 ## Done:
 * Forgot password feature - Marco
 
-could add an observer to subscribe and get updates to courses and comments
