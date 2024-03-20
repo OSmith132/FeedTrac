@@ -27,10 +27,13 @@
 * Add new pages
 
 ### Backend
-* Ensure usernames are unique
 * Allow for course selection
 
+## In progress:
+* Ensure usernames are unique - Marco
+
+
 ## Done:
-* Forgot password feature
+* Forgot password feature - Marco
 
 could add an observer to subscribe and get updates to courses and comments
