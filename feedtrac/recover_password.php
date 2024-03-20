@@ -23,11 +23,23 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         // Check if the user exists
         if($result && mysqli_num_rows($result) > 0) {
             $user_data = mysqli_fetch_assoc($result);
+
+            $token =  random_int(100000,999999);
+
+            $userID = $user_data ["userID"];
+
+            $sql = Database::query("INSERT INTO recovery (userRecoveryID, token) VALUES ($userID, $token)");
+
+            $tokenString = strval($token); // Convert token to string
+
             $to = $user_data['email'];
             $subject = "Feedtrac password recovery";
-            $message = "This is the password associated with the registered email address; ";
+            $message = "Use this token to register a new password: " . $tokenString; // Concatenate strings
+            echo $message;
             $headers = 'From: feedtrac@example.com';
-            mail($to, $subject, $message, $headers);
+           /* mail($to, $subject, $message, $headers);*/
+
+            header("Location: reregister_password.php");
 
         } else {
             echo "No user with this email address found.";
@@ -64,8 +76,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             Enter registered email address:<br>
             <input type="text" name="email">
             <br>
-
-
             <input type="submit" value="Submit">
         </form><br><br>
 
