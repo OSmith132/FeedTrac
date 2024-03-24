@@ -59,7 +59,11 @@ Log Of Tasks Completed:
     * Started and finished the first version of the model and controller classes for Login.
     * Organised all classes into namespaces and tried unsuccessfully to set up an autoloader.
     * Fully redesigned all previous PHP in the login and index pages to utilize the new classes
-    * Overall a very long day (~10 hours total work) 
+    * Overall a very long day (~10 hours total work)
+
+* ### _24/03/2024:_
+    * Had a meeting where we went over how we are going to incorperate the MVC design pattern and how to use the new classes. Me and Marco also updated his password recovery code to be used by the Login class.
+    * Added the recovery table to the database to work with Marco's code.
    
 </details>
 
