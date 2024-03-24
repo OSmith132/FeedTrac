@@ -121,13 +121,30 @@ class Login extends Database {
     }
 
     // Get the user ID from username
-    protected function get_id($username){
+    protected function get_id_username($username){
 
         //prepare the SQL query
         $stmt = $this->connect()->prepare("SELECT userID FROM user WHERE username = ?");
 
         // Check if the SQL query is valid
         if(!$stmt->execute([$username])){
+            header("location: login.php?error=BadSQLQuery");
+            exit();
+        }
+
+        $result = $stmt->get_result()->fetch_assoc()['userID'];
+        return $result;
+    }
+
+
+    // Get the user ID from username
+    protected function get_id_email($email){
+
+        //prepare the SQL query
+        $stmt = $this->connect()->prepare("SELECT userID FROM user WHERE email = ?");
+
+        // Check if the SQL query is valid
+        if(!$stmt->execute([$email])){
             header("location: login.php?error=BadSQLQuery");
             exit();
         }
@@ -152,3 +169,65 @@ class Login extends Database {
         $results = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $results;
     }
+
+
+
+    protected function create_recovery_code($email){
+
+        if ($this->get_id_email($email) != null){
+
+            
+            // Get the user ID from the email
+            $userID = $this->get_id_email($email);
+
+            //prepare the SQL query
+            $stmt = $this->connect()->prepare("DELETE FROM recovery WHERE userID = ?");
+
+            // delete any existing recovery codes from the database
+            if(!$stmt->execute([$userID])){
+                header("location: login.php?error=BadSQLQuery");
+                exit();
+            }
+
+
+            // Get a random 6 digit number
+            $token =  random_int(100000,999999);
+
+            //prepare the SQL query
+            $stmt = $this->connect()->prepare("INSERT INTO recovery (userID, token) VALUES (?, ?)");
+
+            // Check if the SQL query is valid
+            if(!$stmt->execute([$userID, $token])){
+                header("location: login.php?error=BadSQLQuery");
+                exit();
+            }
+
+            
+            return $token;
+        }
+
+        return -1;
+
+    }
+
+
+    
+    protected function get_recovery_code($userID){
+
+        // Get the user ID from the email
+        $stmt = $this->connect()->prepare("SELECT token FROM recovery WHERE userID = ? LIMIT 1");
+
+        // Check if the SQL query is valid
+        if(!$stmt->execute([$userID])){
+            header("location: login.php?error=BadSQLQuery");
+            exit();
+        }
+
+        $result = $stmt->get_result()->fetch_assoc()['token'];
+        return $result;
+    }
+
+ 
+
+    
+}

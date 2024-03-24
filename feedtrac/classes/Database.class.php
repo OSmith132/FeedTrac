@@ -52,3 +52,9 @@ class Database{
         // If no imput is empty, return false
         return false;
     }
+    
+    
+        
+    
+
+}

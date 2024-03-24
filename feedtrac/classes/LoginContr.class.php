@@ -36,15 +36,15 @@ class LoginContr extends Login {
 
 
     // Check if the user exists
-    public function user_exists($userID){
+    public function user_exists($username){
 
          // Check if any input is empty
-         if ($this->empty_input_check($userID)){
+         if ($this->empty_input_check($username)){
             header("location: feedback.php?error=emptyinput");
             exit();
         }
 
-        return $this->check_user_exists($userID);
+        return $this->check_user_exists($username);
 
     }
 
@@ -96,12 +96,55 @@ class LoginContr extends Login {
         exit();
     }
 
-    return $this->get_id($username);
+    return $this->get_id_username($username);
 }
 
 
-// Get all course data
-public function get_courses(){
+    // Get all course data
+    public function get_courses(){
 
-    return $this->get_all_courses();
- }
+        return $this->get_all_courses();
+    }
+
+
+    public function create_recovery_token($email){
+
+        
+        // Check if any input is empty
+        if ($this->empty_input_check($email)){
+            header("location: feedback.php?error=emptyinput");
+            exit();
+        }
+ 
+        return $this->create_recovery_code($email);
+        
+    }
+
+
+
+    public function send_recovery_email($email){
+
+        // Check if any input is empty
+        if ($this->empty_input_check($email)){
+            header("location: feedback.php?error=emptyinput");
+            exit();
+        }
+
+        // Get the recovery code
+        $tokenString = strval($this->get_recovery_code($this->get_id_email($email)));
+
+        // Set the email parameters
+        $subject = "Feedtrac password recovery";
+        $message = "Use this token to register a new password: " . $tokenString; // Concatenate strings
+        $headers = 'From: feedtrac@example.com';
+
+        // Send email
+        /* mail($email, $subject, $message, $headers);*/
+        echo $message; // DELETE THIS
+
+        return true;
+        
+    }
+
+
+}

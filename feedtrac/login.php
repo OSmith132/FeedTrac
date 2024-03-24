@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-
+// Need to add autoloader for this but can't be bothered right now ================================
 include ("classes/Database.class.php");
 include ("classes/login.class.php");
 include ("classes/LoginContr.class.php");
@@ -75,6 +75,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             Password:<br>
             <input type="password" name="password">
             <br><br>
+
+            <a href="recoverPassword.php">Forgot password?</a>
+            <br><br>
             
             <input type="submit" value="Login">
         </form><br><br>
@@ -126,3 +129,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     </body>
 </html>
+
+
+
+        
