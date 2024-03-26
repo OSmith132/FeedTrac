@@ -1,5 +1,3 @@
-
-
 function darkMode() {
     // change the background color
     let element = document.body;
@@ -36,6 +34,3 @@ function clickableRow() {
         });
     });
 }
-
-
-

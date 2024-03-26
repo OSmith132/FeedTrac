@@ -1,13 +1,18 @@
 <?php
 session_start();
 
-include("classes/Database.class.php");
-include("scripts/functions.php");
+// Need to add autoloader for this but can't be bothered right now ================================
+include ("classes/Database.class.php");
+include ("classes/login.class.php");
+include ("classes/LoginContr.class.php");
+include ("classes/Feedback.class.php");
+include ("classes/FeedbackContr.class.php");
+include ("scripts/functions.php");
 
-Database::connect();
+$Login_Controller = new LoginContr();
 
 // Check user isn't logged in
-Database::force_logout();
+$Login_Controller->check_login();
 
 
 
@@ -18,19 +23,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     
     
 	if(!empty($username) && !empty($password)){
-        echo "This is the login page";
-        // Read from the database
-        $result = Database::query("SELECT * FROM user WHERE username = '$username' LIMIT 1");
         
         // Check if the user exists
-        if($result && mysqli_num_rows($result) > 0) {
-            
-            $user_data = $result ->fetch_assoc();
-            $passwordHash = $user_data['passwordHash'];
+        if($Login_Controller->user_exists($username)){
 
             // Verify the password
-            if(password_verify($password, $passwordHash)) {
-                $_SESSION['userID'] = $user_data['userID'];
+            if($Login_Controller->check_password($username, $password)) {
+                
+                $_SESSION['userID'] = $Login_Controller->get_userid($username);  // change this so it assigns the correct userID
+
                 header("Location: index.php");
                 die;
             } else {
@@ -75,7 +76,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             <input type="password" name="password">
             <br><br>
 
-            <a href="recover_password.php">Forgot password?</a>
+            <a href="recoverPassword.php">Forgot password?</a>
             <br><br>
             
             <input type="submit" value="Login">

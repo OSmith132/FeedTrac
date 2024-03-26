@@ -2,16 +2,19 @@
 
 session_start();
 
-include("classes/Database.class.php");
-include("scripts/functions.php");
 
-Database::connect();
+include ("classes/Database.class.php");
+include ("classes/login.class.php");
+include ("classes/LoginContr.class.php");
+include ("classes/Feedback.class.php");
+include ("classes/FeedbackContr.class.php");
+include ("scripts/functions.php");
 
-$user_data = Database::check_login();
 
+$Login_Controller = new LoginContr();
+$user_data = $Login_Controller->force_login();
 
-
-
+$Feedback_Controller = new FeedbackContr($user_data['userID']);
 
 ?>
 
@@ -85,13 +88,15 @@ $user_data = Database::check_login();
 
                 <!-- Get result from database to fill table -->
                 <?php
-                 $feedbackRows = Database::query("SELECT resolved, urgency, title, `feedback`.text, `feedback`.date, `feedback`.ratingPoints, COUNT(commentID) as number_of_comments FROM `feedback` LEFT JOIN `comment` ON `feedback`.feedbackID = `comment`.feedbackID GROUP BY `feedback`.feedbackID;");
+                 $feedbackRows = $Feedback_Controller->get_all_feedback(); // THIS NEEDS TO BE CHANGED TO GET AL FEEDBACK FROM USER
                 ?>
 
 
                 <tr class="clickable-row" data-href="feedback.php">
                     <?php
-                    while ($row = mysqli_fetch_assoc($feedbackRows)) {
+                    foreach ($feedbackRows as $row) {
+
+                    
                     ?>
                         <td><?php echo  $get_resolved_string[$row['resolved']] . "<br>"      // Resolved Status - Refer to functins.php for the array
                                 . $get_urgency_string[$row['urgency']] . " Urgency"; // Urgency Level   - Refer to functins.php for the array
