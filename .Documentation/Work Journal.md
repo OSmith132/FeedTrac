@@ -117,6 +117,11 @@ Log Of Tasks Completed:
 * ### _20/03/24:_ 
   *  Finished the password recovery system, the whole recovery process works. Two new pages were created recovery password and reregister password.
   *  Created a new recovery table in database to store a temporary token and created a relation to user ID matching a specified email address.
+ 
+* ### _26/03/24:_
+  *  Lots of troubleshooting, lots of research.
+  *  Finished the password recovery system again, this time it implements the new database and login classes.
+
 
 
       
