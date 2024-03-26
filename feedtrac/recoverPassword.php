@@ -1,13 +1,17 @@
 <?php
 session_start();
 
-include("classes/Database.class.php");
-include("scripts/functions.php");
+include ("classes/Database.class.php");
+include ("classes/login.class.php");
+include ("classes/LoginContr.class.php");
+include ("classes/Feedback.class.php");
+include ("classes/FeedbackContr.class.php");
+include ("scripts/functions.php");
 
-Database::connect();
+$Login_Controller = new LoginContr();
 
 // Check user isn't logged in
-Database::force_logout();
+$Login_Controller->check_login();
 
 
 
@@ -17,29 +21,16 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 
 	if(!empty($email)){
-        // Read from the database
-        $result = Database::query("SELECT * FROM user WHERE email = '$email' LIMIT 1");
+
+        // Get the recovery code
+        $recovery_code = $Login_Controller->create_recovery_token($email);
 
         // Check if the user exists
-        if($result && mysqli_num_rows($result) > 0) {
-            $user_data = mysqli_fetch_assoc($result);
+        if($recovery_code != -1) {           
 
-            $token =  random_int(100000,999999);
+            $Login_Controller->send_recovery_email($email);
 
-            $userID = $user_data ["userID"];
-
-            $sql = Database::query("INSERT INTO recovery (userRecoveryID, token) VALUES ($userID, $token)");
-
-            $tokenString = strval($token); // Convert token to string
-
-            $to = $user_data['email'];
-            $subject = "Feedtrac password recovery";
-            $message = "Use this token to register a new password: " . $tokenString; // Concatenate strings
-            echo $message;
-            $headers = 'From: feedtrac@example.com';
-           /* mail($to, $subject, $message, $headers);*/
-
-            header("Location: reregister_password.php");
+            header("Location: reregisterPassword.php");
 
         } else {
             echo "No user with this email address found.";
@@ -71,7 +62,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
         <!-- Login Form -->
         <h2>Recover Password:</h2>
-        <form action="recover_password.php" method="post">
+        <form action="recoverPassword.php" method="post">
 
             Enter registered email address:<br>
             <input type="text" name="email">

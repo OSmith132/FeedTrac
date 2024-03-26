@@ -1,14 +1,18 @@
 <?php
 session_start();
 
-include("classes/Database.class.php");
-include("scripts/functions.php");
 
-Database::connect();
+include ("classes/Database.class.php");
+include ("classes/login.class.php");
+include ("classes/LoginContr.class.php");
+include ("classes/Feedback.class.php");
+include ("classes/FeedbackContr.class.php");
+include ("scripts/functions.php");
+
+$Login_Controller = new LoginContr();
 
 // Check user isn't logged in
-Database::force_logout();
-
+$Login_Controller->check_login();
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -19,17 +23,16 @@ $postData = $_POST;
 
 // Check if all fields are filled
 if (count($postData) == count(array_filter($postData))) {
+    # Token and email entered in forms by user.
     $token = $_POST['token'];
     $email = $postData['email'];
+    
+    # userID extracted from user table by email.
+    $userID = $Login_Controller->get_userid_email($email);   
 
-    $result = Database::query("SELECT userID FROM user WHERE email = '$email' LIMIT 1");
-    $row = mysqli_fetch_assoc($result);
-    $userID = $row['userID'];
+    # Token extracted from recovery table.
+    $registeredToken = $Login_Controller->get_token($userID);
 
-    $result = Database::query("SELECT token FROM recovery WHERE userRecoveryID = '$userID' LIMIT 1");
-    $row = mysqli_fetch_assoc($result);
-    $registeredToken = $row['token'];
-    $registeredToken = strval($registeredToken);
 
     $password1 = $postData['password1'];
     $password2 = $postData['password2'];
@@ -40,14 +43,13 @@ if (count($postData) == count(array_filter($postData))) {
         // Check if the passwords match
         if ($password1 == $password2) {
 
-            //save to database (userID is an auto-incrementing integer, so we don't need to specify it in the query)
             // Password encryption implementation, usign password hash, by assigning Password_default as the algo, the latest best algorithm for encryption will be picked, even if updated.
             $hashed_password = password_hash($password1, PASSWORD_DEFAULT);
-            echo "We did it.";
-            // change query to input correct course id
-            Database::query("UPDATE user SET passwordHash = '$hashed_password' WHERE userID = $userID");
-            Database::query("DELETE FROM recovery WHERE userRecoveryID = $userID");
 
+            # New implementation using the new login and database classes.
+            $deleteToken = $Login_Controller->delete_recovery_record($userID);
+            $updatepassword = $Login_Controller->update_user_password($hashed_password,$userID);
+           
             header("Location: login.php");
             die;
         } else {
@@ -57,8 +59,6 @@ if (count($postData) == count(array_filter($postData))) {
         echo "Token is not correct. Try again.";
     }
 }
-
-
 
 }
 
@@ -84,7 +84,7 @@ if (count($postData) == count(array_filter($postData))) {
 
         <!-- Login Form -->
         <h2>Register Password:</h2>
-        <form action="reregister_password.php" method="post">
+        <form action="reregisterPassword.php" method="post">
 
             Enter your email:<br>
             <input type="text" name="email" >
