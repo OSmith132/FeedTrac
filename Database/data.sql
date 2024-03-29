@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2024 at 07:39 PM
+-- Generation Time: Mar 19, 2024 at 01:32 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -43,7 +43,9 @@ TRUNCATE TABLE `course`;
 --
 
 INSERT INTO `course` (`courseID`, `departmentID`, `name`) VALUES
-(0, 0, 'Default Course');
+(0, 0, 'Default Course'),
+(1, 1, 'Computer Science'),
+(2, 2, 'Engineering');
 
 --
 -- Truncate table before insert `department`
@@ -55,7 +57,9 @@ TRUNCATE TABLE `department`;
 --
 
 INSERT INTO `department` (`departmentID`, `name`) VALUES
-(0, 'Default Department');
+(0, 'Default Department'),
+(1, 'School Of Computer Science'),
+(2, 'School Of Engineering');
 
 --
 -- Truncate table before insert `room`
@@ -90,7 +94,9 @@ INSERT INTO `user` (`userID`, `courseID`, `email`, `username`, `passwordHash`, `
 (4, 0, '26357261@students.lincoln.ac.uk', 'Oliver_Smith_3', '$2y$10$KJFCq.qNYcjbrR6mrbAL2u9Ib7G0GxeBYHImUTF/lwwuQuqgGsWG2', 'Oliver', 'Smith', 4, 'sheher', 'staff'),
 (5, 0, '26357261@students.lincoln.ac.uk', 'Oliver_Smith_3', '$2y$10$3w90ThloObWAwgSh8doQyODfWpQBSWKccDu2hlVjHlgcA4rAFBnca', 'Oliver', 'Smith', 4, 'sheher', 'staff'),
 (6, 0, '26357261@students.lincoln.ac.uk', 'Oliver_Smith_4', '$2y$10$LGqPKXSPr/LSagioSOwBjeFo8Gb8QegqTdv.04zuwEkdKMINLvLv.', 'Oliver', 'Smith', 1, 'hehim', 'student'),
-(7, 0, '26357261@students.lincoln.ac.uk', 'Oliver_Smith_5', '$2y$10$VdvqDP5xUCYbS53kQpi9SuljKxxKz2VbGIpJ4tFWSZIMAXiNlxTfC', 'oliver', 'smith', 1, 'hehim', 'student');
+(7, 0, '26357261@students.lincoln.ac.uk', 'Oliver_Smith_5', '$2y$10$VdvqDP5xUCYbS53kQpi9SuljKxxKz2VbGIpJ4tFWSZIMAXiNlxTfC', 'oliver', 'smith', 1, 'hehim', 'student'),
+(8, 0, 'svaztcfhjgizxotjjc@cwmxc.com', 'Oliver_Smith_6', '$2y$10$PDqYTkGVP/gVMIvoQHbqsOcTJA9rPmutMgXLXHGFYFPp6RCZ7A1f6', 'Oliver', 'Smith', 4, 'sheher', 'student'),
+(9, 2, 'ikvrpxmsdaxdcihttg@cazlq.com', 'Oliver_Smith_7', '$2y$10$F1W5Bh2eXkqXGrFfqRQ/KOO68S/KVGoGREaeTVS3QFIx2/urYws1W', 'Oliver', 'Smith', 1, 'hehim', 'student');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

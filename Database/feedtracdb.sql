@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2024 at 07:37 PM
+-- Generation Time: Mar 25, 2024 at 05:27 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -35,6 +35,33 @@ CREATE TABLE `building` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `comment`
+--
+
+CREATE TABLE `comment` (
+  `commentID` int(10) UNSIGNED NOT NULL,
+  `userID` int(10) UNSIGNED NOT NULL,
+  `feedbackID` int(10) UNSIGNED NOT NULL,
+  `text` varchar(500) NOT NULL,
+  `date` date NOT NULL,
+  `ratingPoints` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment_user_rating`
+--
+
+CREATE TABLE `comment_user_rating` (
+  `commentID` int(10) UNSIGNED NOT NULL,
+  `userID` int(10) UNSIGNED NOT NULL,
+  `positiveRating` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `course`
 --
 
@@ -53,6 +80,59 @@ CREATE TABLE `course` (
 CREATE TABLE `department` (
   `departmentID` int(10) UNSIGNED NOT NULL,
   `name` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `feedbackID` int(10) UNSIGNED NOT NULL,
+  `userID` int(10) UNSIGNED NOT NULL,
+  `roomID` int(10) UNSIGNED DEFAULT NULL,
+  `date` date NOT NULL,
+  `urgency` varchar(10) NOT NULL,
+  `resolved` tinyint(1) NOT NULL,
+  `closed` tinyint(1) NOT NULL,
+  `title` varchar(30) NOT NULL,
+  `text` varchar(500) NOT NULL,
+  `ratingPoints` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback_tags`
+--
+
+CREATE TABLE `feedback_tags` (
+  `feedbackID` int(10) UNSIGNED NOT NULL,
+  `tagID` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback_user_rating`
+--
+
+CREATE TABLE `feedback_user_rating` (
+  `feedbackID` int(10) UNSIGNED NOT NULL,
+  `userID` int(10) UNSIGNED NOT NULL,
+  `positiveRating` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `recovery`
+--
+
+CREATE TABLE `recovery` (
+  `userID` int(10) UNSIGNED NOT NULL,
+  `token` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -108,6 +188,21 @@ ALTER TABLE `building`
   ADD PRIMARY KEY (`buildingID`);
 
 --
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`commentID`),
+  ADD KEY `Comments_Feedback` (`feedbackID`),
+  ADD KEY `Comments_User` (`userID`);
+
+--
+-- Indexes for table `comment_user_rating`
+--
+ALTER TABLE `comment_user_rating`
+  ADD PRIMARY KEY (`commentID`,`userID`),
+  ADD KEY `Rating_User_Comment` (`userID`);
+
+--
 -- Indexes for table `course`
 --
 ALTER TABLE `course`
@@ -119,6 +214,34 @@ ALTER TABLE `course`
 --
 ALTER TABLE `department`
   ADD PRIMARY KEY (`departmentID`);
+
+--
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`feedbackID`),
+  ADD KEY `Feedback_Room` (`roomID`) USING BTREE,
+  ADD KEY `Feedback_User` (`userID`) USING BTREE;
+
+--
+-- Indexes for table `feedback_tags`
+--
+ALTER TABLE `feedback_tags`
+  ADD PRIMARY KEY (`feedbackID`,`tagID`),
+  ADD KEY `Tags_Feedback` (`tagID`);
+
+--
+-- Indexes for table `feedback_user_rating`
+--
+ALTER TABLE `feedback_user_rating`
+  ADD PRIMARY KEY (`feedbackID`,`userID`),
+  ADD KEY `Rating_User_Feedback` (`userID`);
+
+--
+-- Indexes for table `recovery`
+--
+ALTER TABLE `recovery`
+  ADD PRIMARY KEY (`userID`);
 
 --
 -- Indexes for table `room`
@@ -151,6 +274,12 @@ ALTER TABLE `building`
   MODIFY `buildingID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `commentID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
@@ -161,6 +290,12 @@ ALTER TABLE `course`
 --
 ALTER TABLE `department`
   MODIFY `departmentID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `feedbackID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `room`
@@ -179,10 +314,51 @@ ALTER TABLE `user`
 --
 
 --
+-- Constraints for table `comment`
+--
+ALTER TABLE `comment`
+  ADD CONSTRAINT `Comments_Feedback` FOREIGN KEY (`feedbackID`) REFERENCES `feedback` (`feedbackID`),
+  ADD CONSTRAINT `Comments_User` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
+
+--
+-- Constraints for table `comment_user_rating`
+--
+ALTER TABLE `comment_user_rating`
+  ADD CONSTRAINT `Rating_Comment` FOREIGN KEY (`commentID`) REFERENCES `comment` (`commentID`),
+  ADD CONSTRAINT `Rating_User_Comment` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
+
+--
 -- Constraints for table `course`
 --
 ALTER TABLE `course`
   ADD CONSTRAINT `Course_Department` FOREIGN KEY (`departmentID`) REFERENCES `department` (`departmentID`);
+
+--
+-- Constraints for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD CONSTRAINT `Feedback_Room` FOREIGN KEY (`roomID`) REFERENCES `room` (`roomID`),
+  ADD CONSTRAINT `Feedback_User` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
+
+--
+-- Constraints for table `feedback_tags`
+--
+ALTER TABLE `feedback_tags`
+  ADD CONSTRAINT `Feedback_Tags` FOREIGN KEY (`feedbackID`) REFERENCES `feedback` (`feedbackID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `Tags_Feedback` FOREIGN KEY (`tagID`) REFERENCES `tags` (`tagID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `feedback_user_rating`
+--
+ALTER TABLE `feedback_user_rating`
+  ADD CONSTRAINT `Rating_Feedback` FOREIGN KEY (`feedbackID`) REFERENCES `feedback` (`feedbackID`),
+  ADD CONSTRAINT `Rating_User_Feedback` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
+
+--
+-- Constraints for table `recovery`
+--
+ALTER TABLE `recovery`
+  ADD CONSTRAINT `Recovery_User` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `room`
