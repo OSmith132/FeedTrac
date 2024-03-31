@@ -26,3 +26,5 @@ function shorten($string, $maxLength) {
      }
      return $string;
 }
+
+?>

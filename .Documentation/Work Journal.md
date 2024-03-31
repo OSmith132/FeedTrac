@@ -74,6 +74,9 @@
 
 * ### _31/03/24:_
     * Researched PHP, HTML, CSS and JavaScript.
+    * Added Header and Footer HTML files.
+    * Applied CSS consistently across all pages and centered main content.
+    * Code restructuring.
 
 
 </details>

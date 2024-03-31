@@ -31,6 +31,10 @@ body {
     color: white;
 }
 
+main {
+    text-align: center;
+}
+
 
 /* Dark / light Mode */  /* Please can someone add the styles for dark and light mode I don't like CSS enough to do it :)*/
 body {
@@ -45,9 +49,17 @@ body {
     color: white;
 }
 
+.dark-mode a{
+    color: white;
+}
+
 .light-mode {
     background-color: white;
     color: black;
+}
+
+.light-mode a{
+    color: fuchsia;
 }
 
 

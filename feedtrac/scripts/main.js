@@ -24,7 +24,6 @@ function lightMode() {
     content.className = "fa-solid fa-lightbulb";
 }
 
-
 // For making table rows with an href clickable
 function clickableRow() {
     const rows = document.querySelectorAll(".clickable-row");
@@ -34,3 +33,17 @@ function clickableRow() {
         });
     });
 }
+
+// Old Functions
+// function darkMode() {
+//     let element = document.body;
+//     let content = document.getElementById("DarkModetext");
+//     element.className = "dark-mode";
+//     content.innerText = "Dark Mode is ON";
+// }
+// function lightMode() {
+//     let element = document.body;
+//     let content = document.getElementById("DarkModetext");
+//     element.className = "light-mode";
+//     content.innerText = "Dark Mode is OFF";
+// }

@@ -49,84 +49,54 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 
 <!DOCTYPE html>
-<html>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en-gb">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <title>FeedTrac</title>
+
+        <link rel="icon" type="image/x-icon" href="assets/icon.png">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="stylesheets/main.css">
+
+        <script src="https://kit.fontawesome.com/7e1870387e.js" crossorigin="anonymous"></script>
+    </head>
 	<body>
-
-		<!-- Title -->
-		<head>
-			<title>FeedTrac</title>
-		</head>
-
 		<!-- Header -->
-		<h1>This is the login page</h1>
-        <a href="signup.php">Sign Up</a>
+        <?php include("header.html"); ?>
 
-        <!-- Login Form -->
-        <h2>Login:</h2>
-        <form action="login.php" method="post">
-        
-            Username:<br>
-            <input type="text" name="username">
-            <br>
+        <!-- Main -->
+        <main>
+            <h1>This is the login page</h1><br>
+            <a href="signup.php">Sign Up</a>
+
+            <!-- Login Form -->
+            <h2>Login:</h2>
+            <form action="login.php" method="post">
             
-            Password:<br>
-            <input type="password" name="password">
-            <br><br>
+                Username:<br>
+                <input type="text" name="username">
+                <br>
+                
+                Password:<br>
+                <input type="password" name="password">
+                <br><br>
 
-            <a href="recoverPassword.php">Forgot password?</a>
-            <br><br>
-            
-            <input type="submit" value="Login">
-        </form><br><br>
+                <a href="recoverPassword.php">Forgot password?</a>
+                <br><br>
+                
+                <input type="submit" value="Login">
+            </form>
 
+            <!-- Footer -->
+            <?php include("footer.html"); ?>
 
-
-
-
-        <!-- Change Dark/Light Modes -->
-	
-		<style>
-			body {
-				padding: 15px;
-				background-color: #353535;
-				color: white;
-				font-size: 15px;
-			}
-	
-			.dark-mode {
-				background-color: #353535;
-				color: white;
-			}
-	
-			.light-mode {
-				background-color: white;
-				color: black;
-			}
-		</style>
-
-        <h3 id="DarkModetext">Dark Mode is ON</h3>
-        <button onclick="darkMode()">Dark Mode</button>
-        <button onclick="lightMode()">Light Mode</button>
-
-        <script>
-            function darkMode() {
-                let element = document.body;
-                let content = document.getElementById("DarkModetext");
-                element.className = "dark-mode";
-                content.innerText = "Dark Mode is ON";
-            }
-            function lightMode() {
-                let element = document.body;
-                let content = document.getElementById("DarkModetext");
-                element.className = "light-mode";
-                content.innerText = "Dark Mode is OFF";
-            }
-        </script>
-
-
+        </main>
     </body>
 </html>
 

@@ -75,143 +75,110 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 <!DOCTYPE html>
-<html>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>FeedTrac</title>
+
+    <link rel="icon" type="image/x-icon" href="assets/icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="stylesheets/main.css">
+
+    <script src="https://kit.fontawesome.com/7e1870387e.js" crossorigin="anonymous"></script>
+</head>
 	<body>
-
-		<!-- Title -->
-		<head>
-			<title>FeedTrac</title>
-		</head>
-
 		<!-- Header -->
-		<h1>This is the Sign-Up page</h1>
-        <a href="login.php">Log In</a>
+		<?php include("header.html"); ?>
 
+		<!-- Main -->
+		<main>
+			<h1>This is the Sign-Up page</h1>
+        	<br><a href="login.php">Log In</a>
 
-        <!-- Sign-Up Form -->
-        <h2>Sign Up:</h2>
-		<form action="signup.php" method="post">
-		
-			Email:<br>
-			<input type="text" name="email" >
-			<br>
+			<!-- Sign-Up Form -->
+			<h2>Sign Up:</h2>
+			<form action="signup.php" method="post">
 			
-			Username:<br>
-			<input type="text" name="username" >
-			<br>
+				Email:<br>
+				<input type="text" name="email" >
+				<br>
+				
+				Username:<br>
+				<input type="text" name="username" >
+				<br>
+				
+				Password:<br>
+				<input type="password" name="password1">
+				<br>
+
+				Confirm Password:<br>
+				<input type="password" name="password2">
+				<br>
 			
-			Password:<br>
-			<input type="password" name="password1">
-			<br>
-
-			Confirm Password:<br>
-			<input type="password" name="password2">
-			<br>
-		
-			First Name:<br>
-			<input type="text" name="fname" >
-			<br>
-		
-			Last Name:<br>
-			<input type="text" name="lname" >
-			<br><br>
-
-
+				First Name:<br>
+				<input type="text" name="fname" >
+				<br>
 			
+				Last Name:<br>
+				<input type="text" name="lname" >
+				<br><br>
 
-			<!-- Maybe add reading avalable courses from the DB -->
-			<select name="course">
-				<option selected disabled hidden>Select Course</option>
 
-				<?php 
-					// Get all courses from the database
-					$courses = $Login_Controller->get_courses();
+				
+
+				<!-- Maybe add reading avalable courses from the DB -->
+				<select name="course">
+					<option selected disabled hidden>Select Course</option>
+
+					<?php 
+						// Get all courses from the database
+						$courses = $Login_Controller->get_courses();
+						
+						// Get each course
+						foreach ($courses as $course) {?>
+
+							<option value= <?php echo $course["courseID"] ?> > <?php echo $course["name"] ?></option> 
+
+						<?php } ?>
 					
-					// Get each course
-					foreach ($courses as $course) {?>
+					
 
-						<option value= <?php echo $course["courseID"] ?> > <?php echo $course["name"] ?></option> 
+				</select><br><br>
 
-					<?php } ?>
+				<select name="yearOfStudy">
+					<option selected disabled hidden>Select Year</option>
+					<option value="1" >1</option>
+					<option value="2" >2</option>
+					<option value="3" >3</option>
+					<option value="4" >4</option>
+				</select><br><br>
 				
+				<select name="pronouns">
+					<option selected disabled hidden>Select Pronouns</option>
+					<option value="hehim" >He/Him</option>
+					<option value="sheher" >She/Her</option>
+					<option value="other" >Other</option>
+				</select><br><br>
 				
+				<select name="position">
+					<option selected disabled hidden>Select Position</option>
+					<option value="student" >Student</option>
+					<option value="staff" >Staff</option>
+					<option value="admin" >Admin</option>
+				</select><br><br>
 
-			</select><br><br>
+				<input type="submit" value="Sign Up">
+			</form>
+		</main>
 
-			<select name="yearOfStudy">
-				<option selected disabled hidden>Select Year</option>
-				<option value="1" >1</option>
-				<option value="2" >2</option>
-				<option value="3" >3</option>
-				<option value="4" >4</option>
-			</select><br><br>
-			
-			<select name="pronouns">
-				<option selected disabled hidden>Select Pronouns</option>
-				<option value="hehim" >He/Him</option>
-				<option value="sheher" >She/Her</option>
-				<option value="other" >Other</option>
-			</select><br><br>
-			
-			<select name="position">
-				<option selected disabled hidden>Select Position</option>
-				<option value="student" >Student</option>
-				<option value="staff" >Staff</option>
-				<option value="admin" >Admin</option>
-			</select><br><br>
-
-			<input type="submit" value="Sign Up">
-		</form>
-			
-			
-		<br><br><br>
-
-
-
-
-        <!-- Change Dark/Light Modes -->
-	
-		<style>
-			body {
-				padding: 15px;
-				background-color: #353535;
-				color: white;
-				font-size: 15px;
-			}
-	
-			.dark-mode {
-				background-color: #353535;
-				color: white;
-			}
-	
-			.light-mode {
-				background-color: white;
-				color: black;
-			}
-		</style>
-
-        <h3 id="DarkModetext">Dark Mode is ON</h3>
-        <button onclick="darkMode()">Dark Mode</button>
-        <button onclick="lightMode()">Light Mode</button>
-
-        <script>
-            function darkMode() {
-                let element = document.body;
-                let content = document.getElementById("DarkModetext");
-                element.className = "dark-mode";
-                content.innerText = "Dark Mode is ON";
-            }
-            function lightMode() {
-                let element = document.body;
-                let content = document.getElementById("DarkModetext");
-                element.className = "light-mode";
-                content.innerText = "Dark Mode is OFF";
-            }
-        </script>
-
+        <!-- Footer -->
+        <?php include("footer.html"); ?>
 
     </body>
 </html>

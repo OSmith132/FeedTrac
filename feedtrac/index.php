@@ -18,10 +18,6 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
 
 ?>
 
-
-
-
-
 <!DOCTYPE html>
 <html lang="en-gb">
 
@@ -43,61 +39,43 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
 </head>
 
 <body>
-    <div class="header">
-        <a class="logo" title="Homepage" href="index.php">
-            <img src="assets/icon.png" alt="FeedTrac Icon" height="32">
+    <!-- Header -->
+    <?php include("header.html"); ?>
 
-            <h1>FeedTrac</h1>
-        </a>
+    <!-- Main -->
+    <main>
+        <div class="main">
+            <div class="list-header">
+                <input class="search-bar" type="text" placeholder="Filter existing Feedback...">
 
-        <div class="header-right">
-            <button title="Toggle Dark Mode" id="lightbulb-toggle" onclick="lightMode()"> <!-- Frontend crew might want to change the id to a class if you want to use this function for multiple elements -->
-                <i id="lightbulb-symbol" class="fa-regular fa-lightbulb"></i>
-            </button>
+                <button>New Feedback</button>
+            </div>
 
-            <button title="Inbox">
-                <i class="fa-solid fa-inbox"></i>
-            </button>
+            <div class="table">
+                <table>
 
-            <a title="Profile" href="#">
-                <img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32">
-            </a>
-        </div>
-    </div>
-
-    <div class="main">
-        <div class="list-header">
-            <input class="search-bar" type="text" placeholder="Filter existing Feedback...">
-
-            <button>New Feedback</button>
-        </div>
-
-        <div class="table">
-            <table>
-
-                <!-- Table Headers -->
-                <tr>
-                    <th>Status</th> <!-- Resolved + Urgency -->
-                    <th>Title</th>
-                    <th>Text</th> <!-- Short snippet of feedback content -->
-                    <th>Date</th>
-                    <th>Rating Points</th> <!-- RatingPoints -->
-                    <th>Coments</th> <!-- Number of comments -->
-                </tr>
+                    <!-- Table Headers -->
+                    <tr>
+                        <th>Status</th> <!-- Resolved + Urgency -->
+                        <th>Title</th>
+                        <th>Text</th> <!-- Short snippet of feedback content -->
+                        <th>Date</th>
+                        <th>Rating Points</th> <!-- RatingPoints -->
+                        <th>Coments</th> <!-- Number of comments -->
+                    </tr>
 
 
-                <!-- Get result from database to fill table -->
-                <?php
-                 $feedbackRows = $Feedback_Controller->get_all_feedback(); // THIS NEEDS TO BE CHANGED TO GET AL FEEDBACK FROM USER
-                ?>
-
-
-                <tr class="clickable-row" data-href="feedback.php">
+                    <!-- Get result from database to fill table -->
                     <?php
-                    foreach ($feedbackRows as $row) {
-
-                    
+                    $feedbackRows = $Feedback_Controller->get_all_feedback(); // THIS NEEDS TO BE CHANGED TO GET AL FEEDBACK FROM USER
                     ?>
+
+                    <tr class="clickable-row" data-href="feedback.php">
+                        <?php
+                        foreach ($feedbackRows as $row) {
+
+                        
+                        ?>
                         <td><?php echo  $get_resolved_string[$row['resolved']] . "<br>"      // Resolved Status - Refer to functins.php for the array
                                 . $get_urgency_string[$row['urgency']] . " Urgency"; // Urgency Level   - Refer to functins.php for the array
                             ?>
@@ -108,49 +86,32 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
                         <td><?php echo $row['date']; ?></td>
                         <td><?php echo $row['ratingPoints']; ?></td>
                         <td><?php echo $row['number_of_comments']; ?></td>
-                </tr>
+                    </tr>
 
-            <?php
-                    }
-            ?>
+                    <?php
+                            }
+                    ?>
 
-            <script>
-                const rows = document.querySelectorAll(".clickable-row");
-                rows.forEach(row => {
-                    row.addEventListener("click", () => {
-                        window.location.href = row.dataset.href;
-                    });
-                });
+                    <script>
+                        const rows = document.querySelectorAll(".clickable-row");
+                        rows.forEach(row => {
+                            row.addEventListener("click", () => {
+                                window.location.href = row.dataset.href;
+                            });
+                        });
 
-            </script>
+                    </script>
 
-            <style>
-                tr[data-href] {
-                    cursor: pointer;
-                }
-            </style>
-
-
-
-
-
-
-            </table>
-
-            <div class="footer">
-                <p>© 2024 The FeedTrac Team</p>
-
-                <a href="#">Terms</a>
-
-                <a href="#">Privacy</a>
-
-                <a href="https://github.com/OSmith132/FeedTrac/">Source</a>
-
-                <a href="#">Contact</a>
+                    <style>
+                        tr[data-href] {
+                            cursor: pointer;
+                        }
+                    </style>
+                </table>
             </div>
         </div>
-
-        <script src="scripts/main.js"></script>
+    </main>
+    <!-- Footer -->
+    <?php include("footer.html"); ?>
 </body>
-
 </html>

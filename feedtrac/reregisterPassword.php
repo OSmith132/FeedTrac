@@ -66,91 +66,59 @@ if (count($postData) == count(array_filter($postData))) {
 
 
 <!DOCTYPE html>
-<html>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>FeedTrac</title>
+
+    <link rel="icon" type="image/x-icon" href="assets/icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="stylesheets/main.css">
+
+    <script src="https://kit.fontawesome.com/7e1870387e.js" crossorigin="anonymous"></script>
+</head>
 	<body>
-
-		<!-- Title -->
-		<head>
-			<title>FeedTrac</title>
-		</head>
-
 		<!-- Header -->
-		<h1>This is the password registry page</h1>
-        <a href="signup.php">Sign Up</a>
+        <?php include("header.html"); ?>
 
+        <!-- Main -->
+        <main>
+            <h1>This is the password registry page</h1>
+            <br><a href="signup.php">Sign Up</a>
 
-        <!-- Login Form -->
-        <h2>Register Password:</h2>
-        <form action="reregisterPassword.php" method="post">
+            <!-- Login Form -->
+            <h2>Register Password:</h2>
+            <form action="reregisterPassword.php" method="post">
 
-            Enter your email:<br>
-            <input type="text" name="email" >
-            <br>
+                Enter your email:<br>
+                <input type="text" name="email" >
+                <br>
 
-            Enter your password recovery token:<br>
-            <input type="text" name="token">
-            <br>
+                Enter your password recovery token:<br>
+                <input type="text" name="token">
+                <br>
 
-            New password:<br>
-            <input type="password" name="password1">
-            <br>
+                New password:<br>
+                <input type="password" name="password1">
+                <br>
 
-            Confirm Password:<br>
-            <input type="password" name="password2">
-            <br>
+                Confirm Password:<br>
+                <input type="password" name="password2">
+                <br><br>
 
+                <input type="submit" value="Submit">
+            </form>
+        </main>
 
-            <input type="submit" value="Submit">
-        </form><br><br>
-
-
-
-
-
-        <!-- Change Dark/Light Modes -->
-
-		<style>
-			body {
-				padding: 15px;
-				background-color: #353535;
-				color: white;
-				font-size: 15px;
-			}
-
-			.dark-mode {
-				background-color: #353535;
-				color: white;
-			}
-
-			.light-mode {
-				background-color: white;
-				color: black;
-			}
-		</style>
-
-        <h3 id="DarkModetext">Dark Mode is ON</h3>
-        <button onclick="darkMode()">Dark Mode</button>
-        <button onclick="lightMode()">Light Mode</button>
-
-        <script>
-            function darkMode() {
-                let element = document.body;
-                let content = document.getElementById("DarkModetext");
-                element.className = "dark-mode";
-                content.innerText = "Dark Mode is ON";
-            }
-            function lightMode() {
-                let element = document.body;
-                let content = document.getElementById("DarkModetext");
-                element.className = "light-mode";
-                content.innerText = "Dark Mode is OFF";
-            }
-        </script>
-
-
+        <!-- Footer -->
+        <?php include("footer.html"); ?>
+        
     </body>
 </html>
 
