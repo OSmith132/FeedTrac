@@ -1,18 +1,19 @@
-# Journal type doc to keep track of work done by group members to later add on to the report.
+# Work Journal
+* Journal type doc to keep track of work done by group members to later add on to the report.
 * Please include whatever you've worked one regardless if you've completed it or not. For example code work on something specific, research, report writing, etc.
 * Write your updates between details block.
 ## Toby
 <details>
 <summary> 
-  Work
+  Log Of Tasks Completed:
 </summary>
-  * working on login screen
+* working on login screen
 </details>
 
 ## Oliver
 <details>
 <summary> 
-Log Of Tasks Completed:
+  Log Of Tasks Completed:
 </summary>
 
 * ### _8/11/23:_
@@ -60,15 +61,27 @@ Log Of Tasks Completed:
 ## Earl
 <details>
 <summary> 
-  Work
+  Log Of Tasks Completed:
 </summary>
   
+
+* ### _14/02/24:_
+    * Created a shared document to be used as the basis for our summary report.
+    * Added structure to the summary report with headings to outline the required sections as detailed on the 	  assignment brief.
+
+* ### _25/03/24:_
+    * Completed Lecture notes and extracted keywords.
+
+* ### _31/03/24:_
+    * Researched PHP, HTML, CSS and JavaScript.
+
+
 </details>
 
 ## Archie
 <details>
 <summary> 
-  Work
+  Log Of Tasks Completed:
 </summary>
   
 </details>
@@ -76,7 +89,7 @@ Log Of Tasks Completed:
 ## Lorna
 <details>
 <summary> 
-  Work
+  Log Of Tasks Completed:
 </summary>
   
 </details>
@@ -84,7 +97,7 @@ Log Of Tasks Completed:
 ## Marco
 <details>
 <summary> 
-  Log
+  Log Of Tasks Completed:
 </summary>
 
 
@@ -103,7 +116,7 @@ Log Of Tasks Completed:
 ## Harry
 <details>
 <summary> 
-  Work
+  Log Of Tasks Completed:
 </summary>
   
 </details>
