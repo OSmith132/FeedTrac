@@ -14,15 +14,32 @@
             </button>
 
             <!-- Inbox Button -->
-            <button title="Inbox">
+            <button title="Inbox" id="inbox-button" style="display: none;">
                 <i class="fa-solid fa-inbox"></i>
             </button>
 
             <!-- Profile -->
-            <a title="Profile" href="#">
+            <a title="Profile" id="profile-button" href="#" style="display: none;">
                 <img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32">
             </a>
+
+            <!-- Logout Button -->
+            <button title="Logout" id="logout-button" style="display: none;" onclick="window.location.href = 'logout.php'">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </button>
         </div>
     </div>
     <hr>
 </header>
+
+<!-- JavaScript to show buttons on certain pages -->
+<script>
+    window.onload = function(){
+        if (window.location.pathname.endsWith('index.php') ||
+            window.location.pathname.endsWith('feedback.php')) {
+            document.getElementById("inbox-button").style.display = "inline";
+            document.getElementById("profile-button").style.display = "inline";
+            document.getElementById("logout-button").style.display = "inline";
+        }
+    };
+</script>

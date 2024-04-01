@@ -27,4 +27,10 @@ function shorten($string, $maxLength) {
      return $string;
 }
 
+// Logout Function
+function logout(){
+     session_destroy();
+     header('login.php');
+}
+
 ?>
