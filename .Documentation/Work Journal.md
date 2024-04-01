@@ -78,6 +78,10 @@
     * Applied CSS consistently across all pages and centered main content.
     * Code restructuring.
 
+* ### _1/04/24:_
+    * Header buttons hidden depending on the current page.
+    * Implemented logout button.
+
 
 </details>
 
