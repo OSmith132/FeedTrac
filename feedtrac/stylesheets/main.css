@@ -88,6 +88,7 @@ a:hover {
     background-color: var(--a);
     border-bottom: 1px solid var(--e);
 }
+
 .logo {
     display: flex;
     align-items: center;
@@ -126,6 +127,45 @@ a:hover {
     flex-direction: column;
     flex-wrap: wrap;
     gap: 16px;
+}
+
+.form {
+    color: white;
+    text-align: center;
+    width: 20%;
+    margin: auto;
+    border-radius: 10px;
+    padding: 30px;
+    background-color: var(--a);
+    border-bottom: 1px solid var(--e);
+}
+
+.form input {
+    width: 80%;
+}
+
+.form input[type="submit"] {
+    width: 50%;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 4px;
+    cursor: pointer;
+    border: none;
+    transition: color 0.3s ease;
+}
+
+.form input[type="submit"]:hover {
+    color: fuchsia;
+}
+
+.form input:focus {
+    outline-color: fuchsia;
+    outline-style: solid;
+}
+
+.form select:focus {
+    outline-color: fuchsia;
+    outline-style: solid;
 }
 
 .list-header {

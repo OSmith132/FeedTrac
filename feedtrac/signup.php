@@ -98,83 +98,86 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 		<!-- Main -->
 		<main>
-			<h1>This is the Sign-Up page</h1>
-        	<br><a href="login.php">Log In</a>
+			<h1>This is the Sign-Up page</h1><br>
 
-			<!-- Sign-Up Form -->
-			<h2>Sign Up:</h2>
-			<form action="signup.php" method="post">
-			
-				Email:<br>
-				<input type="text" name="email" >
-				<br>
+			<div class="form">
+				<a href="login.php">Log In</a>
+
+				<!-- Sign-Up Form -->
+				<h2>Sign Up:</h2>
+				<form action="signup.php" method="post">
 				
-				Username:<br>
-				<input type="text" name="username" >
-				<br>
+					Email:<br>
+					<input type="text" name="email" >
+					<br><br>
+					
+					Username:<br>
+					<input type="text" name="username" >
+					<br><br>
+					
+					Password:<br>
+					<input type="password" name="password1">
+					<br><br>
+
+					Confirm Password:<br>
+					<input type="password" name="password2">
+					<br><br>
 				
-				Password:<br>
-				<input type="password" name="password1">
-				<br>
-
-				Confirm Password:<br>
-				<input type="password" name="password2">
-				<br>
-			
-				First Name:<br>
-				<input type="text" name="fname" >
-				<br>
-			
-				Last Name:<br>
-				<input type="text" name="lname" >
-				<br><br>
-
-
+					First Name:<br>
+					<input type="text" name="fname" >
+					<br><br>
 				
+					Last Name:<br>
+					<input type="text" name="lname" >
+					<br><br>
 
-				<!-- Maybe add reading avalable courses from the DB -->
-				<select name="course">
-					<option selected disabled hidden>Select Course</option>
 
-					<?php 
-						// Get all courses from the database
-						$courses = $Login_Controller->get_courses();
+					
+
+					<!-- Maybe add reading avalable courses from the DB -->
+					<select name="course">
+						<option selected disabled hidden>Select Course</option>
+
+						<?php 
+							// Get all courses from the database
+							$courses = $Login_Controller->get_courses();
+							
+							// Get each course
+							foreach ($courses as $course) {?>
+
+								<option value= <?php echo $course["courseID"] ?> > <?php echo $course["name"] ?></option> 
+
+							<?php } ?>
 						
-						// Get each course
-						foreach ($courses as $course) {?>
+						
 
-							<option value= <?php echo $course["courseID"] ?> > <?php echo $course["name"] ?></option> 
+					</select><br><br>
 
-						<?php } ?>
+					<select name="yearOfStudy">
+						<option selected disabled hidden>Select Year</option>
+						<option value="1" >1</option>
+						<option value="2" >2</option>
+						<option value="3" >3</option>
+						<option value="4" >4</option>
+					</select><br><br>
 					
+					<select name="pronouns">
+						<option selected disabled hidden>Select Pronouns</option>
+						<option value="hehim" >He/Him</option>
+						<option value="sheher" >She/Her</option>
+						<option value="other" >Other</option>
+					</select><br><br>
 					
+					<select name="position">
+						<option selected disabled hidden>Select Position</option>
+						<option value="student" >Student</option>
+						<option value="staff" >Staff</option>
+						<option value="admin" >Admin</option>
+					</select><br><br>
 
-				</select><br><br>
-
-				<select name="yearOfStudy">
-					<option selected disabled hidden>Select Year</option>
-					<option value="1" >1</option>
-					<option value="2" >2</option>
-					<option value="3" >3</option>
-					<option value="4" >4</option>
-				</select><br><br>
-				
-				<select name="pronouns">
-					<option selected disabled hidden>Select Pronouns</option>
-					<option value="hehim" >He/Him</option>
-					<option value="sheher" >She/Her</option>
-					<option value="other" >Other</option>
-				</select><br><br>
-				
-				<select name="position">
-					<option selected disabled hidden>Select Position</option>
-					<option value="student" >Student</option>
-					<option value="staff" >Staff</option>
-					<option value="admin" >Admin</option>
-				</select><br><br>
-
-				<input type="submit" value="Sign Up">
-			</form>
+					<input type="submit" value="Sign Up">
+				</form>
+			</div>
 		</main>
 
         <!-- Footer -->

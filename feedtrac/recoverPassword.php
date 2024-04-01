@@ -67,18 +67,21 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
         <!-- Main -->
         <main>
-            <h1>This is the password recovery page</h1>
-            <br><a href="signup.php">Sign Up</a>
+            <h1>This is the password recovery page</h1><br>
 
-            <!-- Login Form -->
-            <h2>Recover Password:</h2>
-            <form action="recoverPassword.php" method="post">
+            <div class="form">
+                <a href="signup.php">Sign Up</a>
 
-                Enter registered email address:<br>
-                <input type="text" name="email">
-                <br><br>
-                <input type="submit" value="Submit">
-            </form>
+                <!-- Login Form -->
+                <h2>Recover Password:</h2>
+                <form action="recoverPassword.php" method="post">
+
+                    Enter registered email address:<br><br>
+                    <input type="text" name="email">
+                    <br><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
         </main>
 
         <!-- Footer -->

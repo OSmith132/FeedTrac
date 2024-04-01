@@ -89,31 +89,34 @@ if (count($postData) == count(array_filter($postData))) {
 
         <!-- Main -->
         <main>
-            <h1>This is the password registry page</h1>
-            <br><a href="signup.php">Sign Up</a>
+            <h1>This is the password registry page</h1><br>
 
-            <!-- Login Form -->
-            <h2>Register Password:</h2>
-            <form action="reregisterPassword.php" method="post">
+            <div class="form">
+                <a href="signup.php">Sign Up</a>
 
-                Enter your email:<br>
-                <input type="text" name="email" >
-                <br>
+                <!-- Login Form -->
+                <h2>Register Password:</h2>
+                <form action="reregisterPassword.php" method="post">
 
-                Enter your password recovery token:<br>
-                <input type="text" name="token">
-                <br>
+                    Enter your email:<br>
+                    <input type="text" name="email" >
+                    <br><br>
 
-                New password:<br>
-                <input type="password" name="password1">
-                <br>
+                    Enter your password recovery token:<br>
+                    <input type="text" name="token">
+                    <br><br>
 
-                Confirm Password:<br>
-                <input type="password" name="password2">
-                <br><br>
+                    New password:<br>
+                    <input type="password" name="password1">
+                    <br><br>
 
-                <input type="submit" value="Submit">
-            </form>
+                    Confirm Password:<br>
+                    <input type="password" name="password2">
+                    <br><br>
+
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
         </main>
 
         <!-- Footer -->

@@ -73,30 +73,30 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         <!-- Main -->
         <main>
             <h1>This is the login page</h1><br>
-            <a href="signup.php">Sign Up</a>
 
-            <!-- Login Form -->
-            <h2>Login:</h2>
-            <form action="login.php" method="post">
-            
-                Username:<br>
-                <input type="text" name="username">
-                <br>
+            <div class="form">
+                <a href="signup.php">Sign Up</a><br>
+                <h2>Login:</h2>
+                <!-- Login Form -->
+                <form action="login.php" method="post">
                 
-                Password:<br>
-                <input type="password" name="password">
-                <br><br>
+                    Username:<br>
+                    <input type="text" name="username">
+                    <br><br>
+                    
+                    Password:<br>
+                    <input type="password" name="password">
+                    <br><br>
 
-                <a href="recoverPassword.php">Forgot password?</a>
-                <br><br>
-                
-                <input type="submit" value="Login">
-            </form>
-
-            <!-- Footer -->
-            <?php include("footer.html"); ?>
-
+                    <a href="recoverPassword.php">Forgot password?</a>
+                    <br><br>
+                    
+                    <input type="submit" value="Login">
+                </form>
+            </div>
         </main>
+        <!-- Footer -->
+        <?php include("footer.html"); ?>
     </body>
 </html>
 
