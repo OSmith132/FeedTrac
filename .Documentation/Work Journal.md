@@ -82,6 +82,9 @@
     * Header buttons hidden depending on the current page.
     * Implemented logout button.
     * Improved CSS styling for forms featured on login.php, recoverPassword.php, reregisterPassword.php and signup.php.
+    * Created dropdown menu for when hovering over the profile badge.
+    * Added Profile and Settings buttons to hover menu.
+    * Moved Logout button to hover menu.
 
 
 </details>
