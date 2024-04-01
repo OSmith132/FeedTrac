@@ -19,14 +19,28 @@
             </button>
 
             <!-- Profile -->
-            <a title="Profile" id="profile-button" href="#" style="display: none;">
-                <img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32">
-            </a>
-
-            <!-- Logout Button -->
-            <button title="Logout" id="logout-button" style="display: none;" onclick="window.location.href = 'logout.php'">
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            </button>
+            <div class="dropdown">
+                <a title="Profile" id="profile-button" href="#" style="display: none;">
+                    <img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32">
+                </a>
+                <div class="dropdown-content">
+                    <br>
+                    <!-- Profile Button -->
+                    <button title="Profile">
+                        <i class="fa-solid fa-user"></i>
+                    </button>
+                    <br><br>
+                    <!-- Settings Button -->
+                    <button title="Settings">
+                        <i class="fa-solid fa-gear"></i>
+                    </button>
+                    <br><br>
+                    <!-- Logout Button -->
+                    <button title="Logout" id="logout-button" style="display: none;" onclick="window.location.href = 'logout.php'">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
     <hr>

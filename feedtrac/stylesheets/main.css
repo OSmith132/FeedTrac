@@ -121,6 +121,22 @@ a:hover {
     border-radius: 16px;
 }
 
+.dropdown a {
+    display: block;
+    text-decoration: none;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    box-shadow: 2px 2px 5px black;
+    background-color: black;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 .main {
     margin: 16px;
     display: flex;
