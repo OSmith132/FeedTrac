@@ -81,6 +81,7 @@
 * ### _1/04/24:_
     * Header buttons hidden depending on the current page.
     * Implemented logout button.
+    * Improved CSS styling for forms featured on login.php, recoverPassword.php, reregisterPassword.php and signup.php.
 
 
 </details>
