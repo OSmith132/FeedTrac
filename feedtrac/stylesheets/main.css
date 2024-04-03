@@ -59,7 +59,7 @@ body {
 }
 
 .light-mode a{
-    color: fuchsia;
+    color: var(--accent-bright);
 }
 
 
@@ -171,16 +171,16 @@ a:hover {
 }
 
 .form input[type="submit"]:hover {
-    color: fuchsia;
+    color: var(--accent-bright);
 }
 
 .form input:focus {
-    outline-color: fuchsia;
+    outline-color: var(--accent-bright);
     outline-style: solid;
 }
 
 .form select:focus {
-    outline-color: fuchsia;
+    outline-color: var(--accent-bright);
     outline-style: solid;
 }
 
@@ -198,6 +198,10 @@ a:hover {
     font-size: 16px;
     padding: 8px;
 }
+.search-bar:focus {
+    border-color: var(--accent-bright);
+    outline-style: solid;
+}
 .list-header button {
     background-color: var(--accent-bright);
     border: none;
@@ -207,6 +211,33 @@ a:hover {
     padding: 8px;
 }
 .list-header button:hover {
+    background-color: var(--accent-pale);
+    cursor: pointer;
+}
+
+.feedback-comment {
+    background-color: var(--a);
+    border-radius: 8px;
+    border: 1px solid var(--e);
+    color: var(--h);
+    flex-grow: 1;
+    font-size: 16px;
+    padding: 8px;
+}
+.feedback-comment:focus {
+    border-color: var(--accent-bright);
+    outline-style: solid;
+}
+.feedback-button {
+    background-color: var(--accent-bright);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    padding: 8px;
+    width: 300px;
+}
+.feedback-button:hover {
     background-color: var(--accent-pale);
     cursor: pointer;
 }

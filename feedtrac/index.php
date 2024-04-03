@@ -57,13 +57,22 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
                     <!-- Table Headers -->
                     <tr>
                         <th>Status</th> <!-- Resolved + Urgency -->
-                        <th>Title</th>
-                        <th>Text</th> <!-- Short snippet of feedback content -->
-                        <th>Date</th>
+                        <th>Title</th> <!-- Title -->
+                        <th>Date</th> <!-- Date -->
+                        <th>Author</th> <!-- Author -->
                         <th>Rating Points</th> <!-- RatingPoints -->
-                        <th>Coments</th> <!-- Number of comments -->
+                        <th>Comments</th> <!-- Number of comments -->
                     </tr>
-
+                    <!-- Table Content -->
+                    <!-- EXAMPLE CONTENT -->
+                    <tr>
+                        <td>Open</td> <!-- Resolved + Urgency -->
+                        <td><a href="feedback.php">Lights keep flickering during lecture</a></td> <!-- Title -->
+                        <td>[date posted] (3 days ago)</td> <!-- Date -->
+                        <td><a style="float: left; width: 75%;" href="profile.php">Archie Baldry (26411141)</a> <img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32"></td> <!-- Author -->
+                        <td>N/a</td> <!-- RatingPoints -->
+                        <td>2</td> <!-- Number of comments -->
+                    </tr>
 
                     <!-- Get result from database to fill table -->
                     <?php

@@ -31,8 +31,14 @@
 
         <div class="list-header">
             <button>Open</button>
-            <p><a href="#">Archie Baldry (26411141)</a> raised this feedback 3 days ago · 12 comments</p>
+            <p><a href="#">Archie Baldry (26411141)</a> raised this feedback 3 days ago · 2 comments</p>
+            <!-- Heart Button -->
+            <button id="heart-toggle" title="Like" onclick="like()">
+                <i id="heart-symbol" class="fa-regular fa-heart"></i> <div style="display:inline-block;" id=heart-counter>0</div>
+            </button>
         </div>
+
+        <div><hr></div>
 
         <div class="comment">
             <div class="comment-header">
@@ -52,10 +58,10 @@
             </div>
         </div>
 
-        <label>Add Comment
-            <input type="text">
-            <input type="submit">
-        </label>
+        <div><hr></div>
+
+        <textarea class="feedback-comment" type="text" placeholder="Add Comment..."></textarea>
+        <button class="feedback-button">Submit</button>
 
         <!-- Footer -->
         <?php include("footer.html"); ?>

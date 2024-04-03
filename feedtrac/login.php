@@ -99,7 +99,3 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         <?php include("footer.html"); ?>
     </body>
 </html>
-
-
-
-        
