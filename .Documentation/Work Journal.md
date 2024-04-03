@@ -86,6 +86,11 @@
     * Added Profile and Settings buttons to hover menu.
     * Moved Logout button to hover menu.
 
+* ### _3/04/24:_
+    * Added the example content from feedback.php to index.php and linked the pages
+    * Improved styling of index.php and feedback.php
+    * Implemented "heart" button to feedback.php
+
 
 </details>
 
