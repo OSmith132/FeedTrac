@@ -8,10 +8,13 @@ class LoginContr extends Login {
     public function force_login(){
 
         if(!isset($_SESSION['userID'])){
+            echo "<script>var loggedIn = false;</script>";
             header("Location: login.php");
             die;
         }
         
+        echo "<script>var loggedIn = true;</script>";
+
         $user_data = $this->get_user_data();
         
         // if data exists return it

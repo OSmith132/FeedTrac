@@ -14,7 +14,7 @@
             </button>
 
             <!-- Inbox Button -->
-            <button title="Inbox" id="inbox-button" style="display: none;">
+            <button title="Inbox" id="inbox-button" style="display: none;" onclick="window.location.href = 'inbox.php'">
                 <i class="fa-solid fa-inbox"></i>
             </button>
 
@@ -26,12 +26,12 @@
                 <div class="dropdown-content">
                     <br>
                     <!-- Profile Button -->
-                    <button title="Profile">
+                    <button title="Profile" onclick="window.location.href = 'profile.php'">
                         <i class="fa-solid fa-user"></i>
                     </button>
                     <br><br>
                     <!-- Settings Button -->
-                    <button title="Settings">
+                    <button title="Settings" onclick="window.location.href = 'settings.php'">
                         <i class="fa-solid fa-gear"></i>
                     </button>
                     <br><br>
@@ -46,14 +46,13 @@
     <hr>
 </header>
 
-<!-- JavaScript to show buttons on certain pages -->
+<!-- JavaScript to show buttons when logged in -->
 <script>
     window.onload = function(){
-        if (window.location.pathname.endsWith('index.php') ||
-            window.location.pathname.endsWith('feedback.php')) {
-            document.getElementById("inbox-button").style.display = "inline";
-            document.getElementById("profile-button").style.display = "inline";
-            document.getElementById("logout-button").style.display = "inline";
+        if (loggedIn){
+          document.getElementById("inbox-button").style.display = "inline";
+          document.getElementById("profile-button").style.display = "inline";
+          document.getElementById("logout-button").style.display = "inline";
         }
     };
 </script>

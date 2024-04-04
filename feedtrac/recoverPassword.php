@@ -13,7 +13,7 @@ $Login_Controller = new LoginContr();
 // Check user isn't logged in
 $Login_Controller->check_login();
 
-
+$error = "";
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 	//something was posted
@@ -33,10 +33,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             header("Location: reregisterPassword.php");
 
         } else {
-            echo "No user with this email address found.";
+            $error = "<span style='color: red;'>No user with this email address found</span><br><br>";
         }
     } else {
-        echo "Please enter a valid email address";
+        $error = "<span style='color: red;'>Please enter a valid email address</span><br><br>";
     }
 }
 
@@ -70,15 +70,18 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             <h1>This is the password recovery page</h1><br>
 
             <div class="form">
-                <a href="signup.php">Sign Up</a>
+                <a href="login.php">Log In</a>
 
                 <!-- Login Form -->
                 <h2>Recover Password:</h2>
                 <form action="recoverPassword.php" method="post">
 
                     Enter registered email address:<br><br>
-                    <input type="text" name="email">
+                    <input type="text" name="email" required>
                     <br><br>
+
+                    <div><?php echo $error ?></div>
+
                     <input type="submit" value="Submit">
                 </form>
             </div>

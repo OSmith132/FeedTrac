@@ -10,7 +10,6 @@ include ("classes/Feedback.class.php");
 include ("classes/FeedbackContr.class.php");
 include ("scripts/functions.php");
 
-
 $Login_Controller = new LoginContr();
 $user_data = $Login_Controller->force_login();
 
@@ -48,7 +47,7 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
             <div class="list-header">
                 <input class="search-bar" type="text" placeholder="Filter existing Feedback...">
 
-                <button>New Feedback</button>
+                <button onclick="window.location.href = 'newFeedback.php'">New Feedback</button>
             </div>
 
             <div class="table">

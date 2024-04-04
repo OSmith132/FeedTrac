@@ -14,15 +14,14 @@ $Login_Controller = new LoginContr();
 // Check user isn't logged in
 $Login_Controller->check_login();
 
-
+$error = "";
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-	//something was posted
-	$username = $_POST['username'];
-	$password = $_POST['password'];
+    // Something was posted
+    $username = $_POST['username'];
+    $password = $_POST['password'];
     
-    
-	if(!empty($username) && !empty($password)){
+    if(!empty($username) && !empty($password)){
         
         // Check if the user exists
         if($Login_Controller->user_exists($username)){
@@ -34,19 +33,20 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
                 header("Location: index.php");
                 die;
-            } else {
-                echo "Incorrect password";
             }
-        } else {
-            echo "No User Found In Database";
+            else {
+                $error = "<span style='color: red;'>Incorrect password</span><br><br>";
+            }
+        } 
+        else {
+            $error = "<span style='color: red;'>No User Found In Database</span><br><br>";
         }
-    } else {
-        echo "Please enter a valid username and password";
+    }
+    else {
+        $error = "<span style='color: red;'>Please enter a valid username and password</span><br><br>";
     }
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en-gb">
@@ -81,12 +81,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 <form action="login.php" method="post">
                 
                     Username:<br>
-                    <input type="text" name="username">
+                    <input type="text" name="username" required>
                     <br><br>
                     
                     Password:<br>
-                    <input type="password" name="password">
+                    <input type="password" name="password" required>
                     <br><br>
+
+                    <div><?php echo $error ?></div>
 
                     <a href="recoverPassword.php">Forgot password?</a>
                     <br><br>

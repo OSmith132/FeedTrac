@@ -28,22 +28,22 @@ function lightMode() {
 function like() {
     let button = document.getElementById("heart-toggle");
     let content = document.getElementById("heart-symbol");
-    let counterElement = document.getElementById("heart-counter");
+    let counter = document.getElementById("heart-counter");
 
     button.title = "Unlike"
     content.className = "fa-solid fa-heart";
-    counterElement = counterElement.textContent++;
+    counter = counter.textContent++;
     button.onclick = unlike;
 }
 
 function unlike() {
     let button = document.getElementById("heart-toggle");
     let content = document.getElementById("heart-symbol");
-    let counterElement = document.getElementById("heart-counter");
+    let counter = document.getElementById("heart-counter");
 
     button.title = "Like"
     content.className = "fa-regular fa-heart";
-    counterElement = counterElement.textContent--;
+    counter = counter.textContent--;
     button.onclick = like;
 }
 

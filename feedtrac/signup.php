@@ -14,9 +14,7 @@ $Login_Controller = new LoginContr();
 // Check user isn't logged in
 $Login_Controller->check_login();
 
-
-
-
+$error = "";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	//something was posted
@@ -57,17 +55,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			}
 			else
 			{
-				echo "Passwords do not match";
+				$error = "<span style='color: red;'>Passwords do not match</span><br><br>";
 			}
 		}
 		else
 		{
-			echo "Username or email already taken";
+			$error = "<span style='color: red;'>Username or email already taken</span><br><br>";
 		}
 	}
 	else 
 	{
-		echo "Please enter a valid username and password";
+		$error = "<span style='color: red;'>Please enter a valid username and password</span><br><br>";
 	}
 }
 
@@ -108,27 +106,27 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 				<form action="signup.php" method="post">
 				
 					Email:<br>
-					<input type="text" name="email" >
+					<input type="text" name="email" required>
 					<br><br>
 					
 					Username:<br>
-					<input type="text" name="username" >
+					<input type="text" name="username" required>
 					<br><br>
 					
 					Password:<br>
-					<input type="password" name="password1">
+					<input type="password" name="password1" required>
 					<br><br>
 
 					Confirm Password:<br>
-					<input type="password" name="password2">
+					<input type="password" name="password2" required>
 					<br><br>
 				
 					First Name:<br>
-					<input type="text" name="fname" >
+					<input type="text" name="fname" required>
 					<br><br>
 				
 					Last Name:<br>
-					<input type="text" name="lname" >
+					<input type="text" name="lname" required>
 					<br><br>
 
 
@@ -174,6 +172,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 						<option value="staff" >Staff</option>
 						<option value="admin" >Admin</option>
 					</select><br><br>
+
+					<div><?php echo $error ?></div>
 
 					<input type="submit" value="Sign Up">
 				</form>

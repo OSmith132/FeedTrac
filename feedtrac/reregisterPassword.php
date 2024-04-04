@@ -14,6 +14,7 @@ $Login_Controller = new LoginContr();
 // Check user isn't logged in
 $Login_Controller->check_login();
 
+$error = "";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 //something was posted
@@ -53,10 +54,10 @@ if (count($postData) == count(array_filter($postData))) {
             header("Location: login.php");
             die;
         } else {
-            echo "Passwords do not match";
+            $error = "<span style='color: red;'>Passwords do not match</span><br><br>";
         }
     }else{
-        echo "Token is not correct. Try again.";
+        $error = "<span style='color: red;'>Incorrect Token</span><br><br>";
     }
 }
 
@@ -92,27 +93,27 @@ if (count($postData) == count(array_filter($postData))) {
             <h1>This is the password registry page</h1><br>
 
             <div class="form">
-                <a href="signup.php">Sign Up</a>
-
                 <!-- Login Form -->
                 <h2>Register Password:</h2>
                 <form action="reregisterPassword.php" method="post">
 
                     Enter your email:<br>
-                    <input type="text" name="email" >
+                    <input type="text" name="email" required>
                     <br><br>
 
                     Enter your password recovery token:<br>
-                    <input type="text" name="token">
+                    <input type="text" name="token" required>
                     <br><br>
 
                     New password:<br>
-                    <input type="password" name="password1">
+                    <input type="password" name="password1" required>
                     <br><br>
 
                     Confirm Password:<br>
-                    <input type="password" name="password2">
+                    <input type="password" name="password2" required>
                     <br><br>
+
+                    <div><?php echo $error ?></div>
 
                     <input type="submit" value="Submit">
                 </form>

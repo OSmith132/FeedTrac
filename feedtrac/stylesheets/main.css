@@ -24,11 +24,13 @@
 
 body {
     margin: 0;
-
     font-family: "Rubik", sans-serif;
-
-    background-color: var(--b);
     color: white;
+    transition: background-color 0.5s ease;
+    transition: color 0.5 ease;
+    padding: 15px;
+    background-color: #353535;
+    font-size: 15px;
 }
 
 main {
@@ -36,14 +38,8 @@ main {
 }
 
 
-/* Dark / light Mode */  /* Please can someone add the styles for dark and light mode I don't like CSS enough to do it :)*/
-body {
-    padding: 15px;
-    background-color: #353535;
-    color: white;
-    font-size: 15px;
-}
 
+/* Dark / light Mode */  /* Please can someone add the styles for dark and light mode I don't like CSS enough to do it :)*/
 .dark-mode {
     background-color: #353535;
     color: white;
@@ -73,10 +69,10 @@ h1, p {
 a {
     color: inherit;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 a:hover {
     color: var(--accent-bright);
-    text-decoration: underline;
 }
 
 .header {
@@ -111,6 +107,7 @@ a:hover {
     font-size: 16px;
     height: 32px;
     width: 32px;
+    transition: background-color 0.3s ease;
 }
 .header-right button:hover {
     background-color: var(--b);
@@ -127,14 +124,17 @@ a:hover {
 }
 
 .dropdown-content {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
     position: absolute;
     box-shadow: 2px 2px 5px black;
     background-color: black;
+    transition: opacity 0.5s ease;
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+    visibility: visible;
+    opacity: 1;
 }
 
 .main {
@@ -161,27 +161,32 @@ a:hover {
 }
 
 .form input[type="submit"] {
+    color: white;
+    background-color: var(--accent-bright);
     width: 50%;
-    border-radius: 10px;
+    border-radius: 8px;
     font-weight: bold;
     padding: 4px;
     cursor: pointer;
     border: none;
-    transition: color 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .form input[type="submit"]:hover {
-    color: var(--accent-bright);
+    background-color: var(--accent-pale);
+    cursor: pointer;
 }
 
 .form input:focus {
     outline-color: var(--accent-bright);
     outline-style: solid;
+    transition: outline-color 0.3s ease;
 }
 
 .form select:focus {
     outline-color: var(--accent-bright);
     outline-style: solid;
+    transition: outline-color 0.3s ease;
 }
 
 .list-header {
@@ -197,6 +202,7 @@ a:hover {
     flex-grow: 1;
     font-size: 16px;
     padding: 8px;
+    transition: outline-color 1s ease;
 }
 .search-bar:focus {
     border-color: var(--accent-bright);
@@ -209,6 +215,7 @@ a:hover {
     color: white;
     font-size: 16px;
     padding: 8px;
+    transition: background-color 0.3s ease;
 }
 .list-header button:hover {
     background-color: var(--accent-pale);
@@ -223,6 +230,7 @@ a:hover {
     flex-grow: 1;
     font-size: 16px;
     padding: 8px;
+    transition: outline-color 1s ease;
 }
 .feedback-comment:focus {
     border-color: var(--accent-bright);
@@ -236,6 +244,7 @@ a:hover {
     font-size: 16px;
     padding: 8px;
     width: 300px;
+    transition: background-color 1s ease;
 }
 .feedback-button:hover {
     background-color: var(--accent-pale);
