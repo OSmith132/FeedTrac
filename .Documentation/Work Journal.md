@@ -98,6 +98,10 @@
     * Implemented requirements for the text input on the forms.
     * Added JavaScript to detect login status.
 
+* ### _4/04/24:_
+    * Added example content to profile.php.
+    * Added empty profile pictures next to usernames.
+
 
 </details>
 
