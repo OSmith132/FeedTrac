@@ -114,7 +114,6 @@ a:hover {
     border-color: var(--e);
 }
 .avatar {
-    display: block;
     border-radius: 16px;
 }
 
@@ -284,6 +283,74 @@ th, tr:hover {
     flex-wrap: wrap;
     justify-content: center;
     gap: 16px;
-
     color: var(--h);
+}
+
+/* Profile.php styling */
+.profile-content {
+    display: flex;
+    text-align: left;
+    background-color: black;
+}
+.user-picture {
+    padding: 10px;
+    flex: 1;
+    border-right: 1px solid white;
+}
+.user-description {
+    padding: 10px;
+    flex: 1;
+    border-right: 1px solid white;
+}
+.user-data {
+    padding: 10px;
+    flex: 1;
+}
+.edit-profile {
+    display: flex;
+    background-color: black;
+    border-top: 1px solid white;
+}
+.change-picture {
+    padding: 10px;
+    flex: 1;
+    border-right: 1px solid white;
+}
+.edit-description {
+    padding: 10px;
+    flex: 1;
+    border-right: 1px solid white;
+}
+.edit-data {
+    padding: 10px;
+    flex: 1;
+}
+.profile-button {
+    background-color: var(--accent-bright);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    padding: 8px;
+    width: 150px;
+    transition: background-color 1s ease;
+}
+.profile-button:hover {
+    background-color: var(--accent-pale);
+    cursor: pointer;
+}
+.upload-form input[type="submit"] {
+    color: white;
+    background-color: var(--accent-bright);
+    width: 50%;
+    border-radius: 8px;
+    font-weight: bold;
+    padding: 4px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+.upload-form input[type="submit"]:hover {
+    background-color: var(--accent-pale);
+    cursor: pointer;
 }

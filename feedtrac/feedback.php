@@ -46,7 +46,7 @@ $user_data = $Login_Controller->force_login();
 
         <div class="list-header">
             <button>Open</button>
-            <p><a href="profile.php">Archie Baldry (26411141)</a> raised this feedback 3 days ago · 2 comments</p>
+            <p><img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32"><a href="profile.php"> Archie Baldry (26411141)</a> raised this feedback 3 days ago · 2 comments</p>
             <!-- Heart Button -->
             <button id="heart-toggle" title="Like" onclick="like()">
                 <i id="heart-symbol" class="fa-regular fa-heart"></i> <div style="display:inline-block;" id=heart-counter>0</div>
@@ -57,7 +57,7 @@ $user_data = $Login_Controller->force_login();
 
         <div class="comment">
             <div class="comment-header">
-                <p><a href="profile.php">Archie Baldry (26411141)</a> commented 3 days ago</p>
+                <p><img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32"><a href="profile.php"> Archie Baldry (26411141)</a> commented 3 days ago</p>
             </div>
             <div class="comment-main">
                 <p>I don't like how the lights keep flickering. It's hurting my eyes, pls fix.</p>
@@ -66,7 +66,7 @@ $user_data = $Login_Controller->force_login();
 
         <div class="comment">
             <div class="comment-header">
-                <p><a href="profile.php">John Smith (11122233)</a> commented 2 days ago</p>
+                <p><img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32"><a href="profile.php"> John Smith (11122233)</a> commented 2 days ago</p>
             </div>
             <div class="comment-main">
                 <p>Yeah ur right it is proper annoying.</p>

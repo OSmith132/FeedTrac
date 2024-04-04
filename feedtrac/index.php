@@ -68,7 +68,12 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
                         <td>Open</td> <!-- Resolved + Urgency -->
                         <td><a href="feedback.php">Lights keep flickering during lecture</a></td> <!-- Title -->
                         <td>[date posted] (3 days ago)</td> <!-- Date -->
-                        <td><a style="float: left; width: 75%;" href="profile.php">Archie Baldry (26411141)</a> <img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32"></td> <!-- Author -->
+                        <td> <!-- Author -->
+                            <div style="display: flex;">
+                                <img style="margin-right: 10px;" class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32">
+                                <a href="profile.php">Archie Baldry (26411141)</a>
+                            </div>
+                        </td>
                         <td>N/a</td> <!-- RatingPoints -->
                         <td>2</td> <!-- Number of comments -->
                     </tr>

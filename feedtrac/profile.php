@@ -43,7 +43,62 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
         <?php include("header.html"); ?>
 
         <!-- Main -->
-        <main><h1>Profile Page</h1></main>
+        <main>
+            <h1>Profile Page</h1><br>
+            <h2>Profile page for User: <?php echo $_SESSION["userID"] ?></h2>
+            <div class="profile-content">
+                <div class="user-picture">
+                    <h3>Profile Picture</h3>
+                    <img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="200">
+                </div>
+
+                <div class="user-description">
+                    <h3>About you:</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet,
+                        consectetur adipisicing elit.
+                        Obcaecati natus dolores harum.
+                        Cum omnis veniam dolor odit totam delectus laboriosam enim.
+                        Deserunt commodi porro odio temporibus veritatis pariatur enim vero!
+                    </p>
+                    <br>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur,
+                        adipisicing elit.
+                        Eum nisi ea facilis!
+                        Rem,
+                        eos alias eaque labore in illum ea error quis ipsum dolorem hic,
+                        cupiditate consectetur aliquid tempore ipsam.
+                    </p>
+                </div>
+
+                <div class="user-data">
+                <h3>Your data:</h3>
+                    Email: [Email]<br><br>
+                    Username: [Username]<br><br>
+                    First Name: [First Name]<br><br>
+                    Last Name: [Last Name]<br><br>
+                    Year of Study: [Year of Study]<br><br>
+                    Pronouns: [Pronouns]<br><br>
+                    Position: [Position]<br><br>
+                </div>
+            </div>
+            <div class="edit-profile">
+                <div class="change-picture">
+                    <form action="profile.php" method="post" enctype="multipart/form-data" class="upload-form">
+                        <label for="profile-picture">Upload a profile picture:</label><br><br>
+                        <input type="file" accept="image/*"><br><br>
+                        <input type="submit" value="Upload">
+                    </form>
+                </div>
+                <div class="edit-description">
+                    <br><button class="profile-button">Edit About Section</button>
+                </div>
+                <div class="edit-data">
+                    <br><button class="profile-button">Edit Personal Information</button>
+                </div>
+            </div>
+        </main>
 
         <!-- Footer -->
         <?php include("footer.html"); ?>
