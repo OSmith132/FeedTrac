@@ -87,9 +87,16 @@
     * Moved Logout button to hover menu.
 
 * ### _3/04/24:_
-    * Added the example content from feedback.php to index.php and linked the pages
-    * Improved styling of index.php and feedback.php
-    * Implemented "heart" button to feedback.php
+    * Added the example content from feedback.php to index.php and linked the pages.
+    * Improved styling of index.php and feedback.php.
+    * Implemented "heart" button to feedback.php.
+    * Added and linked empty pages for inbox, new feedback, profile and settings.
+    * Linked recoverPassword.php from settings page.
+    * Added colour transition for light-mode/dark-mode.
+    * Improved CSS styling.
+    * Moved PHP warning messages to the form box and changed colour to red.
+    * Implemented requirements for the text input on the forms.
+    * Added JavaScript to detect login status.
 
 
 </details>
