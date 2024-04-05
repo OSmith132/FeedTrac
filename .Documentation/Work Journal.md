@@ -102,6 +102,11 @@
     * Added example content to profile.php.
     * Added empty profile pictures next to usernames.
 
+* ### _5/04/24:_
+    * Implemented hidden form popup to be used for account deletion.
+    * Updated logout.php so that it detects the correct file path when stored in the script folder.
+    * Added accountDeleted.php file.
+
 
 </details>
 
