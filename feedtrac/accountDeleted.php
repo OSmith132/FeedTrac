@@ -44,25 +44,8 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
 
         <!-- Main -->
         <main>
-            <h1>Settings Page</h1>
-            <hr>
-            <br>
-            <div class="settings">
-                <button id="recoverButton" class="feedback-button" onclick="window.location.href = 'recoverPassword.php'" >Change Password</button>
-                <br><br>
-                <button id="deleteButton" class="feedback-button" onclick="openForm()" >Delete Account</button>
-            </div>
-            <form action="accountDeleted.php" id="deletion-form" class="deletion-form">
-                <label>Enter your password to confirm account deletion:</label><br><br>
-
-                <label>Password:</label>
-                <input type="password" placeholder="Enter Password" required><br><br>
-
-                <label style="color:red;">Warning: This action cannot be undone</label><br><br>
-
-                <button type="submit">Delete Account</button>
-                <button type="button" onclick="closeForm()">Close</button>
-            </form>
+            <h1>Your account has been deleted</h1><br>
+            <button id="deleteButton" class="feedback-button" onclick="window.location.href = 'scripts/logout.php'" >Return to login page</button>
         </main>
 
         <!-- Footer -->

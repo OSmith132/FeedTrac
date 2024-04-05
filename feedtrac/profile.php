@@ -46,6 +46,7 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
         <main>
             <h1>Profile Page</h1><br>
             <h2>Profile page for User: <?php echo $_SESSION["userID"] ?></h2>
+            <hr>
             <div class="profile-content">
                 <div class="user-picture">
                     <h3>Profile Picture</h3>

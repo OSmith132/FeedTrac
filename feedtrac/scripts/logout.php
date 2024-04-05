@@ -6,6 +6,10 @@ if (isset($_SESSION['userID'])) {
     unset($_SESSION['userID']);
 }
 
-header("Location: login.php");
+$path = dirname($_SERVER['PHP_SELF']) . '/../login.php';
+
+header("Location: {$path}");
+
+exit;
 
 ?>

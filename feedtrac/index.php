@@ -43,6 +43,7 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
 
     <!-- Main -->
     <main>
+        <h1>[Show feedback items relevant to the user's course]</h1>
         <div class="main">
             <div class="list-header">
                 <input class="search-bar" type="text" placeholder="Filter existing Feedback...">

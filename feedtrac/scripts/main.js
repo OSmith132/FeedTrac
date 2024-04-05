@@ -57,6 +57,21 @@ function clickableRow() {
     });
 }
 
+//Settings.php popup form
+//Open form
+function openForm() {
+    document.getElementById("deletion-form").style.visibility = "visible"
+    document.getElementById("deletion-form").style.opacity = 1;
+}
+
+//Close form
+function closeForm() {
+    setTimeout(function() {
+        document.getElementById("deletion-form").style.visibility = "hidden";
+    }, 300);
+    document.getElementById("deletion-form").style.opacity = 0;
+}
+
 // Old Functions
 // function darkMode() {
 //     let element = document.body;

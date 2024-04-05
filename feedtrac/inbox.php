@@ -43,7 +43,11 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
         <?php include("header.html"); ?>
 
         <!-- Main -->
-        <main><h1>Inbox Page</h1></main>
+        <main>
+            <h1>Inbox Page</h1>
+            <br>
+            <h2>[Show any updates to the user's existing feedback reports (new comments / reports opening & closing)]</h2>
+        </main>
 
         <!-- Footer -->
         <?php include("footer.html"); ?>

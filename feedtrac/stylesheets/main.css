@@ -38,8 +38,12 @@ main {
 }
 
 
-
-/* Dark / light Mode */  /* Please can someone add the styles for dark and light mode I don't like CSS enough to do it :)*/
+/*
+=============================================================
+DARK / LIGHT MODE
+=============================================================
+*/
+/* Please can someone add the styles for dark and light mode I don't like CSS enough to do it :)*/
 .dark-mode {
     background-color: #353535;
     color: white;
@@ -58,9 +62,11 @@ main {
     color: var(--accent-bright);
 }
 
-
-
-/* Common Styles */
+/*
+=============================================================
+COMMON STYLES
+=============================================================
+*/
 
 h1, p {
     margin: 0;
@@ -286,11 +292,16 @@ th, tr:hover {
     color: var(--h);
 }
 
-/* Profile.php styling */
+/*
+=============================================================
+PROFILE.PHP
+=============================================================
+*/
 .profile-content {
     display: flex;
     text-align: left;
     background-color: black;
+    color: white;
 }
 .user-picture {
     padding: 10px;
@@ -310,6 +321,7 @@ th, tr:hover {
     display: flex;
     background-color: black;
     border-top: 1px solid white;
+    color: white;
 }
 .change-picture {
     padding: 10px;
@@ -353,4 +365,61 @@ th, tr:hover {
 .upload-form input[type="submit"]:hover {
     background-color: var(--accent-pale);
     cursor: pointer;
+}
+
+/*
+=============================================================
+SETTINGS.PHP
+=============================================================
+*/
+.settings {
+    text-align: center;
+    width: 33%;
+    margin: auto;
+    border-radius: 10px;
+    padding: 30px;
+    background-color: var(--a);
+    border-bottom: 1px solid var(--e);
+}
+.deletion-form {
+    color: white;
+    text-align: center;
+    width: 33%;
+    margin: auto;
+    border-radius: 10px;
+    padding: 30px;
+    background-color: var(--a);
+    border-bottom: 1px solid var(--e);
+    visibility: hidden;
+    opacity: 0;
+    box-shadow: 2px 2px 5px black;
+    transition: opacity 0.5s ease;
+}
+
+.deletion-form button {
+    color: white;
+    background-color: var(--accent-bright);
+    width: 30%;
+    border-radius: 8px;
+    padding: 4px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.deletion-form button:hover {
+    background-color: var(--accent-pale);
+    cursor: pointer;
+}
+
+.deletion-form input:focus {
+    outline-color: var(--accent-bright);
+    outline-style: solid;
+    transition: outline-color 0.3s ease;
+}
+
+.deletion-form select:focus {
+    outline-color: var(--accent-bright);
+    outline-style: solid;
+    transition: outline-color 0.3s ease;
 }
