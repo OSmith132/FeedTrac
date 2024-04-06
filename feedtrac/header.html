@@ -1,50 +1,48 @@
 <header>
-    <div class="header">
-        <a class="logo" title="Homepage" href="index.php">
-            <img src="assets/icon.png" alt="FeedTrac Icon" height="32">
+    <a class="logo" title="Homepage" href="index.php">
+        <img src="assets/icon.png" alt="FeedTrac Icon" height="32">
 
-            <h1>FeedTrac</h1>
-        </a>
+        <h1>FeedTrac</h1>
+    </a>
 
-        <div class="header-right">
+    <div class="header-right">
 
-            <!-- Light/dark Mode switch -->
-            <button title="Toggle Dark Mode" id="lightbulb-toggle" onclick="lightMode()"> <!-- Frontend crew might want to change the id to a class if you want to use this function for multiple elements -->
-                <i id="lightbulb-symbol" class="fa-regular fa-lightbulb"></i>
-            </button>
+        <!-- Light/dark Mode switch -->
+        <button title="Toggle Dark Mode" id="lightbulb-toggle" onclick="lightMode()"> <!-- Frontend crew might want to change the id to a class if you want to use this function for multiple elements -->
+            <i id="lightbulb-symbol" class="fa-regular fa-lightbulb"></i>
+        </button>
 
-            <!-- Inbox Button -->
-            <button title="Inbox" id="inbox-button" style="display: none;" onclick="window.location.href = 'inbox.php'">
-                <i class="fa-solid fa-inbox"></i>
-            </button>
+        <!-- Inbox Button -->
+        <button title="Inbox" id="inbox-button" style="display: none;" onclick="window.location.href = 'inbox.php'">
+            <i class="fa-solid fa-inbox"></i>
+        </button>
 
-            <!-- Profile -->
-            <div class="dropdown">
-                <a title="Profile" id="profile-button" href="#" style="display: none;">
-                    <img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32">
-                </a>
-                <div class="dropdown-content">
-                    <br>
-                    <!-- Profile Button -->
-                    <button title="Profile" onclick="window.location.href = 'profile.php'">
-                        <i class="fa-solid fa-user"></i>
-                    </button>
-                    <br><br>
-                    <!-- Settings Button -->
-                    <button title="Settings" onclick="window.location.href = 'settings.php'">
-                        <i class="fa-solid fa-gear"></i>
-                    </button>
-                    <br><br>
-                    <!-- Logout Button -->
-                    <button title="Logout" id="logout-button" style="display: none;" onclick="window.location.href = 'scripts/logout.php'">
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                    </button>
-                </div>
+        <!-- Profile -->
+        <div class="dropdown">
+            <a title="Profile" id="profile-button" href="#" style="display: none;">
+                <img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32">
+            </a>
+            <div class="dropdown-content">
+                <br>
+                <!-- Profile Button -->
+                <button title="Profile" onclick="window.location.href = 'profile.php'">
+                    <i class="fa-solid fa-user"></i>
+                </button>
+                <br><br>
+                <!-- Settings Button -->
+                <button title="Settings" onclick="window.location.href = 'settings.php'">
+                    <i class="fa-solid fa-gear"></i>
+                </button>
+                <br><br>
+                <!-- Logout Button -->
+                <button title="Logout" id="logout-button" style="display: none;" onclick="window.location.href = 'scripts/logout.php'">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </button>
             </div>
         </div>
     </div>
-    <hr>
 </header>
+<hr>
 
 <!-- JavaScript to show buttons when logged in -->
 <script>

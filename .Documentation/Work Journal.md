@@ -105,7 +105,8 @@
 * ### _5/04/24:_
     * Implemented hidden form popup to be used for account deletion.
     * Updated logout.php so that it detects the correct file path when stored in the script folder.
-    * Added accountDeleted.php file.
+    * Added and linked accountDeleted.php and course.php files.
+    * Organized main.css into page-specific sections and adjusted CSS class names accordingly.
 
 
 </details>

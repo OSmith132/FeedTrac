@@ -20,112 +20,112 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
 <!DOCTYPE html>
 <html lang="en-gb">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>FeedTrac</title>
+        <title>FeedTrac</title>
 
-    <link rel="icon" type="image/x-icon" href="assets/icon.png">
+        <link rel="icon" type="image/x-icon" href="assets/icon.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="stylesheets/main.css">
+        <link rel="stylesheet" href="stylesheets/main.css">
 
-    <script src="https://kit.fontawesome.com/7e1870387e.js" crossorigin="anonymous"></script>
-</head>
+        <style>tr[data-href]{cursor: pointer;}</style>
 
-<body>
-    <!-- Header -->
-    <?php include("header.html"); ?>
+        <script src="https://kit.fontawesome.com/7e1870387e.js" crossorigin="anonymous"></script>
+    </head>
 
-    <!-- Main -->
-    <main>
-        <h1>[Show feedback items relevant to the user's course]</h1>
-        <div class="main">
-            <div class="list-header">
-                <input class="search-bar" type="text" placeholder="Filter existing Feedback...">
+    <body>
+        <!-- Header -->
+        <?php include("header.html"); ?>
 
-                <button onclick="window.location.href = 'newFeedback.php'">New Feedback</button>
-            </div>
+        <!-- Main -->
+        <main>
+            <h1>[Show feedback items relevant to the user's course]</h1>
+            <div class="index-main">
+                <div class="index-header">
+                    <input class="search-bar" type="text" placeholder="Filter existing Feedback...">
 
-            <div class="table">
-                <table>
+                    <button onclick="window.location.href = 'newFeedback.php'">New Feedback</button>
+                </div>
 
-                    <!-- Table Headers -->
-                    <tr>
-                        <th>Status</th> <!-- Resolved + Urgency -->
-                        <th>Title</th> <!-- Title -->
-                        <th>Date</th> <!-- Date -->
-                        <th>Author</th> <!-- Author -->
-                        <th>Rating Points</th> <!-- RatingPoints -->
-                        <th>Comments</th> <!-- Number of comments -->
-                    </tr>
-                    <!-- Table Content -->
-                    <!-- EXAMPLE CONTENT -->
-                    <tr>
-                        <td>Open</td> <!-- Resolved + Urgency -->
-                        <td><a href="feedback.php">Lights keep flickering during lecture</a></td> <!-- Title -->
-                        <td>[date posted] (3 days ago)</td> <!-- Date -->
-                        <td> <!-- Author -->
-                            <div style="display: flex;">
-                                <img style="margin-right: 10px;" class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32">
-                                <a href="profile.php">Archie Baldry (26411141)</a>
-                            </div>
-                        </td>
-                        <td>N/a</td> <!-- RatingPoints -->
-                        <td>2</td> <!-- Number of comments -->
-                    </tr>
+                <div class="table">
+                    <table>
 
-                    <!-- Get result from database to fill table -->
-                    <?php
-                    $feedbackRows = $Feedback_Controller->get_all_feedback(); // THIS NEEDS TO BE CHANGED TO GET AL FEEDBACK FROM USER
-                    ?>
+                        <!-- Table Headers -->
+                        <tr>
+                            <th>Status</th> <!-- Resolved + Urgency -->
+                            <th>Title</th> <!-- Title -->
+                            <th>Text</th> <!-- Text -->
+                            <th>Date</th> <!-- Date -->
+                            <th>Rating Points</th> <!-- RatingPoints -->
+                            <th>Comments</th> <!-- Number of comments -->
+                            <th>Course</th> <!-- Course -->
+                            <th>Author</th> <!-- Author -->
+                        </tr>
+                        <!-- Table Content -->
+                        <!-- EXAMPLE CONTENT -->
+                        <tr>
+                            <td>Unresolved<br>Low Urgency</td> <!-- Resolved + Urgency -->
+                            <td><a href="feedback.php">Lights keep flickering during lecture</a></td> <!-- Title -->
+                            <td>N/a</td> <!-- Text -->
+                            <td>[date posted]</td> <!-- Date -->
+                            <td>N/a</td> <!-- RatingPoints -->
+                            <td>2</td> <!-- Number of comments -->
+                            <td><a href="course.php">Computer Science</a></td> <!-- Course -->
+                            <td> <!-- Author -->
+                                <div style="display: flex;">
+                                    <img style="margin-right: 10px;" class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32">
+                                    <a href="profile.php">Archie Baldry (26411141)</a>
+                                </div>
+                            </td>
+                        </tr>
 
-                    <tr class="clickable-row" data-href="feedback.php">
+                        <!-- Get result from database to fill table -->
                         <?php
-                        foreach ($feedbackRows as $row) {
-
-                        
+                        $feedbackRows = $Feedback_Controller->get_all_feedback(); // THIS NEEDS TO BE CHANGED TO GET AL FEEDBACK FROM USER
                         ?>
-                        <td><?php echo  $get_resolved_string[$row['resolved']] . "<br>"      // Resolved Status - Refer to functins.php for the array
-                                . $get_urgency_string[$row['urgency']] . " Urgency"; // Urgency Level   - Refer to functins.php for the array
+
+                        <tr class="clickable-row" data-href="feedback.php">
+                            <?php
+                            foreach ($feedbackRows as $row) {
+
+                            
                             ?>
-                        </td>
+                            <td><?php echo  $get_resolved_string[$row['resolved']] . "<br>"      // Resolved Status - Refer to functins.php for the array
+                                    . $get_urgency_string[$row['urgency']] . " Urgency"; // Urgency Level   - Refer to functins.php for the array
+                                ?>
+                            </td>
 
-                        <td><?php echo shorten($row['title'], 50); ?></td>
-                        <td><?php echo shorten($row['text'], 75); ?></td> <!-- shortens the text to 15 characters -->
-                        <td><?php echo $row['date']; ?></td>
-                        <td><?php echo $row['ratingPoints']; ?></td>
-                        <td><?php echo $row['number_of_comments']; ?></td>
-                    </tr>
+                            <td><?php echo shorten($row['title'], 50); ?></td>
+                            <td><?php echo shorten($row['text'], 75); ?></td> <!-- shortens the text to 15 characters -->
+                            <td><?php echo $row['date']; ?></td>
+                            <td><?php echo $row['ratingPoints']; ?></td>
+                            <td><?php echo $row['number_of_comments']; ?></td>
+                        </tr>
 
-                    <?php
-                            }
-                    ?>
+                        <?php
+                                }
+                        ?>
 
-                    <script>
-                        const rows = document.querySelectorAll(".clickable-row");
-                        rows.forEach(row => {
-                            row.addEventListener("click", () => {
-                                window.location.href = row.dataset.href;
+                        <script>
+                            const rows = document.querySelectorAll(".clickable-row");
+                            rows.forEach(row => {
+                                row.addEventListener("click", () => {
+                                    window.location.href = row.dataset.href;
+                                });
                             });
-                        });
 
-                    </script>
-
-                    <style>
-                        tr[data-href] {
-                            cursor: pointer;
-                        }
-                    </style>
-                </table>
+                        </script>
+                    </table>
+                </div>
             </div>
-        </div>
-    </main>
-    <!-- Footer -->
-    <?php include("footer.html"); ?>
-</body>
+        </main>
+        <!-- Footer -->
+        <?php include("footer.html"); ?>
+    </body>
 </html>
