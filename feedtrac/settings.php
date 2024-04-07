@@ -14,7 +14,31 @@ include ("scripts/functions.php");
 $Login_Controller = new LoginContr();
 $user_data = $Login_Controller->force_login();
 
-$Feedback_Controller = new FeedbackContr($user_data['userID']);
+$error = "";
+
+
+
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+
+    $password = $_POST['password'];
+
+    if(!empty($password)){
+
+        //Get username
+        $username = $Login_Controller->get_username();
+
+        if($Login_Controller->check_password($username, $password)) {
+
+            $Login_Controller->delete_account();
+
+            header("Location: accountDeleted.php");
+            die;
+        }
+        else {
+            $error = "<br><br><span style='color: red;'>Please enter the correct password to delete your account</span><br><br>";
+        }
+    }
+}
 
 ?>
 
@@ -44,19 +68,20 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
 
         <!-- Main -->
         <main>
-            <h1>Settings Page</h1>
+            <h1>Settings</h1>
             <hr>
             <br>
             <div class="settings">
                 <button id="recoverButton" class="feedback-button" onclick="window.location.href = 'recoverPassword.php'" >Change Password</button>
                 <br><br>
                 <button id="deleteButton" class="feedback-button" onclick="openForm()" >Delete Account</button>
+                <div><?php echo $error ?></div>
             </div>
-            <form action="accountDeleted.php" id="deletion-form" class="deletion-form">
+            <form action="settings.php" id="deletion-form" class="deletion-form" method="post">
                 <label>Enter your password to confirm account deletion:</label><br><br>
 
                 <label>Password:</label>
-                <input type="password" placeholder="Enter Password" required><br><br>
+                <input type="password" name="password" placeholder="Enter Password" required><br><br>
 
                 <label style="color:red;">Warning: This action cannot be undone</label><br><br>
 

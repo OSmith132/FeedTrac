@@ -12,6 +12,11 @@
             <i id="lightbulb-symbol" class="fa-regular fa-lightbulb"></i>
         </button>
 
+        <!-- Home Button -->
+        <button title="Home" id="home-button" style="display: none;" onclick="window.location.href = 'index.php'">
+            <i class="fa-solid fa-house"></i>
+        </button>
+
         <!-- Inbox Button -->
         <button title="Inbox" id="inbox-button" style="display: none;" onclick="window.location.href = 'inbox.php'">
             <i class="fa-solid fa-inbox"></i>
@@ -35,7 +40,7 @@
                 </button>
                 <br><br>
                 <!-- Logout Button -->
-                <button title="Logout" id="logout-button" style="display: none;" onclick="window.location.href = 'scripts/logout.php'">
+                <button title="Logout" id="logout-button" onclick="window.location.href = 'scripts/logout.php'">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </button>
             </div>
@@ -49,8 +54,8 @@
     window.onload = function(){
         if (loggedIn){
           document.getElementById("inbox-button").style.display = "inline";
+          document.getElementById("home-button").style.display = "inline";
           document.getElementById("profile-button").style.display = "inline";
-          document.getElementById("logout-button").style.display = "inline";
         }
     };
 </script>

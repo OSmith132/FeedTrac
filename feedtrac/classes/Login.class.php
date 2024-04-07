@@ -102,9 +102,6 @@ class Login extends Database {
         return $result;
     }
 
-
-    
-
     // Check if the username and email are unique
     protected function check_unique_email_username($username, $email){ // username: string, email: string
 

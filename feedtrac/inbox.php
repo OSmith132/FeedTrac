@@ -44,7 +44,7 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
 
         <!-- Main -->
         <main>
-            <h1>Inbox Page</h1>
+            <h1>Inbox</h1>
             <br>
             <h2>[Show any updates to the user's existing feedback reports (new comments / reports opening & closing)]</h2>
         </main>

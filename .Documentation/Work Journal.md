@@ -108,6 +108,13 @@
     * Added and linked accountDeleted.php and course.php files.
     * Organized main.css into page-specific sections and adjusted CSS class names accordingly.
 
+* ### _7/04/24:_
+    * Implemented account soft deletion functionality.
+    * Added get_username, delete_account and is_active functions to Login Controller
+    * Added activeAccount column to user table in database.
+    * Added Home button.
+    * Updated CSS.
+
 
 </details>
 

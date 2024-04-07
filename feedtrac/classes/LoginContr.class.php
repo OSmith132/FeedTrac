@@ -177,5 +177,59 @@ class LoginContr extends Login {
         
     }
 
+    // Get username
+    public function get_username(){
 
+        //prepare the SQL query
+        $stmt = $this->connect()->prepare("SELECT username FROM user WHERE userID = ?");
+
+        // Check if the SQL query is valid
+        if(!$stmt->execute([$_SESSION['userID']])){
+            header("location: settings.php?error=BadSQLQuery");
+            exit();
+        }
+
+        $result = $stmt->get_result()->fetch_assoc()['username'];
+        return $result;
+    }
+
+    // Delete Account
+    public function delete_account(){
+
+        //prepare the SQL query
+        $stmt = $this->connect()->prepare(
+            "UPDATE user
+            SET email = 'deleted@example.com',
+                username = 'deleted_user',
+                passwordHash = 'deleted_password',
+                fName = 'deleted_fName',
+                lName = 'deleted_lName',
+                pronouns = NULL,
+                position = 'deleted_position',
+                activeAccount = 0
+            WHERE userID = ?"
+        );
+
+        // Check if the SQL query is valid
+        if(!$stmt->execute([$_SESSION['userID']])){
+            header("location: settings.php?error=BadSQLQuery");
+            exit();
+        }
+    }
+
+    //Check to see if account has been deleted
+    public function is_active($username){
+
+        //prepare the SQL query
+        $stmt = $this->connect()->prepare("SELECT activeAccount FROM user WHERE username = ?");
+
+        // Check if the SQL query is valid
+        if(!$stmt->execute([$username])){
+            header("location: settings.php?error=BadSQLQuery");
+            exit();
+        }
+
+        $result = $stmt->get_result()->fetch_assoc()['activeAccount'];
+        return $result;
+    }
 }

@@ -23,8 +23,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     
     if(!empty($username) && !empty($password)){
         
-        // Check if the user exists
-        if($Login_Controller->user_exists($username)){
+        // Check if the user exists and that the account is active
+        if($Login_Controller->user_exists($username) && $Login_Controller->is_active($username) === 1 ){
 
             // Verify the password
             if($Login_Controller->check_password($username, $password)) {
@@ -39,7 +39,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             }
         } 
         else {
-            $error = "<span style='color: red;'>No User Found In Database</span><br><br>";
+            $error = "<span style='color: red;'>No active user found in database</span><br><br>";
         }
     }
     else {

@@ -77,9 +77,7 @@ HEADER.HTML
 header {
     display: flex;
     justify-content: space-between;
-
     padding: 16px;
-
     background-color: var(--a);
     border-bottom: 1px solid var(--e);
 }
@@ -367,6 +365,7 @@ PROFILE.PHP
     display: flex;
     background-color: var(--a);
     border-top: 1px solid white;
+    border-bottom: 1px solid var(--e);
     color: white;
 }
 .change-picture {
@@ -394,21 +393,6 @@ PROFILE.PHP
     transition: background-color 1s ease;
 }
 .profile-button:hover {
-    background-color: var(--accent-pale);
-    cursor: pointer;
-}
-.upload-form input[type="submit"] {
-    color: white;
-    background-color: var(--accent-bright);
-    width: 50%;
-    border-radius: 8px;
-    font-weight: bold;
-    padding: 4px;
-    cursor: pointer;
-    border: none;
-    transition: background-color 0.3s ease;
-}
-.upload-form input[type="submit"]:hover {
     background-color: var(--accent-pale);
     cursor: pointer;
 }

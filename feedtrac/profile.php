@@ -54,7 +54,7 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
                 </div>
 
                 <div class="user-description">
-                    <h3>About you:</h3>
+                    <h3>About:</h3>
                     <p>
                         Lorem ipsum dolor sit amet,
                         consectetur adipisicing elit.
@@ -74,7 +74,7 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
                 </div>
 
                 <div class="user-data">
-                <h3>Your data:</h3>
+                    <h3>Personal Information:</h3>
                     Email: [Email]<br><br>
                     Username: [Username]<br><br>
                     First Name: [First Name]<br><br>
@@ -89,7 +89,7 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
                     <form action="profile.php" method="post" enctype="multipart/form-data" class="upload-form">
                         <label for="profile-picture">Upload a profile picture:</label><br><br>
                         <input type="file" accept="image/*"><br><br>
-                        <input type="submit" value="Upload">
+                        <input type="submit" value="Upload" class="profile-button">
                     </form>
                 </div>
                 <div class="edit-description">
