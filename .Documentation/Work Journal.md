@@ -74,7 +74,6 @@
   Log Of Tasks Completed:
 </summary>
   
-
 * ### _14/02/24:_
     * Created a shared document to be used as the basis for our summary report.
     * Added structure to the summary report with headings to outline the required sections as detailed on the 	  assignment brief.
@@ -134,13 +133,7 @@
   Log Of Tasks Completed:
 </summary>
   
-</details>
 
-## Lorna
-<details>
-<summary> 
-  Log Of Tasks Completed:
-</summary>
   
 </details>
 
@@ -150,7 +143,6 @@
   Log Of Tasks Completed:
 </summary>
 
-
 * ### _17/02/24:_
     * Researched PHP and PHP encryption, created a branch.
     * Database troubleshooting with Oliver, changed password field to varchar 255 datatype.
@@ -159,14 +151,40 @@
 * ### _14/03/24:_
     * Started work on forgot password implementation. Going with a simple memorable word prompt as a first attempt.
     * Researching into doing email verification.
+
+* ### _17/03/24:_
+    * DB troubleshooting, created new php page for password recovery basing it on login page.
     
+* ### _18/03/24:_
+    * I set an email server up to test the early version of password recovery by sending a unique token to email address associated with account it successfully sent emails upon request by website so it's a working            proof of concept, the server at some point stopped working, setting up mercury proved to be a very complex time consuming task so it's on hold for now, but it did work.
+    * First half of password recovery system was concluded a new password recovery page was created with relevant forms.
+ 
+* ### _20/03/24:_ 
+  *  Finished the password recovery system, the whole recovery process works. Two new pages were created recovery password and reregister password.
+  *  Created a new recovery table in database to store a temporary token and created a relation to user ID matching a specified email address.
+ 
+* ### _26/03/24:_
+  *  Lots of troubleshooting, lots of research.
+  *  Finished the password recovery system again, this time it implements the new database and login classes.
 
 </details>
+
+
+
+
+
+
+## Lorna
+<details>
+<summary> 
+  Log Of Tasks Completed:
+</summary>
+</details>
+
 
 ## Harry
 <details>
 <summary> 
   Log Of Tasks Completed:
 </summary>
-  
 </details>
