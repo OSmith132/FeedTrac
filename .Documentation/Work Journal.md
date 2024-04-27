@@ -49,12 +49,22 @@
     * Started work on making a clickable-row class that will link to the relevant feedback report page when clicked on. This is currently only implemented in index.php.
     * Added the protected connect() function to the Database class. This can be used by child classes to establish a conection with the database
     * Changed some databas table structures and renamed all occurrences (in both the database and codebase) of the word _report_ with _feedback_ for continuity throughout the app and documentation.
+
+* ### _17/03/2024:_
+    * Reorganised Github repo with hopes for others to start work
+    * Made some minor changes to the database schema to fix some issues Marco was having with using the new code
+    * Fixed some minor bugs relating to database table names and connection. Planning to fix this my implementing a login and signup class
  
 * ### _18/03/2024:_
-    * Finished working on the PHP handler class for feedback reports.
-    * Fixed some minor bugs within the signup and login pages
-    * Added the _'comment_user_rating'_ and _'feedback_user_rating'_tables to track if a user has liked / disliked a coment or feedback report before
-    * Changed the Database class to make it static and changed the _'connect()'_ function to establish and return a connection to the database
+    * Finished the first version of the feedback model and controller classes. Planning to work on view class when frontend has caught up.
+    * Started and finished the first version of the model and controller classes for Login.
+    * Organised all classes into namespaces and tried unsuccessfully to set up an autoloader.
+    * Fully redesigned all previous PHP in the login and index pages to utilize the new classes
+    * Overall a very long day (~10 hours total work)
+
+* ### _24/03/2024:_
+    * Had a meeting where we went over how we are going to incorperate the MVC design pattern and how to use the new classes. Me and Marco also updated his password recovery code to be used by the Login class.
+    * Added the recovery table to the database to work with Marco's code.
    
 </details>
 
