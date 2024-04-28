@@ -13,10 +13,8 @@ FeedTrac is a **feed**back **trac**king tool for universities. It was originally
 4) (Optionally) Import the database data from `data.sql` file. You must **disable** foreign key checks. **(WARNING: THIS WILL TRUNCATE ALL DATA IN YOUR LOCAL DATABASE)**<br>
 
 ## Viewing the website
-http://localhost/feedtrac (You many need to clear cache and site data after downloading new versions)
+http://localhost/feedtrac (You may need to clear your cache and site data after downloading new versions)
 
 ## Viewing the database
 **phpMyAdmin:** http://localhost/phpmyadmin/<br>
 **MySql Workbench:** Go to 'Database' -> 'Connect to database' and select localhost (127.0.0.1:3306)<br>
-
-_https://www.freecodecamp.org/news/how-to-use-git-and-github-in-a-team-like-a-pro/_
