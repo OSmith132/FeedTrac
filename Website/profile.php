@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
 
 include ("classes/Database.class.php");
 include ("classes/login.class.php");
@@ -10,22 +8,18 @@ include ("classes/Feedback.class.php");
 include ("classes/FeedbackContr.class.php");
 include ("scripts/functions.php");
 
-
 $Login_Controller = new LoginContr();
 $user_data = $Login_Controller->force_login();
 
 $Feedback_Controller = new FeedbackContr($user_data['userID']);
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en-gb">
-
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>FeedTrac</title>
+        <title><?php echo $Login_Controller->get_username();?> - FeedTrac</title>
 
         <link rel="icon" type="image/x-icon" href="assets/icon.png">
 
@@ -44,9 +38,8 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
 
         <!-- Main -->
         <main>
-            <h1>Profile Page</h1><br>
-            <h2>Profile page for User: <?php echo $_SESSION["userID"] ?></h2>
-            <hr>
+            <h1><?php echo $Login_Controller->get_username();?></h1>
+
             <div class="profile-content">
                 <div class="user-picture">
                     <h3>Profile Picture</h3>
@@ -55,53 +48,45 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
 
                 <div class="user-description">
                     <h3>About:</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet,
-                        consectetur adipisicing elit.
-                        Obcaecati natus dolores harum.
-                        Cum omnis veniam dolor odit totam delectus laboriosam enim.
-                        Deserunt commodi porro odio temporibus veritatis pariatur enim vero!
-                    </p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati natus dolores harum. Cum omnis veniam dolor odit totam delectus laboriosam enim. Deserunt commodi porro odio temporibus veritatis pariatur enim vero!</p>
                     <br>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur,
-                        adipisicing elit.
-                        Eum nisi ea facilis!
-                        Rem,
-                        eos alias eaque labore in illum ea error quis ipsum dolorem hic,
-                        cupiditate consectetur aliquid tempore ipsam.
-                    </p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum nisi ea facilis! Rem, eos alias eaque labore in illum ea error quis ipsum dolorem hic, cupiditate consectetur aliquid tempore ipsam.</p>
                 </div>
 
                 <div class="user-data">
                     <h3>Personal Information:</h3>
-                    Email: [Email]<br><br>
-                    Username: [Username]<br><br>
-                    First Name: [First Name]<br><br>
-                    Last Name: [Last Name]<br><br>
-                    Year of Study: [Year of Study]<br><br>
-                    Pronouns: [Pronouns]<br><br>
-                    Position: [Position]<br><br>
+                    <ul>
+                        <li>Email: <?php echo $Login_Controller->get_current_user_email();?></li>
+                        <li>Username: <?php echo $Login_Controller->get_username();?></li>
+                        <li>First Name: [First Name]</li>
+                        <li>Last Name: [Last Name]</li>
+                        <li>Year of Study: [Year of Study]</li>
+                        <li>Pronouns: [Pronouns]</li>
+                        <li>Position: [Position]</li>
+                    </ul>
                 </div>
             </div>
+
             <div class="edit-profile">
                 <div class="change-picture">
                     <form action="profile.php" method="post" enctype="multipart/form-data" class="upload-form">
-                        <label for="profile-picture">Upload a profile picture:</label><br><br>
-                        <input type="file" accept="image/*"><br><br>
+                        <label for="profile-picture">Upload a profile picture:</label><br>
+                        <input type="file" accept="image/*"><br>
                         <input type="submit" value="Upload" class="profile-button">
                     </form>
                 </div>
+
                 <div class="edit-description">
-                    <br><button class="profile-button">Edit About Section</button>
+                    <button class="profile-button">Edit About Section</button>
                 </div>
+
                 <div class="edit-data">
-                    <br><button class="profile-button">Edit Personal Information</button>
+                    <button class="profile-button">Edit Personal Information</button>
                 </div>
             </div>
         </main>
 
         <!-- Footer -->
-        <?php include("footer.html"); ?>
+        <?php include("footer.html");?>
     </body>
 </html>
