@@ -65,6 +65,11 @@
 * ### _24/03/2024:_
     * Had a meeting where we went over how we are going to incorperate the MVC design pattern and how to use the new classes. Me and Marco also updated his password recovery code to be used by the Login class.
     * Added the recovery table to the database to work with Marco's code.
+
+* ### _29/04/2024:_
+    * Fixed the homepage so it now displays feedback reports correctly.
+    * Added a folder to assets where profile pictures can be stored.
+    * header and homepage now display custom profile pictures rather than the default image
    
 </details>
 
