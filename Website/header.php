@@ -25,7 +25,21 @@
         <!-- Profile -->
         <div class="dropdown">
             <a title="Profile" id="profile-button" href="#" style="display: none;">
-                <img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32">
+                <img style="margin-right: 10px;" class="avatar" src="<?php 
+                                                // Get user info and find either jpg or png profile picture
+                                                $userID = $_SESSION['userID'];
+                                                $jpg_path = "assets/profile-pictures/user-$userID.jpg";
+                                                $png_path = "assets/profile-pictures/user-$userID.png";
+                                    
+                                                // Return 
+                                                if (file_exists($jpg_path)) {
+                                                    echo $jpg_path;
+                                                } elseif (file_exists($png_path)) {
+                                                    echo $png_path;
+                                                } else {
+                                                    echo "assets/profile-pictures/user-default.jpg";
+                                                }?>"
+                                            alt="User Avatar" height="32" href="profile.php">
             </a>
             <div class="dropdown-content">
                 <br>

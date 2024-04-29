@@ -34,7 +34,7 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
 
     <body>
         <!-- Header -->
-        <?php include("header.html");?>
+        <?php include("header.php"); ?>
 
         <!-- Main -->
         <main>

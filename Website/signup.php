@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </head>
 	<body>
 		<!-- Header -->
-		<?php include("header.html"); ?>
+		<?php include("header.php"); ?>
 
 		<!-- Main -->
 		<main>
