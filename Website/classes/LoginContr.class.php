@@ -203,6 +203,11 @@ class LoginContr extends Login {
         return $this->get_username_id($_SESSION['userID']);
     }
 
+    // Get email address of current user
+    public function get_current_user_email() {
+        return $this->get_email_from_id($_SESSION["userID"]);
+    }
+
     // Delete Account
     public function delete_account(){
 

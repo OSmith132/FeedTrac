@@ -119,6 +119,20 @@ class Login extends Database {
         return $result;
     }
 
+    // Get email address of $userID
+    protected function get_email_from_id($userID) {
+        $query = $this->connect()->prepare("SELECT email FROM user WHERE userID = ?");
+
+        // Perform query
+        if (!$query->execute([$userID])) {
+            header("location: settings.php?error=BadSQLQuery");
+            exit();
+        }
+
+        // Return query result
+        return $query->get_result()->fetch_assoc()["email"];
+    }
+
     // Check if the username and email are unique
     protected function check_unique_email_username($username, $email){ // username: string, email: string
 
