@@ -67,6 +67,7 @@ class Login extends Database {
     //     return $results;
 
     // }
+    
 
     // Check if the user exists
     protected function check_user_exists($username){ // username: string
@@ -99,6 +100,22 @@ class Login extends Database {
         }
 
         $result = $stmt->get_result()->fetch_assoc()['userID'];
+        return $result;
+    }
+
+    // Get username from session ID
+    protected function get_username_id($userID){
+
+        //prepare the SQL query
+        $stmt = $this->connect()->prepare("SELECT username FROM user WHERE userID = ?");
+
+        // Check if the SQL query is valid
+        if(!$stmt->execute([$userID])){
+            header("location: settings.php?error=BadSQLQuery");
+            exit();
+        }
+
+        $result = $stmt->get_result()->fetch_assoc()['username'];
         return $result;
     }
 
@@ -214,8 +231,6 @@ class Login extends Database {
     }
 
     protected function delete_record($userID){
-
-
             
              //prepare the SQL query
             $stmt = $this->connect()->prepare("DELETE FROM recovery WHERE userID = ?");
@@ -228,6 +243,25 @@ class Login extends Database {
         
         return -1;
     }
+    
+
+// Delete Account
+protected function delete_account_id($userID){
+
+    //prepare the SQL query
+    $stmt = $this->connect()->prepare(
+       "DELETE FROM user
+        WHERE userID = ?"
+    );
+
+    // Check if the SQL query is valid
+    if(!$stmt->execute([$userID])){
+        header("location: settings.php?error=BadSQLQuery");
+        exit();
+    }
+
+    return true;
+}
 
 // Update password
 protected function update_password($hashed_password,$userID){

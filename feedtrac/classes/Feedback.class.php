@@ -144,7 +144,7 @@ class Feedback extends Database {
     protected function get_all_rows(){
 
         // Update the rating points of a feedback item
-        $stmt = $this->connect()->prepare("SELECT resolved, urgency, title, `feedback`.text, `feedback`.date, `feedback`.ratingPoints, COUNT(commentID) as number_of_comments FROM `feedback` LEFT JOIN `comment` ON `feedback`.feedbackID = `comment`.feedbackID GROUP BY `feedback`.feedbackID;");
+        $stmt = $this->connect()->prepare("SELECT feedback.feedbackID, resolved, urgency, title, `feedback`.text, `feedback`.date, `feedback`.ratingPoints, COUNT(commentID) as number_of_comments FROM `feedback` LEFT JOIN `comment` ON `feedback`.feedbackID = `comment`.feedbackID GROUP BY `feedback`.feedbackID;");
 
         // Check if the SQL query is valid and execute
         if(!$stmt->execute()){
@@ -159,6 +159,42 @@ class Feedback extends Database {
     }
     
 
+
+    protected function get_user($feedbackID){
+
+        // Update the rating points of a feedback item
+        $stmt = $this->connect()->prepare(" SELECT 
+                                                user.userID,
+                                                username,
+                                                fname,
+                                                lname,
+                                                yearOfStudy,
+                                                pronouns,
+                                                position,
+                                                name
+                                            FROM 
+                                                user
+                                            JOIN 
+                                                feedback
+                                            ON 
+                                                user.userID = feedback.userID 
+                                            JOIN
+                                                course
+                                            ON
+                                                user.courseID = course.courseID
+                                            WHERE 
+                                                feedbackID = ?");
+
+        // Check if the SQL query is valid and execute
+        if(!$stmt->execute([$feedbackID])){
+            header("location: feedback.php?error=BadSQLQuery");
+            exit();
+        }
+
+        $results = $stmt->get_result()->fetch_assoc();
+        return $results;
+        
+    }
 
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2024 at 01:32 PM
+-- Generation Time: Apr 29, 2024 at 09:55 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -87,21 +87,11 @@ TRUNCATE TABLE `user`;
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userID`, `courseID`, `email`, `username`, `passwordHash`, `fName`, `lName`, `yearOfStudy`, `pronouns`, `position`) VALUES
-(1, 1, '11122233@students.lincoln.ac.uk', 'John_Smith', '$2y$10$OVmvdLRZJ3rwh64o0AKStOJcZG58TY/UXZ1NqWCFBsSSTMagW3xgW', 'John', 'Smith', 2, 'hehim', 'student'),
-(2, 1, '26357261@students.lincoln.ac.uk', 'Oliver_Smith', '$2y$10$QPf3iCF2jkZ6J/52ho/w9.9y2X9tucyYNJ8FTqQIUTFZRTznD47g6', 'Oliver', 'Smith', 2, 'hehim', 'admin'),
-(3, 1, '16617508@students.lincoln.ac.uk', 'Earl_Smalley', '$2y$10$4ep5axoX8YQn2OqOuUusruozyW295ccroQBfg87IbnrENqxEyPmZu', 'Earl', 'Smalley', 2, 'hehim', 'admin');
-
---
--- Usernames and passwords for testing:
--- 'John_Smith' - 'password'
--- 'Oliver_Smith' - 'feedtrac'
--- 'Earl_Smalley' - 'ft'
---
-
+INSERT INTO `user` (`userID`, `courseID`, `email`, `username`, `passwordHash`, `fName`, `lName`, `yearOfStudy`, `pronouns`, `position`, `activeAccount`) VALUES
+(1, 1, '11122233@students.lincoln.ac.uk', 'John_Smith', '$2y$10$OVmvdLRZJ3rwh64o0AKStOJcZG58TY/UXZ1NqWCFBsSSTMagW3xgW', 'John', 'Smith', 2, 'hehim', 'student', 1),
+(2, 1, '26357261@students.lincoln.ac.uk', 'Oliver_Smith', '$2y$10$QPf3iCF2jkZ6J/52ho/w9.9y2X9tucyYNJ8FTqQIUTFZRTznD47g6', 'Oliver', 'Smith', 2, 'hehim', 'admin', 1),
+(3, 1, '16617508@students.lincoln.ac.uk', 'Earl_Smalley', '$2y$10$4ep5axoX8YQn2OqOuUusruozyW295ccroQBfg87IbnrENqxEyPmZu', 'Earl', 'Smalley', 2, 'hehim', 'admin', 1);
 COMMIT;
-
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
