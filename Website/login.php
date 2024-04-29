@@ -24,7 +24,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     if(!empty($username) && !empty($password)){
         
         // Check if the user exists and that the account is active
-        if($Login_Controller->user_exists($username) && $Login_Controller->is_active($username) === 1 ){
+        // Todo: Reimplement "&& $Login_Controller->is_active($username) === 1"
+        if($Login_Controller->user_exists($username)){
 
             // Verify the password
             if($Login_Controller->check_password($username, $password)) {
