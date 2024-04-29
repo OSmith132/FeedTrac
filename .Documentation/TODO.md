@@ -21,7 +21,7 @@
   * (OPTIONAL) Add extra options such as anonymous posting or the ability to disable comments
 
 * Home/Index page
-  * Display feedback data on the home/index page
+  * ~~Display feedback data on the home/index page~~            _- Oliver (This is pretty much done anyway. Just need to add the new profile picture)_
   * Implement feedback filtering with the search bar and tags
   * Add filter button or have it update in real time
 
@@ -42,7 +42,10 @@
 
 * Profile page
   * Allow for individual profile pages per account to replace the template
-  * Add edit profile functionality (Upload profile picture, edit about section, edit personal information)
+  * Add edit profile functionality
+      * ~~Upload profile picture~~ _-Oliver (29/04/24)_
+      * Edit about section
+      * Edit personal information
 
 * Settings page
   * Update "change password" button functionality on settings page
@@ -56,7 +59,7 @@
 
 * Database
   * Ensure that the database includes tables for all necessary data and add fake data to help with testing
-  * Add ability to store profile pictures on the database
+  * ~~Add ability to store profile pictures on the database~~  _-Oliver (29/04/24)_
 
 ---
 
