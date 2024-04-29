@@ -3,8 +3,8 @@ FeedTrac is a **feed**back **trac**king tool for universities. It was originally
 
 ## Setting up the website locally
 1) Download and install XAMPP 8.2.12 (https://www.apachefriends.org/download.html)
-2) Download the `feedtrac` folder from this repo
-3) Copy the contents of the `feedtrac` folder to your local `..\xampp\htdocs` directory
+2) Download the `Website` folder from this repo
+3) Copy the contents of the `Website` folder to your local `..\xampp\htdocs` directory
 
 ## Setting up the database 
 1) Download the `feedtracdb.sql` and `data.sql` files from this repo
