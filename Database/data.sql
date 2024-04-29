@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2024 at 09:55 PM
+-- Generation Time: Apr 29, 2024 at 10:32 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -34,6 +34,16 @@ INSERT INTO `building` (`buildingID`, `buildingName`) VALUES
 (0, 'Default Building');
 
 --
+-- Truncate table before insert `comment`
+--
+
+TRUNCATE TABLE `comment`;
+--
+-- Truncate table before insert `comment_user_rating`
+--
+
+TRUNCATE TABLE `comment_user_rating`;
+--
 -- Truncate table before insert `course`
 --
 
@@ -61,6 +71,33 @@ INSERT INTO `department` (`departmentID`, `name`) VALUES
 (1, 'School Of Computer Science'),
 (2, 'School Of Engineering');
 
+--
+-- Truncate table before insert `feedback`
+--
+
+TRUNCATE TABLE `feedback`;
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`feedbackID`, `userID`, `roomID`, `date`, `urgency`, `resolved`, `closed`, `title`, `text`, `ratingPoints`) VALUES
+(1, 2, 0, '2024-04-29', '2', 0, 0, 'Test Report', 'Help! AAAAAAAAAAAAAA', 1);
+
+--
+-- Truncate table before insert `feedback_tags`
+--
+
+TRUNCATE TABLE `feedback_tags`;
+--
+-- Truncate table before insert `feedback_user_rating`
+--
+
+TRUNCATE TABLE `feedback_user_rating`;
+--
+-- Truncate table before insert `recovery`
+--
+
+TRUNCATE TABLE `recovery`;
 --
 -- Truncate table before insert `room`
 --
