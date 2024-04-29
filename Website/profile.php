@@ -44,8 +44,7 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
 
         <!-- Main -->
         <main>
-            <h1>Profile Page</h1><br>
-            <h2>Profile page for User: <?php echo $_SESSION["userID"] ?></h2>
+            <h1><?php echo $Login_Controller->get_username() ?></h1>
             <hr>
             <div class="profile-content">
                 <div class="user-picture">
@@ -75,8 +74,8 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
 
                 <div class="user-data">
                     <h3>Personal Information:</h3>
-                    Email: [Email]<br><br>
-                    Username: [Username]<br><br>
+                    Email: <?php echo $Login_Controller->get_current_user_email() ?><br><br>
+                    Username: <?php echo $Login_Controller->get_username() ?><br><br>
                     First Name: [First Name]<br><br>
                     Last Name: [Last Name]<br><br>
                     Year of Study: [Year of Study]<br><br>
