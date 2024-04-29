@@ -17,4 +17,5 @@ http://localhost/feedtrac (You may need to clear your cache and site data after 
 
 ## Viewing the database
 **phpMyAdmin:** http://localhost/phpmyadmin/
+
 **MySql Workbench:** Go to 'Database' -> 'Connect to database' and select localhost (127.0.0.1:3306)
