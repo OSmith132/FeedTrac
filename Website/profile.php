@@ -42,15 +42,14 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
 
             <div class="profile-content">
                 <div class="user-picture">
-                    <h3>Profile Picture</h3>
+                    <h3>Profile Picture:</h3>
                     <img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="200">
                 </div>
 
                 <div class="user-description">
                     <h3>About:</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati natus dolores harum. Cum omnis veniam dolor odit totam delectus laboriosam enim. Deserunt commodi porro odio temporibus veritatis pariatur enim vero!</p>
-                    <br>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum nisi ea facilis! Rem, eos alias eaque labore in illum ea error quis ipsum dolorem hic, cupiditate consectetur aliquid tempore ipsam.</p>
+                    <!-- TODO: Implement this in the database -->
+                    <p>[User table currently doesn't support a user description or "about me"]</p>
                 </div>
 
                 <div class="user-data">
