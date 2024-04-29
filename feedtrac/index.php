@@ -53,7 +53,7 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
                     <button onclick="window.location.href = 'newFeedback.php'">New Feedback</button>
                 </div>
 
-                <div class="table">
+                <div class="table" class="center">
                     <table>
 
                         <!-- Table Headers -->
@@ -67,50 +67,79 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
                             <th>Course</th> <!-- Course -->
                             <th>Author</th> <!-- Author -->
                         </tr>
-                        <!-- Table Content -->
-                        <!-- EXAMPLE CONTENT -->
-                        <tr>
-                            <td>Unresolved<br>Low Urgency</td> <!-- Resolved + Urgency -->
-                            <td><a href="feedback.php">Lights keep flickering during lecture</a></td> <!-- Title -->
-                            <td>N/a</td> <!-- Text -->
-                            <td>[date posted]</td> <!-- Date -->
-                            <td>N/a</td> <!-- RatingPoints -->
-                            <td>2</td> <!-- Number of comments -->
-                            <td><a href="course.php">Computer Science</a></td> <!-- Course -->
-                            <td> <!-- Author -->
-                                <div style="display: flex;">
-                                    <img style="margin-right: 10px;" class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32">
-                                    <a href="profile.php">Archie Baldry (26411141)</a>
-                                </div>
-                            </td>
-                        </tr>
+
 
                         <!-- Get result from database to fill table -->
                         <?php
-                        $feedbackRows = $Feedback_Controller->get_all_feedback(); // THIS NEEDS TO BE CHANGED TO GET AL FEEDBACK FROM USER
+                        $feedbackRows = $Feedback_Controller->get_all_feedback(); // NEED TO ADD FILTERS HERE ----------------------------
                         ?>
 
-                        <tr class="clickable-row" data-href="feedback.php">
+
+
+
+                        
                             <?php
                             foreach ($feedbackRows as $row) {
-
-                            
+                                $userInfo = $Feedback_Controller->get_user_info($row['feedbackID']);
                             ?>
-                            <td><?php echo  $get_resolved_string[$row['resolved']] . "<br>"      // Resolved Status - Refer to functins.php for the array
-                                    . $get_urgency_string[$row['urgency']] . " Urgency"; // Urgency Level   - Refer to functins.php for the array
-                                ?>
-                            </td>
 
-                            <td><?php echo shorten($row['title'], 50); ?></td>
-                            <td><?php echo shorten($row['text'], 75); ?></td> <!-- shortens the text to 15 characters -->
-                            <td><?php echo $row['date']; ?></td>
-                            <td><?php echo $row['ratingPoints']; ?></td>
-                            <td><?php echo $row['number_of_comments']; ?></td>
-                        </tr>
 
-                        <?php
+
+                                <tr class="clickable-row" data-href="feedback.php">
+                               
+                                    <td>
+                                        <?php echo  $get_resolved_string[$row['resolved']] . "<br>"      // Resolved Status - Refer to functions.php for the array
+                                            . $get_urgency_string[$row['urgency']] . " Urgency"; // Urgency Level   - Refer to functins.php for the array
+                                        ?>
+                                    </td>
+
+                                    <td><?php echo shorten($row['title'], 50); ?></td> <!-- shortens the title to 50 characters -->
+                                    <td><?php echo shorten($row['text'], 75); ?></td>  <!-- shortens the text to 15 characters -->
+                                    <td><?php echo $row['date']; ?></td>               <!-- Date -->
+                                    <td><?php echo $row['ratingPoints']; ?></td>       <!-- Rating Points -->
+                                    <td><?php echo $row['number_of_comments']; ?></td> <!-- Number of comments -->
+                                    <td>course</td>
+                                    <td href="profile.php">                                               
+                                        <div style="display: flex;"  >  <!-- MAKE THIS GO TO THE THE CORECT PROFILE-->
+
+                                        <img style="margin-right: 10px;" class="avatar" src="<?php 
+                                                                                            // Get user info and find either jpg or png profile picture
+                                                                                            $userID = $userInfo['userID'];
+                                                                                            $jpg_path = "assets/profile-pictures/user-$userID.jpg";
+                                                                                            $png_path = "assets/profile-pictures/user-$userID.png";
+                                                                               
+                                                                                            // Return 
+                                                                                            if (file_exists($jpg_path)) {
+                                                                                                echo $jpg_path;
+                                                                                            } elseif (file_exists($png_path)) {
+                                                                                                echo $png_path;
+                                                                                            } else {
+                                                                                                echo "assets/profile-pictures/user-default.jpg";
+                                                                                            }?>"
+                                                                                        alt="User Avatar" height="32" href="profile.php">
+                                            
+                                            
+                                            <a href="profile.php" > <?php echo $userInfo['username']; ?> </a> <!-- Username -->                                                                                                                           
+                                        </div>
+                                    </td>
+
+                                </tr> 
+
+                            <?php
                                 }
-                        ?>
+                            ?>
+                 
+                                                                                           
+
+                        
+
+                        
+
+
+
+
+
+
 
                         <script>
                             const rows = document.querySelectorAll(".clickable-row");
