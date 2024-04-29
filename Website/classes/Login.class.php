@@ -103,9 +103,13 @@ class Login extends Database {
         return $result;
     }
 
-    // Get username of $userID
-    protected function get_username_from_id($userID){
-        $query = $this->connect()->prepare("SELECT username FROM user WHERE userID = ?");
+    // Get column ($columnName) of user ($userID)
+    protected function get_column_from_id($columnName, $userID) {
+        // Get "safe" version of columnName
+        $safeColumnName = $this->connect()->real_escape_string($columnName);
+
+        // Prepare query
+        $query = $this->connect()->prepare("SELECT $safeColumnName FROM user WHERE userID = ?");
 
         // Perform query
         if(!$query->execute([$userID])){
@@ -114,21 +118,7 @@ class Login extends Database {
         }
 
         // Return query result
-        return $query->get_result()->fetch_assoc()['username'];
-    }
-
-    // Get email address of $userID
-    protected function get_email_from_id($userID) {
-        $query = $this->connect()->prepare("SELECT email FROM user WHERE userID = ?");
-
-        // Perform query
-        if (!$query->execute([$userID])) {
-            header("location: settings.php?error=BadSQLQuery");
-            exit();
-        }
-
-        // Return query result
-        return $query->get_result()->fetch_assoc()["email"];
+        return $query->get_result()->fetch_row()[0];
     }
 
     // Check if the username and email are unique

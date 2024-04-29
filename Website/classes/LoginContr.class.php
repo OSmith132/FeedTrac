@@ -199,18 +199,42 @@ class LoginContr extends Login {
 
     // Get username of current user
     public function get_current_user_username(){
-        return $this->get_username_from_id($_SESSION['userID']);
+        return $this->get_column_from_id("username", $_SESSION['userID']);
     }
 
     // Get email address of current user
     public function get_current_user_email() {
-        return $this->get_email_from_id($_SESSION["userID"]);
+        return $this->get_column_from_id("email", $_SESSION['userID']);
+    }
+
+    // Get first name of current user
+    public function get_current_user_first_name() {
+        return $this->get_column_from_id("fName", $_SESSION['userID']);
+    }
+
+    // Get last name of current user
+    public function get_current_user_last_name() {
+        return $this->get_column_from_id("lName", $_SESSION['userID']);
+    }
+
+    // Get study year of current user
+    public function get_current_user_study_year() {
+        return $this->get_column_from_id("yearOfStudy", $_SESSION['userID']);
+    }
+
+    // Get pronouns of current user
+    public function get_current_user_pronouns() {
+        return $this->get_column_from_id("pronouns", $_SESSION["userID"]);
+    }
+
+    // Get position of current user
+    public function get_current_user_position() {
+        return $this->get_column_from_id("position", $_SESSION["userID"]);
     }
 
     // Delete Account
     public function delete_account(){
-
-        return $this->get_username_from_id($_SESSION['userID']);
+        return $this->get_column_from_id("username", $_SESSION['userID']);
     }
 
 

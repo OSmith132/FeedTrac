@@ -57,11 +57,11 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
                     <ul>
                         <li>Email: <?php echo $Login_Controller->get_current_user_email();?></li>
                         <li>Username: <?php echo $Login_Controller->get_current_user_username();?></li>
-                        <li>First Name: [First Name]</li>
-                        <li>Last Name: [Last Name]</li>
-                        <li>Year of Study: [Year of Study]</li>
-                        <li>Pronouns: [Pronouns]</li>
-                        <li>Position: [Position]</li>
+                        <li>First Name: <?php echo $Login_Controller->get_current_user_first_name();?></li>
+                        <li>Last Name: <?php echo $Login_Controller->get_current_user_last_name();?></li>
+                        <li>Year of Study: <?php echo $Login_Controller->get_current_user_study_year();?></li>
+                        <li>Pronouns: <?php echo $Login_Controller->get_current_user_pronouns();?></li>
+                        <li>Position: <?php echo $Login_Controller->get_current_user_position();?></li>
                     </ul>
                 </div>
             </div>
