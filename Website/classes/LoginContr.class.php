@@ -197,10 +197,9 @@ class LoginContr extends Login {
         
     }
 
-    // Get username
-    public function get_username(){
-
-        return $this->get_username_id($_SESSION['userID']);
+    // Get username of current user
+    public function get_current_user_username(){
+        return $this->get_username_from_id($_SESSION['userID']);
     }
 
     // Get email address of current user
@@ -211,7 +210,7 @@ class LoginContr extends Login {
     // Delete Account
     public function delete_account(){
 
-        return $this->get_username_id($_SESSION['userID']);
+        return $this->get_username_from_id($_SESSION['userID']);
     }
 
 

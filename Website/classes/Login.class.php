@@ -103,20 +103,18 @@ class Login extends Database {
         return $result;
     }
 
-    // Get username from session ID
-    protected function get_username_id($userID){
+    // Get username of $userID
+    protected function get_username_from_id($userID){
+        $query = $this->connect()->prepare("SELECT username FROM user WHERE userID = ?");
 
-        //prepare the SQL query
-        $stmt = $this->connect()->prepare("SELECT username FROM user WHERE userID = ?");
-
-        // Check if the SQL query is valid
-        if(!$stmt->execute([$userID])){
+        // Perform query
+        if(!$query->execute([$userID])){
             header("location: settings.php?error=BadSQLQuery");
             exit();
         }
 
-        $result = $stmt->get_result()->fetch_assoc()['username'];
-        return $result;
+        // Return query result
+        return $query->get_result()->fetch_assoc()['username'];
     }
 
     // Get email address of $userID

@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     if(!empty($password)){
 
         //Get username
-        $username = $Login_Controller->get_username();
+        $username = $Login_Controller->get_current_user_username();
 
         if($Login_Controller->check_password($username, $password)) {
 

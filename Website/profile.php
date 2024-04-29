@@ -19,7 +19,7 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title><?php echo $Login_Controller->get_username();?> - FeedTrac</title>
+        <title><?php echo $Login_Controller->get_current_user_username();?> - FeedTrac</title>
 
         <link rel="icon" type="image/x-icon" href="assets/icon.png">
 
@@ -38,7 +38,7 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
 
         <!-- Main -->
         <main>
-            <h1><?php echo $Login_Controller->get_username();?></h1>
+            <h1><?php echo $Login_Controller->get_current_user_username();?></h1>
 
             <div class="profile-content">
                 <div class="user-picture">
@@ -56,7 +56,7 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
                     <h3>Personal Information:</h3>
                     <ul>
                         <li>Email: <?php echo $Login_Controller->get_current_user_email();?></li>
-                        <li>Username: <?php echo $Login_Controller->get_username();?></li>
+                        <li>Username: <?php echo $Login_Controller->get_current_user_username();?></li>
                         <li>First Name: [First Name]</li>
                         <li>Last Name: [Last Name]</li>
                         <li>Year of Study: [Year of Study]</li>
