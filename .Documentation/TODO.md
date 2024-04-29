@@ -43,7 +43,7 @@
 * Profile page
   * Allow for individual profile pages per account to replace the template
   * Add edit profile functionality
-      * ~~Upload profile picture~~ _-Oliver (29/04/24)_
+      * Upload profile picture
       * Edit about section
       * Edit personal information
 
