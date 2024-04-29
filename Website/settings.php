@@ -64,7 +64,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     <body>
         <!-- Header -->
-        <?php include("header.html"); ?>
+        <?php include("header.php"); ?>
 
         <!-- Main -->
         <main>

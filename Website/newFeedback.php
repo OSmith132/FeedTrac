@@ -40,7 +40,7 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
 
     <body>
         <!-- Header -->
-        <?php include("header.html"); ?>
+        <?php include("header.php"); ?>
 
         <!-- Main -->
         <main><h1>Create New Feedback Page</h1></main>

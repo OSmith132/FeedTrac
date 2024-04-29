@@ -38,7 +38,7 @@ $user_data = $Login_Controller->force_login();
     <body>
 
         <!-- Header -->
-        <?php include("header.html"); ?>
+        <?php include("header.php"); ?>
 
         <!-- Main -->
         <main class="feedback-main">

@@ -86,7 +86,7 @@ if (count($postData) == count(array_filter($postData))) {
 </head>
 	<body>
 		<!-- Header -->
-        <?php include("header.html"); ?>
+        <?php include("header.php"); ?>
 
         <!-- Main -->
         <main>
