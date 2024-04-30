@@ -175,7 +175,9 @@ CREATE TABLE `user` (
   `yearOfStudy` tinyint(10) UNSIGNED DEFAULT NULL,
   `pronouns` varchar(10) DEFAULT NULL,
   `position` varchar(25) NOT NULL,
+  `description` varchar(255),
   `activeAccount` tinyint(1) NOT NULL DEFAULT 1
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='User Information';
 
 --

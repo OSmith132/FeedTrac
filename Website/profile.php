@@ -12,6 +12,47 @@ $Login_Controller = new LoginContr();
 $user_data = $Login_Controller->force_login();
 
 $Feedback_Controller = new FeedbackContr($user_data['userID']);
+
+
+
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+    $target_dir = "assets/profile-pictures/";
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+    // Use the ID for the filename
+    $target_file = $target_dir . "user-" . $user_data['userID'] . '.' . $imageFileType;
+
+// Check if image file is a actual image or fake image
+    if(isset($_POST["submit"])) {
+        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+        if($check !== false) {
+            echo "File is an image - " . $check["mime"] . ".";
+            $uploadOk = 1;
+        }
+        else {
+            echo "File is not an image.";
+            $uploadOk = 0;
+        }
+    }
+    if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+    }
+    else {
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+    }
+}
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en-gb">
@@ -43,7 +84,20 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
             <div class="profile-content">
                 <div class="user-picture">
                     <h3>Profile Picture:</h3>
-                    <img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="200">
+                    <img class="avatar" src="<?php
+                    // Get user info and find either jpg or png profile picture
+                    $userID = $_SESSION['userID'];
+                    $jpg_path = "assets/profile-pictures/user-$userID.jpg";
+                    $png_path = "assets/profile-pictures/user-$userID.png";
+
+                    // Return
+                    if (file_exists($jpg_path)) {
+                        echo $jpg_path;
+                    } elseif (file_exists($png_path)) {
+                        echo $png_path;
+                    } else {
+                        echo "assets/profile-pictures/user-default.jpg";
+                    }?>" alt="User Avatar" height="200">
                 </div>
 
                 <div class="user-description">
@@ -70,7 +124,7 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
                 <div class="change-picture">
                     <form action="profile.php" method="post" enctype="multipart/form-data" class="upload-form">
                         <label for="profile-picture">Upload a profile picture:</label><br>
-                        <input type="file" accept="image/*"><br>
+                        <input type="file" accept="image/png"  name="fileToUpload" id="fileToUpload"><br>
                         <input type="submit" value="Upload" class="profile-button">
                     </form>
                 </div>

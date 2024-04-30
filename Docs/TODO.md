@@ -9,6 +9,7 @@
 ## GitHub:
 
 * Organise GitHub workflow with personal branches?
+* Update Flowchart (can put directly in report)
 
 ---
 
@@ -49,7 +50,7 @@
 * Profile page
   * Allow for individual profile pages per account to replace the template
   * Add edit profile functionality
-      * Upload profile picture     _(Please only allow for .jpg and .png files thank you :) - Oliver)_
+      * ~~Upload profile picture~~  (only supports png upload) - _Toby (30/04/24)_
       * Edit about section
       * Edit personal information
 
