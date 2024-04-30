@@ -178,7 +178,8 @@
     * Added counter functionality to count newly created feedback items in inbox for display over inbox icon.
     * Updated many db tables to support said functionality.
     * Began Inbox functionality, had issues with some date fields, to be resolved.
-    * Also added appropriate fields to relevant tables related to Inbox. 
+    * Also added appropriate fields to relevant tables related to Inbox.
+    * TODO - Change counter to only update if user is still subbed...(forgot)
     
 
 </details>
