@@ -49,14 +49,14 @@
   * Add an observer to subscribe and get updates to courses and comments (Design Pattern)
 
 * Profile page
-  * Allow for individual profile pages per account to replace the template
+  * <s>Allow for individual profile pages per account to replace the template</s>
   * Add edit profile functionality
       * Upload profile picture     _(Please only allow for .jpg and .png files thank you :) - Oliver)_
       * Edit about section
       * Edit personal information
 
 * Settings page
-  * <ins>Update "change password" button functionality on settings page (Earl is currently working on this)</ins>
+  * changePassword.php has now been created, but the form to change the password isn't functional
   * (OPTIONAL) Add additional user settings
 
 * Admin/Moderation page
