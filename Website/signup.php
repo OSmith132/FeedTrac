@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <!-- TODO: Going forwards the database will support choosing multiple courses, so we will need to modify this element to reflect that! -->
                     <label>Course
                         <select name="course" required>
-                            <option value="">None</option>
+                            <option value="">Please select...</option>
                             <?php
                             // Get all courses from the database
                             $courses = $Login_Controller->get_courses();
@@ -145,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                     <label>Year of Study
                         <select name="yearOfStudy" required>
-                            <option value="">None</option>
+                            <option value="">Please select...</option>
                             <option value="1">1st</option>
                             <option value="2">2nd</option>
                             <option value="3">3rd</option>
@@ -155,7 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                     <label>Pronouns
                         <select name="pronouns" required>
-                            <option value="">None</option>
+                            <option value="">Please select...</option>
                             <option value="hehim">He/Him</option>
                             <option value="sheher">She/Her</option>
                             <option value="other">Other</option>
@@ -164,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                     <label>Position
                         <select name="position" required>
-                            <option value="">None</option>
+                            <option value="">Please select...</option>
                             <option value="student">Student</option>
                             <option value="staff">Staff</option>
                             <option value="admin">Admin</option>
