@@ -70,30 +70,7 @@ class FeedbackContr extends Feedback {
 
 
 
-    public function get_all_feedback(){
-
-         // Check if any input is empty
-         if ($this->empty_input_check()){
-            header("location: feedback.php?error=emptyinput");
-            exit();
-        }
-
-        // Update the rating points of a feedback item
-        return $this->get_all_rows();
-    }
-
-
-    public function get_user_info($feedbackID){
-
-        // Check if any input is empty
-        if ($this->empty_input_check($feedbackID)){
-            header("location: feedback.php?error=emptyinput");
-            exit();
-        }
-
-        // Update the rating points of a feedback item
-        return $this->get_user($feedbackID);
-    }
+    
     
 
 }
