@@ -2,7 +2,6 @@
 
 session_start();
 
-
 include("classes/Database.class.php");
 include("classes/login.class.php");
 include("classes/LoginContr.class.php");
@@ -14,6 +13,7 @@ $Login_Controller = new LoginContr();
 $user_data = $Login_Controller->force_login();
 
 $Feedback_View = new FeedbackView($user_data['userID']);
+
 
 
 
@@ -56,116 +56,114 @@ $Feedback_View = new FeedbackView($user_data['userID']);
         <div class="index-main">
             <div class="index-header">
 
-
+            
 
             
                 <!-- Search-bar functionality -->
-                <form method="POST" action="index.php" id="index-search-form">
+                <form class="index-header" method="POST" action="index.php" id="index-search-form">
 
-                    <input type="hidden" name="action" value="search">
+                    <!-- Filter Methods -->
+                    <div class="index-toggle-box">
+                        <h2>Filter Options</h2>
 
-                    <input class="search-bar" type="text" name="searchTerm" placeholder="Search for existing feedback">
+                        <input type="hidden" name="action" value="search">
 
-                    <button name="submit">Search</button>
+                        <input class="search-bar" type="text" name="searchTerm" placeholder="Search for existing feedback">
 
-                </form>
+                        <button name="submit">Search</button>
+                     </div>
+                
 
-                <!-- Filter Methods -->
-                <div class="index-toggle-box">
-                    <h2>Filter Options</h2>
 
-                    <!-- Resolved/Unresolved Toggle -->
-                    <div class="index-toggle-option">
-                        <label>
-                            <input type="checkbox" name="resolved" value="resolved"> Resolved
-                        </label>
-                    </div>
+                    <!-- Filter Methods -->
+                    <div class="index-toggle-box">
+                        <h2>Filter Options</h2>
+                
 
-                    <!-- Urgency Level Slider -->
-                    <div class="index-toggle-option">
-                        <label for="urgency">Urgency:</label>
-                        <input type="range" id="urgency" name="urgency" min="0" max="4" value="0" list="urgency-levels">
-                        <datalist id="urgency-levels">
-                            <option value="0">All</option>
-                            <option value="1">Low</option>
-                            <option value="2">Medium</option>
-                            <option value="3">High</option>
-                            <option value="4">Critical</option>
-                        </datalist>
-                        <span id="urgency-value">All</span>
-                    </div>
+                        <!-- Resolved/Unresolved Toggle -->
+                        <div class="index-toggle-option">
+                            <label>
+                                <input type="checkbox" name="resolved" value="0" >Only Resolved
+                            </label>
+                        </div>
 
-                    <!-- Timeframe Slider -->
-                    <div class="index-toggle-option">
-                        <label for="timeframe">Timeframe:</label>
-                        <input type="range" id="timeframe" name="timeframe" min="0" max="4" value="4" list="timeframe-options">
-                        <datalist id="timeframe-options">
-                            <option value="0">1 Hour</option>
-                            <option value="1">1 Day</option>
-                            <option value="2">1 Week</option>
-                            <option value="3">1 Month</option>
-                            <option value="4">All Time</option>
-                        </datalist>
-                        <span id="timeframe-value">All Time</span>
-                    </div>
-                    <button type="submit">Apply Filters</button>
+                        <!-- Closed Toggle -->
+                        <div class="index-toggle-option">
+                            <label>
+                                <input type="checkbox" name="closed" value="0">Only Closed
+                            </label>
+                        </div>
+
+                        <!-- Urgency Level Slider -->
+                        <div class="index-toggle-option">
+                            <label for="urgency">Urgency:</label>
+                            <input type="range" id="urgency" name="urgency" min="-1" max="3" value="-1" list="urgency-levels">
+                            <datalist id="urgency-levels">
+                                <option value="-1">All</option>
+                                <option value="0">Low</option>
+                                <option value="1">Medium</option>
+                                <option value="2">High</option>
+                                <option value="3">Critical</option>
+                            </datalist>
+                            <span id="urgency-value">All</span>
+                        </div>
+
+                        <!-- Timeframe Slider -->
+                        <div class="index-toggle-option">
+                            <label for="timeframe">Timeframe:</label>
+                            <input type="range" id="timeframe" name="timeframe" min="0" max="4" value="4" list="timeframe-options">
+                            <datalist id="timeframe-options">
+                                <option value="0">1 Hour</option>
+                                <option value="1">1 Day</option>
+                                <option value="2">1 Week</option>
+                                <option value="3">1 Month</option>
+                                <option value="4">All Time</option>
+                            </datalist>
+                            <span id="timeframe-value">All Time</span>
+                        </div>
+
+                        <!-- Submit -->
+                        <!-- <button type="submit">Apply Filters</button> -->
+
+                    
                 </div>
 
-
-
-
-                <!-- JS to change sliders when sliding -->
-                <script>
-                    //Update urgency value when slider is moved
-                    const urgencyInput = document.getElementById('urgency');
-                    const urgencyValue = document.getElementById('urgency-value');
-                    urgencyInput.addEventListener('input', () => {
-                        urgencyValue.textContent = 
-                        urgencyInput.value === '0' ? 'All' :
-                        urgencyInput.value === '1' ? 'Low' : 
-                        urgencyInput.value === '2' ? 'Medium' :
-                        urgencyInput.value === '3' ? 'High':
-                        'Critial';
-                    });
-
-                    //Update timeframe value when slider is moved
-                    const timeframeInput = document.getElementById('timeframe');
-                    const timeframeValue = document.getElementById('timeframe-value');
-                    timeframeInput.addEventListener('input', () => {
-                        timeframeValue.textContent = 
-                        timeframeInput.value === '0' ? '1 Hour' : 
-                        timeframeInput.value === '1' ? '1 Day' : 
-                        timeframeInput.value === '2' ? '1 Week' : 
-                        timeframeInput.value === '3' ? '1 Month' : 
-                        'All Time';
-                    });
-                </script>
-
-
+            
 
 
                 <!-- Sort Methods -->
                 <div class="sort-box">
                     <h2>Sort Options</h2>
-                    <div class="index-sort-option">
-                        <label for="sort-by-rating">Sort by Rating Points:</label>
-                        <select id="sort-by-rating" name="sort-by-rating">
-                            <option value="asc">Lowest to Highest</option>
-                            <option value="desc">Highest to Lowest</option>
-                        </select>
-                    </div>
-                    <div class="index-sort-option">
-                        <label for="sort-by-date">Sort by Date:</label>
-                        <select id="sort-by-date" name="sort-by-date">
-                            <option value="asc">Oldest to Newest</option>
-                            <option value="desc">Newest to Oldest</option>
-                        </select>
-                    </div>
-                    <button type="submit">Apply Sorting</button>
+
+                        <!-- Sort by Rating Points -->
+                        <div class="index-sort-option">
+                            <label for="sort-type">Sort Type:</label>
+                            <select id="sort-type" name="sort-type">
+                                <option value="date">Date</option>
+                                <option value="urgency">Urgency</option>
+                                <option value="rating">Rating</option>
+                            </select>
+                        </div>
+
+
+                        <!-- Direction -->
+                        <div class="index-sort-option">
+                            <label for="Direction">Direction:</label>
+                            <select id="Direction" name="sort-direction">
+                                <option value="asc">Ascending</option>
+                                <option value="desc">Descending</option>
+                            </select>
+                        </div>
+
+                        <!-- Submit -->
+                        <!-- <button type="submit">Apply Sorting</button> -->
+
+
+                    
                 </div>
 
 
-
+            </form>
 
 
                         
@@ -181,26 +179,71 @@ $Feedback_View = new FeedbackView($user_data['userID']);
 
             <!-- Get result from database to fill table -->
             <?php
-                    //$feedbackRows = $Feedback_View->get_all_feedback(); // NEED TO ADD FILTERS HERE ----------------------------
 
-                  
+
+                       
+                    
+
+                    // If search button is pressed, get search term and display results
                     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['action'] == 'search') {
+
                         $searchTerm = $_POST['searchTerm'];
+
+
                         $feedbackRows = $Feedback_View->search_Feedback($searchTerm);
+
 
                         // If no search term entered, display all feedback
                         if (empty($searchTerm)) {
                             $feedbackRows = $Feedback_View->get_all_feedback();
                         }
-
                         // If no results found, display message
                         else if (empty($feedbackRows)) {
-                            echo "<i>No results found for '$searchTerm'</i>";
+                            echo "<i>No results found for '" . $searchTerm . "'</i>";
                         }
+
+
+                        // Filter Options
+                        $resolved = isset($_POST['resolved']) ? 1 : 0;  
+                        $closed = isset($_POST['closed']) ? 1 : 0;  
+                        $urgency    = $_POST['urgency'];          // 0,1,2,3,4  =>  All, Low, Medium, High, Critical
+                        $timeframe  = $_POST['timeframe'];        // 0,1,2,3,4  =>  1 Hour, 1 Day, 1 Week, 1 Month, All Time
+
+                        // Sorting Options
+                        $sortType    = $_POST['sort-type'];   
+                        $sortDirection    = $_POST['sort-direction']; 
+                        
+
+
+                        // $_SESSION["resolved"]   = isset($_POST['resolved']);  // 0,1
+                        // $_SESSION["closed"]     = isset($_POST['closed']);    // 0,1
+                        // $_SESSION["urgency"]    = $_POST['urgency'];          // 0,1,2,3,4  =>  All, Low, Medium, High, Critical
+                        // $_SESSION["timeframe"]  = $_POST['timeframe'];        // 0,1,2,3,4  =>  1 Hour, 1 Day, 1 Week, 1 Month, All Time
+
+                        // output all options
+                        echo "Search Term: " . $searchTerm . "<br>";
+                        echo "Resolved: " . $resolved . "<br>";
+                        echo "Closed: " . $closed . "<br>";
+                        echo "Urgency: " . $urgency . "<br>";
+                        echo "Timeframe: " . $timeframe . "<br>";
+                        echo "Sort Type: " . $sortType . "<br>";
+                        echo "Sort Direction: " . $sortDirection . "<br>";
+
+                        
+                        // Filter feedback rows
+                        $feedbackRows = array_filter($feedbackRows, function($row) use ($Feedback_View, $resolved, $closed, $urgency, $timeframe) {
+                            return $Feedback_View->row_passes_filters($row, $resolved, $closed, $urgency, $timeframe);
+                        });
+
+                        
 
                     } else {
                         $feedbackRows = $Feedback_View->get_all_feedback(); // Default action, if not searching
                     }
+
+
+
+                    
 
                     
                     // Get user info for each feedback item
@@ -215,7 +258,7 @@ $Feedback_View = new FeedbackView($user_data['userID']);
 
                     <!-- Table Headers -->
                     <tr>
-                        <th>Status</th> <!-- Resolved + Urgency -->
+                        <th>Status</th> <!-- Resolved + Urgency + closed-->
                         <th>Title</th> <!-- Title -->
                         <th>Text</th> <!-- Text -->
                         <th>Date</th> <!-- Date -->
@@ -233,8 +276,9 @@ $Feedback_View = new FeedbackView($user_data['userID']);
                         <tr class="clickable-row" data-href="feedback.php">
 
                             <td>
-                                <?php echo  $get_resolved_string[$row['resolved']] . "<br>" // Resolved Status - Refer to functions.php for the array
-                                    . $get_urgency_string[$row['urgency']] . " Urgency"; // Urgency Level   - Refer to functins.php for the array
+                                <?php echo  $get_urgency_string[$row['urgency']] . "<br>" // Resolved Status - Refer to functions.php for the array
+                                    . $get_resolved_string[$row['resolved']]     . "<br>" // Urgency Level   - Refer to functions.php for the array
+                                    . $get_closed_string[$row['closed']];                 // Closed Status   - Refer to functions.php for the array
                                 ?>
                             </td>
 
@@ -302,3 +346,37 @@ $Feedback_View = new FeedbackView($user_data['userID']);
 </body>
 
 </html>
+
+
+
+
+<!-- JS to change sliders when sliding -->
+<script>
+        //Update urgency value when slider is moved
+        const urgencyInput = document.getElementById('urgency');
+        const urgencyValue = document.getElementById('urgency-value');
+        urgencyInput.addEventListener('input', () => {
+            urgencyValue.textContent = 
+            urgencyInput.value === '-1' ? 'All' :
+            urgencyInput.value === '0' ? 'Low' : 
+            urgencyInput.value === '1' ? 'Medium' :
+            urgencyInput.value === '2' ? 'High':
+            'Critial';
+        });
+
+        //Update timeframe value when slider is moved
+        const timeframeInput = document.getElementById('timeframe');
+        const timeframeValue = document.getElementById('timeframe-value');
+        timeframeInput.addEventListener('input', () => {
+            timeframeValue.textContent = 
+            timeframeInput.value === '0' ? '1 Hour' : 
+            timeframeInput.value === '1' ? '1 Day' : 
+            timeframeInput.value === '2' ? '1 Week' : 
+            timeframeInput.value === '3' ? '1 Month' : 
+            'All Time';
+        });
+</script>
+
+
+
+

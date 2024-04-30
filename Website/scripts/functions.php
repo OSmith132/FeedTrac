@@ -14,9 +14,13 @@ $get_urgency_string = array(
  $get_resolved_string = array(
      "Unresolved",            // => 0
      "Resolved",              // => 1
-     "Resolved and closed",   // => 2
-     "Force closed"           // => 3
  );
+
+ // Get the string representation of the closed status
+ $get_closed_string = array(
+     "Open",                  // => 0
+     "Closed",                // => 1
+ );     
 
 
 // Shorten strings to the desired length and add "..." to the end
@@ -27,4 +31,3 @@ function shorten($string, $maxLength) {
      return $string;
 }
 
-?>

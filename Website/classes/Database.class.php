@@ -44,7 +44,7 @@ class Database{
 
         // Check if any input is empty
         foreach ($inputs as $input){
-            if (empty($input)){
+            if (empty($input) and $input != 0 and $input != "0" and $input != false){
                 return true;
             }
         }
