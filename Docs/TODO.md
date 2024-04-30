@@ -14,7 +14,7 @@
 
 ## Website and Database:
 
-* New Feedback page
+* New Feedback page - Marco - In progress
   * Create page
   * Add feedback creation functionality
   * Link with database
@@ -41,7 +41,7 @@
   * Create page (Contains posts relevant to a specific course)
   * Allow for individual course pages by linking with database
  
-* Inbox page
+* Inbox page - Marco - In progress
   * Create page (Contains user notifications on updates to their personal and subscribed posts)
   * Display feedback data on the inbox page
   * Add an observer to subscribe and get updates to courses and comments (Design Pattern)
