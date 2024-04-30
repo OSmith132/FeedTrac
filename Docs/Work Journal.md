@@ -172,6 +172,15 @@
   *  Lots of troubleshooting, lots of research.
   *  Finished the password recovery system again, this time it implements the new database and login classes.
 
+* ### _30/04/2024:_
+    * Created new feedback page functionality.
+    * Started Observer development which involves both new feedback page and inbox page, users are now auto subscribed to their picked course and get updates on items published related to this course.
+    * Added counter functionality to count newly created feedback items in inbox for display over inbox icon.
+    * Updated many db tables to support said functionality.
+    * Began Inbox functionality, had issues with some date fields, to be resolved.
+    * Also added appropriate fields to relevant tables related to Inbox. 
+    
+
 </details>
 
 
