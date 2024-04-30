@@ -22,8 +22,14 @@
 
 * Home/Index page
   * ~~Display feedback data on the home/index page~~            _- Oliver (29/04/24)_
-  * Implement feedback filtering with the search bar and tags
-  * Add filter button or have it update in real time
+  * Add a popup to the filter button containing the options
+  * Add filters for:
+      *  resolved
+      *  urgency
+      *  date range (1 hour, 1 day, 1 week, 1 month, All time)
+      *  rating points 
+      *  tags
+  * ~~Search bar for feedback titles~~                          _-Oliver (30/04/24)_
 
 * Feedback page
   * Implement feedback rating system
@@ -43,7 +49,7 @@
 * Profile page
   * Allow for individual profile pages per account to replace the template
   * Add edit profile functionality
-      * Upload profile picture _(Please only allow for .jpg and .png files thank you :) - Oliver)_
+      * Upload profile picture     _(Please only allow for .jpg and .png files thank you :) - Oliver)_
       * Edit about section
       * Edit personal information
 
