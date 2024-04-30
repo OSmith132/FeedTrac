@@ -71,7 +71,7 @@ $Feedback_View = new FeedbackView($user_data['userID']);
 
                 <!-- Filter Methods -->
                 <div class="index-toggle-box">
-                    <h2>Toggle Options</h2>
+                    <h2>Filter Options</h2>
 
                     <!-- Resolved/Unresolved Toggle -->
                     <div class="index-toggle-option">
