@@ -85,6 +85,6 @@ $user_data = $Login_Controller->force_login();
         </main> 
 
         <!-- Footer -->
-        <?php include("footer.html"); ?>
+        <div class="footer-position"><?php include("footer.php"); ?></div>
     </body>
 </html>

@@ -133,8 +133,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					
 
 					<!-- Maybe add reading avalable courses from the DB -->
-					<select name="course">
-						<option selected disabled hidden>Select Course</option>
+					<select name="course" required>
+						<option value="" selected disabled hidden>Select Course</option>
 
 						<?php 
 							// Get all courses from the database
@@ -151,23 +151,23 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 					</select><br><br>
 
-					<select name="yearOfStudy">
-						<option selected disabled hidden>Select Year</option>
+					<select name="yearOfStudy" required>
+						<option value="" selected disabled hidden>Select Year</option>
 						<option value="1" >1</option>
 						<option value="2" >2</option>
 						<option value="3" >3</option>
 						<option value="4" >4</option>
 					</select><br><br>
 					
-					<select name="pronouns">
-						<option selected disabled hidden>Select Pronouns</option>
+					<select name="pronouns" required>
+						<option value="" selected disabled hidden>Select Pronouns</option>
 						<option value="hehim" >He/Him</option>
 						<option value="sheher" >She/Her</option>
 						<option value="other" >Other</option>
 					</select><br><br>
 					
-					<select name="position">
-						<option selected disabled hidden>Select Position</option>
+					<select name="position" required>
+						<option value="" selected disabled hidden>Select Position</option>
 						<option value="student" >Student</option>
 						<option value="staff" >Staff</option>
 						<option value="admin" >Admin</option>
@@ -181,7 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		</main>
 
         <!-- Footer -->
-        <?php include("footer.html"); ?>
+        <div class="footer-position"><?php include("footer.php"); ?></div>
 
     </body>
 </html>

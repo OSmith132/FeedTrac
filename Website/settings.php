@@ -71,26 +71,30 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             <h1>Settings</h1>
             <hr>
             <br>
-            <div class="settings">
-                <button id="recoverButton" class="feedback-button" onclick="window.location.href = 'recoverPassword.php'" >Change Password</button>
-                <br><br>
-                <button id="deleteButton" class="feedback-button" onclick="openForm()" >Delete Account</button>
-                <div><?php echo $error ?></div>
+            <div class="settings-container">
+                <div class="settings">
+                    <button id="recoverButton" class="feedback-button" onclick="window.location.href = 'changePassword.php'" >Change Password</button>
+                    <br><br>
+                    <button id="deleteButton" class="feedback-button" onclick="openForm('deletion-form')" >Delete Account</button>
+                    <div><?php echo $error ?></div>
+                </div>
+
+                <form action="settings.php" id="deletion-form" class="popup-form" method="post">
+                    <label>Enter your password to confirm account deletion:</label><br><br>
+
+                    <label>Password:</label>
+                    <input type="password" name="password" placeholder="Enter Password" required><br><br>
+
+                    <label style="color:red;">Warning: This action cannot be undone</label><br><br>
+
+                    <button type="submit">Delete Account</button>
+                    <button type="button" onclick="closeForm('deletion-form')">Close</button>
+                </form>
             </div>
-            <form action="settings.php" id="deletion-form" class="deletion-form" method="post">
-                <label>Enter your password to confirm account deletion:</label><br><br>
 
-                <label>Password:</label>
-                <input type="password" name="password" placeholder="Enter Password" required><br><br>
-
-                <label style="color:red;">Warning: This action cannot be undone</label><br><br>
-
-                <button type="submit">Delete Account</button>
-                <button type="button" onclick="closeForm()">Close</button>
-            </form>
         </main>
 
         <!-- Footer -->
-        <?php include("footer.html"); ?>
+        <div class="footer-position"><?php include("footer.php"); ?></div>
     </body>
 </html>

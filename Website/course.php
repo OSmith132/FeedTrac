@@ -48,6 +48,6 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
         </main>
 
         <!-- Footer -->
-        <?php include("footer.html"); ?>
+        <div class="footer-position"><?php include("footer.php"); ?></div>
     </body>
 </html>

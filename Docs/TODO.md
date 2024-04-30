@@ -14,22 +14,24 @@
 
 ## Website and Database:
 
-* New Feedback page
+* New Feedback page - Marco - In progress
   * Create page
   * Add feedback creation functionality
   * Link with database
   * (OPTIONAL) Add extra options such as anonymous posting or the ability to disable comments
 
 * Home/Index page
-  * ~~Display feedback data on the home/index page~~            _- Oliver (29/04/24)_
-  * Add a popup to the filter button containing the options
+* Make the filter and sort buttons 
+  * ~~Display feedback data on the home/index page~~               _- Oliver (29/04/24)_
   * Add filters for:
-      *  resolved
-      *  urgency
-      *  date range (1 hour, 1 day, 1 week, 1 month, All time)
-      *  rating points 
-      *  tags
-  * ~~Search bar for feedback titles~~                          _-Oliver (30/04/24)_
+      *  ~~resolved~~                                              _-Oliver (30/04/24)_
+      *  ~~urgency~~
+      *  ~~date range (1 hour, 1 day, 1 week, 1 month, All time)~~ _-Oliver (30/04/24)_
+      *  tags (Might add this as an optional task later)
+  * Add sorting for:
+      * ~~Date Ranges~~                                            _-Oliver (30/04/24)_
+      * ~~RatingPoints~~                                           _-Oliver (30/04/24)_
+  * ~~Search bar for feedback titles~~                             _-Oliver (30/04/24)_
 
 * Feedback page
   * Implement feedback rating system
@@ -41,20 +43,20 @@
   * Create page (Contains posts relevant to a specific course)
   * Allow for individual course pages by linking with database
  
-* Inbox page
+* Inbox page - Marco - In progress
   * Create page (Contains user notifications on updates to their personal and subscribed posts)
   * Display feedback data on the inbox page
   * Add an observer to subscribe and get updates to courses and comments (Design Pattern)
 
 * Profile page
-  * Allow for individual profile pages per account to replace the template
+  * <s>Allow for individual profile pages per account to replace the template</s>
   * Add edit profile functionality
       * Upload profile picture     _(Please only allow for .jpg and .png files thank you :) - Oliver)_
       * Edit about section
       * Edit personal information
 
 * Settings page
-  * Update "change password" button functionality on settings page
+  * changePassword.php has now been created, but the form to change the password isn't functional
   * (OPTIONAL) Add additional user settings
 
 * Admin/Moderation page
