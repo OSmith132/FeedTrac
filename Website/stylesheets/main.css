@@ -179,22 +179,36 @@ LOGIN.PHP, SIGNUP.PHP, RECOVERPASSWORD.PHP AND REREGISTERPASSWORD.PHP
 .form {
     color: white;
     text-align: center;
-    width: 20%;
+    width: 50%;
     margin: auto;
     border-radius: 10px;
-    padding: 30px;
+    padding: 16px;
     background-color: var(--a);
     border-bottom: 1px solid var(--e);
+
+    /* Use a flexbox instead of hardcoding <br> tags */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form form label {
+    display: flex;
+    flex-direction: column;
 }
 
 .form input {
-    width: 80%;
 }
 
 .form input[type="submit"] {
     color: white;
     background-color: var(--accent-bright);
-    width: 50%;
     border-radius: 8px;
     font-weight: bold;
     padding: 4px;

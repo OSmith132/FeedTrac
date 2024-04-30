@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>FeedTrac</title>
+    <title>Sign Up - FeedTrac</title>
 
     <link rel="icon" type="image/x-icon" href="assets/icon.png">
 
@@ -89,13 +89,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 		<!-- Main -->
 		<main>
-			<h1>This is the Sign-Up page</h1><br>
+			<h1>Sign Up</h1>
 
 			<div class="form">
-				<a href="login.php">Log In</a>
-
-				<!-- Form Header -->
-				<h2>Sign Up</h2>
+                <a href="login.php">Already signed up? Login here instead.</a>
 
                 <!-- Form -->
 				<form action="signup.php" method="post">
