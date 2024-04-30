@@ -54,7 +54,7 @@
       * Edit personal information
 
 * Settings page
-  * Update "change password" button functionality on settings page
+  * <ins>Update "change password" button functionality on settings page (Earl is currently working on this)</ins>
   * (OPTIONAL) Add additional user settings
 
 * Admin/Moderation page
