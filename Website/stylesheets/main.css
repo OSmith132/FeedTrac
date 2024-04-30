@@ -136,6 +136,13 @@ FOOTER.HTML
 ==================================================================
 */
 footer {
+
+    width:100%;
+    height:50px;
+    position:absolute;
+    bottom:0;
+    left:0;
+    
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -298,16 +305,21 @@ INDEX.PHP
 */
 .index-header {
     display: flex;
+    justify-content: center; 
+    align-items: center; 
     gap: 16px;
-    align-items: center;
+    width: 75%;
+    padding-top: 32px;
+    padding-bottom: 16px;
 }
+
 .index-header button {
     background-color: var(--accent-bright);
     border: none;
     border-radius: 8px;
     color: white;
     font-size: 16px;
-    padding: 8px;
+    padding: 8px 16px; /* Uniform padding */
     transition: background-color 0.3s ease;
 }
 .index-header button:hover {
@@ -315,13 +327,18 @@ INDEX.PHP
     cursor: pointer;
 }
 .index-main {
-    margin: 16px;
+    margin: 16px auto;
+    width: 75%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     gap: 16px;
-    text-align: left;
+    align-items: center;
+    text-align: center;
 }
+
+
+
 .search-bar {
     background-color: var(--a);
     border-radius: 8px;
