@@ -181,7 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		</main>
 
         <!-- Footer -->
-        <?php include("footer.html"); ?>
+        <div class="footer-position"><?php include("footer.php"); ?></div>
 
     </body>
 </html>

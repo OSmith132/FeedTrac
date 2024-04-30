@@ -52,6 +52,7 @@ $Feedback_View = new FeedbackView($user_data['userID']);
     <!-- Main -->
     <main>
         <h1>[Show feedback items relevant to the user's course]</h1>
+        
         <div class="index-main">
             <div class="index-header">
 
@@ -199,7 +200,7 @@ $Feedback_View = new FeedbackView($user_data['userID']);
         </div>
     </main>
     <!-- Footer -->
-    <footer class="footer"> <?php include("footer.html"); ?> </footer>
+    <div class="footer-position"><?php include("footer.php"); ?></div>
 </body>
 
 </html>

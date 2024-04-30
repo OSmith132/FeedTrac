@@ -46,6 +46,6 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
         <main><h1>Create New Feedback Page</h1></main>
 
         <!-- Footer -->
-        <?php include("footer.html"); ?>
+        <div class="footer-position"><?php include("footer.php"); ?></div>
     </body>
 </html>
