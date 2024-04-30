@@ -199,11 +199,14 @@ LOGIN.PHP, SIGNUP.PHP, RECOVERPASSWORD.PHP AND REREGISTERPASSWORD.PHP
 }
 
 .form form label {
+    font-weight: bold;
     display: flex;
     flex-direction: column;
 }
 
-.form input {
+.form form label label {
+    font-weight: normal;
+    display: inline;
 }
 
 .form input[type="submit"] {

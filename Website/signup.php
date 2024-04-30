@@ -104,12 +104,20 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <input type="text" name="username" required>
                     </label>
 
-                    <label>Password
-                        <input type="password" name="password" required minlength="8">
+                    <label>Password<br>
+                        <input type="password" id="password" name="password" required minlength="8">
+
+                        <label>Show Characters
+                            <input type="checkbox" onclick="togglePasswordVisibility('password')">
+                        </label>
                     </label>
 
-                    <label>Confirm Password
-                        <input type="password" name="confirmPassword" required minlength="8">
+                    <label>Confirm Password<br>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required minlength="8">
+
+                        <label>Show Characters
+                            <input type="checkbox" onclick="togglePasswordVisibility('confirmPassword')">
+                        </label>
                     </label>
 
                     <label>First Name
