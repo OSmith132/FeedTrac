@@ -17,6 +17,16 @@ $user_data = $Login_Controller->force_login();
 $Feedback_Controller = new FeedbackContr($user_data['userID']);
 
 
+$course= $user_data["courseID"];
+
+$users = $Feedback_Controller->list_users($course);
+
+
+
+
+
+echo $course;
+
 
 // Check if the form has been submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -30,13 +40,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST['title'];
     $text = $_POST['text'];
 
-  
-        // Call new_feedback with the form data
-        $Feedback_Controller->new_feedback($roomID, $date, $urgency, $resolved, $closed, $title, $text);
-        $Feedback_Controller->sub_alert();
 
+    // Call new_feedback with the form data
+    $Feedback_Controller->new_feedback($roomID, $date, $urgency, $resolved, $closed, $title, $text);
 
-    
+    foreach ($users as $user) {
+        echo $user['userID'] . "\n";
+        $Feedback_Controller->sub_alert($user['userID']);
+    }   
     
 }
 

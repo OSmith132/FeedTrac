@@ -28,11 +28,11 @@ class FeedbackContr extends Feedback {
     }
 
      // Create a new alert for subbed users
-     public function sub_alert(){
+     public function sub_alert($userID){
 
          
          // Create new feedback
-         $this->alert();
+         $this->alert($userID);
      
      }
 
@@ -81,6 +81,12 @@ class FeedbackContr extends Feedback {
     public function list_rooms(){ // positiveRating: bool    feedbackID: int    userID: int
 
         return $this->get_rooms();
+
+    }
+
+    public function list_users($course){ // positiveRating: bool    feedbackID: int    userID: int
+
+        return $this->get_users($course);
 
     }
 

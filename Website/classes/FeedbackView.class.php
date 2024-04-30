@@ -16,6 +16,13 @@ class FeedbackView extends Feedback {
        return $this->get_all_rows();
    }
 
+     // Get all feedback items from the database
+     public function get_inbox_feedback($dateTime){
+
+        // Update the rating points of a feedback item
+        return $this->get_all_rows_inbox($dateTime);
+    }
+
     // Gets all user info (including name, email, and course) for a feedback item
    public function get_user_info($feedbackID){
 
