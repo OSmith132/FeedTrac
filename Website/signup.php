@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 include ("classes/Database.class.php");
@@ -24,31 +23,28 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 	// Check if all fields are filled
 	if (count($postData) == count(array_filter($postData))) {
-
 		$email = $postData['email'];
 		$username = $postData['username'];
-		$password1 = $postData['password1'];
-		$password2 = $postData['password2'];
-		$fname = $postData['fname'];
-		$lname = $postData['lname'];
+		$password = $postData['password'];
+		$confirmPassword = $postData['confirmPassword'];
+		$firstName = $postData['firstName'];
+		$lastName = $postData['lastName'];
 		$courseID = $postData['course'];
 		$yearOfStudy = $postData['yearOfStudy'];
 		$pronouns = $postData['pronouns'];
 		$position = $postData['position'];
 
-
-
 		// Check if the username or email is already taken
 		if (!$Login_Controller->exists_username_email($username, $email)) {
 
 			// Check if the passwords match
-			if ($password1 == $password2) {
+			if ($password == $confirmPassword) {
 
 				//save to database (userID is an auto-incrementing integer, so we don't need to specify it in the query)
 				// Password encryption implementation, usign password hash, by assigning Password_default as the algo, the latest best algorithm for encryption will be picked, even if updated.
-				$hashed_password = password_hash($password1, PASSWORD_DEFAULT);
+				$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 				// change query to input correct course id
-				$Login_Controller->sign_up($email, $username, $hashed_password, $fname, $lname, $courseID, $yearOfStudy, $pronouns, $position);
+				$Login_Controller->sign_up($email, $username, $hashed_password, $firstName, $lastName, $courseID, $yearOfStudy, $pronouns, $position);
 
 				header("Location: login.php");
 				die;
@@ -68,10 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		$error = "<span style='color: red;'>Please enter a valid username and password</span><br><br>";
 	}
 }
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en-gb">
 <head>
@@ -92,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </head>
 	<body>
 		<!-- Header -->
-		<?php include("header.php"); ?>
+		<?php include("header.php");?>
 
 		<!-- Main -->
 		<main>
@@ -101,87 +94,86 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			<div class="form">
 				<a href="login.php">Log In</a>
 
-				<!-- Sign-Up Form -->
-				<h2>Sign Up:</h2>
+				<!-- Form Header -->
+				<h2>Sign Up</h2>
+
+                <!-- Form -->
 				<form action="signup.php" method="post">
-				
-					Email:<br>
-					<input type="text" name="email" required>
-					<br><br>
-					
-					Username:<br>
-					<input type="text" name="username" required>
-					<br><br>
-					
-					Password:<br>
-					<input type="password" name="password1" required>
-					<br><br>
+                    <label>Email
+                        <input type="email" name="email" required>
+                    </label>
 
-					Confirm Password:<br>
-					<input type="password" name="password2" required>
-					<br><br>
-				
-					First Name:<br>
-					<input type="text" name="fname" required>
-					<br><br>
-				
-					Last Name:<br>
-					<input type="text" name="lname" required>
-					<br><br>
+                    <label>Username
+                        <input type="text" name="username" required>
+                    </label>
 
+                    <label>Password
+                        <input type="password" name="password" required>
+                    </label>
 
-					
+                    <label>Confirm Password
+                        <input type="password" name="confirmPassword" required>
+                    </label>
 
-					<!-- Maybe add reading avalable courses from the DB -->
-					<select name="course">
-						<option selected disabled hidden>Select Course</option>
+                    <label>First Name
+                        <input type="text" name="firstName" required>
+                    </label>
 
-						<?php 
-							// Get all courses from the database
-							$courses = $Login_Controller->get_courses();
-							
-							// Get each course
-							foreach ($courses as $course) {?>
+                    <label>Last Name
+                        <input type="text" name="lastName" required>
+                    </label>
 
-								<option value= <?php echo $course["courseID"] ?> > <?php echo $course["name"] ?></option> 
+                    <!-- TODO: Going forwards the database will support choosing multiple courses, so we will need to modify this element to reflect that! -->
+                    <label>Course
+                        <select name="course" required>
+                            <option value="">None</option>
+                            <?php
+                            // Get all courses from the database
+                            $courses = $Login_Controller->get_courses();
 
-							<?php } ?>
-						
-						
+                            // Add each course as an option element
+                            foreach ($courses as $course) {?>
+                                <option value=<?php echo $course["courseID"] ?>><?php echo $course["name"] ?></option>
+                            <?php } ?>
+                        </select>
+                    </label>
 
-					</select><br><br>
+                    <label>Year of Study
+                        <select name="yearOfStudy" required>
+                            <option value="">None</option>
+                            <option value="1">1st</option>
+                            <option value="2">2nd</option>
+                            <option value="3">3rd</option>
+                            <option value="4">4th</option>
+                        </select>
+                    </label>
 
-					<select name="yearOfStudy">
-						<option selected disabled hidden>Select Year</option>
-						<option value="1" >1</option>
-						<option value="2" >2</option>
-						<option value="3" >3</option>
-						<option value="4" >4</option>
-					</select><br><br>
-					
-					<select name="pronouns">
-						<option selected disabled hidden>Select Pronouns</option>
-						<option value="hehim" >He/Him</option>
-						<option value="sheher" >She/Her</option>
-						<option value="other" >Other</option>
-					</select><br><br>
-					
-					<select name="position">
-						<option selected disabled hidden>Select Position</option>
-						<option value="student" >Student</option>
-						<option value="staff" >Staff</option>
-						<option value="admin" >Admin</option>
-					</select><br><br>
+                    <label>Pronouns
+                        <select name="pronouns" required>
+                            <option value="">None</option>
+                            <option value="hehim">He/Him</option>
+                            <option value="sheher">She/Her</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </label>
 
-					<div><?php echo $error ?></div>
+                    <label>Position
+                        <select name="position" required>
+                            <option value="">None</option>
+                            <option value="student">Student</option>
+                            <option value="staff">Staff</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </label>
 
-					<input type="submit" value="Sign Up">
-				</form>
+                    <div><?php echo $error;?></div>
+
+                    <input type="submit" value="Sign Up">
+                </form>
 			</div>
 		</main>
 
         <!-- Footer -->
-        <div class="footer-position"><?php include("footer.php"); ?></div>
-
+        <div class="footer-position"><?php include("footer.php");?></div>
     </body>
 </html>
