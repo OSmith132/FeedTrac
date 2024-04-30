@@ -16,16 +16,25 @@ class FeedbackContr extends Feedback {
     // Create a new feedback item
     public function new_feedback($roomID, $date, $urgency, $resolved, $closed, $title, $text){
 
-        // Check if any input is empty
-        if ($this->empty_input_check($date, $urgency, $resolved, $closed, $title, $text)){
-            header("location: feedback.php?error=emptyinput");
-            exit();
-        }
+       // Check if any input is empty
+       if ($this->empty_input_check($date, $urgency, $resolved, $closed, $title, $text)){
+        header("location: feedback.php?error=emptyinput");
+        exit();
+    }
 
         // Create new feedback
         $this->create_feedback($this->userID, $roomID, $date, $urgency, $resolved, $closed, $title, $text);
     
     }
+
+     // Create a new alert for subbed users
+     public function sub_alert(){
+
+         
+         // Create new feedback
+         $this->alert();
+     
+     }
 
     // Update existing feedback item
     public function set_feedback($feedbackID, $roomID, $date, $urgency, $resolved, $closed, $title, $text){
@@ -69,6 +78,11 @@ class FeedbackContr extends Feedback {
     }
 
 
+    public function list_rooms(){ // positiveRating: bool    feedbackID: int    userID: int
+
+        return $this->get_rooms();
+
+    }
 
     
     

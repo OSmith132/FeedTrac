@@ -70,7 +70,7 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
                 <div class="change-picture">
                     <form action="profile.php" method="post" enctype="multipart/form-data" class="upload-form">
                         <label for="profile-picture">Upload a profile picture:</label><br>
-                        <input type="file" accept="image/*"><br>
+                        <input type="file" accept="image/jpeg, image/png"><br>
                         <input type="submit" value="Upload" class="profile-button">
                     </form>
                 </div>
