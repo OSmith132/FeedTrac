@@ -51,17 +51,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			}
 			else
 			{
-				$error = "<span style='color: red;'>Passwords do not match</span><br><br>";
+				$error = "Passwords do not match";
 			}
 		}
 		else
 		{
-			$error = "<span style='color: red;'>Username or email already taken</span><br><br>";
+			$error = "Username or email already taken";
 		}
 	}
 	else 
 	{
-		$error = "<span style='color: red;'>Please enter a valid username and password</span><br><br>";
+		$error = "Please enter a valid username and password";
 	}
 }
 ?>
@@ -166,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         </select>
                     </label>
 
-                    <div><?php echo $error;?></div>
+                    <p style="color: red"><?php echo $error;?></p>
 
                     <input type="submit" value="Sign Up">
                 </form>
