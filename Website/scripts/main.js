@@ -59,17 +59,17 @@ function clickableRow() {
 
 //Settings.php popup form
 //Open form
-function openForm() {
-    document.getElementById("deletion-form").style.visibility = "visible"
-    document.getElementById("deletion-form").style.opacity = 1;
+function openForm(formID) {
+    document.getElementById(formID).style.visibility = "visible"
+    document.getElementById(formID).style.opacity = 1;
 }
 
 //Close form
-function closeForm() {
+function closeForm(formID) {
     setTimeout(function() {
-        document.getElementById("deletion-form").style.visibility = "hidden";
+        document.getElementById(formID).style.visibility = "hidden";
     }, 300);
-    document.getElementById("deletion-form").style.opacity = 0;
+    document.getElementById(formID).style.opacity = 0;
 }
 
 // Old Functions
