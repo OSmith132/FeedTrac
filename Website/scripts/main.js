@@ -72,6 +72,16 @@ function closeForm(formID) {
     document.getElementById(formID).style.opacity = 0;
 }
 
+function togglePassword(passwordID) {
+    var x = document.getElementById(passwordID);
+    if (x.type === "password") {
+        x.type = "text";
+    }
+    else{
+        x.type = "password";
+    }
+}
+
 // Old Functions
 // function darkMode() {
 //     let element = document.body;
