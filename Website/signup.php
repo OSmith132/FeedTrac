@@ -108,11 +108,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     </label>
 
                     <label>Password
-                        <input type="password" name="password" required>
+                        <input type="password" name="password" required minlength="8">
                     </label>
 
                     <label>Confirm Password
-                        <input type="password" name="confirmPassword" required>
+                        <input type="password" name="confirmPassword" required minlength="8">
                     </label>
 
                     <label>First Name
