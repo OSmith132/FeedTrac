@@ -104,10 +104,11 @@ header {
     height: 32px;
     width: 32px;
     transition: background-color 0.3s ease;
+    transition: border-color 0.3s ease;
 }
 .header-right button:hover {
     background-color: var(--b);
-    border-color: var(--e);
+    border-color: var(--accent-bright);
 }
 .avatar {
     border-radius: 16px;
@@ -120,13 +121,15 @@ header {
     visibility: hidden;
     opacity: 0;
     position: absolute;
-    box-shadow: 2px 2px 5px var(--a);
+    border-radius: 8px;
     background-color: var(--a);
     transition: opacity 0.5s ease;
+    transition: box-shadow 2s ease;
 }
 .dropdown:hover .dropdown-content {
     visibility: visible;
     opacity: 1;
+    box-shadow: 0px 15px 70px var(--accent-bright);
 }
 
 /*
@@ -166,7 +169,7 @@ DARK / LIGHT MODE
 
 /*
 ==================================================================
-LOGIN.PHP, SIGNUP.PHP, RECOVERPASSWORD AND REREGISTERPASSWORD.PHP
+LOGIN.PHP, SIGNUP.PHP, RECOVERPASSWORD.PHP AND REREGISTERPASSWORD.PHP
 ==================================================================
 */
 .form {
