@@ -7,6 +7,8 @@
 
     <div class="header-right">
 
+    
+
         <!-- Light/dark Mode switch -->
         <button title="Toggle Dark Mode" id="lightbulb-toggle" onclick="lightMode()"> <!-- Frontend crew might want to change the id to a class if you want to use this function for multiple elements -->
             <i id="lightbulb-symbol" class="fa-regular fa-lightbulb"></i>
@@ -24,7 +26,7 @@
 
         <!-- Profile -->
         <div class="dropdown">
-            <a title="Profile" id="profile-button" href="#" style="display: none;">
+            <a title="Profile" id="profile-button" href="profile.php" style="display: none;">
                 <img style="margin-right: 10px;" class="avatar" src="<?php 
                                                 // Get user info and find either jpg or png profile picture
                                                 $userID = $_SESSION['userID'];

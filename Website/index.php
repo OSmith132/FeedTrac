@@ -55,9 +55,11 @@ $Feedback_View = new FeedbackView($user_data['userID']);
         <div class="index-main">
             <div class="index-header">
 
+
+
             
                 <!-- Search-bar functionality -->
-                <form method="POST" action="index.php" id="index-form">
+                <form method="POST" action="index.php" id="index-search-form">
 
                     <input type="hidden" name="action" value="search">
 
@@ -67,12 +69,108 @@ $Feedback_View = new FeedbackView($user_data['userID']);
 
                 </form>
 
+                <!-- Filter Methods -->
+                <div class="index-toggle-box">
+                    <h2>Toggle Options</h2>
 
-                <!-- Filter Button -->
-                <button onclick="">Filter</button>
+                    <!-- Resolved/Unresolved Toggle -->
+                    <div class="index-toggle-option">
+                        <label>
+                            <input type="checkbox" name="resolved" value="resolved"> Resolved
+                        </label>
+                    </div>
 
-                <!-- New Feedback Button -->
-                <button onclick="window.location.href = 'newFeedback.php'">New Feedback</button>
+                    <!-- Urgency Level Slider -->
+                    <div class="index-toggle-option">
+                        <label for="urgency">Urgency:</label>
+                        <input type="range" id="urgency" name="urgency" min="0" max="4" value="0" list="urgency-levels">
+                        <datalist id="urgency-levels">
+                            <option value="0">All</option>
+                            <option value="1">Low</option>
+                            <option value="2">Medium</option>
+                            <option value="3">High</option>
+                            <option value="4">Critical</option>
+                        </datalist>
+                        <span id="urgency-value">All</span>
+                    </div>
+
+                    <!-- Timeframe Slider -->
+                    <div class="index-toggle-option">
+                        <label for="timeframe">Timeframe:</label>
+                        <input type="range" id="timeframe" name="timeframe" min="0" max="4" value="4" list="timeframe-options">
+                        <datalist id="timeframe-options">
+                            <option value="0">1 Hour</option>
+                            <option value="1">1 Day</option>
+                            <option value="2">1 Week</option>
+                            <option value="3">1 Month</option>
+                            <option value="4">All Time</option>
+                        </datalist>
+                        <span id="timeframe-value">All Time</span>
+                    </div>
+                    <button type="submit">Apply Filters</button>
+                </div>
+
+
+
+
+                <!-- JS to change sliders when sliding -->
+                <script>
+                    //Update urgency value when slider is moved
+                    const urgencyInput = document.getElementById('urgency');
+                    const urgencyValue = document.getElementById('urgency-value');
+                    urgencyInput.addEventListener('input', () => {
+                        urgencyValue.textContent = 
+                        urgencyInput.value === '0' ? 'All' :
+                        urgencyInput.value === '1' ? 'Low' : 
+                        urgencyInput.value === '2' ? 'Medium' :
+                        urgencyInput.value === '3' ? 'High':
+                        'Critial';
+                    });
+
+                    //Update timeframe value when slider is moved
+                    const timeframeInput = document.getElementById('timeframe');
+                    const timeframeValue = document.getElementById('timeframe-value');
+                    timeframeInput.addEventListener('input', () => {
+                        timeframeValue.textContent = 
+                        timeframeInput.value === '0' ? '1 Hour' : 
+                        timeframeInput.value === '1' ? '1 Day' : 
+                        timeframeInput.value === '2' ? '1 Week' : 
+                        timeframeInput.value === '3' ? '1 Month' : 
+                        'All Time';
+                    });
+                </script>
+
+
+
+
+                <!-- Sort Methods -->
+                <div class="sort-box">
+                    <h2>Sort Options</h2>
+                    <div class="index-sort-option">
+                        <label for="sort-by-rating">Sort by Rating Points:</label>
+                        <select id="sort-by-rating" name="sort-by-rating">
+                            <option value="asc">Lowest to Highest</option>
+                            <option value="desc">Highest to Lowest</option>
+                        </select>
+                    </div>
+                    <div class="index-sort-option">
+                        <label for="sort-by-date">Sort by Date:</label>
+                        <select id="sort-by-date" name="sort-by-date">
+                            <option value="asc">Oldest to Newest</option>
+                            <option value="desc">Newest to Oldest</option>
+                        </select>
+                    </div>
+                    <button type="submit">Apply Sorting</button>
+                </div>
+
+
+
+
+
+                        
+
+                <!-- New Feedback Button
+                <button onclick="window.location.href = 'newFeedback.php'">New Feedback</button> -->
             </div>
 
 
