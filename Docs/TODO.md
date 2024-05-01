@@ -29,9 +29,11 @@
       *  ~~date range (1 hour, 1 day, 1 week, 1 month, All time)~~ _-Oliver (30/04/24)_
       *  tags (Might add this as an optional task later)
   * Add sorting for:
-      * ~~Date Ranges~~                                            _-Oliver (30/04/24)_   WIP
-      * ~~RatingPoints~~                                           _-Oliver (30/04/24)_   WIP
+      * ~~Date Ranges~~                                            _-Oliver (30/04/24)_
+      * ~~RatingPoints~~                                           _-Oliver (30/04/24)_
   * ~~Search bar for feedback titles~~                             _-Oliver (30/04/24)_
+  * ~~Allow the user to press on row and redirect to feedback~~    _-Oliver (01/5/24)_
+  
 
 * Feedback page - Marco - starting soon
   * Implement feedback rating system
@@ -67,8 +69,8 @@
   * (OPTIONAL) Only the relevant staff to recieve the feedback
 
 * Database
-  * Ensure that the database includes tables for all necessary data and add fake data to help with testing
-  * ~~Add ability to store profile pictures on the database~~  _-Oliver (29/04/24)_
+  * ~~Ensure that the database includes tables for all necessary data and add fake data to help with testing~~   _-Oliver (01/5/24)_
+  * ~~Add ability to store profile pictures on the database~~                                                    _-Oliver (29/04/24)_
 
 ---
 
