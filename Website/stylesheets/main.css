@@ -172,9 +172,9 @@ DARK / LIGHT MODE
 }
 
 /*
-==================================================================
-LOGIN.PHP, SIGNUP.PHP, RECOVERPASSWORD.PHP AND REREGISTERPASSWORD.PHP
-==================================================================
+==========================================================================================
+LOGIN.PHP, SIGNUP.PHP, RECOVERPASSWORD.PHP, REREGISTERPASSWORD.PHP AND CHANGEPASSWORD.PHP
+==========================================================================================
 */
 .form {
     color: white;
@@ -217,6 +217,7 @@ LOGIN.PHP, SIGNUP.PHP, RECOVERPASSWORD.PHP AND REREGISTERPASSWORD.PHP
     padding: 4px;
     cursor: pointer;
     border: none;
+    
     transition: background-color 0.3s ease;
 }
 

@@ -83,7 +83,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     <label>Enter your password to confirm account deletion:</label><br><br>
 
                     <label>Password:</label>
-                    <input type="password" name="password" placeholder="Enter Password" required><br><br>
+                    <input type="password" name="password" id="password" placeholder="Enter Password" required><br><br>
+
+                    <label style="display: inline-block; font-weight: normal;">
+                        <input type="checkbox" onclick="togglePasswordVisibility('password')"> Show Characters<br>
+                    </label><br><br>
 
                     <label style="color:red;">Warning: This action cannot be undone</label><br><br>
 

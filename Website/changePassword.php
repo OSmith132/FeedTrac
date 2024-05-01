@@ -68,24 +68,25 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             <div class="form">
 
                 <!-- Login Form -->
-                <h2>Change Password:</h2><hr><br>
+                <h2>Change Password:</h2>
                 <form action="changePassword.php" method="post">
 
-                    Enter new password:<br><br>
+                    Enter new password:
                     <input type="password" name="password1" id="password1" required>
-                    <br><br>
 
-                    <input type="checkbox" onclick="togglePassword('password1')">Show Password<br><br>
-                    <hr><br>
+                    <label style="display: inline-block; font-weight: normal;">
+                        <input type="checkbox" onclick="togglePasswordVisibility('password1')"> Show Characters<br>
+                    </label>
+                    <br>
 
-                    Confirm new password:<br><br>
+                    Confirm new password:
                     <input type="password" name="password2" id="password2" required>
-                    <br><br>
 
-                    <input type="checkbox" onclick="togglePassword('password2')">Show Password<br><br>
-
+                    <label style="display: inline-block; font-weight: normal;">
+                        <input type="checkbox" onclick="togglePasswordVisibility('password2')"> Show Characters<br>
+                    </label>
                     <div><?php echo $message ?></div>
-                    <hr><br>
+                    <br>
 
                     <input type="submit" value="Submit">
                 </form>
