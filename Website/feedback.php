@@ -3,7 +3,6 @@
 
 session_start();
 
-
 include ("classes/Database.class.php");
 include ("classes/login.class.php");
 include ("classes/LoginContr.class.php");
@@ -13,6 +12,16 @@ include ("scripts/functions.php");
 
 $Login_Controller = new LoginContr();
 $user_data = $Login_Controller->force_login();
+
+
+
+// Get the feedbackID from the URL
+//if (isset($_GET['id'])) {
+    $feedbackID = $_GET['id'];                 // THIS IS THE ID THAT SHOULD BE READ FROM THE DB -----------
+//}
+
+
+
 
 ?>
 
