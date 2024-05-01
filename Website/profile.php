@@ -85,11 +85,16 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
         <!-- Main -->
         <div>
-            <h1><?php echo $Login_Controller->get_current_user_username();?></h1>
+            <h1><?php
+                echo "Profile for ";
+                echo $Login_Controller->get_current_user_first_name();
+                echo " ";
+                echo $Login_Controller->get_current_user_last_name();
+            ?></h1><hr><br>
             <!-- Content -->
             <div class="profile-content">
                 <div class="user-picture">
-                    <h3>Profile Picture:</h3>
+                    <h3>Profile Picture</h3><hr><br>
                     <img class="avatar" src="<?php
                     // Get user info and find either jpg or png profile picture
                     $userID = $_SESSION['userID'];
@@ -103,11 +108,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                         echo $png_path;
                     } else {
                         echo "assets/profile-pictures/user-default.jpg";
-                    }?>" alt="User Avatar" height="200">
+                    }?>" alt="User Avatar" height="250">
+                    <br><br>
                 </div>
 
                 <div class="user-description">
-                    <h3>About:</h3>
+                    <h3>About</h3><hr><br>
 
                     <p contenteditable="false" id="description_text_box"><?php
                         $bio = $Login_Controller->get_current_user_description();
@@ -121,15 +127,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 </div>
 
                 <div class="user-data">
-                    <h3>Personal Information:</h3>
-                    <ul>
-                        <li>Email: <?php echo $Login_Controller->get_current_user_email();?></li>
-                        <li>Username: <?php echo $Login_Controller->get_current_user_username();?></li>
-                        <li>First Name: <?php echo $Login_Controller->get_current_user_first_name();?></li>
-                        <li>Last Name: <?php echo $Login_Controller->get_current_user_last_name();?></li>
-                        <li>Year of Study: <?php echo $Login_Controller->get_current_user_study_year();?></li>
-                        <li>Pronouns: <?php echo $Login_Controller->get_current_user_pronouns();?></li>
-                        <li>Position: <?php echo $Login_Controller->get_current_user_position();?></li>
+                    <h3>Personal Information</h3><hr><br>
+                    <ul style="list-style-type: none">
+                        <li><b>- Email:</b> <?php echo $Login_Controller->get_current_user_email();?></li><br>
+                        <li><b>- Username:</b> <?php echo $Login_Controller->get_current_user_username();?></li><br>
+                        <li><b>- First Name:</b> <?php echo $Login_Controller->get_current_user_first_name();?></li><br>
+                        <li><b>- Last Name:</b> <?php echo $Login_Controller->get_current_user_last_name();?></li><br>
+                        <li><b>- Year of Study:</b> <?php echo $Login_Controller->get_current_user_study_year();?></li><br>
+                        <li><b>- Pronouns:</b> <?php echo $Login_Controller->get_current_user_pronouns();?></li><br>
+                        <li><b>- Position:</b> <?php echo $Login_Controller->get_current_user_position();?></li><br>
                     </ul>
                 </div>
 
@@ -139,9 +145,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
             <div class="edit-profile">
                 <div class="change-picture">
                     <form action="profile.php" method="post" enctype="multipart/form-data" class="upload-form">
-                        <label for="profile-picture">Upload a profile picture:</label><br>
-                        <input type="file" accept="image/png"  name="fileToUpload" id="fileToUpload"><br>
-                        <input type="submit" name="Upload" value="Picture" class="profile-button">
+                        <label for="profile-picture">Upload a profile picture:</label><br><br>
+                        <input type="file" accept="image/png"  name="fileToUpload" id="fileToUpload"><br><br>
+                        <input type="submit" name="Upload" value="Upload" class="profile-button">
                     </form>
                 </div>
 
