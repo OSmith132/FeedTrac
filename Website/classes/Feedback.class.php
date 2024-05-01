@@ -49,14 +49,14 @@ class Feedback extends Database
 
 
     // Create new feedback
-    protected function create_feedback($userID, $roomID, $date, $urgency, $resolved, $closed, $title, $text)
+    protected function create_feedback($userID, $roomID, $urgency, $resolved, $closed, $title, $text)
     {
 
         // Connect  to database and create new feedback item
-        $stmt = $this->connect()->prepare("INSERT INTO feedback (userID, roomID, date, urgency, resolved, closed, title, text, ratingPoints) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 0)");
+        $stmt = $this->connect()->prepare("INSERT INTO feedback (userID, roomID, urgency, resolved, closed, title, text, ratingPoints) VALUES (?, ?, ?, ?, ?, ?, ?, 0)");
 
         // Check if the SQL query is valid
-        if (!$stmt->execute([$userID, $roomID, $date, $urgency, $resolved, $closed, $title, $text])) {
+        if (!$stmt->execute([$userID, $roomID, $urgency, $resolved, $closed, $title, $text])) {
             header("location: profile.php?error=BadSQLQuery");
             exit();
         }

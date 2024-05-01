@@ -22,9 +22,6 @@ $course= $user_data["courseID"];
 $users = $Feedback_Controller->list_users($course);
 
 
-
-
-
 echo $course;
 
 
@@ -33,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
     // Get the form data
     $roomID = $_POST['roomID'];
-    $date = date("Y-m-d");
     $urgency = $_POST['urgency'];
     $resolved = 0; // Set this based on your form data
     $closed = 0; // Set this based on your form data
@@ -42,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // Call new_feedback with the form data
-    $Feedback_Controller->new_feedback($roomID, $date, $urgency, $resolved, $closed, $title, $text);
+    $Feedback_Controller->new_feedback($roomID, $urgency, $resolved, $closed, $title, $text);
 
     foreach ($users as $user) {
         echo $user['userID'] . "\n";
