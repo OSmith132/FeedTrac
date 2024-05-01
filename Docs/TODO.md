@@ -9,6 +9,7 @@
 ## GitHub:
 
 * Organise GitHub workflow with personal branches?
+* Update Flowchart (can put directly in report)
 
 ---
 
@@ -48,9 +49,10 @@
   * Add an observer to subscribe and get updates to courses and comments (Design Pattern)
 
 * Profile page
+  * Need to be able to see other users profile when clicking on their names
   * <s>Allow for individual profile pages per account to replace the template</s>
   * Add edit profile functionality
-      * Upload profile picture     _(Please only allow for .jpg and .png files thank you :) - Oliver)_
+      * ~~Upload profile picture~~  (only supports png upload) - _Toby (30/04/24)_
       * Edit about section
       * Edit personal information
 

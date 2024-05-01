@@ -176,6 +176,7 @@ CREATE TABLE `user` (
   `yearOfStudy` tinyint(10) UNSIGNED DEFAULT NULL,
   `pronouns` varchar(10) DEFAULT NULL,
   `position` varchar(25) NOT NULL,
+  `description` varchar(255),
   `activeAccount` tinyint(1) NOT NULL DEFAULT 1,
   `sub` tinyint(1) NOT NULL DEFAULT 1,
   `alert` smallint(5) UNSIGNED NOT NULL DEFAULT 0,
