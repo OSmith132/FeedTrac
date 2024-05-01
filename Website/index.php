@@ -33,7 +33,7 @@ $Feedback_View = new FeedbackView($user_data['userID']);
 </head>
 <body>
     <!-- Header -->
-    <?php include("header.php"); ?>
+    <?php include("header.php");?>
 
     <!-- Main -->
     <main>
@@ -144,7 +144,7 @@ $Feedback_View = new FeedbackView($user_data['userID']);
     </main>
 
     <!-- Footer -->
-    <div class="footer-position"><?php include("footer.php"); ?></div>
+    <div class="footer-position"><?php include("footer.php");?></div>
 
     <script>
         const rows = document.querySelectorAll(".clickable-row");
