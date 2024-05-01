@@ -70,6 +70,15 @@
     * Fixed the homepage so it now displays feedback reports correctly.
     * Added a folder to assets where profile pictures can be stored.
     * header and homepage now display custom profile pictures rather than the default image
+    * 
+ * ### _30/04/2024:_
+    * Homepage now allows for searching and filtering for feedback reports.
+    * Homepage has new UI for searching, Filtering, and sorting feedback reports.
+    * Feedback View class has many new methods for retrieving and formatting feedback and user data.
+    * Fixed error in datbase class that incorrectly flagged 0s as empty variables.
+    * Fixed footer on homepage to be in line with the rest of the page, and pushed to the bottom of the screen
+    * Created new CSS classes to align homepage items correctly as it has been bugging me for a while
+
    
 </details>
 
