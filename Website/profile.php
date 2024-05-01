@@ -57,11 +57,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 $uploadOk = 1;
                 $new_text = $_POST['Description_Text'];
                 //echo $new_text;
-                //if(sizeof($new_text) > 255) {
-                  //$uploadOk = 0;
-                  //echo "Text input is too long please restrict to 255 characters or less.";
-                //}
-                $Login_Controller->update_user_bio($new_text, $User_ID);
+                if(strlen($new_text) > 255) {
+                  $uploadOk = 0;
+                  echo "Text input is too long please restrict to 255 characters or less.";
+                }
+                if ($uploadOk = 1){
+                    $Login_Controller->update_user_bio($new_text, $User_ID);
+                }
         }
     }
 }
@@ -140,6 +142,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     </ul>
                 </div>
 
+
+
             </div>
 
             <!-- Buttons -->
@@ -166,6 +170,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                         function edit_description() {
                             // Allow users to enter info into the box
                             document.getElementById("description_text_box").contentEditable = "true";
+                            document.getElementById("description_text_box").style.backgroundColor = "grey"
                             // Switch button visibility
                             document.getElementById("description_edit_button").hidden =true;
                             document.getElementById("description_save_button").hidden = false;
@@ -173,6 +178,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                         function save_description() {
                             // Prevent users changing the info in the box
                             document.getElementById("description_text_box").contentEditable = "false";
+                            document.getElementById("description_text_box").style.backgroundColor = ""
                             // Switch button visibility
                             document.getElementById("description_edit_button").hidden = false;
                             document.getElementById("description_save_button").hidden = true;
