@@ -12,7 +12,7 @@ $Login_Controller = new LoginContr();
 $user_data = $Login_Controller->force_login();
 
 $Feedback_Controller = new FeedbackContr($user_data['userID']);
-
+$User_ID = $user_data['userID'];
 
 //!---TODO Add extra checks for image upload like size etc.
 //!---TODO need to overwrite images if they already exist.
@@ -26,7 +26,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
                 // Use the ID for the filename
-                $target_file = $target_dir . "user-" . $user_data['userID'] . '.' . $imageFileType;
+                $target_file = $target_dir . "user-" . $User_ID . '.' . $imageFileType;
 
                 // Check if image file is an actual image or fake image
                 if (isset($_POST["submit"])) {
@@ -51,18 +51,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     }
                 }
                 break;
+                //!----TODO guard clauses for input
             case 'Description':
                 // Upload flag
                 $uploadOk = 1;
                 $new_text = $_POST['Description_Text'];
                 //echo $new_text;
-                if(sizeof($new_text) > 255) {
-                  $uploadOk = 0;
-                  echo "Text input is too long please restrict to 255 characters or less.";
-                }
-
-
-
+                //if(sizeof($new_text) > 255) {
+                  //$uploadOk = 0;
+                  //echo "Text input is too long please restrict to 255 characters or less.";
+                //}
+                $Login_Controller->update_user_bio($new_text, $User_ID);
         }
     }
 }
@@ -117,7 +116,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 <div class="user-description">
                     <h3>About:</h3>
 
-                    <p contenteditable="false" id="description_text_box"><?php
+                    <p contenteditable="false" id="description_text_box" style="word-wrap: break-word;"><?php
                         $bio = $Login_Controller->get_current_user_description();
                         if (empty($bio)){
                             echo "Add some details about yourself..";
