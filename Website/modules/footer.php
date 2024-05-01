@@ -1,5 +1,3 @@
-<br>
-<hr>
 <footer>
     <p>© 2024 The FeedTrac Team</p>
 
@@ -12,6 +10,6 @@
     <a href="https://github.com/OSmith132/FeedTrac/issues">Contact</a>
 </footer>
 
-<!-- Include JavaScript -->
+<!-- Include main.js on every page that uses this footer -->
+<!-- This might be bad practice? IDK -->
 <script src="../scripts/main.js"></script>
-<hr>

@@ -144,7 +144,7 @@ $Feedback_View = new FeedbackView($user_data['userID']);
     </main>
 
     <!-- Footer -->
-    <div class="footer-position"><?php include("modules/footer.php");?></div>
+    <?php include("modules/footer.php");?>
 
     <script>
         const rows = document.querySelectorAll(".clickable-row");
