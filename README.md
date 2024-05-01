@@ -1,7 +1,7 @@
 # FeedTrac
 FeedTrac is a **feed**back **trac**king tool for universities. It was originally designed by second-year UoL Computer Science students for their Team Software Engineering module.
 
-## Setting up the website locally
+## Setting up the website
 1) Download and install XAMPP 8.2.12 (https://www.apachefriends.org/download.html)
 2) Download the `Website` folder from this repo
 3) Copy the contents of the `Website` folder to your local `..\xampp\htdocs` directory
