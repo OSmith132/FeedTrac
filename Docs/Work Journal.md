@@ -146,9 +146,43 @@
 <summary> 
   Log Of Tasks Completed:
 </summary>
-  
 
-  
+* ### _25/02/24:_
+  * Created a new FeedTrac logo and added it to the website
+  * Created an example feedback page
+  * Replaced the old homepage stub (a page with no actual content) with an example homepage
+  * Created main.js (inside of /scripts) for storing the website's JavaScript content
+  * Created main.css (inside of /stylesheets) for storing the website's CSS styles
+  * Applied the fully "open" Rubik font (https://fonts.google.com/specimen/Rubik) to all pages on the website
+  * Declared CSS variables for storing the website's main colour palette (--a, --b, etc.)
+
+* ### _29/03/24:_
+  * Rewrote the project's README.md to be more accurate, up to date and descriptive (including a warning for contributors about foreign key checks)
+  * Replaced the broken database files stored in the GitHub repo with the ones that Oliver and Marco were actually using
+
+* ### _28/04/24:_
+  * Tweaked various elements of the project's README.md
+  * Licensed the entire project under the GNU General Public License v3
+
+* ### _29/04/24:_
+  * Tweaked various elements of the project's README.md again
+  * Removed the redundant /.idea directory
+  * Renamed the /.Documentation directory to /Docs
+  * Renamed the /feedtrac directory to /Website
+  * Temporarily removed the active user check from the login page as the feature is not yet fully implemented
+  * Populated the profile page with actual user info
+  * Tidied and refactored the profile page
+  * Renamed and slightly refactored "protected function get_username_id($userID)"
+  * Added new (and refactored existing) getters for retrieving current (or any) user info
+
+* ### _30/04/24:_
+  * Redesigned the sign up page
+  * Prevented new users from providing invalid form data
+  * Reimplemented Earl's password visibility toggle
+
+* ### _01/05/24:_
+  * Tweaked README.md titles to be more consistent with each other
+
 </details>
 
 ## Marco
