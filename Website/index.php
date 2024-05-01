@@ -61,7 +61,7 @@ $Feedback_View = new FeedbackView($user_data['userID']);
 
                     <!-- Filter Methods -->
                     <div class="index-toggle-box">
-                        <h2>Filter Options</h2>
+                        <h2>Search Feedback</h2>
 
                         <input type="hidden" name="action" value="search">
 

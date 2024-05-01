@@ -110,8 +110,8 @@ foreach ($feedbackRows as $row) {
 
     
     $html .= '<tr class="clickable-row" data-id="';
-    $html .= 'feedback.php?feedbackID=' . $row['feedbackID'];
-    $html .=  '">'; // CHANGE THIS TO REDIRECT TO THE CORRECT FEEDBACK ITEM!!!!
+    $html .=  $row['feedbackID'];
+    $html .=  '">'; 
 
 
         // Status 
@@ -184,12 +184,16 @@ foreach ($feedbackRows as $row) {
             $html .= "assets/profile-pictures/user-default.jpg";
         }
 
-        $html .= '" alt="User Avatar" height="32" href="profile.php">';
+        $html .= '" alt="User Avatar" height="32" href="';
+        $html .= 'profile.php?id=' . $userInfo['userID'];
+        $html .=  '">'; 
 
 
 
         // Author Name
-        $html .= '<a href="profile.php">';
+        $html .= '<a href="';
+        $html .= 'profile.php?id=' . $userInfo['userID'];
+        $html .=  '">'; 
         $html .= $userInfo['username'];
         $html .= '</a>';
         $html .= '</div>';

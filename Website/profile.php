@@ -14,6 +14,19 @@ $user_data = $Login_Controller->force_login();
 $Feedback_Controller = new FeedbackContr($user_data['userID']);
 $User_ID = $user_data['userID'];
 
+
+
+
+// Get the feedbackID from the URL
+if (isset($_GET['id'])) {
+    $profileID = $_GET['id'];                 // THIS IS THE ID THAT SHOULD BE READ FROM THE DB IF NOT THE USER-----------
+}
+else {
+    $profileID = $User_ID;                    // ID DEFAULTS TO THE USERID
+}
+
+
+
 //!---TODO Add extra checks for image upload like size etc.
 //!---TODO need to overwrite images if they already exist.
 if($_SERVER['REQUEST_METHOD'] == "POST") {

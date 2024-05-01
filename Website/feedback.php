@@ -16,10 +16,12 @@ $user_data = $Login_Controller->force_login();
 
 
 // Get the feedbackID from the URL
-//if (isset($_GET['id'])) {
+if (isset($_GET['id'])) {
     $feedbackID = $_GET['id'];                 // THIS IS THE ID THAT SHOULD BE READ FROM THE DB -----------
-//}
-
+}
+else {
+    $feedbackID = 0;                           // WHEN ID = 0 IT WILL NEED TO SHOW A DEFAULT PAGE
+}
 
 
 
