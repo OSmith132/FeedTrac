@@ -70,7 +70,7 @@
     * Fixed the homepage so it now displays feedback reports correctly.
     * Added a folder to assets where profile pictures can be stored.
     * header and homepage now display custom profile pictures rather than the default image
-    * 
+      
  * ### _30/04/2024:_
     * Homepage now allows for searching and filtering for feedback reports.
     * Homepage has new UI for searching, Filtering, and sorting feedback reports.
@@ -78,6 +78,19 @@
     * Fixed error in datbase class that incorrectly flagged 0s as empty variables.
     * Fixed footer on homepage to be in line with the rest of the page, and pushed to the bottom of the screen
     * Created new CSS classes to align homepage items correctly as it has been bugging me for a while
+
+* ### _01/05/2024:_
+    * Used AJAX to apply filters, sorting, and searching in real time.
+    * Added file 'updateTable.php' to generate HTML script for table rows with posted information from the database.
+    * Created 3 new listeners to update filters, process row clicks, and call AJAX when appropriate.
+    * Added redirection for the table row (to the feedback.php page with the correct id tag in the url).
+    * Added redirection for the username and profile picture in the feedback row (to the profile.php page with an id tag in the url).
+    * Fixed the footer to make it always appear at the bottom of the page.
+    * Fixed bug that required form resubmission when reloading or using the browser's back/forward buttons by allowing essential data to be cached. This makes website traversal much smoother.
+    * Cleaned up commenting and formatting in multiple files including index, feedbackcontr, feedbackview, feedback, and database.
+    * Fixed error in database.php where variables with values 0 or false were being flagged as empty and failing checks they should have passed.
+    * Probably some other random tasks I found.
+
 
    
 </details>
