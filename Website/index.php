@@ -158,7 +158,6 @@ $Feedback_View = new FeedbackView($user_data['userID']);
 
             </table>
 
-            <div class="myDiv"> here </div>
                    
 
                 
