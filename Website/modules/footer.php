@@ -13,5 +13,5 @@
 </footer>
 
 <!-- Include JavaScript -->
-<script src="scripts/main.js"></script>
+<script src="../scripts/main.js"></script>
 <hr>

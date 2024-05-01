@@ -1,6 +1,6 @@
 <header>
-    <a class="logo" title="Homepage" href="index.php">
-        <img src="assets/icon.png" alt="FeedTrac Icon" height="32">
+    <a class="logo" title="Homepage" href="../index.php">
+        <img src="../assets/icon.png" alt="FeedTrac Icon" height="32">
 
         <h1>FeedTrac</h1>
     </a>
@@ -26,7 +26,7 @@
 
         <!-- Profile -->
         <div class="dropdown">
-            <a title="Profile" id="profile-button" href="profile.php" style="display: none;">
+            <a title="Profile" id="profile-button" href="../profile.php" style="display: none;">
                 <img style="margin-right: 10px;" class="avatar" src="<?php 
                                                 // Get user info and find either jpg or png profile picture
                                                 $userID = $_SESSION['userID'];
@@ -56,7 +56,7 @@
                 </button>
                 <br><br>
                 <!-- Logout Button -->
-                <button title="Logout" id="logout-button" onclick="window.location.href = 'scripts/logout.php'">
+                <button title="Logout" id="logout-button" onclick="window.location.href = '../scripts/logout.php'">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </button>
             </div>
