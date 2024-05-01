@@ -109,7 +109,10 @@ foreach ($feedbackRows as $row) {
 
 
     
-    $html .= '<tr class="clickable-row" id="clickable-row data-href="feedback.php">'; // CHANGE THIS TO REDIRECT TO THE CORRECT FEEDBACK ITEM!!!!
+    $html .= '<tr class="clickable-row" data-id="';
+    $html .= 'feedback.php?feedbackID=' . $row['feedbackID'];
+    $html .=  '">'; // CHANGE THIS TO REDIRECT TO THE CORRECT FEEDBACK ITEM!!!!
+
 
         // Status 
         $html .= '<td>';
@@ -191,6 +194,7 @@ foreach ($feedbackRows as $row) {
         $html .= '</a>';
         $html .= '</div>';
         $html .= '</td>';
+        
     $html .= '</tr>';
     
 

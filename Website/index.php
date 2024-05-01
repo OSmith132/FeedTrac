@@ -147,7 +147,6 @@ $Feedback_View = new FeedbackView($user_data['userID']);
                 </form>
 
             
-
                 <!-- New Feedback Button -->
                 <button onclick="window.location.href = 'newFeedback.php'">New Feedback</button> 
 
@@ -157,13 +156,9 @@ $Feedback_View = new FeedbackView($user_data['userID']);
             <!-- Table to show feedback -->
             <table class="search-table">
 
-
-                    
-
-                    
-
-            
             </table>
+
+            <div class="myDiv"> here </div>
                    
 
                 
@@ -177,15 +172,6 @@ $Feedback_View = new FeedbackView($user_data['userID']);
     
 
 
-
-<script>
-    const rows = document.querySelectorAll(".clickable-row");
-        rows.forEach(row => {
-            row.addEventListener("click", () => {
-                window.location.href = row.dataset.href;
-            });
-        });
-</script>
 
 
 <!-- import AJAX -->
@@ -210,6 +196,8 @@ $(document).ready(function() {
                     // Update table with the response
                     $(".search-table").html(response);
                 }
+
+            
             });
 
 
@@ -264,43 +252,52 @@ $(document).ready(function() {
 
 });
 
-</script>
 
 
 
 
+    //Update urgency value when slider is moved
+    const urgencyInput = document.getElementById('urgency');
+    const urgencyValue = document.getElementById('urgency-value');
+    urgencyInput.addEventListener('input', () => {
+        urgencyValue.textContent = 
+        urgencyInput.value === '-1' ? 'All' :
+        urgencyInput.value === '0' ? 'Low' : 
+        urgencyInput.value === '1' ? 'Medium' :
+        urgencyInput.value === '2' ? 'High':
+        'Critial';
+    });
+
+    //Update timeframe value when slider is moved
+    const timeframeInput = document.getElementById('timeframe');
+    const timeframeValue = document.getElementById('timeframe-value');
+    timeframeInput.addEventListener('input', () => {
+        timeframeValue.textContent = 
+        timeframeInput.value === '0' ? '1 Hour' : 
+        timeframeInput.value === '1' ? '1 Day' : 
+        timeframeInput.value === '2' ? '1 Week' : 
+        timeframeInput.value === '3' ? '1 Month' : 
+        'All Time';
+    });
 
 
-<!-- JS to change sliders when sliding -->
-<script>
-        //Update urgency value when slider is moved
-        const urgencyInput = document.getElementById('urgency');
-        const urgencyValue = document.getElementById('urgency-value');
-        urgencyInput.addEventListener('input', () => {
-            urgencyValue.textContent = 
-            urgencyInput.value === '-1' ? 'All' :
-            urgencyInput.value === '0' ? 'Low' : 
-            urgencyInput.value === '1' ? 'Medium' :
-            urgencyInput.value === '2' ? 'High':
-            'Critial';
-        });
+   
+    document.querySelector('.search-table').addEventListener('click', function(event) {
+    console.log('Row clicked!');
+    // Select closest element with clickable-row to the clicked element
+    var clickableRow = event.target.closest('.clickable-row');
+    if (clickableRow) {
 
-        //Update timeframe value when slider is moved
-        const timeframeInput = document.getElementById('timeframe');
-        const timeframeValue = document.getElementById('timeframe-value');
-        timeframeInput.addEventListener('input', () => {
-            timeframeValue.textContent = 
-            timeframeInput.value === '0' ? '1 Hour' : 
-            timeframeInput.value === '1' ? '1 Day' : 
-            timeframeInput.value === '2' ? '1 Week' : 
-            timeframeInput.value === '3' ? '1 Month' : 
-            'All Time';
-        });
+        // Get the data-id attribute
+        var feedbackID = clickableRow.dataset.id;
+
+        // Redirect to feedback.php with the ID as variable
+        window.location.href = "feedback.php?id=" + feedbackID;
+    }
+
+});
 
 
-
-
-        
 
 
 </script>
