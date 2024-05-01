@@ -9,6 +9,7 @@ function darkMode() {
     button.title = "Toggle Dark Mode";
     button.onclick = lightMode; 
     content.className = "fa-regular fa-lightbulb";
+    localStorage.setItem("theme", "dark-mode") // Save theme preference
 }
 
 function lightMode() {
@@ -22,7 +23,18 @@ function lightMode() {
     button.title = "Toggle Light Mode";
     button.onclick = darkMode; // Assign function reference
     content.className = "fa-solid fa-lightbulb";
+    localStorage.setItem("theme", "light-mode") // Save theme preference
 }
+
+// Apply saved theme preference
+document.addEventListener("DOMContentLoaded", function() {
+    if (localStorage.getItem("theme") === "light-mode"){
+        lightMode();
+    }
+    else{
+        darkMode();
+    }
+});
 
 // Heart button functions
 function like() {

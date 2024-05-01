@@ -33,9 +33,9 @@
       * ~~RatingPoints~~                                           _-Oliver (30/04/24)_   WIP
   * ~~Search bar for feedback titles~~                             _-Oliver (30/04/24)_
 
-* Feedback page
+* Feedback page - Marco - starting soon
   * Implement feedback rating system
-  * Implement commenting system
+  * Implement commenting system < prioritizing this 
   * Maybe add Photos / files to report
   * Link with database
 

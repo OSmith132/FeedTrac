@@ -99,19 +99,23 @@ if (count($postData) == count(array_filter($postData))) {
 
                     Enter your email:<br>
                     <input type="text" name="email" required>
-                    <br><br>
+                    <br>
 
                     Enter your password recovery token:<br>
                     <input type="text" name="token" required>
-                    <br><br>
+                    <br>
 
                     New password:<br>
-                    <input type="password" name="password1" required>
-                    <br><br>
+                    <input type="password" name="password1" id="password1" required>
+                    <label style="display: inline-block; font-weight: normal;">
+                        <input type="checkbox" onclick="togglePasswordVisibility('password1')"> Show Characters<br>
+                    </label><br>
 
                     Confirm Password:<br>
-                    <input type="password" name="password2" required>
-                    <br><br>
+                    <input type="password" name="password2" id="password2" required>
+                    <label style="display: inline-block; font-weight: normal;">
+                        <input type="checkbox" onclick="togglePasswordVisibility('password2')"> Show Characters<br>
+                    </label><br>
 
                     <div><?php echo $error ?></div>
 

@@ -14,16 +14,16 @@ class FeedbackContr extends Feedback {
 
 
     // Create a new feedback item
-    public function new_feedback($roomID, $date, $urgency, $resolved, $closed, $title, $text){
+    public function new_feedback($roomID, $urgency, $resolved, $closed, $title, $text){
 
        // Check if any input is empty
-       if ($this->empty_input_check($date, $urgency, $resolved, $closed, $title, $text)){
+       if ($this->empty_input_check($urgency, $resolved, $closed, $title, $text)){
         header("location: feedback.php?error=emptyinput");
         exit();
     }
 
         // Create new feedback
-        $this->create_feedback($this->userID, $roomID, $date, $urgency, $resolved, $closed, $title, $text);
+        $this->create_feedback($this->userID, $roomID, $urgency, $resolved, $closed, $title, $text);
     
     }
 
