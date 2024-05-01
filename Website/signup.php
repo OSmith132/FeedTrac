@@ -107,17 +107,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <label>Password<br>
                         <input type="password" id="password" name="password" required minlength="8">
 
-                        <label>Show Characters
-                            <input type="checkbox" onclick="togglePasswordVisibility('password')">
-                        </label>
+                    <label style="display: inline-block; font-weight: normal;">
+                        <input type="checkbox" onclick="togglePasswordVisibility('password')"> Show Characters
+                    </label>
                     </label>
 
                     <label>Confirm Password<br>
                         <input type="password" id="confirmPassword" name="confirmPassword" required minlength="8">
 
-                        <label>Show Characters
-                            <input type="checkbox" onclick="togglePasswordVisibility('confirmPassword')">
-                        </label>
+                    <label style="display: inline-block; font-weight: normal;">
+                        <input type="checkbox" onclick="togglePasswordVisibility('confirmPassword')"> Show Characters
+                    </label>
                     </label>
 
                     <label>First Name
