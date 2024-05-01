@@ -234,7 +234,14 @@
     * Updated many db tables to support said functionality.
     * Began Inbox functionality, had issues with some date fields, to be resolved.
     * Also added appropriate fields to relevant tables related to Inbox.
-    * TODO - Change counter to only update if user is still subbed...(forgot)
+    
+ 
+* ### _01/05/2024:_
+    * Changed counter to only update if user is still subbed, and not alert for own feedback submissions.
+    * Debugged issues with date time in database, with help from Toby.
+    * Inbox now displays items newer than user account creation date, as intended, decisions made to change it to a dropdown menu displaying the same content as inbox page, with added alert counter on icon.
+    * TODO - Button up inbox after the new format change.
+    * Started work on commenting system.
     
 
 </details>
