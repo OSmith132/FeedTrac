@@ -51,14 +51,14 @@
 * Profile page
   * Need to be able to see other users profile when clicking on their names
   * <s>Allow for individual profile pages per account to replace the template</s>
-  * Add edit profile functionality
+  * ~~Add edit profile functionality~~
       * ~~Upload profile picture~~  (only supports png upload) - _Toby (30/04/24)_
-      * Edit about section
-      * Edit personal information
+      * ~~Edit about section~~ _Toby (01/05/24)_
 
 * Settings page
   * changePassword.php has now been created, but the form to change the password isn't functional
   * (OPTIONAL) Add additional user settings
+  * Edit personal information
 
 * Admin/Moderation page
   * Create page

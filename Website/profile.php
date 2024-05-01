@@ -12,14 +12,12 @@ $Login_Controller = new LoginContr();
 $user_data = $Login_Controller->force_login();
 
 $Feedback_Controller = new FeedbackContr($user_data['userID']);
-
+$User_ID = $user_data['userID'];
 
 //!---TODO Add extra checks for image upload like size etc.
 //!---TODO need to overwrite images if they already exist.
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     if(isset($_POST['Upload'])){
-        echo "HERE";
-        echo "test output: " . $_POST['Upload'];
         switch ($_POST['Upload']) {
             case 'Picture':
                 $target_dir = "assets/profile-pictures/";
@@ -28,7 +26,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
                 // Use the ID for the filename
-                $target_file = $target_dir . "user-" . $user_data['userID'] . '.' . $imageFileType;
+                $target_file = $target_dir . "user-" . $User_ID . '.' . $imageFileType;
 
                 // Check if image file is an actual image or fake image
                 if (isset($_POST["submit"])) {
@@ -53,8 +51,19 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     }
                 }
                 break;
+                //!----TODO guard clauses for input
             case 'Description':
-                echo "TEST!!!!";
+                // Upload flag
+                $uploadOk = 1;
+                $new_text = $_POST['Description_Text'];
+                //echo $new_text;
+                if(strlen($new_text) > 255) {
+                  $uploadOk = 0;
+                  echo "Text input is too long please restrict to 255 characters or less.";
+                }
+                if ($uploadOk = 1){
+                    $Login_Controller->update_user_bio($new_text, $User_ID);
+                }
         }
     }
 }
@@ -115,7 +124,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 <div class="user-description">
                     <h3>About</h3><hr><br>
 
-                    <p contenteditable="false" id="description_text_box"><?php
+                    <p contenteditable="false" id="description_text_box" style="word-wrap: break-word;"><?php
                         $bio = $Login_Controller->get_current_user_description();
                         if (empty($bio)){
                             echo "Add some details about yourself..";
@@ -139,6 +148,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     </ul>
                 </div>
 
+
+
             </div>
 
             <!-- Buttons -->
@@ -157,7 +168,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
                     <!-- Input box hidden to allow content box to look nice -->
                     <form action="profile.php" method="post" enctype="multipart/form-data" hidden="hidden">
-                        <input type="text" id="upload_description_text_box">
+                        <input type="text" name="Description_Text" id="upload_description_text_box">
                         <input type="submit" name="Upload" value="Description" id="upload_description_submit">
                     </form>
 
@@ -165,6 +176,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                         function edit_description() {
                             // Allow users to enter info into the box
                             document.getElementById("description_text_box").contentEditable = "true";
+                            document.getElementById("description_text_box").style.backgroundColor = "grey"
                             // Switch button visibility
                             document.getElementById("description_edit_button").hidden =true;
                             document.getElementById("description_save_button").hidden = false;
@@ -172,6 +184,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                         function save_description() {
                             // Prevent users changing the info in the box
                             document.getElementById("description_text_box").contentEditable = "false";
+                            document.getElementById("description_text_box").style.backgroundColor = ""
                             // Switch button visibility
                             document.getElementById("description_edit_button").hidden = false;
                             document.getElementById("description_save_button").hidden = true;
