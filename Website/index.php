@@ -19,12 +19,12 @@ $Feedback_View = new FeedbackView($user_data['userID']);
 
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en-gb">
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>FeedTrac</title>
 
@@ -71,7 +71,7 @@ $Feedback_View = new FeedbackView($user_data['userID']);
                         <input class="search-bar" type="text" name="searchTerm" placeholder="Search for existing feedback">
 
                         <button name="submit">Search</button>
-                     </div>
+                    </div>
                 
 
 
@@ -220,14 +220,14 @@ $Feedback_View = new FeedbackView($user_data['userID']);
                         // $_SESSION["urgency"]    = $_POST['urgency'];          // 0,1,2,3,4  =>  All, Low, Medium, High, Critical
                         // $_SESSION["timeframe"]  = $_POST['timeframe'];        // 0,1,2,3,4  =>  1 Hour, 1 Day, 1 Week, 1 Month, All Time
 
-                        // output all options
-                        echo "Search Term: " . $searchTerm . "<br>";
-                        echo "Resolved: " . $resolved . "<br>";
-                        echo "Closed: " . $closed . "<br>";
-                        echo "Urgency: " . $urgency . "<br>";
-                        echo "Timeframe: " . $timeframe . "<br>";
-                        echo "Sort Type: " . $sortType . "<br>";
-                        echo "Sort Direction: " . $sortDirection . "<br>";
+                        // // output all options
+                        // echo "Search Term: " . $searchTerm . "<br>";
+                        // echo "Resolved: " . $resolved . "<br>";
+                        // echo "Closed: " . $closed . "<br>";
+                        // echo "Urgency: " . $urgency . "<br>";
+                        // echo "Timeframe: " . $timeframe . "<br>";
+                        // echo "Sort Type: " . $sortType . "<br>";
+                        // echo "Sort Direction: " . $sortDirection . "<br>";
 
                         
                         // Filter feedback rows
@@ -246,76 +246,75 @@ $Feedback_View = new FeedbackView($user_data['userID']);
                     
 
                     
-                    // Get user info for each feedback item
-                    foreach ($feedbackRows as $row) {
-                        $userInfo = $Feedback_View->get_user_info($row['feedbackID']);
-                    ?>
-
-
-
-            <div class="table" class="center">
-                <table>
-
-                    <!-- Table Headers -->
-                    <tr>
-                        <th>Status</th> <!-- Resolved + Urgency + closed-->
-                        <th>Title</th> <!-- Title -->
-                        <th>Text</th> <!-- Text -->
-                        <th>Date</th> <!-- Date -->
-                        <th>Rating Points</th> <!-- RatingPoints -->
-                        <th>Comments</th> <!-- Number of comments -->
-                        <th>Course</th> <!-- Course -->
-                        <th>Author</th> <!-- Author -->
-                    </tr>
-
-
                     
-
-
-
-                        <tr class="clickable-row" data-href="feedback.php">
-
-                            <td>
-                                <?php echo  $get_urgency_string[$row['urgency']] . "<br>" // Resolved Status - Refer to functions.php for the array
-                                    . $get_resolved_string[$row['resolved']]     . "<br>" // Urgency Level   - Refer to functions.php for the array
-                                    . $get_closed_string[$row['closed']];                 // Closed Status   - Refer to functions.php for the array
-                                ?>
-                            </td>
-
-                            <td><?php echo shorten($row['title'], 50); ?></td> <!-- shortens the title to 50 characters -->
-                            <td><?php echo shorten($row['text'], 75); ?></td> <!-- shortens the text to 15 characters -->
-                            <td><?php echo $row['date']; ?></td> <!-- Date -->
-                            <td><?php echo $row['ratingPoints']; ?></td> <!-- Rating Points -->
-                            <td><?php echo $row['number_of_comments']; ?></td> <!-- Number of comments -->
-                            <td><?php echo $userInfo['name'] ?></td>
-                            <td href="profile.php">
-                                <div style="display: flex;"> <!-- MAKE THIS GO TO THE THE CORECT PROFILE-->
-
-                                    <img style="margin-right: 10px;" class="avatar" src="<?php
-                                                                                            // Get user info and find either jpg or png profile picture
-                                                                                            $userID = $userInfo['userID'];
-                                                                                            $jpg_path = "assets/profile-pictures/user-$userID.jpg";
-                                                                                            $png_path = "assets/profile-pictures/user-$userID.png";
-
-                                                                                            // Return the correct file path or default if neither found
-                                                                                            if (file_exists($jpg_path)) {
-                                                                                                echo $jpg_path;
-                                                                                            } elseif (file_exists($png_path)) {
-                                                                                                echo $png_path;
-                                                                                            } else {
-                                                                                                echo "assets/profile-pictures/user-default.jpg";
-                                                                                            } ?>" alt="User Avatar" height="32" href="profile.php">
-
-
-                                    <a href="profile.php"> <?php echo $userInfo['username']; ?> </a> <!-- Username -->
-                                </div>
-                            </td>
-
-                        </tr>
-
-                    <?php
-                    }
                     ?>
+
+
+
+                    <div class="table" class="center">
+                        <table>
+
+                            <!-- Table Headers -->
+                            <tr>
+                                <th>Status</th> <!-- Resolved + Urgency + closed-->
+                                <th>Title</th> <!-- Title -->
+                                <th>Text</th> <!-- Text -->
+                                <th>Date</th> <!-- Date -->
+                                <th>Rating Points</th> <!-- RatingPoints -->
+                                <th>Comments</th> <!-- Number of comments -->
+                                <th>Course</th> <!-- Course -->
+                                <th>Author</th> <!-- Author -->
+                            </tr>
+
+                            <?php
+                            // Get user info for each feedback item
+                            foreach ($feedbackRows as $row) {
+                                $userInfo = $Feedback_View->get_user_info($row['feedbackID']);
+                            ?>
+
+                                <tr class="clickable-row" data-href="feedback.php">
+                                    <td>
+                                        <?php echo  $get_urgency_string[$row['urgency']] . "<br>" // Resolved Status - Refer to functions.php for the array
+                                                    . $get_resolved_string[$row['resolved']]     . "<br>" // Urgency Level   - Refer to functions.php for the array
+                                                    . $get_closed_string[$row['closed']];                 // Closed Status   - Refer to functions.php for the array
+                                        ?>
+                                        </td>
+                                        <td><?php echo shorten($row['title'], 50); ?></td> <!-- shortens the title to 50 characters -->
+                                        <td><?php echo shorten($row['text'], 75); ?></td> <!-- shortens the text to 15 characters -->
+                                        <td><?php echo $row['date']; ?></td> <!-- Date -->
+                                        <td><?php echo $row['ratingPoints']; ?></td> <!-- Rating Points -->
+                                        <td><?php echo $row['number_of_comments']; ?></td> <!-- Number of comments -->
+                                        <td><?php echo $userInfo['name'] ?></td>
+                                        <td href="profile.php">
+                                        <div style="display: flex;"> <!-- MAKE THIS GO TO THE THE CORECT PROFILE-->
+
+                                            <img style="margin-right: 10px;" class="avatar" src="<?php
+                                                                                                    // Get user info and find either jpg or png profile picture
+                                                                                                    $userID = $userInfo['userID'];
+                                                                                                    $jpg_path = "assets/profile-pictures/user-$userID.jpg";
+                                                                                                    $png_path = "assets/profile-pictures/user-$userID.png";
+
+                                                                                                    // Return the correct file path or default if neither found
+                                                                                                    if (file_exists($jpg_path)) {
+                                                                                                        echo $jpg_path;
+                                                                                                    } elseif (file_exists($png_path)) {
+                                                                                                        echo $png_path;
+                                                                                                    } else {
+                                                                                                        echo "assets/profile-pictures/user-default.jpg";
+                                                                                                    } ?>" alt="User Avatar" height="32" href="profile.php">
+
+
+                                            <a href="profile.php"> <?php echo $userInfo['username']; ?> </a> <!-- Username -->
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            <?php
+                            }
+                            ?>
+
+                        </table>
+                    </div>
 
 
 
@@ -377,6 +376,39 @@ $Feedback_View = new FeedbackView($user_data['userID']);
         });
 </script>
 
+
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+
+
+    $(document).ready(function() {
+        // Function to update table
+        function updateTable() {
+            // Get filter values
+            var formData = $("#index-search-form").serialize();
+
+            // Send AJAX request
+            $.ajax({
+                type: "POST",
+                url: "update_table.php", // Change this to the PHP file that handles the update
+                data: formData,
+                success: function(response) {
+                    // Update table with the response
+                    $(".table").html(response);
+                }
+            });
+        }
+
+        // Listen for changes in filter inputs
+        $("#index-search-form input, #index-search-form select").on("change keyup", function() {
+            // Update table whenever filter inputs change
+            updateTable();
+        });
+
+        // Initial table update
+        updateTable();
+    });
+</script> -->
 
 
 
