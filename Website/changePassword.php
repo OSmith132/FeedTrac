@@ -63,12 +63,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         <!-- Main -->
         <main>
             <h1>Change Password</h1>
-            <hr>
+            <br>
             <br>
             <div class="form">
 
                 <!-- Login Form -->
-                <h2>Change Password:</h2><hr><br>
+                <h2>Change Password:</h2><br><br>
                 <form action="changePassword.php" method="post">
 
                     Enter new password:<br><br>
@@ -76,7 +76,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     <br><br>
 
                     <input type="checkbox" onclick="togglePassword('password1')">Show Password<br><br>
-                    <hr><br>
+                    <br><br>
 
                     Confirm new password:<br><br>
                     <input type="password" name="password2" id="password2" required>
@@ -85,7 +85,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     <input type="checkbox" onclick="togglePassword('password2')">Show Password<br><br>
 
                     <div><?php echo $message ?></div>
-                    <hr><br>
+                    <br><br>
 
                     <input type="submit" value="Submit">
                 </form>

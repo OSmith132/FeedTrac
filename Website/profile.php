@@ -189,7 +189,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     </script>
                 </div>
 
-                <div class="edit-data">
+                <!--TODO Button hidden delete if not used -->
+                <div class="edit-data" hidden="hidden">
                     <button class="profile-button">Edit Personal Information</button>
                 </div>
             </div>

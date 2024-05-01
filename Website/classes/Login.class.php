@@ -294,7 +294,22 @@ protected function update_password($hashed_password,$userID){
         // return true if the password was updated successfully
         return true;
     }
-    
+
+    // TODO Implement this for info update
+    protected function update_info($fname,$lname,$year,$pronoun,$userID){
+
+        // prepare the SQL query
+        $stmt = $this->connect()->prepare("UPDATE user SET fName = ?, lName = ?,yearOfStudy = ?, pronouns = ?  WHERE userID = ?");
+
+        // Check if the SQL query is valid
+        if(!$stmt->execute([$fname,$lname,$year,$pronoun,$userID])){
+            header("location: login.php?error=BadSQLQuery");
+            exit();
+        }
+        // return true if the password was updated successfully
+        return true;
+    }
+
     protected function get_recovery_code($userID){
 
         // Get the user ID from the email
