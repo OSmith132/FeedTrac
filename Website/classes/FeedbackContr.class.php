@@ -16,16 +16,25 @@ class FeedbackContr extends Feedback {
     // Create a new feedback item
     public function new_feedback($roomID, $date, $urgency, $resolved, $closed, $title, $text){
 
-        // Check if any input is empty
-        if ($this->empty_input_check($date, $urgency, $resolved, $closed, $title, $text)){
-            header("location: feedback.php?error=emptyinput");
-            exit();
-        }
+       // Check if any input is empty
+       if ($this->empty_input_check($date, $urgency, $resolved, $closed, $title, $text)){
+        header("location: feedback.php?error=emptyinput");
+        exit();
+    }
 
         // Create new feedback
         $this->create_feedback($this->userID, $roomID, $date, $urgency, $resolved, $closed, $title, $text);
     
     }
+
+     // Create a new alert for subbed users
+     public function sub_alert($userID){
+
+         
+         // Create new feedback
+         $this->alert($userID);
+     
+     }
 
     // Update existing feedback item
     public function set_feedback($feedbackID, $roomID, $date, $urgency, $resolved, $closed, $title, $text){
@@ -69,31 +78,22 @@ class FeedbackContr extends Feedback {
     }
 
 
+    public function list_rooms(){ // positiveRating: bool    feedbackID: int    userID: int
 
-    public function get_all_feedback(){
+        return $this->get_rooms();
 
-         // Check if any input is empty
-         if ($this->empty_input_check()){
-            header("location: feedback.php?error=emptyinput");
-            exit();
-        }
-
-        // Update the rating points of a feedback item
-        return $this->get_all_rows();
     }
 
+    public function list_users($course){ // positiveRating: bool    feedbackID: int    userID: int
 
-    public function get_user_info($feedbackID){
+        return $this->get_users($course);
 
-        // Check if any input is empty
-        if ($this->empty_input_check($feedbackID)){
-            header("location: feedback.php?error=emptyinput");
-            exit();
-        }
-
-        // Update the rating points of a feedback item
-        return $this->get_user($feedbackID);
     }
+
+    
+
+
+    
     
 
 }

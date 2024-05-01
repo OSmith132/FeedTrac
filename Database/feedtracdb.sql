@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2024 at 10:31 PM
+-- Generation Time: May 01, 2024 at 04:44 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -43,7 +43,7 @@ CREATE TABLE `comment` (
   `userID` int(10) UNSIGNED NOT NULL,
   `feedbackID` int(10) UNSIGNED NOT NULL,
   `text` varchar(500) NOT NULL,
-  `date` date NOT NULL,
+  `date` datetime NOT NULL,
   `ratingPoints` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -92,11 +92,12 @@ CREATE TABLE `feedback` (
   `feedbackID` int(10) UNSIGNED NOT NULL,
   `userID` int(10) UNSIGNED NOT NULL,
   `roomID` int(10) UNSIGNED DEFAULT NULL,
-  `date` date NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
+  `modifiedDate` datetime NOT NULL COMMENT 'The last date this feedback was interracted with',
   `urgency` varchar(10) NOT NULL COMMENT 'Low - 0\r\nMedium - 1\r\nHigh - 2\r\nCritical - 3',
-  `resolved` tinyint(1) NOT NULL COMMENT 'Unresolved - 0\r\nResolved - 1\r\nResolved and closed = 2\r\nForce closed - 3',
+  `resolved` tinyint(1) NOT NULL COMMENT 'Unresolved - 0\r\nResolved - 1',
   `closed` tinyint(1) NOT NULL,
-  `title` varchar(30) NOT NULL,
+  `title` varchar(50) NOT NULL,
   `text` varchar(500) NOT NULL,
   `ratingPoints` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -176,8 +177,10 @@ CREATE TABLE `user` (
   `pronouns` varchar(10) DEFAULT NULL,
   `position` varchar(25) NOT NULL,
   `description` varchar(255),
-  `activeAccount` tinyint(1) NOT NULL DEFAULT 1
-
+  `activeAccount` tinyint(1) NOT NULL DEFAULT 1,
+  `sub` tinyint(1) NOT NULL DEFAULT 1,
+  `alert` smallint(5) UNSIGNED NOT NULL DEFAULT 0,
+  `accountDate` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='User Information';
 
 --

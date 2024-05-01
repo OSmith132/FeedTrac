@@ -99,6 +99,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             </div>
         </main>
         <!-- Footer -->
-        <?php include("footer.html"); ?>
+        <div class="footer-position"><?php include("footer.php"); ?></div>
     </body>
 </html>

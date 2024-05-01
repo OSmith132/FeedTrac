@@ -143,6 +143,12 @@ footer {
     gap: 16px;
     color: var(--h);
 }
+.footer-position {
+    width:100%;
+    position:absolute;
+    bottom:0;
+    left:0;
+}
 
 /*
 ==================================================================
@@ -173,22 +179,39 @@ LOGIN.PHP, SIGNUP.PHP, RECOVERPASSWORD.PHP AND REREGISTERPASSWORD.PHP
 .form {
     color: white;
     text-align: center;
-    width: 20%;
+    width: 50%;
     margin: auto;
     border-radius: 10px;
-    padding: 30px;
+    padding: 16px;
     background-color: var(--a);
     border-bottom: 1px solid var(--e);
+
+    /* Use a flexbox instead of hardcoding <br> tags */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
-.form input {
-    width: 80%;
+.form form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form form label {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+}
+
+.form form label label {
+    font-weight: normal;
+    display: inline;
 }
 
 .form input[type="submit"] {
     color: white;
     background-color: var(--accent-bright);
-    width: 50%;
     border-radius: 8px;
     font-weight: bold;
     padding: 4px;
@@ -298,16 +321,21 @@ INDEX.PHP
 */
 .index-header {
     display: flex;
+    justify-content: center; 
+    align-items: center; 
     gap: 16px;
-    align-items: center;
+    width: 100%;
+    padding-top: 32px;
+    padding-bottom: 16px;
 }
+
 .index-header button {
     background-color: var(--accent-bright);
     border: none;
     border-radius: 8px;
     color: white;
     font-size: 16px;
-    padding: 8px;
+    padding: 8px 16px; /* Uniform padding */
     transition: background-color 0.3s ease;
 }
 .index-header button:hover {
@@ -315,13 +343,18 @@ INDEX.PHP
     cursor: pointer;
 }
 .index-main {
-    margin: 16px;
+    margin: 16px auto;
+    width: 100%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     gap: 16px;
-    text-align: left;
+    align-items: center;
+    text-align: center;
 }
+
+
+
 .search-bar {
     background-color: var(--a);
     border-radius: 8px;
@@ -412,7 +445,7 @@ SETTINGS.PHP
     background-color: var(--a);
     border-bottom: 1px solid var(--e);
 }
-.deletion-form {
+.popup-form {
     color: white;
     text-align: center;
     width: 33%;
@@ -427,7 +460,7 @@ SETTINGS.PHP
     transition: opacity 0.5s ease;
 }
 
-.deletion-form button {
+.popup-form button {
     color: white;
     background-color: var(--accent-bright);
     width: 30%;
@@ -438,18 +471,18 @@ SETTINGS.PHP
     transition: background-color 0.3s ease;
 }
 
-.deletion-form button:hover {
+.popup-form button:hover {
     background-color: var(--accent-pale);
     cursor: pointer;
 }
 
-.deletion-form input:focus {
+.popup-form input:focus {
     outline-color: var(--accent-bright);
     outline-style: solid;
     transition: outline-color 0.3s ease;
 }
 
-.deletion-form select:focus {
+.popup-form select:focus {
     outline-color: var(--accent-bright);
     outline-style: solid;
     transition: outline-color 0.3s ease;
