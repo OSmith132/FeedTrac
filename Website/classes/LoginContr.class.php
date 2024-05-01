@@ -171,6 +171,16 @@ class LoginContr extends Login {
         return $this->update_password($hashed_password,$userID);
     }
 
+    public function update_user_bio($bio,$userID){
+
+        // Check if any input is empty
+        if ($this->empty_input_check($bio,$userID)){
+            header("location: login.php?error=BadSQLQuery");
+            exit();
+        }
+
+        return $this->update_bio($bio,$userID);
+    }
 
 
     public function send_recovery_email($email){

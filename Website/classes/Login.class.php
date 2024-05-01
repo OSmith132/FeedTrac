@@ -280,6 +280,20 @@ protected function update_password($hashed_password,$userID){
     // return true if the password was updated successfully
     return true;
 }
+
+    protected function update_bio($bio,$userID){
+
+        // prepare the SQL query
+        $stmt = $this->connect()->prepare("UPDATE user SET description = ? WHERE userID = ?");
+
+        // Check if the SQL query is valid
+        if(!$stmt->execute([$bio,$userID])){
+            header("location: login.php?error=BadSQLQuery");
+            exit();
+        }
+        // return true if the password was updated successfully
+        return true;
+    }
     
     protected function get_recovery_code($userID){
 

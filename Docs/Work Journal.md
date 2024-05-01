@@ -138,6 +138,18 @@
     * Added Home button.
     * Updated CSS.
 
+* ### _28/04/24:_
+    * Recreated TODO list to ensure that everyone know what is left to do on the project.
+
+* ### _30/04/24:_
+    * Updated Footer so that it is positioned near the bottom of the page.
+    * Created changePassword.php that can be accessed from the settings menu.
+    * Updated CSS so that the dropdown menu now glows purple to make it stand out.
+
+* ### _1/05/24:_
+    * Updated Profile so that the information that is displayed is clearer.
+    * Added "Show Characters" checkboxes to every password box so that the user can check what password they have typed.
+    * Updated the light mode/dark mode scripts so that the current theme is stored and is retrieved when moving across webpages.
 
 </details>
 
