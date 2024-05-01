@@ -18,8 +18,6 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
 //!---TODO need to overwrite images if they already exist.
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     if(isset($_POST['Upload'])){
-        echo "HERE";
-        echo "test output: " . $_POST['Upload'];
         switch ($_POST['Upload']) {
             case 'Picture':
                 $target_dir = "assets/profile-pictures/";
@@ -54,7 +52,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 }
                 break;
             case 'Description':
-                echo "TEST!!!!";
+                // Upload flag
+                $uploadOk = 1;
+                $new_text = $_POST['Description_Text'];
+                //echo $new_text;
+                if(sizeof($new_text) > 255) {
+                  $uploadOk = 0;
+                  echo "Text input is too long please restrict to 255 characters or less.";
+                }
+
+
+
         }
     }
 }
@@ -151,7 +159,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
                     <!-- Input box hidden to allow content box to look nice -->
                     <form action="profile.php" method="post" enctype="multipart/form-data" hidden="hidden">
-                        <input type="text" id="upload_description_text_box">
+                        <input type="text" name="Description_Text" id="upload_description_text_box">
                         <input type="submit" name="Upload" value="Description" id="upload_description_submit">
                     </form>
 
