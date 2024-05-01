@@ -14,7 +14,7 @@
 
 ## Website and Database:
 
-* New Feedback page - Marco - In progress
+* New Feedback page - Marco - Done
   * Create page
   * Add feedback creation functionality
   * Link with database

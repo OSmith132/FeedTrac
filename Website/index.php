@@ -168,8 +168,8 @@ $Feedback_View = new FeedbackView($user_data['userID']);
 
                         
 
-                <!-- New Feedback Button
-                <button onclick="window.location.href = 'newFeedback.php'">New Feedback</button> -->
+                New Feedback Button
+                <button onclick="window.location.href = 'newFeedback.php'">New Feedback</button> 
             </div>
 
 

@@ -72,13 +72,13 @@ function closeForm(formID) {
     document.getElementById(formID).style.opacity = 0;
 }
 
-function togglePassword(passwordID) {
-    var x = document.getElementById(passwordID);
-    if (x.type === "password") {
-        x.type = "text";
-    }
-    else{
-        x.type = "password";
+function togglePasswordVisibility(passwordID) {
+    const element = document.getElementById(passwordID);
+
+    if (element.type === "password") {
+        element.type = "text";
+    } else {
+        element.type = "password";
     }
 }
 

@@ -53,7 +53,7 @@ class Feedback extends Database
     {
 
         // Connect  to database and create new feedback item
-        $stmt = $this->connect()->prepare("INSERT INTO feedback (feedbackID, userID, roomID, date, urgency, resolved, closed, title, text, ratingPoints) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 0)");
+        $stmt = $this->connect()->prepare("INSERT INTO feedback (userID, roomID, date, urgency, resolved, closed, title, text, ratingPoints) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 0)");
 
         // Check if the SQL query is valid
         if (!$stmt->execute([$userID, $roomID, $date, $urgency, $resolved, $closed, $title, $text])) {
@@ -62,6 +62,19 @@ class Feedback extends Database
         }
 
         $stmt = null;
+    }
+
+    // Create new inbox alert
+    protected function alert($userID)
+    {
+        $stmt = $this->connect()->prepare("UPDATE user SET alert = alert + 1 where userID = ? ");
+
+         // Check if the SQL query is valid and execute
+         if (!$stmt->execute([$userID])) {
+            header("location: feedback.php?error=BadSQLQuery");
+            exit();
+        }
+
     }
 
 
@@ -139,6 +152,39 @@ class Feedback extends Database
         }
     }
 
+    protected function get_rooms()
+   {
+
+        $stmt = $this->connect()->prepare("SELECT roomID, roomName FROM room");
+
+        // Check if the SQL query is valid and execute
+        if (!$stmt->execute()) {
+            header("location: feedback.php?error=BadSQLQuery");
+            exit();
+        }
+
+
+        $results = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $results;
+    }
+
+
+    protected function get_users($course)
+    {
+ 
+         $stmt = $this->connect()->prepare("SELECT *  FROM user where courseID = ? ");
+ 
+         // Check if the SQL query is valid and execute
+        if (!$stmt->execute([$course])) {
+            header("location: feedback.php?error=BadSQLQuery");
+            exit();
+        }
+ 
+ 
+         $users = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+         return $users;
+    }
+
 
     // Connect  to database and retrieves all data about the user who created the feedback
     protected function get_user($feedbackID)
@@ -214,11 +260,39 @@ class Feedback extends Database
         $results = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $results;
     }
-
-
-
+    protected function get_all_rows_inbox($dateTime)
+    {
+        // Prepare an SQL statement to select all feedback where the date is greater than $dateTime
+        $stmt = $this->connect()->prepare("SELECT 
+                                                feedback.feedbackID, 
+                                                resolved, 
+                                                urgency, 
+                                                title, 
+                                                feedback.text, 
+                                                feedback.date, 
+                                                feedback.ratingPoints, 
+                                                COUNT(commentID) as number_of_comments 
+                                            FROM 
+                                                feedback 
+                                            LEFT JOIN 
+                                                comment 
+                                            ON 
+                                                feedback.feedbackID = comment.feedbackID 
+                                            WHERE 
+                                                feedback.date > ?
+                                            GROUP BY 
+                                                feedback.feedbackID;");
     
-
+        // Check if the SQL query is valid and execute
+        if (!$stmt->execute([$dateTime])) {
+            header("location: feedback.php?error=BadSQLQuery");
+            exit();
+        }
+    
+        $results = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $results;
+    }
+    
 
 
 
