@@ -42,8 +42,9 @@ class Database{
     protected function empty_input_check(...$inputs){
         // Check if any input is empty
         foreach ($inputs as $input){
-            if (($input === null || $input === false || $input === "") && $input !== 0 && $input !== "0") {
-                return true;
+
+            if (empty($input) and $input != 0 and $input != "0" and $input != false){
+
             }
         }
         // If no input is empty, return false

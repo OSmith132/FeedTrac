@@ -1,5 +1,6 @@
 <?php 
 
+
 class FeedbackView extends Feedback {
 
     private $userID;
@@ -48,4 +49,71 @@ class FeedbackView extends Feedback {
        return $this->search($searchTerm);
    }
     
+
+   // Filter Feedback
+   public function row_passes_filters($feedbackRow, $resolved, $closed, $urgency, $timeframe){
+
+    // Check if any input is empty
+    if ($this->empty_input_check($feedbackRow, $resolved, $closed, $urgency, $timeframe)){
+        header("location: index.php?error=emptyinput");
+        exit();
+    }
+
+    // Check if resolved is valid if checked
+    if ($feedbackRow['resolved'] != $resolved  &&  $resolved == 1){
+        return false;
+    }
+
+    // Check if closed is valid if checked
+    if ($feedbackRow['closed'] != $closed  &&  $closed == 1){
+        return false;
+    }
+
+    // Check if urgency is valid
+    if ($feedbackRow['urgency'] != $urgency  &&  $urgency != -1){ // or urgency is 'all'
+        return false;
+    }
+
+    // ensure 'all time' allows for all
+
+
+    if ($timeframe != 4){
+
+        // Define Times for Timeframe
+        $get_timeframe_string = array(
+            "1 Hour",
+            "1 Day",
+            "1 Week",
+            "1 Month"
+        );
+
+        // Get the string representation of the timeframe
+        $timeframe = $get_timeframe_string[$timeframe];
+    
+        // If timeframe is all time, return true
+    
+            
+        // Get the current timestamp
+        $currentTimestamp = time();
+
+        // Get the timestamp for the date $timeframe ago
+        $timeframeTimestamp = strtotime("-" .$timeframe , $currentTimestamp);
+
+        // Convert feedback row date to a timestamp
+        $feedbackRowTimestamp = strtotime($feedbackRow['date']);
+
+        // Check if the feedback row date is within the specified timeframe
+        if ($feedbackRowTimestamp < $timeframeTimestamp) {
+            // The feedback row date is within the timeframe
+            // Return true or perform any other actions
+            return false;
+        }
+
+    }
+
+
+    return true;
+
+    }
+
 }

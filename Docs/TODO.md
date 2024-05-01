@@ -21,16 +21,15 @@
   * (OPTIONAL) Add extra options such as anonymous posting or the ability to disable comments
 
 * Home/Index page
-* Make the filter and sort buttons 
   * ~~Display feedback data on the home/index page~~               _- Oliver (29/04/24)_
   * Add filters for:
       *  ~~resolved~~                                              _-Oliver (30/04/24)_
-      *  ~~urgency~~
+      *  ~~urgency~~                                               _-Oliver (30/04/24)_
       *  ~~date range (1 hour, 1 day, 1 week, 1 month, All time)~~ _-Oliver (30/04/24)_
       *  tags (Might add this as an optional task later)
   * Add sorting for:
-      * ~~Date Ranges~~                                            _-Oliver (30/04/24)_
-      * ~~RatingPoints~~                                           _-Oliver (30/04/24)_
+      * ~~Date Ranges~~                                            _-Oliver (30/04/24)_   WIP
+      * ~~RatingPoints~~                                           _-Oliver (30/04/24)_   WIP
   * ~~Search bar for feedback titles~~                             _-Oliver (30/04/24)_
 
 * Feedback page
