@@ -182,6 +182,17 @@ class LoginContr extends Login {
         return $this->update_bio($bio,$userID);
     }
 
+    // TODO Update this for info update
+    public function update_user_info($fname,$lname,$year,$pronoun,$userID){
+
+        // Check if any input is empty
+        if ($this->empty_input_check($fname,$lname,$year,$pronoun,$userID)){
+            header("location: login.php?error=BadSQLQuery");
+            exit();
+        }
+
+        return $this->update_info($fname,$lname,$year,$pronoun,$userID);
+    }
 
     public function send_recovery_email($email){
 

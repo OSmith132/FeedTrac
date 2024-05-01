@@ -75,6 +75,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 <div class="settings">
                     <button id="recoverButton" class="feedback-button" onclick="window.location.href = 'changePassword.php'" >Change Password</button>
                     <br><br>
+                    <button id="editButton" class="feedback-button" onclick="window.location.href = 'changeDetails.php'">Edit Personal Details</button>
+                    <br><br>
                     <button id="deleteButton" class="feedback-button" onclick="openForm('deletion-form')" >Delete Account</button>
                     <div><?php echo $error ?></div>
                 </div>
