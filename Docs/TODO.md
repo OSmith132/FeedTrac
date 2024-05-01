@@ -48,6 +48,7 @@
   * Add an observer to subscribe and get updates to courses and comments (Design Pattern)
 
 * Profile page
+  * Need to be able to see other users profile when clicking on their names
   * Allow for individual profile pages per account to replace the template
   * Add edit profile functionality
       * ~~Upload profile picture~~  (only supports png upload) - _Toby (30/04/24)_

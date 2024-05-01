@@ -232,6 +232,11 @@ class LoginContr extends Login {
         return $this->get_column_from_id("position", $_SESSION["userID"]);
     }
 
+    // Get about of current user (bio)
+    public function get_current_user_description() {
+        return $this->get_column_from_id("description", $_SESSION['userID']);
+    }
+
     // Delete Account
     public function delete_account(){
         return $this->get_column_from_id("username", $_SESSION['userID']);
