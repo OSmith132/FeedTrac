@@ -40,9 +40,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Call new_feedback with the form data
     $Feedback_Controller->new_feedback($roomID, $urgency, $resolved, $closed, $title, $text);
 
+    
     foreach ($users as $user) {
-        echo $user['userID'] . "\n";
+        if ($user['userID'] !== $user_data["userID"] && $user['sub'] == "1"){
+       // echo $user['userID'] . "\n";
         $Feedback_Controller->sub_alert($user['userID']);
+        }
     }   
     
 }
