@@ -6,9 +6,6 @@
     </a>
 
     <div class="header-right">
-
-    
-
         <!-- Light/dark Mode switch -->
         <button title="Toggle Dark Mode" id="lightbulb-toggle" onclick="lightMode()"> <!-- Frontend crew might want to change the id to a class if you want to use this function for multiple elements -->
             <i id="lightbulb-symbol" class="fa-regular fa-lightbulb"></i>
@@ -63,12 +60,11 @@
         </div>
     </div>
 </header>
-<hr>
 
-<!-- JavaScript to show buttons when logged in -->
+<!-- Show buttons when logged in (JavaScript) -->
 <script>
     window.onload = function(){
-        if (loggedIn){
+        if (loggedIn) {
           document.getElementById("inbox-button").style.display = "inline";
           document.getElementById("home-button").style.display = "inline";
           document.getElementById("profile-button").style.display = "inline";
