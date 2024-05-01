@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 include("classes/Database.class.php");
@@ -13,15 +12,9 @@ $Login_Controller = new LoginContr();
 $user_data = $Login_Controller->force_login();
 
 $Feedback_View = new FeedbackView($user_data['userID']);
-
-
-
-
 ?>
-
 <!DOCTYPE html> 
 <html lang="en-gb">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,15 +29,8 @@ $Feedback_View = new FeedbackView($user_data['userID']);
 
     <link rel="stylesheet" href="stylesheets/main.css">
 
-    <style>
-        tr[data-href] {
-            cursor: pointer;
-        }
-    </style>
-
     <script src="https://kit.fontawesome.com/7e1870387e.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
     <!-- Header -->
     <?php include("header.php"); ?>
@@ -146,140 +132,108 @@ $Feedback_View = new FeedbackView($user_data['userID']);
                     </div>
                 </form>
 
-            
-
                 <!-- New Feedback Button -->
-                <button onclick="window.location.href = 'newFeedback.php'">New Feedback</button> 
-
+                <button onclick="window.location.href = 'newFeedback.php'">New Feedback</button>
             </div>
 
-
             <!-- Table to show feedback -->
-            <table class="search-table">
+            <table class="search-table"></table>
 
-
-                    
-
-                    
-
-            
-            </table>
-                   
-
-                
             </div>
         </div>
     </main>
 
-
     <!-- Footer -->
     <div class="footer-position"><?php include("footer.php"); ?></div>
-    
 
-
-
-<script>
-    const rows = document.querySelectorAll(".clickable-row");
-        rows.forEach(row => {
-            row.addEventListener("click", () => {
-                window.location.href = row.dataset.href;
+    <script>
+        const rows = document.querySelectorAll(".clickable-row");
+            rows.forEach(row => {
+                row.addEventListener("click", () => {
+                    window.location.href = row.dataset.href;
+                });
             });
-        });
-</script>
+    </script>
 
+    <!-- import AJAX -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!-- import AJAX -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!-- Updates table when changing filters, sorting, and searching -->
-<script>
-$(document).ready(function() {
-
-    // Function to update table
-    function updateTable() {
-
+    <!-- Updates table when changing filters, sorting, and searching -->
+    <script>
+    $(document).ready(function() {
+        // Function to update table
+        function updateTable() {
             // Get filter values
             var formData = $("#index-search-form").serialize();
 
             // Send AJAX request
             $.ajax({
                 type: "POST",
-                url: "updateTable.php", 
+                url: "updateTable.php",
                 data: formData,
                 success: function(response) {
                     // Update table with the response
                     $(".search-table").html(response);
                 }
             });
+        }
 
+        // Listen for changes in filter inputs
+        $("#index-search-form input").on("change keyup", function() {
+            // Update table whenever filter inputs change
+            updateTable();
+        });
 
-        
-    }
+        // Listen for changes in urgency slider
+        $("#urgency").on("input", function() {
+            // Update table whenever urgency slider changes
+            updateTable();
+        });
 
-    // Listen for changes in filter inputs
-    $("#index-search-form input").on("change keyup", function() {
-        // Update table whenever filter inputs change
+        // Listen for changes in timeframe slider
+        $("#timeframe").on("input", function() {
+            // Update table whenever timeframe slider changes
+            updateTable();
+        });
+
+        // Listen for changes in resolved checkbox
+        $("input[name='resolved']").on("change", function() {
+            // Update table whenever resolved checkbox changes
+            updateTable();
+        });
+
+        // Listen for changes in closed checkbox
+        $("input[name='closed']").on("change", function() {
+            // Update table whenever closed checkbox changes
+            updateTable();
+        });
+
+        // Listen for changes in sort type dropdown
+        $("#sort-type").on("change", function() {
+            // Update table whenever sort type dropdown changes
+            updateTable();
+        });
+
+        // Listen for changes in sort direction dropdown
+        $("#Direction").on("change", function() {
+            // Update table whenever sort direction dropdown changes
+            updateTable();
+        });
+
+        // Initial table update
         updateTable();
     });
+    </script>
 
-    // Listen for changes in urgency slider
-    $("#urgency").on("input", function() {
-        // Update table whenever urgency slider changes
-        updateTable();
-    });
-
-    // Listen for changes in timeframe slider
-    $("#timeframe").on("input", function() {
-        // Update table whenever timeframe slider changes
-        updateTable();
-    });
-
-    // Listen for changes in resolved checkbox
-    $("input[name='resolved']").on("change", function() {
-        // Update table whenever resolved checkbox changes
-        updateTable();
-    });
-
-    // Listen for changes in closed checkbox
-    $("input[name='closed']").on("change", function() {
-        // Update table whenever closed checkbox changes
-        updateTable();
-    });
-
-    // Listen for changes in sort type dropdown
-    $("#sort-type").on("change", function() {
-        // Update table whenever sort type dropdown changes
-        updateTable();
-    });
-
-    // Listen for changes in sort direction dropdown
-    $("#Direction").on("change", function() {
-        // Update table whenever sort direction dropdown changes
-        updateTable();
-    });
-
-
-    // Initial table update
-    updateTable();
-
-});
-
-</script>
-
-
-
-
-
-
-<!-- JS to change sliders when sliding -->
-<script>
+    <!-- JS to change sliders when sliding -->
+    <script>
         //Update urgency value when slider is moved
         const urgencyInput = document.getElementById('urgency');
         const urgencyValue = document.getElementById('urgency-value');
         urgencyInput.addEventListener('input', () => {
-            urgencyValue.textContent = 
+            urgencyValue.textContent =
             urgencyInput.value === '-1' ? 'All' :
-            urgencyInput.value === '0' ? 'Low' : 
+            urgencyInput.value === '0' ? 'Low' :
             urgencyInput.value === '1' ? 'Medium' :
             urgencyInput.value === '2' ? 'High':
             'Critial';
@@ -289,28 +243,13 @@ $(document).ready(function() {
         const timeframeInput = document.getElementById('timeframe');
         const timeframeValue = document.getElementById('timeframe-value');
         timeframeInput.addEventListener('input', () => {
-            timeframeValue.textContent = 
-            timeframeInput.value === '0' ? '1 Hour' : 
-            timeframeInput.value === '1' ? '1 Day' : 
-            timeframeInput.value === '2' ? '1 Week' : 
-            timeframeInput.value === '3' ? '1 Month' : 
+            timeframeValue.textContent =
+            timeframeInput.value === '0' ? '1 Hour' :
+            timeframeInput.value === '1' ? '1 Day' :
+            timeframeInput.value === '2' ? '1 Week' :
+            timeframeInput.value === '3' ? '1 Month' :
             'All Time';
         });
-
-
-
-
-        
-
-
-</script>
-
-
-
-
-
-
-
-
-    </body>
+    </script>
+</body>
 </html>
