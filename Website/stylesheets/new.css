@@ -3,7 +3,7 @@
 /* ---------- */
 
 body {
-    background-color: #222;
+    background-color: #333;
     color: #eee;
     font-family: "Rubik", sans-serif;
     margin: 0;
@@ -16,13 +16,17 @@ body {
     font-weight: 400;
 }
 
+::selection {
+    background-color: deeppink;
+}
+
 /* ------ */
 /* HEADER */
 /* ------ */
 
 header {
     background-color: #111;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #666;
     display: flex;
     justify-content: space-between;
     padding: 16px;
@@ -40,6 +44,10 @@ header {
     display: flex;
     gap: 8px;
     text-decoration: none;
+}
+
+.header-logo:hover {
+    text-decoration: underline;
 }
 
 .header-logo-text {
@@ -65,9 +73,9 @@ header {
 }
 
 .header-button-badge {
-    background-color: cornflowerblue;
+    background-color: deeppink;
     border-radius: 4px;
-    padding: 2px;
+    padding: 2px 4px;
     position: absolute;
     right: -4px;
     top: -4px;
@@ -118,13 +126,28 @@ header {
     gap: 8px;
 }
 
+/* ---- */
+/* MAIN */
+/* ---- */
+
+main {
+    background-color: #222;
+    border-radius: 8px;
+    margin: 16px;
+    padding: 16px;
+}
+
+main .title {
+    margin: 0;
+}
+
 /* ------ */
 /* FOOTER */
 /* ------ */
 
 footer {
     background-color: #111;
-    border-top: 1px solid #333;
+    border-top: 1px solid #666;
     display: flex;
     gap: 32px;
     justify-content: center;
