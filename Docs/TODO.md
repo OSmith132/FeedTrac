@@ -35,7 +35,7 @@
   * ~~Allow the user to press on row and redirect to feedback~~    _-Oliver (01/5/24)_
   
 
-* Feedback page - Marco - Done
+* Feedback page - Marco - In progress, mostly done.
   * Implement feedback rating system
   * ~~Implement commenting system < prioritizing this~~ _Marco (30/04/24)_
   * ~~get avatars on comments to work~~ _Toby (02/05/24)_
