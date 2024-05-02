@@ -23,20 +23,21 @@ else {
     $feedbackID = 0;                           // WHEN ID = 0 IT WILL NEED TO SHOW A DEFAULT PAGE
 }
 
-echo $feedbackID;
-
 $Feedback_Controller = new FeedbackContr($user_data['userID']);
 
 $feedback = $Feedback_Controller->feedback_get($feedbackID);
 
 $text = $feedback["text"];
 // FIXME does this need to be initialised with a value? it has red line underneath
-$comment_text;
+
 $user = $user_data['userID'];
 $feedback_userID = $feedback["userID"];
 $feedback_user_details = $Login_Controller->get_feedback_user_details($feedback_userID);
 $feedback_date = $feedback["date"];
 $ratingPoints_comment = 0;
+$course= $user_data["courseID"];
+$users = $Feedback_Controller->list_users($course);
+
 
 $comments = $Feedback_Controller->find_comments($feedbackID);
 $comments_count = count($comments);
@@ -45,7 +46,13 @@ $comments_count = count($comments);
 if (isset($_POST['submit_comment'])) {
     $comment_text = $_POST['comment_text'];
     $Feedback_Controller->new_comment($user, $feedbackID, $comment_text, $ratingPoints_comment);
-    header("Location: " . $_SERVER['REQUEST_URI']); // Refresh the page
+    foreach ($users as $user) {
+        if ($user['userID'] !== $user_data["userID"] && $user['sub'] == "1"){
+       // echo $user['userID'] . "\n";
+        $Feedback_Controller->sub_alert($user['userID']);
+        }
+    }   
+    header("Location: " . $_SERVER['REQUEST_URI']); 
     exit();
 }
 
@@ -94,6 +101,16 @@ if (isset($_POST['submit_comment'])) {
                     <i id="heart-symbol" class="fa-regular fa-heart"></i> <div style="display:inline-block;" id=heart-counter><?= htmlspecialchars($feedback["ratingPoints"], ENT_QUOTES, 'UTF-8'); ?></div>
                 </button>
             </div>
+            
+           <!-- Comment Form -->
+           <form method="POST" action="">
+            
+           <div style="display: flex; align-items: center;">
+    <textarea class="feedback-comment" name="comment_text" required style="width: 800px; height: 35px;" placeholder="Add Comment..."></textarea>
+    <button class="feedback-button" type="submit" name="submit_comment">Submit</button>
+</div>
+
+        </form>
 
             <div><hr></div>
 
@@ -129,12 +146,6 @@ if (isset($_POST['submit_comment'])) {
             <div><hr></div>
             
 
-           <!-- Comment Form -->
-            <form method="POST" action="">
-            
-                <textarea class="feedback-comment" name="comment_text" required style="width: 600px; height: 100px;" placeholder="Add Comment..."></textarea>
-                <button class="feedback-button" type="submit" name="submit_comment">Submit</button>
-            </form>
 
 
         </main> 
@@ -142,4 +153,5 @@ if (isset($_POST['submit_comment'])) {
         <!-- Footer -->
         <div class="footer-position"><?php include("footer.php"); ?></div>
     </body>
+    
 </html>
