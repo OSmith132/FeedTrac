@@ -38,6 +38,7 @@ $feedback_date = $feedback["date"];
 $ratingPoints_comment = 0;
 
 $comments = $Feedback_Controller->find_comments($feedbackID);
+$comments_count = count($comments);
 
 
 if (isset($_POST['submit_comment'])) {
@@ -85,21 +86,8 @@ if (isset($_POST['submit_comment'])) {
 
             <div class="feedback-header">
 
-            <p><img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32"><a href="profile.php"> <?= htmlspecialchars($feedback_user_details["username"], ENT_QUOTES, 'UTF-8'); ?> (26411141)</a> raised this feedback 
-                <?php 
-                    $interval = date_diff(date_create($feedback["date"]), date_create());
-                    if ($interval->d == 0) {
-                        // Feedback was created on the same day
-                        if ($interval->h == 0) {
-                            // Feedback was created in the same hour
-                            echo $interval->format('%i minutes ago');
-                        } else {
-                            echo $interval->format('%h hours ago');
-                        }
-                    } else {
-                        echo $interval->format('%a days ago');
-                    }
-                ?> · 2 comments</p>
+            <p><img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32"><a href="profile.php"> <?= htmlspecialchars($feedback_user_details["username"], ENT_QUOTES, 'UTF-8'); ?> (26411141)</a> raised this feedback on <?= htmlspecialchars($feedback["date"], ENT_QUOTES, 'UTF-8'); ?> · Comment count  <?= htmlspecialchars($comments_count, ENT_QUOTES, 'UTF-8'); ?></p>
+                 
                 <!-- Heart Button -->
                 <button id="heart-toggle" title="Like" onclick="like()">
                     <i id="heart-symbol" class="fa-regular fa-heart"></i> <div style="display:inline-block;" id=heart-counter><?= htmlspecialchars($feedback["ratingPoints"], ENT_QUOTES, 'UTF-8'); ?></div>
