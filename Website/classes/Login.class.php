@@ -32,6 +32,33 @@ class Login extends Database {
         
     }
 
+    protected function get_feedback_user_data($userID){ //
+
+        if(isset($_SESSION['userID'])){
+            
+            //prepare the SQL query
+            $stmt = $this->connect()->prepare("SELECT * FROM user WHERE userID = ?  limit 1");
+
+            // Check if the SQL query is valid
+            if(!$stmt->execute([$userID])){
+                header("location: login.php?error=BadSQLQuery");
+                exit(); 
+            }
+
+            $result = $stmt->get_result();
+
+            if(mysqli_num_rows($result) > 0){
+                $user_data = $result -> fetch_assoc();
+                return $user_data;
+            }
+        }
+        
+        //redirect to login
+        header("Location: login.php");
+        die;
+        
+    }
+
 
     // Add new user to database
     protected function create_user($email, $username, $hashed_password, $fname, $lname, $courseID, $yearOfStudy, $pronouns, $position){

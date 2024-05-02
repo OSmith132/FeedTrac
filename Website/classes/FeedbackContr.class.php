@@ -27,6 +27,35 @@ class FeedbackContr extends Feedback {
     
     }
 
+    // Create a comment on feedback item
+    public function new_comment($userID,$feedbackID, $text, $ratingPoints){
+
+        // Check if any input is empty
+        if ($this->empty_input_check($text)){
+        header("location: feedback.php?error=emptyinput");
+        exit();
+    }
+
+        // Create new feedback
+        $this->create_comment($userID,$feedbackID, $text, $ratingPoints);
+    
+    }
+
+
+    // Create a comment on feedback item
+    public function find_comments($feedbackID){
+
+        // Check if any input is empty
+        if ($this->empty_input_check($feedbackID)){
+        header("location: feedback.php?error=emptyinput");
+        exit();
+    }
+
+        // Create new feedback
+        return $this->get_comments($feedbackID);
+    
+    }
+
      // Create a new alert for subbed users
      public function sub_alert($userID){
 
@@ -35,6 +64,15 @@ class FeedbackContr extends Feedback {
          $this->alert($userID);
      
      }
+
+      // Create a new alert for subbed users
+      public function feedback_get($feedbackID){
+
+         
+        // Create new feedback
+        return $this->get_feedback($feedbackID);
+    
+    }
 
     // Update existing feedback item
     public function set_feedback($feedbackID, $roomID, $date, $urgency, $resolved, $closed, $title, $text){

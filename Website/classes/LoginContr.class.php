@@ -92,6 +92,18 @@ class LoginContr extends Login {
 
    }
 
+   public function get_feedback_user_details($userID){
+
+    // Check if any input is empty
+    if ($this->empty_input_check($userID)){
+        header("location: login.php?error=BadSQLQuery");
+        exit();
+    }
+
+    return $this->get_feedback_user_data($userID);
+}
+
+
    // Get the user ID from username
    public function get_userid($username){
 

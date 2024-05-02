@@ -118,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <br><br>
 
         Enter your feedback:<br>
-        <input type="text" name="text" required>
+        <textarea name="text" required style="width: 600px; height: 100px;"placeholder="Add feedback..."></textarea>
         <br><br>
         
         <select name="urgency" required>

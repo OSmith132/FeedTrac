@@ -16,17 +16,31 @@ class Feedback extends Database
         if (!$stmt->execute([$feedbackID])) {
             header("location: profile.php?error=BadSQLQuery");
             exit();
-        }
+        }      
 
-        // Check if there are any results
-        if ($stmt->num_rows() == 0) {
-            header("location: profile.php?error=NoFeedbackFound");
+        // Return the results
+        $results = $stmt->get_result()->fetch_assoc();
+        return $results;
+    }
+
+    // Get feedback from the database on feedbackID
+    protected function get_comments($feedbackID)
+    {
+
+        // Connect  to database and retrieves all data about feedback
+        $stmt = $this->connect()->prepare("SELECT * FROM comment WHERE feedbackID = ?");
+
+        // Check if the SQL query is valid
+        if (!$stmt->execute([$feedbackID])) {
+            header("location: profile.php?error=BadSQLQuery");
             exit();
-        }
+        }      
 
+        // Return the results
         // Return the results
         $results = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $results;
+
     }
 
 
@@ -63,6 +77,22 @@ class Feedback extends Database
 
         $stmt = null;
     }
+
+     // Create new comment
+     protected function create_comment($userID,$feedbackID,$text,$ratingPoints)
+     {
+ 
+         // Connect  to database and create new feedback item
+         $stmt = $this->connect()->prepare("INSERT INTO comment (userID, feedbackID, text, ratingPoints) VALUES (?, ?, ?, ?)");
+ 
+         // Check if the SQL query is valid
+         if (!$stmt->execute([$userID, $feedbackID, $text, $ratingPoints])) {
+             header("location: profile.php?error=BadSQLQuery");
+             exit();
+         }
+ 
+         $stmt = null;
+     }
 
     // Create new inbox alert
     protected function alert($userID)

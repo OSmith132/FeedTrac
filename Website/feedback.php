@@ -23,6 +23,30 @@ else {
     $feedbackID = 0;                           // WHEN ID = 0 IT WILL NEED TO SHOW A DEFAULT PAGE
 }
 
+echo $feedbackID;
+
+$Feedback_Controller = new FeedbackContr($user_data['userID']);
+
+$feedback = $Feedback_Controller->feedback_get($feedbackID);
+
+$text = $feedback["text"];
+$comment_text;
+$user = $user_data['userID'];
+$feedback_userID = $feedback["userID"];
+$feedback_user_details = $Login_Controller->get_feedback_user_details($feedback_userID);
+$feedback_date = $feedback["date"];
+$ratingPoints_comment = 0;
+
+$comments = $Feedback_Controller->find_comments($feedbackID);
+
+
+if (isset($_POST['submit_comment'])) {
+    $comment_text = $_POST['comment_text'];
+    $Feedback_Controller->new_comment($user, $feedbackID, $comment_text, $ratingPoints_comment);
+    header("Location: " . $_SERVER['REQUEST_URI']); // Refresh the page
+    exit();
+}
+
 
 
 ?>
@@ -34,7 +58,6 @@ else {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>FeedTrac - Lights keep flickering during lecture</title>
 
         <link rel="icon" type="image/x-icon" href="assets/icon.png">
 
@@ -58,41 +81,60 @@ else {
                 <a href="course.php"><button>Computer Science</button></a>
             </div>
 
-            <h1>Lights keep flickering during lecture</h1>
+            <h1><?= htmlspecialchars($text, ENT_QUOTES, 'UTF-8'); ?></h1>
 
             <div class="feedback-header">
 
-                <p><img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32"><a href="profile.php"> Archie Baldry (26411141)</a> raised this feedback 3 days ago · 2 comments</p>
+            <p><img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32"><a href="profile.php"> <?= htmlspecialchars($feedback_user_details["username"], ENT_QUOTES, 'UTF-8'); ?> (26411141)</a> raised this feedback 
+                <?php 
+                    $interval = date_diff(date_create($feedback["date"]), date_create());
+                    if ($interval->d == 0) {
+                        // Feedback was created on the same day
+                        if ($interval->h == 0) {
+                            // Feedback was created in the same hour
+                            echo $interval->format('%i minutes ago');
+                        } else {
+                            echo $interval->format('%h hours ago');
+                        }
+                    } else {
+                        echo $interval->format('%a days ago');
+                    }
+                ?> · 2 comments</p>
                 <!-- Heart Button -->
                 <button id="heart-toggle" title="Like" onclick="like()">
-                    <i id="heart-symbol" class="fa-regular fa-heart"></i> <div style="display:inline-block;" id=heart-counter>0</div>
+                    <i id="heart-symbol" class="fa-regular fa-heart"></i> <div style="display:inline-block;" id=heart-counter><?= htmlspecialchars($feedback["ratingPoints"], ENT_QUOTES, 'UTF-8'); ?></div>
                 </button>
             </div>
 
             <div><hr></div>
 
-            <div class="comment">
-                <div class="comment-header">
-                    <p><img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32"><a href="profile.php"> Archie Baldry (26411141)</a> commented 3 days ago</p>
-                </div>
-                <div class="comment-main">
-                    <p>I don't like how the lights keep flickering. It's hurting my eyes, pls fix.</p>
-                </div>
-            </div>
 
-            <div class="comment">
-                <div class="comment-header">
-                    <p><img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32"><a href="profile.php"> John Smith (11122233)</a> commented 2 days ago</p>
+            <?php foreach ($comments as $comment): 
+                $comment_userID = $comment['userID'];
+                $comment_user_details = $Login_Controller->get_feedback_user_details($comment_userID);
+            ?>
+                <div class="comment">
+                    <div class="comment-header">
+                        <p><img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32"><a href="profile.php"> <?= htmlspecialchars($comment_user_details['username'], ENT_QUOTES, 'UTF-8'); ?></a> commented <?= htmlspecialchars($comment['date'], ENT_QUOTES, 'UTF-8'); ?></p>
+                    </div>
+                    <div class="comment-main">
+                        <p><?= htmlspecialchars($comment['text'], ENT_QUOTES, 'UTF-8'); ?></p>
+                    </div>
                 </div>
-                <div class="comment-main">
-                    <p>Yeah ur right it is proper annoying.</p>
-                </div>
-            </div>
+            <?php endforeach; ?>
+
 
             <div><hr></div>
+            
 
-            <textarea class="feedback-comment" type="text" placeholder="Add Comment..."></textarea>
-            <button class="feedback-button">Submit</button>
+           <!-- Comment Form -->
+            <form method="POST" action="">
+            
+                <textarea class="feedback-comment" name="comment_text" required style="width: 600px; height: 100px;" placeholder="Add Comment..."></textarea>
+                <button class="feedback-button" type="submit" name="submit_comment">Submit</button>
+            </form>
+
+
         </main> 
 
         <!-- Footer -->
