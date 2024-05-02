@@ -133,12 +133,20 @@ header {
 main {
     background-color: #222;
     border-radius: 8px;
-    margin: 16px;
+    display: flex;
+    flex-direction: column;
+    margin: 16px 10%;
     padding: 16px;
 }
 
 main .title {
     margin: 0;
+    text-align: center;
+}
+
+main table, main th, main td {
+    border: 1px solid #666;
+    border-collapse: collapse;
 }
 
 /* ------ */

@@ -138,8 +138,6 @@ $Feedback_View = new FeedbackView($user_data['userID']);
 
             <!-- Table to show feedback -->
             <table class="search-table"></table>
-
-            </div>
         </div>
     </main>
 
