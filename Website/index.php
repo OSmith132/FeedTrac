@@ -27,13 +27,13 @@ $Feedback_View = new FeedbackView($user_data['userID']);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="stylesheet" href="stylesheets/new.css">
 
     <script src="https://kit.fontawesome.com/7e1870387e.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Header -->
-    <?php include("modules/header.php");?>
+    <?php include("modules/newHeader.php");?>
 
     <!-- Main -->
     <main>
