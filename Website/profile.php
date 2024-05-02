@@ -156,14 +156,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 <div class="user-data">
                     <h3>Personal Information</h3><hr><br>
                     <ul style="list-style-type: none">
-                        <li><b>- Email:</b> <?php echo $profile_data->email;?></li><br>
-                        <li><b>- Username:</b> <?php echo $profile_data->username;?></li><br>
-                        <li><b>- First Name:</b> <?php echo $profile_data->fName;?></li><br>
-                        <li><b>- Last Name:</b> <?php echo $profile_data->lName;?></li><br>
-                        <li><b>- Year of Study:</b> <?php echo $profile_data->year;?></li><br>
-                        <li><b>- Pronouns:</b> <?php echo $profile_data->pronoun;?></li><br>
-                        <li><b>- Course:</b> <?php echo $profile_data->courseName?></li><br>
-                        <li><b>- Position:</b> <?php echo $profile_data->position;?></li><br>
+                        <li><b>- Email:</b> <?php echo $profile_data->email;?></li>
+                        <li><b>- Username:</b> <?php echo $profile_data->username;?></li>
+                        <li><b>- First Name:</b> <?php echo $profile_data->fName;?></li>
+                        <li><b>- Last Name:</b> <?php echo $profile_data->lName;?></li>
+                        <li><b>- Year of Study:</b> <?php echo $profile_data->year;?></li>
+                        <li><b>- Pronouns:</b> <?php echo $profile_data->pronoun;?></li>
+                        <li><b>- Course:</b> <?php echo $profile_data->courseName?></li>
+                        <li><b>- Position:</b> <?php echo $profile_data->position;?></li>
                     </ul>
                 </div>
 
