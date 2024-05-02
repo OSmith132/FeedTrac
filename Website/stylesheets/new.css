@@ -57,7 +57,7 @@ header {
 
 .header-button {
     background-color: #222;
-    border: none;
+    border: 1px solid #666;
     border-radius: 8px;
     color: inherit;
     height: 32px;
@@ -82,6 +82,7 @@ header {
 }
 
 .header-profile-picture {
+    border: 1px solid #666;
     border-radius: 50%;
 }
 
@@ -91,7 +92,8 @@ header {
 }
 
 .header-dropdown-content {
-    background-color: #333;
+    background-color: #222;
+    border: 1px solid #666;
     border-radius: 8px;
     display: none;
     padding: 8px;
@@ -106,7 +108,7 @@ header {
 }
 
 .header-dropdown-content button {
-    background-color: #444;
+    background-color: #333;
     border: none;
     border-radius: 8px;
     color: inherit;
@@ -117,7 +119,7 @@ header {
 }
 
 .header-dropdown-content button:hover {
-    background-color: #555;
+    background-color: #444;
 }
 
 .header-dropdown:hover .header-dropdown-content {
@@ -132,6 +134,7 @@ header {
 
 main {
     background-color: #222;
+    border: 1px solid #666;
     border-radius: 8px;
     display: flex;
     flex-direction: column;

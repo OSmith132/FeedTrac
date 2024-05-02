@@ -32,7 +32,7 @@
 
         <div class="header-dropdown">
             <!-- TODO: Reimplement custom user profile picture. Please do this with a dedicated function, rather than writing a load of PHP here. -->
-            <img class="header-profile-picture" src="assets/profile-pictures/user-default.jpg" alt="User Profile Picture" width="32" height="32">
+            <img class="header-profile-picture" src="assets/profile-pictures/user-default.jpg" alt="User Profile Picture" width="30" height="30">
 
             <div class="header-dropdown-content">
                 <button onclick="location.href = 'profile.php'">Profile</button>
