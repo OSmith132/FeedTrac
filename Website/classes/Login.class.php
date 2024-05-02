@@ -192,6 +192,18 @@ class Login extends Database {
         return $results;
     }
 
+    protected function get_course_name($courseID){
+        //prepare the SQL query
+        $stmt = $this->connect()->prepare("SELECT name FROM course where courseID = ?");
+
+        // Check if the SQL query is valid
+        if(!$stmt->execute([$courseID])){
+            header("location: login.php?error=BadSQLQuery");
+            exit();
+        }
+        return $stmt->get_result()->fetch_assoc()['name'];
+    }
+
 
 
     protected function create_recovery_code($email){
