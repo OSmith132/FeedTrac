@@ -16,9 +16,9 @@
 ## Website and Database:
 
 * New Feedback page - Marco - Done
-  * ~~Create page~~
-  * ~~Add feedback creation functionality~~
-    * ~~Link with database~~                                        _Marco_
+  * ~~Create page~~_Marco (30/04/24)_
+  * ~~Add feedback creation functionality~~_Marco (30/04/24)_
+  * ~~Link with database~~ _Marco (30/04/24)_
   * (OPTIONAL) Add extra options such as anonymous posting or the ability to disable comments
 
 * Home/Index page
@@ -37,27 +37,28 @@
 
 * Feedback page - Marco - in progress
   * Implement feedback rating system
-  * ~~Implement commenting system < prioritizing this~~ 
+  * ~~Implement commenting system < prioritizing this~~ _Marco (30/04/24)_
   * ~~get avatars on comments to work~~ _Toby (02/05/24)_
   * Maybe add Photos / files to report
-  * Link with database
-  * TODO STRETCH - Assign correct student ID to feedback item, assign correct course.
+  * ~~Link with database~~ _Marco (30/04/24)_
+  * ~~TODO STRETCH - Assign correct student ID to feedback item, assign correct course.~~_Marco (30/04/24)_
 
 * Course page (Deprecated by committee)
   * ~~Create page (Contains posts relevant to a specific course)~~ 
   * ~~Allow for individual course pages by linking with database~~
  
 * Inbox page - Marco - In progress
-  * Create page (Contains user notifications on updates to their personal and subscribed posts)
-  * Display feedback data on the inbox page
-  * Add an observer to subscribe and get updates to courses and comments (Design Pattern)
+  * ~~Create page (Contains user notifications on updates to their personal and subscribed posts)~~_Marco (03/05/24)_
+  * ~~Display feedback data on the inbox page~~_Marco (03/05/24)_
+  * ~~Add an observer to subscribe and get updates to courses and comments (Design Pattern)~~_Marco (03/05/24)_
+  * Conveert page into dropdown menu, with alert counter on corner of the icon.
 
 * Profile page
   * ~~Need to be able to see other users profile when clicking on their names~~ _Toby (02/05/24)_
   * ~~Allow for individual profile pages per account to replace the template~~
   * ~~Add edit profile functionality~~ 
-    * ~~Upload profile picture~~  (only supports png upload) _Toby (30/04/24)_
-    * ~~Edit about section~~ _Toby (01/05/24)_
+  * ~~Upload profile picture~~  (only supports png upload) _Toby (30/04/24)_
+  * ~~Edit about section~~ _Toby (01/05/24)_
 
 * Settings page
   * ~~changePassword.php has now been created, but the form to change the password isn't functional~~ _Toby (02/05/24)_
