@@ -45,6 +45,7 @@ $comments_count = count($comments);
 if (isset($_POST['submit_comment'])) {
     $comment_text = $_POST['comment_text'];
     $Feedback_Controller->new_comment($user, $feedbackID, $comment_text, $ratingPoints_comment);
+    date_default_timezone_set('Europe/London');
     $newDate = date_create();
     $Feedback_Controller->modify_date($feedbackID,$newDate);
 
