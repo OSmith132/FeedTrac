@@ -87,7 +87,7 @@ if (isset($_POST['submit_comment'])) {
         <main class="feedback-main">
             <div class="feedback-header">
                 <button>Open</button>
-                <a href="course.php"><button>Computer Science</button></a>
+                
             </div>
 
             <h1><?= htmlspecialchars($text, ENT_QUOTES, 'UTF-8'); ?></h1>
@@ -107,7 +107,7 @@ if (isset($_POST['submit_comment'])) {
                     echo $png_path;
                 } else {
                     echo "assets/profile-pictures/user-default.jpg";
-                }?>"alt="User Avatar" height="32"><a href="profile.php"> <?= htmlspecialchars($feedback_user_details["username"], ENT_QUOTES, 'UTF-8'); ?> (26411141)</a> raised this feedback on <?= htmlspecialchars($feedback["date"], ENT_QUOTES, 'UTF-8'); ?> · Comment count  <?= htmlspecialchars($comments_count, ENT_QUOTES, 'UTF-8'); ?></p>
+                }?>"alt="User Avatar" height="32"><a href="profile.php"> <?= htmlspecialchars($feedback_user_details["username"], ENT_QUOTES, 'UTF-8'); ?> </a> raised this feedback on <?= htmlspecialchars($feedback["date"], ENT_QUOTES, 'UTF-8'); ?> · <?= htmlspecialchars($comments_count, ENT_QUOTES, 'UTF-8'); ?> comments.</p>
                  
                 <!-- Heart Button -->
                 <button id="heart-toggle" title="Like" onclick="like()">
@@ -153,11 +153,7 @@ if (isset($_POST['submit_comment'])) {
                         <p><?= htmlspecialchars($comment['text'], ENT_QUOTES, 'UTF-8'); ?></p>
                     </div>
                 </div>
-            <?php endforeach; ?>
-
-
-            <div><hr></div>
-            
+            <?php endforeach; ?>       
 
 
 
