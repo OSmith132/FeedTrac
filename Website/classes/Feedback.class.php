@@ -60,6 +60,25 @@ class Feedback extends Database
         $stmt = null;
     }
 
+    // Update existing feedback modified date
+    protected function update_feedback_dateModified($feedbackID, $dateModified)
+    {
+        // Convert DateTime object to string
+        $dateModifiedStr = $dateModified->format('Y-m-d H:i:s');
+    
+        // Connect to database and update all data about a feedback item
+        $stmt = $this->connect()->prepare("UPDATE feedback SET modifiedDate = ? WHERE feedbackID = ?");
+    
+        // Check if the SQL query is valid
+        if (!$stmt->execute([$dateModifiedStr, $feedbackID])) {
+            header("location: profile.php?error=BadSQLQuery");
+            exit();
+        }
+    
+        $stmt = null;
+    }
+    
+
 
 
     // Create new feedback
@@ -293,28 +312,14 @@ class Feedback extends Database
     protected function get_all_rows_inbox($dateTime)
     {
         // Prepare an SQL statement to select all feedback where the date is greater than $dateTime
-        $stmt = $this->connect()->prepare("SELECT 
-                                                feedback.feedbackID, 
-                                                resolved, 
-                                                urgency, 
-                                                title, 
-                                                feedback.text, 
-                                                feedback.date, 
-                                                feedback.ratingPoints, 
-                                                COUNT(commentID) as number_of_comments 
-                                            FROM 
-                                                feedback 
-                                            LEFT JOIN 
-                                                comment 
-                                            ON 
-                                                feedback.feedbackID = comment.feedbackID 
+        $stmt = $this->connect()->prepare("SELECT * from feedback
                                             WHERE 
-                                                feedback.date > ?
+                                                modifiedDate > ? or feedback.date > ?
                                             GROUP BY 
                                                 feedback.feedbackID;");
     
         // Check if the SQL query is valid and execute
-        if (!$stmt->execute([$dateTime])) {
+        if (!$stmt->execute([$dateTime,$dateTime])) {
             header("location: feedback.php?error=BadSQLQuery");
             exit();
         }

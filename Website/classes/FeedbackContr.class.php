@@ -128,7 +128,11 @@ class FeedbackContr extends Feedback {
 
     }
 
-    
+    public function modify_date($feedbackID, $dateModified){ // positiveRating: bool    feedbackID: int    userID: int
+
+        $this->update_feedback_dateModified($feedbackID, $dateModified);
+
+    }
 
 
     

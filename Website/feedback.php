@@ -28,7 +28,6 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
 $feedback = $Feedback_Controller->feedback_get($feedbackID);
 
 $text = $feedback["text"];
-// FIXME does this need to be initialised with a value? it has red line underneath
 
 $user = $user_data['userID'];
 $feedback_userID = $feedback["userID"];
@@ -46,6 +45,9 @@ $comments_count = count($comments);
 if (isset($_POST['submit_comment'])) {
     $comment_text = $_POST['comment_text'];
     $Feedback_Controller->new_comment($user, $feedbackID, $comment_text, $ratingPoints_comment);
+    $newDate = date_create();
+    $Feedback_Controller->modify_date($feedbackID,$newDate);
+
     foreach ($users as $user) {
         if ($user['userID'] !== $user_data["userID"] && $user['sub'] == "1"){
        // echo $user['userID'] . "\n";
