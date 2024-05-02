@@ -182,7 +182,7 @@ class LoginContr extends Login {
         return $this->update_bio($bio,$userID);
     }
 
-    // TODO Update this for info update
+
     public function update_user_info($fname,$lname,$year,$pronoun,$userID){
 
         // Check if any input is empty
