@@ -6,6 +6,7 @@ include ("classes/login.class.php");
 include ("classes/LoginContr.class.php");
 include ("classes/Feedback.class.php");
 include ("classes/FeedbackContr.class.php");
+include ("classes/LoginView.php");
 include ("scripts/functions.php");
 
 $Login_Controller = new LoginContr();
@@ -19,12 +20,12 @@ $User_ID = $user_data['userID'];
 
 // Get the feedbackID from the URL
 if (isset($_GET['id'])) {
-    $profileID = $_GET['id'];                 // THIS IS THE ID THAT SHOULD BE READ FROM THE DB IF NOT THE USER-----------
+    $profileID = $_GET['id']; // THIS IS THE ID THAT SHOULD BE READ FROM THE DB IF NOT THE USER-----------
 }
 else {
     $profileID = $User_ID;                    // ID DEFAULTS TO THE USERID
 }
-
+$profile_data = new LoginView($profileID);
 
 
 //!---TODO Add extra checks for image upload like size etc.
@@ -105,13 +106,16 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         <!-- Header -->
         <?php include("header.php"); ?>
 
+
         <!-- Main -->
         <div>
             <h1><?php
                 echo "Profile for ";
-                echo $Login_Controller->get_current_user_first_name();
+                /*echo $Login_Controller->get_current_user_first_name();*/
+                echo $profile_data->username;
                 echo " ";
-                echo $Login_Controller->get_current_user_last_name();
+                /*echo $Login_Controller->get_current_user_last_name();*/
+                echo $profile_data->lName;
             ?></h1><hr><br>
             <!-- Content -->
             <div class="profile-content">
@@ -120,8 +124,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     <img class="avatar" src="<?php
                     // Get user info and find either jpg or png profile picture
                     $userID = $_SESSION['userID'];
-                    $jpg_path = "assets/profile-pictures/user-$userID.jpg";
-                    $png_path = "assets/profile-pictures/user-$userID.png";
+                    $jpg_path = "assets/profile-pictures/user-$profileID.jpg";
+                    $png_path = "assets/profile-pictures/user-$profileID.png";
 
                     // Return
                     if (file_exists($jpg_path)) {
@@ -138,7 +142,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     <h3>About</h3><hr><br>
 
                     <p contenteditable="false" id="description_text_box" style="word-wrap: break-word;"><?php
-                        $bio = $Login_Controller->get_current_user_description();
+                        /*$bio = $Login_Controller->get_current_user_description();*/
+                        $bio = $profile_data->description;
                         if (empty($bio)){
                             echo "Add some details about yourself..";
                         }
@@ -151,13 +156,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 <div class="user-data">
                     <h3>Personal Information</h3><hr><br>
                     <ul style="list-style-type: none">
-                        <li><b>- Email:</b> <?php echo $Login_Controller->get_current_user_email();?></li><br>
-                        <li><b>- Username:</b> <?php echo $Login_Controller->get_current_user_username();?></li><br>
-                        <li><b>- First Name:</b> <?php echo $Login_Controller->get_current_user_first_name();?></li><br>
-                        <li><b>- Last Name:</b> <?php echo $Login_Controller->get_current_user_last_name();?></li><br>
-                        <li><b>- Year of Study:</b> <?php echo $Login_Controller->get_current_user_study_year();?></li><br>
-                        <li><b>- Pronouns:</b> <?php echo $Login_Controller->get_current_user_pronouns();?></li><br>
-                        <li><b>- Position:</b> <?php echo $Login_Controller->get_current_user_position();?></li><br>
+                        <li><b>- Email:</b> <?php echo $profile_data->email;?></li><br>
+                        <li><b>- Username:</b> <?php echo $profile_data->username;?></li><br>
+                        <li><b>- First Name:</b> <?php echo $profile_data->fName;?></li><br>
+                        <li><b>- Last Name:</b> <?php echo $profile_data->lName;?></li><br>
+                        <li><b>- Year of Study:</b> <?php echo $profile_data->year;?></li><br>
+                        <li><b>- Pronouns:</b> <?php echo $profile_data->pronoun;?></li><br>
+                        <li><b>- Course:</b> <?php echo $profile_data->courseName?></li><br>
+                        <li><b>- Position:</b> <?php echo $profile_data->position;?></li><br>
                     </ul>
                 </div>
 
@@ -171,7 +177,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     <form action="profile.php" method="post" enctype="multipart/form-data" class="upload-form">
                         <label for="profile-picture">Upload a profile picture:</label><br><br>
                         <input type="file" accept="image/png"  name="fileToUpload" id="fileToUpload"><br><br>
-                        <input type="submit" name="Upload" value="Upload" class="profile-button">
+                        <input type="submit" name="Upload" value="Upload" class="profile-button" id="profile-picture-button">
                     </form>
                 </div>
 
@@ -186,6 +192,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     </form>
 
                     <script>
+                        function hide_edit(){
+                            document.getElementById("description_edit_button").hidden = true;
+                            document.getElementById("description_save_button").hidden = true;
+                            document.getElementById("fileToUpload").hidden = true;
+                            document.getElementById("profile-picture-button").hidden = true;
+                        }
+
                         function edit_description() {
                             // Allow users to enter info into the box
                             document.getElementById("description_text_box").contentEditable = "true";
@@ -206,6 +219,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                             document.getElementById("upload_description_submit").click();
                         }
                     </script>
+                    <?php if($userID != $profileID) {
+                        echo "<script>hide_edit()</script>";
+                    } ?>
+
                 </div>
 
                 <!--TODO Button hidden delete if not used -->

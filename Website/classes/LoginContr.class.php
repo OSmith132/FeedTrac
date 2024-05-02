@@ -146,6 +146,11 @@ class LoginContr extends Login {
         return $this->get_all_courses();
     }
 
+    public function get_user_course_name($courseID)
+    {
+        return $this->get_course_name($courseID);
+    }
+
 
     public function create_recovery_token($email){
 

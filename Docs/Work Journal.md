@@ -7,7 +7,29 @@
 <summary> 
   Log Of Tasks Completed:
 </summary>
-* working on login screen
+
+* ### _01/23:_
+  * working on login screen
+  * Added CSS styles
+  * Added HTML
+  * Deprecated due to being behind main branch
+  * Created TODO
+  * Created Code-Style Guide
+  * Created Specification
+  * Created work flow Chart
+
+
+* ### _4/23:_
+  * Implemented Profile picture upload
+  * Implemented Profile Bio in db and profile page
+  * Implemented new functions for retrieving user data from db
+
+* ### _5/23:_
+  * Edited settings page
+  * Implemented profile page giving details of different users (help from Ollie)
+  * Implemented LoginView with associated functions
+
+
 </details>
 
 ## Oliver
