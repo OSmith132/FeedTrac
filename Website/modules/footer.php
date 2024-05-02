@@ -1,5 +1,5 @@
 <footer>
-    <p>© 2024 The FeedTrac Team</p>
+    <p>The FeedTrac Team © 2024</p>
 
     <a href="https://github.com/OSmith132/FeedTrac?tab=GPL-3.0-1-ov-file#readme">Terms</a>
 
@@ -11,5 +11,5 @@
 </footer>
 
 <!-- Include main.js on every page that uses this footer -->
-<!-- This might be bad practice? IDK -->
+<!-- This might be bad practice? - Archie -->
 <script src="../scripts/main.js"></script>
