@@ -14,9 +14,6 @@ $user_data = $Login_Controller->force_login();
 
 $Feedback_View = new FeedbackView($user_data['userID']);
 
-
-
-
 ?>
 
 <!DOCTYPE html> 
@@ -164,15 +161,6 @@ $Feedback_View = new FeedbackView($user_data['userID']);
             </div>
         </div>
     </main>
-
-
-    <!-- Footer -->
-    <div class="footer-position"><?php include("footer.php"); ?></div>
-    
-
-
-
-
 <!-- import AJAX -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -198,11 +186,7 @@ $(document).ready(function() {
 
             
             });
-
-
-        
     }
-
     // Listen for changes in filter inputs
     $("#index-search-form input").on("change keyup", function() {
         // Update table whenever filter inputs change
@@ -250,11 +234,6 @@ $(document).ready(function() {
     updateTable();
 
 });
-
-
-
-
-
     //Update urgency value when slider is moved
     const urgencyInput = document.getElementById('urgency');
     const urgencyValue = document.getElementById('urgency-value');
@@ -295,18 +274,13 @@ $(document).ready(function() {
     }
 
 });
-
-
-
-
 </script>
 
-
-
-
-
-
+    <!-- Footer -->
+    <div class="footer-position"><?php include("footer.php"); ?></div>
 
 
     </body>
+
+
 </html>

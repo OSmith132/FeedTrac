@@ -87,7 +87,20 @@ if (isset($_POST['submit_comment'])) {
 
             <div class="feedback-header">
 
-            <p><img class="avatar" src="assets/avatar.jpg" alt="User Avatar" height="32"><a href="profile.php"> <?= htmlspecialchars($feedback_user_details["username"], ENT_QUOTES, 'UTF-8'); ?> (26411141)</a> raised this feedback on <?= htmlspecialchars($feedback["date"], ENT_QUOTES, 'UTF-8'); ?> · Comment count  <?= htmlspecialchars($comments_count, ENT_QUOTES, 'UTF-8'); ?></p>
+            <p><img class="avatar" src="<?php
+                // Get user info and find either jpg or png profile picture
+                $userID = $_SESSION['userID'];
+                $jpg_path = "assets/profile-pictures/user-$feedback_userID.jpg";
+                $png_path = "assets/profile-pictures/user-$feedback_userID.png";
+
+                // Return
+                if (file_exists($jpg_path)) {
+                    echo $jpg_path;
+                } elseif (file_exists($png_path)) {
+                    echo $png_path;
+                } else {
+                    echo "assets/profile-pictures/user-default.jpg";
+                }?>"alt="User Avatar" height="32"><a href="profile.php"> <?= htmlspecialchars($feedback_user_details["username"], ENT_QUOTES, 'UTF-8'); ?> (26411141)</a> raised this feedback on <?= htmlspecialchars($feedback["date"], ENT_QUOTES, 'UTF-8'); ?> · Comment count  <?= htmlspecialchars($comments_count, ENT_QUOTES, 'UTF-8'); ?></p>
                  
                 <!-- Heart Button -->
                 <button id="heart-toggle" title="Like" onclick="like()">
