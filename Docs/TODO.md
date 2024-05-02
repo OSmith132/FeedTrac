@@ -38,6 +38,7 @@
 * Feedback page - Marco - in progress
   * Implement feedback rating system
   * Implement commenting system < prioritizing this 
+  * get avatars on comments to work
   * Maybe add Photos / files to report
   * Link with database
   * TODO STRETCH - Assign correct student ID to feedback item, assign correct course.
@@ -59,7 +60,8 @@
       * ~~Edit about section~~ _Toby (01/05/24)_
 
 * Settings page
-  * changePassword.php has now been created, but the form to change the password isn't functional
+  * ~~changePassword.php has now been created, but the form to change the password isn't functional~~ _Toby (02/05/24)_
+  * Need to check old password before allowing change
   * ~~(OPTIONAL) Add additional user settings~~ _Toby (01/05/24)_
   * ~~Edit personal information~~ _Toby (01/05/24)_
 
