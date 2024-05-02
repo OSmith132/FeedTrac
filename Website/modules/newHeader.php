@@ -31,8 +31,24 @@
         </div>
 
         <div class="header-dropdown">
-            <!-- TODO: Reimplement custom user profile picture. Please do this with a dedicated function, rather than writing a load of PHP here. -->
-            <img class="header-profile-picture" src="assets/profile-pictures/user-default.jpg" alt="User Profile Picture" width="30" height="30">
+            <!-- TODO: I think this should be redone. We should store a state for each user in the db that's like 0: none, 1: jpg, 2: png and then we only need to check that for getting the pfp. Or even allow both .png and .jpg uploads but convert and store just one of them behind the scenes -->
+            <img class="header-profile-picture" src="<?php
+                // Get ID of current user
+                $userID = $_SESSION['userID'];
+
+                // Path to user's profile picture (either .jpg or .png)
+                $jpg_path = "assets/profile-pictures/user-$userID.jpg";
+                $png_path = "assets/profile-pictures/user-$userID.png";
+
+                // Return valid path to user's profile picture (or the default profile picture)
+                if (file_exists($jpg_path)) {
+                    echo $jpg_path;
+                } elseif (file_exists($png_path)) {
+                    echo $png_path;
+                } else {
+                    echo "assets/profile-pictures/user-default.jpg";
+                }
+            ?>" alt="User Profile Picture" width="30" height="30">
 
             <div class="header-dropdown-content">
                 <button onclick="location.href = 'profile.php'">Profile</button>
