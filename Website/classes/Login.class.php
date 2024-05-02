@@ -295,7 +295,6 @@ protected function update_password($hashed_password,$userID){
         return true;
     }
 
-    // TODO Implement this for info update
     protected function update_info($fname,$lname,$year,$pronoun,$userID){
 
         // prepare the SQL query

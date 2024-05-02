@@ -60,7 +60,7 @@
 * Settings page
   * changePassword.php has now been created, but the form to change the password isn't functional
   * (OPTIONAL) Add additional user settings
-  * Edit personal information
+  * ~~Edit personal information~~ _Toby (01/05/24)_
 
 * Admin/Moderation page
   * Create page
