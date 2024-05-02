@@ -42,9 +42,9 @@
   * Link with database
   * TODO STRETCH - Assign correct student ID to feedback item, assign correct course.
 
-* Course page
-  * Create page (Contains posts relevant to a specific course)
-  * Allow for individual course pages by linking with database
+* Course page (Deprecated by committee)
+  * ~~Create page (Contains posts relevant to a specific course)~~ 
+  * ~~Allow for individual course pages by linking with database~~
  
 * Inbox page - Marco - In progress
   * Create page (Contains user notifications on updates to their personal and subscribed posts)
@@ -52,7 +52,7 @@
   * Add an observer to subscribe and get updates to courses and comments (Design Pattern)
 
 * Profile page
-  * Need to be able to see other users profile when clicking on their names
+  * ~~Need to be able to see other users profile when clicking on their names~~ _Toby (02/05/24)_
   * <s>Allow for individual profile pages per account to replace the template</s>
   * ~~Add edit profile functionality~~
       * ~~Upload profile picture~~  (only supports png upload) - _Toby (30/04/24)_
@@ -60,7 +60,7 @@
 
 * Settings page
   * changePassword.php has now been created, but the form to change the password isn't functional
-  * (OPTIONAL) Add additional user settings
+  * ~~(OPTIONAL) Add additional user settings~~ _Toby (01/05/24)_
   * ~~Edit personal information~~ _Toby (01/05/24)_
 
 * Admin/Moderation page
