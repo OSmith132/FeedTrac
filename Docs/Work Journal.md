@@ -138,6 +138,18 @@
     * Added Home button.
     * Updated CSS.
 
+* ### _28/04/24:_
+    * Recreated TODO list to ensure that everyone know what is left to do on the project.
+
+* ### _30/04/24:_
+    * Updated Footer so that it is positioned near the bottom of the page.
+    * Created changePassword.php that can be accessed from the settings menu.
+    * Updated CSS so that the dropdown menu now glows purple to make it stand out.
+
+* ### _1/05/24:_
+    * Updated Profile so that the information that is displayed is clearer.
+    * Added "Show Characters" checkboxes to every password box so that the user can check what password they have typed.
+    * Updated the light mode/dark mode scripts so that the current theme is stored and is retrieved when moving across webpages.
 
 </details>
 
@@ -222,7 +234,14 @@
     * Updated many db tables to support said functionality.
     * Began Inbox functionality, had issues with some date fields, to be resolved.
     * Also added appropriate fields to relevant tables related to Inbox.
-    * TODO - Change counter to only update if user is still subbed...(forgot)
+    
+ 
+* ### _01/05/2024:_
+    * Changed counter to only update if user is still subbed, and not alert for own feedback submissions.
+    * Debugged issues with date time in database, with help from Toby.
+    * Inbox now displays items newer than user account creation date, as intended, decisions made to change it to a dropdown menu displaying the same content as inbox page, with added alert counter on icon.
+    * TODO - Button up inbox after the new format change.
+    * Started work on commenting system.
     
 
 </details>

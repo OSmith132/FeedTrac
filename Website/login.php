@@ -76,18 +76,20 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             <h1>Log in to your FeedTrac account</h1><br>
 
             <div class="form">
-                <a href="signup.php">Sign Up</a><br>
+                <a href="signup.php">Sign Up</a>
                 <h2>Login:</h2>
                 <!-- Login Form -->
                 <form action="login.php" method="post">
                 
                     Username:<br>
                     <input type="text" name="username" required>
-                    <br><br>
+                    <br>
                     
-                    Password:<br>
-                    <input type="password" name="password" required>
-                    <br><br>
+                    Password:
+                    <input type="password" name="password" id="password" required>
+                    <label style="display: inline-block; font-weight: normal;">
+                        <input type="checkbox" onclick="togglePasswordVisibility('password')"> Show Characters<br>
+                    </label><br>
 
                     <div><?php echo $error ?></div>
 

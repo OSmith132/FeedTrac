@@ -60,31 +60,8 @@ $dateTime=$user_data["accountDate"];;
 
 
             
-                <!-- Search-bar functionality -->
-                <form method="POST" action="index.php" id="index-search-form">
-
-                    <input type="hidden" name="action" value="search">
-
-                    <input class="search-bar" type="text" name="searchTerm" placeholder="Search for existing feedback">
-
-                    <button name="submit">Search</button>
-
-                </form>
-
+               
                 
-                <!-- Sort Methods -->
-                <div class="sort-box">
-                    <h2>Sort Options</h2>
-                    
-                    <div class="index-sort-option">
-                        <label for="sort-by-date">Sort by Date:</label>
-                        <select id="sort-by-date" name="sort-by-date">
-                            <option value="asc">Oldest to Newest</option>
-                            <option value="desc">Newest to Oldest</option>
-                        </select>
-                    </div>
-                    <button type="submit">Apply Sorting</button>
-                </div>
          
             </div>
 
