@@ -35,13 +35,13 @@
   * ~~Allow the user to press on row and redirect to feedback~~    _-Oliver (01/5/24)_
   
 
-* Feedback page - Marco - in progress
+* Feedback page - Marco - Done
   * Implement feedback rating system
   * ~~Implement commenting system < prioritizing this~~ _Marco (30/04/24)_
   * ~~get avatars on comments to work~~ _Toby (02/05/24)_
   * Maybe add Photos / files to report
   * ~~Link with database~~ _Marco (30/04/24)_
-  * ~~TODO STRETCH - Assign correct student ID to feedback item, assign correct course.~~_Marco (30/04/24)_
+  * ~~TODO STRETCH - Assign correct student ID to feedback item, assign correct course.~~ _Marco (30/04/24)_
 
 * Course page (Deprecated by committee)
   * ~~Create page (Contains posts relevant to a specific course)~~ 
