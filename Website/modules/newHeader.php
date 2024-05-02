@@ -37,7 +37,7 @@
             <div class="header-dropdown-content">
                 <button onclick="location.href = 'profile.php'">Profile</button>
                 <button onclick="location.href = 'settings.php'">Settings</button>
-                <button onclick="location.href = 'logout.php'">Logout</button>
+                <button onclick="location.href = 'scripts/logout.php'">Logout</button>
             </div>
         </div>
     </div>
