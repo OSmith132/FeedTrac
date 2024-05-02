@@ -28,6 +28,9 @@
   * Edited settings page
   * Implemented profile page giving details of different users (help from Ollie)
   * Implemented LoginView with associated functions
+  * Fixed password hiding/unhiding in change password
+  * Fixed password change not changing password
+  * 
 
 
 </details>

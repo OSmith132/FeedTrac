@@ -22,15 +22,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     $password2 = $_POST['password2'];
 
-    if ($password1 == $password2) {
+    if(!empty($password1) && !empty($password2)){
+        if ($password1 == $password2) {
 
-        $userID = $Login_Controller->get_current_user_username();
-        $hashed_password = password_hash($password1, PASSWORD_DEFAULT);
-        $updatepassword = $Login_Controller->update_user_password($hashed_password,$userID);
-       
-        $message = "<span style='color: green;'>Password changed</span><br><br>";
-    } else {
-        $message = "<span style='color: red;'>Passwords do not match</span><br><br>";
+            $userID = $user_data['userID'];
+            $hashed_password = password_hash($password1, PASSWORD_DEFAULT);
+            $Login_Controller->update_user_password($hashed_password,$userID);
+
+            $message = "<span style='color: green;'>Password changed</span><br><br>";
+        } else {
+            $message = "<span style='color: red;'>Passwords do not match</span><br><br>";
+        }
     }
 }
 
@@ -79,11 +81,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     <input type="password" name="password1" id="password1" required>
 
 
-                    <input type="checkbox" onclick="togglePassword('password1')">Show Password<br><br>
+                    <!--<input type="checkbox" onclick="togglePassword('password1')">Show Password<br><br>-->
                     <br><br>
 
                     <label style="display: inline-block; font-weight: normal;">
-                        <input type="checkbox" onclick="togglePasswordVisibility('password1')"> Show Characters<br>
+                        <input type="checkbox" onchange="togglePasswordVisibility('password1')"> Show Characters<br>
                     </label>
                     <br>
 
@@ -91,7 +93,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     <input type="password" name="password2" id="password2" required>
 
                     <label style="display: inline-block; font-weight: normal;">
-                        <input type="checkbox" onclick="togglePasswordVisibility('password2')"> Show Characters<br>
+                        <input type="checkbox" onchange="togglePasswordVisibility('password2')"> Show Characters<br>
                     </label>
                     <div><?php echo $message ?></div>
 
