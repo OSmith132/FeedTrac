@@ -280,6 +280,18 @@
     * Inbox now displays items newer than user account creation date, as intended, decisions made to change it to a dropdown menu displaying the same content as inbox page, with added alert counter on icon.
     * TODO - Button up inbox after the new format change.
     * Started work on commenting system.
+ 
+* ### _02/05/2024:_
+    * Changed new feedback input box to be a text box.
+    * Implemented feedback items page.
+    * Implemented commenting.
+    * Implemented comment count.
+    * Changed date to display datetime instead of how long ago posted.
+    * Re-arranged page elements for feedback page, moved text box and submit button.
+    * Implemented modifiedDate updates on comment added to feedback.
+    * Completely reworked and fixed inbox to display items sorted by newest modified feedback item (comments), now fixed and redirecting to correct feedback item.
+    * Fixed modified date to reflect our timezone.
+    * Many database fixes and tweaks.
     
 
 </details>
