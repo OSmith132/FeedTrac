@@ -16,9 +16,9 @@
 ## Website and Database:
 
 * New Feedback page - Marco - Done
-  * Create page
-  * Add feedback creation functionality
-  * Link with database
+  * ~~Create page~~
+  * ~~Add feedback creation functionality~~
+    * ~~Link with database~~                                        _Marco_
   * (OPTIONAL) Add extra options such as anonymous posting or the ability to disable comments
 
 * Home/Index page
@@ -37,8 +37,8 @@
 
 * Feedback page - Marco - in progress
   * Implement feedback rating system
-  * Implement commenting system < prioritizing this 
-  * get avatars on comments to work
+  * ~~Implement commenting system < prioritizing this~~ 
+  * ~~get avatars on comments to work~~ _Toby (02/05/24)_
   * Maybe add Photos / files to report
   * Link with database
   * TODO STRETCH - Assign correct student ID to feedback item, assign correct course.
@@ -54,10 +54,10 @@
 
 * Profile page
   * ~~Need to be able to see other users profile when clicking on their names~~ _Toby (02/05/24)_
-  * <s>Allow for individual profile pages per account to replace the template</s>
-  * ~~Add edit profile functionality~~
-      * ~~Upload profile picture~~  (only supports png upload) - _Toby (30/04/24)_
-      * ~~Edit about section~~ _Toby (01/05/24)_
+  * ~~Allow for individual profile pages per account to replace the template~~
+  * ~~Add edit profile functionality~~ 
+    * ~~Upload profile picture~~  (only supports png upload) _Toby (30/04/24)_
+    * ~~Edit about section~~ _Toby (01/05/24)_
 
 * Settings page
   * ~~changePassword.php has now been created, but the form to change the password isn't functional~~ _Toby (02/05/24)_
