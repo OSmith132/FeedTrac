@@ -23,8 +23,6 @@ else {
     $feedbackID = 0;                           // WHEN ID = 0 IT WILL NEED TO SHOW A DEFAULT PAGE
 }
 
-echo $feedbackID;
-
 $Feedback_Controller = new FeedbackContr($user_data['userID']);
 
 $feedback = $Feedback_Controller->feedback_get($feedbackID);
