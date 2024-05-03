@@ -1,3 +1,51 @@
+// Set dark/light mode
+function setColourMode(lightMode) {
+    const root = document.querySelector(":root");
+
+    const headerIcon = document.getElementById("header-icon");
+    const colourModeButton = document.getElementById("colour-mode-button");
+
+    if (lightMode) {
+        // ENABLE LIGHT MODE
+
+        // Update root variables
+        root.style.setProperty("--a", "#eee");
+        root.style.setProperty("--b", "#ddd");
+        root.style.setProperty("--c", "#ccc");
+        root.style.setProperty("--d", "#bbb");
+        root.style.setProperty("--e", "#999");
+        root.style.setProperty("--f", "#555");
+        root.style.setProperty("--g", "#111");
+
+        // Update header icon
+        headerIcon.style.filter = "invert(1)";
+
+        // Update toggle button
+        colourModeButton.setAttribute("onclick", "setColourMode(false)")
+        colourModeButton.setAttribute("title", "Enable Dark Mode");
+        colourModeButton.innerHTML = "<i class='fa-solid fa-moon'></i>";
+    } else {
+        // ENABLE DARK MODE
+
+        // Update root variables
+        root.style.setProperty("--a", "#111");
+        root.style.setProperty("--b", "#222");
+        root.style.setProperty("--c", "#333");
+        root.style.setProperty("--d", "#444");
+        root.style.setProperty("--e", "#666");
+        root.style.setProperty("--f", "#aaa");
+        root.style.setProperty("--g", "#eee");
+
+        // Update header icon
+        headerIcon.style.filter = null;
+
+        // Update toggle button
+        colourModeButton.setAttribute("onclick", "setColourMode(true)")
+        colourModeButton.setAttribute("title", "Enable Light Mode");
+        colourModeButton.innerHTML = "<i class='fa-solid fa-sun'></i>";
+    }
+}
+
 // Heart button functions
 function like() {
     let button = document.getElementById("heart-toggle");

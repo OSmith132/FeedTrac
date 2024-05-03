@@ -3,6 +3,7 @@
 /* ---------- */
 
 :root {
+    /* !!! WARNING: These are overridden in main.js -> setColourMode(lightMode) !!! */
     --a: #111;
     --b: #222;
     --c: #333;

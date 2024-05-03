@@ -1,13 +1,13 @@
 <header>
     <div class="header-box">
         <a class="header-logo" href="index.php" title="Go to Homepage">
-            <img src="assets/icon.png" alt="FeedTrac Icon" width="32" height="32">
+            <img id="header-icon" src="assets/icon.png" alt="FeedTrac Icon" width="32" height="32">
             <p class="header-logo-text">FeedTrac</p>
         </a>
     </div>
 
     <div class="header-box">
-        <button class="header-button header-button-pointer" title="Enable Light Mode">
+        <button id="colour-mode-button" class="header-button header-button-pointer" onclick="setColourMode(true)" title="Enable Light Mode">
             <i class="fa-solid fa-sun"></i>
         </button>
 
