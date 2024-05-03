@@ -2,6 +2,16 @@
 /* EVERYWHERE */
 /* ---------- */
 
+:root {
+    --a: #111;
+    --b: #222;
+    --c: #333;
+    --d: #444;
+    --e: #666;
+    --f: #aaa;
+    --g: #eee;
+}
+
 .rubik-font {
     font-family: "Rubik", sans-serif;
     font-optical-sizing: auto;
@@ -10,8 +20,8 @@
 }
 
 body {
-    background-color: #333;
-    color: #eee;
+    background-color: var(--c);
+    color: var(--g);
     font-family: "Rubik", sans-serif;
     margin: 0;
 }
@@ -25,8 +35,8 @@ body {
 /* ------ */
 
 header {
-    background-color: #111;
-    border-bottom: 1px solid #666;
+    background-color: var(--a);
+    border-bottom: 1px solid var(--e);
     display: flex;
     justify-content: space-between;
     padding: 16px;
@@ -56,8 +66,8 @@ header {
 }
 
 .header-button {
-    background-color: #222;
-    border: 1px solid #666;
+    background-color: var(--b);
+    border: 1px solid var(--e);
     border-radius: 8px;
     color: inherit;
     height: 32px;
@@ -66,7 +76,7 @@ header {
 }
 
 .header-button:hover {
-    background-color: #333;
+    background-color: var(--c);
 }
 
 .header-button-pointer {
@@ -83,7 +93,7 @@ header {
 }
 
 .header-profile-picture {
-    border: 1px solid #666;
+    border: 1px solid var(--e);
     border-radius: 50%;
 }
 
@@ -93,8 +103,8 @@ header {
 }
 
 .header-dropdown-content {
-    background-color: #222;
-    border: 1px solid #666;
+    background-color: var(--b);
+    border: 1px solid var(--e);
     border-radius: 8px;
     display: none;
     padding: 8px;
@@ -105,7 +115,7 @@ header {
 }
 
 .header-dropdown-content button {
-    background-color: #333;
+    background-color: var(--c);
     border: none;
     border-radius: 8px;
     color: inherit;
@@ -116,7 +126,7 @@ header {
 }
 
 .header-dropdown-content button:hover {
-    background-color: #444;
+    background-color: var(--d);
 }
 
 .header-dropdown:hover .header-dropdown-content {
@@ -130,8 +140,8 @@ header {
 /* ---- */
 
 main {
-    background-color: #222;
-    border: 1px solid #666;
+    background-color: var(--b);
+    border: 1px solid var(--e);
     border-radius: 8px;
     margin: 16px;
     padding: 16px;
@@ -143,9 +153,9 @@ main {
 /* ------ */
 
 footer {
-    background-color: #111;
-    border-top: 1px solid #666;
-    color: #aaa;
+    background-color: var(--a);
+    border-top: 1px solid var(--e);
+    color: var(--f);
     display: flex;
     gap: 32px;
     justify-content: center;
