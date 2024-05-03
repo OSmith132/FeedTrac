@@ -230,8 +230,19 @@
   * Prevented new users from providing invalid form data
   * Reimplemented Earl's password visibility toggle
 
-* ### _01/05/24:_
+* ### _01/05/24 and 02/05/24:_
   * Tweaked README.md titles to be more consistent with each other
+  * Created frontend-redo branch
+  * Completely rewrote all the website's broken CSS styling
+
+* ### _03/05/24:_
+  * Manually merged "frontend-redo" commits into "Main"
+  * Redesigned entire website CSS styling, including header and footer
+  * Removed loads of pointless whitespace (and a random /div)
+  * Made < head > titles reflect page content
+  * Added alert badge to Inbox button
+  * Made website colour palette modular by using root variables
+  * Properly implemented light/dark mode (even the FeedTrac logo changes!)
 
 </details>
 
