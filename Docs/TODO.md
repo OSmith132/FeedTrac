@@ -19,6 +19,7 @@
   * ~~Light/dark mode~~ - _Archie (03/05/24)_
   * Header buttons need to hide when not logged in
   * Alert badge on inbox button needs to be connected to the database
+  * There is still some "hardcoded" CSS styling going on that isn't compatible with the dark/light mode toggle (see the "unsorted" section of main.css)
   * (OPTIONAL) Add fancy CSS transitions
 
 * New Feedback page - Marco - Done
