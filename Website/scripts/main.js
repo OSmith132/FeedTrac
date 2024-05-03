@@ -1,3 +1,12 @@
+// Set colour mode based on local storage (defaults to dark mode)
+document.addEventListener("DOMContentLoaded", function() {
+    if (localStorage.getItem("colourMode") === "light") {
+        setColourMode(true);
+    } else {
+        setColourMode(false);
+    }
+});
+
 // Set dark/light mode
 function setColourMode(lightMode) {
     const root = document.querySelector(":root");
@@ -24,6 +33,9 @@ function setColourMode(lightMode) {
         colourModeButton.setAttribute("onclick", "setColourMode(false)")
         colourModeButton.setAttribute("title", "Enable Dark Mode");
         colourModeButton.innerHTML = "<i class='fa-solid fa-moon'></i>";
+
+        // Update local storage
+        localStorage.setItem("colourMode", "light");
     } else {
         // ENABLE DARK MODE
 
@@ -43,6 +55,9 @@ function setColourMode(lightMode) {
         colourModeButton.setAttribute("onclick", "setColourMode(true)")
         colourModeButton.setAttribute("title", "Enable Light Mode");
         colourModeButton.innerHTML = "<i class='fa-solid fa-sun'></i>";
+
+        // Update local storage
+        localStorage.setItem("colourMode", "dark");
     }
 }
 
