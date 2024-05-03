@@ -94,6 +94,7 @@ function closeForm(formID) {
     document.getElementById(formID).style.opacity = 0;
 }
 
+// Show/hide characters in password input
 function togglePasswordVisibility(passwordID) {
     const element = document.getElementById(passwordID);
 
