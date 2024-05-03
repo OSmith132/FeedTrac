@@ -15,6 +15,12 @@
 
 ## Website and Database:
 
+* All pages
+  * ~~Light/dark mode~~ - _Archie (03/05/24)_
+  * Header buttons need to hide when not logged in
+  * Alert badge on inbox button needs to be connected to the database
+  * (OPTIONAL) Add fancy CSS transitions
+
 * New Feedback page - Marco - Done
   * ~~Create page~~_Marco (30/04/24)_
   * ~~Add feedback creation functionality~~_Marco (30/04/24)_
@@ -47,11 +53,11 @@
   * ~~Create page (Contains posts relevant to a specific course)~~ 
   * ~~Allow for individual course pages by linking with database~~
  
-* Inbox page - Marco - In progress
+* Inbox page - Marco - Done?
   * ~~Create page (Contains user notifications on updates to their personal and subscribed posts)~~_Marco (03/05/24)_
   * ~~Display feedback data on the inbox page~~_Marco (03/05/24)_
   * ~~Add an observer to subscribe and get updates to courses and comments (Design Pattern)~~_Marco (03/05/24)_
-  * Conveert page into dropdown menu, with alert counter on corner of the icon.
+  * ~~Convert page into dropdown menu, with alert counter on corner of the icon.~~ _Deprecated by committee_
 
 * Profile page
   * ~~Need to be able to see other users profile when clicking on their names~~ _Toby (02/05/24)_
