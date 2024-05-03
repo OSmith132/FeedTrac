@@ -33,12 +33,6 @@ $Feedback_View = new FeedbackView($user_data['userID']);
 
     <link rel="stylesheet" href="stylesheets/main.css">
 
-    <style>
-        tr[data-href] {
-            cursor: pointer;
-        }
-    </style>
-
     <script src="https://kit.fontawesome.com/7e1870387e.js" crossorigin="anonymous"></script>
 </head>
 
