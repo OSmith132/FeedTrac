@@ -1,72 +1,60 @@
 <header>
-    <a class="logo" title="Homepage" href="index.php">
-        <img src="assets/icon.png" alt="FeedTrac Icon" height="32">
+    <div class="header-box">
+        <a class="header-logo" href="index.php" title="Go to Homepage">
+            <img src="assets/icon.png" alt="FeedTrac Icon" width="32" height="32">
+            <p class="header-logo-text">FeedTrac</p>
+        </a>
+    </div>
 
-        <h1>FeedTrac</h1>
-    </a>
-
-    <div class="header-right">
-        <!-- Light/dark Mode switch -->
-        <button title="Toggle Dark Mode" id="lightbulb-toggle" onclick="lightMode()"> <!-- Frontend crew might want to change the id to a class if you want to use this function for multiple elements -->
-            <i id="lightbulb-symbol" class="fa-regular fa-lightbulb"></i>
+    <div class="header-box">
+        <button class="header-button header-button-pointer" title="Enable Light Mode">
+            <i class="fa-solid fa-sun"></i>
         </button>
 
-        <!-- Home Button -->
-        <button title="Home" id="home-button" style="display: none;" onclick="window.location.href = 'index.php'">
+        <button class="header-button header-button-pointer" onclick="location.href = 'index.php'" title="Go to Homepage">
             <i class="fa-solid fa-house"></i>
         </button>
 
-        <!-- Inbox Button -->
-        <button title="Inbox" id="inbox-button" style="display: none;" onclick="window.location.href = 'inbox.php'">
+        <button class="header-button header-button-pointer" onclick="location.href = 'inbox.php'" title="Go to Inbox">
             <i class="fa-solid fa-inbox"></i>
+            <span class="header-button-badge">5</span>
         </button>
 
-        <!-- Profile -->
-        <div class="dropdown">
-            <a title="Profile" id="profile-button" href="profile.php" style="display: none;">
-                <img style="margin-right: 10px;" class="avatar" src="<?php 
-                                                // Get user info and find either jpg or png profile picture
-                                                $userID = $_SESSION['userID'];
-                                                $jpg_path = "assets/profile-pictures/user-$userID.jpg";
-                                                $png_path = "assets/profile-pictures/user-$userID.png";
-                                    
-                                                // Return 
-                                                if (file_exists($jpg_path)) {
-                                                    echo $jpg_path;
-                                                } elseif (file_exists($png_path)) {
-                                                    echo $png_path;
-                                                } else {
-                                                    echo "assets/profile-pictures/user-default.jpg";
-                                                }?>"
-                                            alt="User Avatar" height="32">
-            </a>
-            <div class="dropdown-content">
-                <!-- Profile Button -->
-                <button title="Profile" onclick="window.location.href = 'profile.php'">
-                    <i class="fa-solid fa-user"></i>
-                </button>
+        <div class="header-dropdown">
+            <img class="header-profile-picture" src="<?php
+            // Get ID of current user
+            $userID = $_SESSION['userID'];
 
-                <!-- Settings Button -->
-                <button title="Settings" onclick="window.location.href = 'settings.php'">
-                    <i class="fa-solid fa-gear"></i>
-                </button>
+            // Path to user's profile picture (either .jpg or .png)
+            $jpg_path = "assets/profile-pictures/user-$userID.jpg";
+            $png_path = "assets/profile-pictures/user-$userID.png";
 
-                <!-- Logout Button -->
-                <button title="Logout" id="logout-button" onclick="window.location.href = 'scripts/logout.php'">
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                </button>
+            // Return valid path to user's profile picture (or the default profile picture)
+            if (file_exists($jpg_path)) {
+                echo $jpg_path;
+            } elseif (file_exists($png_path)) {
+                echo $png_path;
+            } else {
+                echo "assets/profile-pictures/user-default.jpg";
+            }
+            ?>" alt="User Profile Picture" width="30" height="30">
+
+            <div class="header-dropdown-content">
+                <button onclick="location.href = 'profile.php'" title="Go to Profile">Profile</button>
+                <button onclick="location.href = 'settings.php'" title="Go to Settings">Settings</button>
+                <button onclick="location.href = 'scripts/logout.php'" title="Logout">Logout</button>
             </div>
         </div>
     </div>
 </header>
 
-<!-- JavaScript to show buttons when logged in -->
-<script>
-    window.onload = function(){
-        if (loggedIn){
-          document.getElementById("inbox-button").style.display = "inline";
-          document.getElementById("home-button").style.display = "inline";
-          document.getElementById("profile-button").style.display = "inline";
-        }
-    };
-</script>
+<!-- TODO: Reimplement this!!! JavaScript to show buttons when logged in -->
+<!--<script>-->
+<!--    window.onload = function(){-->
+<!--        if (loggedIn){-->
+<!--          document.getElementById("inbox-button").style.display = "inline";-->
+<!--          document.getElementById("home-button").style.display = "inline";-->
+<!--          document.getElementById("profile-button").style.display = "inline";-->
+<!--        }-->
+<!--    };-->
+<!--</script>-->

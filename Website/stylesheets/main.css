@@ -11,8 +11,8 @@
 
 body {
     /* background-color and color are being overridden somewhere!!! */
-    background-color: red;
-    color: red;
+    background-color: #333;
+    color: #eee;
     font-family: "Rubik", sans-serif;
     margin: 0;
 }
@@ -22,12 +22,117 @@ body {
 }
 
 /* ------ */
+/* HEADER */
+/* ------ */
+
+header {
+    background-color: #111;
+    border-bottom: 1px solid #666;
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+.header-box {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+}
+
+.header-logo {
+    align-items: center;
+    color: inherit;
+    display: flex;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.header-logo:hover {
+    text-decoration: underline;
+}
+
+.header-logo-text {
+    font-weight: bold;
+    margin: 0;
+}
+
+.header-button {
+    background-color: #222;
+    border: 1px solid #666;
+    border-radius: 8px;
+    color: inherit;
+    height: 32px;
+    width: 32px;
+}
+
+.header-button:hover {
+    background-color: #333;
+}
+
+.header-button-pointer {
+    cursor: pointer;
+}
+
+.header-button-badge {
+    background-color: deeppink;
+    border-radius: 4px;
+    padding: 2px 4px;
+    position: absolute;
+    right: -4px;
+    top: -4px;
+}
+
+.header-profile-picture {
+    border: 1px solid #666;
+    border-radius: 50%;
+}
+
+.header-dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.header-dropdown-content {
+    background-color: #222;
+    border: 1px solid #666;
+    border-radius: 8px;
+    display: none;
+    padding: 8px;
+    position: absolute;
+    right: 0;
+    width: 128px;
+    z-index: 1;
+}
+
+.header-dropdown-content button {
+    background-color: #333;
+    border: none;
+    border-radius: 8px;
+    color: inherit;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 8px;
+}
+
+.header-dropdown-content button:hover {
+    background-color: #444;
+}
+
+.header-dropdown:hover .header-dropdown-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* ------ */
 /* FOOTER */
 /* ------ */
 
 footer {
     background-color: #111;
     border-top: 1px solid #666;
+    color: #aaa;
     display: flex;
     gap: 32px;
     justify-content: center;
@@ -95,14 +200,6 @@ th, tr:hover {
     background-color: var(--c);
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 16px;
-    background-color: var(--a);
-    border-bottom: 1px solid var(--e);
-}
-
 .logo {
     display: flex;
     align-items: center;
@@ -111,29 +208,6 @@ header {
 
 .logo h1 {
     font-size: 24px;
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.header-right button {
-    background: none;
-    border-radius: 8px;
-    border: 1px solid var(--e);
-    color: var(--h);
-    cursor: pointer;
-    font-size: 16px;
-    height: 32px;
-    width: 32px;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.header-right button:hover {
-    background-color: var(--b);
-    border-color: var(--accent-bright);
 }
 
 .avatar {
@@ -158,24 +232,6 @@ header {
     visibility: visible;
     opacity: 1;
     box-shadow: 0 15px 70px var(--accent-bright);
-}
-
-.dark-mode {
-    background-color: #353535;
-    color: white;
-}
-
-.dark-mode a{
-    color: white;
-}
-
-.light-mode {
-    background-color: white;
-    color: var(--a);
-}
-
-.light-mode a{
-    color: var(--accent-bright);
 }
 
 .form {
