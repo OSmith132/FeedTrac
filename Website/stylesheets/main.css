@@ -173,16 +173,12 @@ footer a:hover {
 /* -------- */
 
 :root {
-    --a: #111;
-    --b: #222;
-    --c: #333;
-    --d: #444;
-    --e: #555;
-    --f: #666;
-    --g: #777;
-    --h: #888;
-    --accent-bright: hotpink;
-    --accent-pale: pink;
+    --old-a: #111;
+    --old-b: #333;
+    --old-c: #555;
+    --old-d: #888;
+    --old-bright: hotpink;
+    --old-pale: pink;
 }
 
 h1, p {
@@ -190,7 +186,7 @@ h1, p {
 }
 
 table, th, td {
-    border: 1px solid var(--e);
+    border: 1px solid var(--old-c);
     border-collapse: collapse;
 }
 
@@ -199,7 +195,7 @@ th, td {
 }
 
 th, tr:hover {
-    background-color: var(--c);
+    background-color: var(--old-b);
 }
 
 .avatar {
@@ -213,8 +209,8 @@ th, tr:hover {
     margin: auto;
     border-radius: 10px;
     padding: 16px;
-    background-color: var(--a);
-    border-bottom: 1px solid var(--e);
+    background-color: var(--old-a);
+    border-bottom: 1px solid var(--old-c);
 
     /* Use a flexbox instead of hardcoding <br> tags */
     display: flex;
@@ -241,7 +237,7 @@ th, tr:hover {
 
 .form input[type="submit"] {
     color: white;
-    background-color: var(--accent-bright);
+    background-color: var(--old-bright);
     border-radius: 8px;
     font-weight: bold;
     padding: 4px;
@@ -252,18 +248,18 @@ th, tr:hover {
 }
 
 .form input[type="submit"]:hover {
-    background-color: var(--accent-pale);
+    background-color: var(--old-pale);
     cursor: pointer;
 }
 
 .form input:focus {
-    outline-color: var(--accent-bright);
+    outline-color: var(--old-bright);
     outline-style: solid;
     transition: outline-color 0.3s ease;
 }
 
 .form select:focus {
-    outline-color: var(--accent-bright);
+    outline-color: var(--old-bright);
     outline-style: solid;
     transition: outline-color 0.3s ease;
 }
@@ -275,7 +271,7 @@ th, tr:hover {
 }
 
 .feedback-header button {
-    background-color: var(--accent-bright);
+    background-color: var(--old-bright);
     border: none;
     border-radius: 8px;
     color: white;
@@ -285,7 +281,7 @@ th, tr:hover {
 }
 
 .feedback-header button:hover {
-    background-color: var(--accent-pale);
+    background-color: var(--old-pale);
     cursor: pointer;
 }
 
@@ -299,10 +295,10 @@ th, tr:hover {
 }
 
 .feedback-comment {
-    background-color: var(--a);
+    background-color: var(--old-a);
     border-radius: 8px;
-    border: 1px solid var(--e);
-    color: var(--h);
+    border: 1px solid var(--old-c);
+    color: var(--old-d);
     flex-grow: 1;
     font-size: 16px;
     padding: 8px;
@@ -310,12 +306,12 @@ th, tr:hover {
 }
 
 .feedback-comment:focus {
-    border-color: var(--accent-bright);
+    border-color: var(--old-bright);
     outline-style: solid;
 }
 
 .feedback-button {
-    background-color: var(--accent-bright);
+    background-color: var(--old-bright);
     border: none;
     border-radius: 8px;
     color: white;
@@ -326,21 +322,21 @@ th, tr:hover {
 }
 
 .feedback-button:hover {
-    background-color: var(--accent-pale);
+    background-color: var(--old-pale);
     cursor: pointer;
 }
 
 .comment {
     border-radius: 8px;
-    border: 1px solid var(--e);
+    border: 1px solid var(--old-c);
 }
 
 .comment-header {
     padding: 16px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    border-bottom: 1px solid var(--e);
-    background-color: var(--c);
+    border-bottom: 1px solid var(--old-c);
+    background-color: var(--old-b);
 }
 
 .comment-main {
@@ -359,7 +355,7 @@ th, tr:hover {
 }
 
 .index-header button {
-    background-color: var(--accent-bright);
+    background-color: var(--old-bright);
     border: none;
     border-radius: 8px;
     color: white;
@@ -369,7 +365,7 @@ th, tr:hover {
 }
 
 .index-header button:hover {
-    background-color: var(--accent-pale);
+    background-color: var(--old-pale);
     cursor: pointer;
 }
 
@@ -385,10 +381,10 @@ th, tr:hover {
 }
 
 .search-bar {
-    background-color: var(--a);
+    background-color: var(--old-a);
     border-radius: 8px;
-    border: 1px solid var(--e);
-    color: var(--h);
+    border: 1px solid var(--old-c);
+    color: var(--old-d);
     flex-grow: 1;
     font-size: 16px;
     padding: 8px;
@@ -396,14 +392,14 @@ th, tr:hover {
 }
 
 .search-bar:focus {
-    border-color: var(--accent-bright);
+    border-color: var(--old-bright);
     outline-style: solid;
 }
 
 .profile-content {
     display: flex;
     text-align: left;
-    background-color: var(--a);
+    background-color: var(--old-a);
     color: white;
 }
 
@@ -426,9 +422,9 @@ th, tr:hover {
 
 .edit-profile {
     display: flex;
-    background-color: var(--a);
+    background-color: var(--old-a);
     border-top: 1px solid white;
-    border-bottom: 1px solid var(--e);
+    border-bottom: 1px solid var(--old-c);
     color: white;
 }
 
@@ -450,7 +446,7 @@ th, tr:hover {
 }
 
 .profile-button {
-    background-color: var(--accent-bright);
+    background-color: var(--old-bright);
     border: none;
     border-radius: 8px;
     color: white;
@@ -461,7 +457,7 @@ th, tr:hover {
 }
 
 .profile-button:hover {
-    background-color: var(--accent-pale);
+    background-color: var(--old-pale);
     cursor: pointer;
 }
 
@@ -471,8 +467,8 @@ th, tr:hover {
     margin: auto;
     border-radius: 10px;
     padding: 30px;
-    background-color: var(--a);
-    border-bottom: 1px solid var(--e);
+    background-color: var(--old-a);
+    border-bottom: 1px solid var(--old-c);
 }
 
 .popup-form {
@@ -482,17 +478,17 @@ th, tr:hover {
     margin: auto;
     border-radius: 10px;
     padding: 30px;
-    background-color: var(--a);
-    border-bottom: 1px solid var(--e);
+    background-color: var(--old-a);
+    border-bottom: 1px solid var(--old-c);
     visibility: hidden;
     opacity: 0;
-    box-shadow: 2px 2px 5px var(--a);
+    box-shadow: 2px 2px 5px var(--old-a);
     transition: opacity 0.5s ease;
 }
 
 .popup-form button {
     color: white;
-    background-color: var(--accent-bright);
+    background-color: var(--old-bright);
     width: 30%;
     border-radius: 8px;
     padding: 4px;
@@ -502,18 +498,18 @@ th, tr:hover {
 }
 
 .popup-form button:hover {
-    background-color: var(--accent-pale);
+    background-color: var(--old-pale);
     cursor: pointer;
 }
 
 .popup-form input:focus {
-    outline-color: var(--accent-bright);
+    outline-color: var(--old-bright);
     outline-style: solid;
     transition: outline-color 0.3s ease;
 }
 
 .popup-form select:focus {
-    outline-color: var(--accent-bright);
+    outline-color: var(--old-bright);
     outline-style: solid;
     transition: outline-color 0.3s ease;
 }
