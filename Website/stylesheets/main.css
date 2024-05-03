@@ -62,6 +62,7 @@ header {
     border-radius: 8px;
     color: inherit;
     height: 32px;
+    position: relative;
     width: 32px;
 }
 
