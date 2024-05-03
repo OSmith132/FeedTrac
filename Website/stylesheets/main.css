@@ -31,8 +31,6 @@ body {
     margin: 0;
     font-family: "Rubik", sans-serif;
     color: white;
-    transition: background-color 0.5s ease;
-    transition: color 0.5 ease;
     padding: 15px;
     background-color: #353535;
     font-size: 15px;
@@ -127,7 +125,7 @@ header {
 .dropdown:hover .dropdown-content {
     visibility: visible;
     opacity: 1;
-    box-shadow: 0px 15px 70px var(--accent-bright);
+    box-shadow: 0 15px 70px var(--accent-bright);
 }
 
 /*
@@ -151,7 +149,7 @@ footer {
     position: absolute;
     bottom: 0;
     left: 0;
-    max-height: 0%;
+    max-height: 0;
     margin-bottom: -10%; /* Height of the footer */
 }
 
