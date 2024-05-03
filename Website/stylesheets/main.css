@@ -1,8 +1,6 @@
-/*
-==================================================================
-COMMON STYLES
-==================================================================
-*/
+/* ------- */
+/* OLD CSS */
+/* ------- */
 :root {
     --a: #111;
     --b: #222;
@@ -67,11 +65,6 @@ th, tr:hover {
     background-color: var(--c);
 }
 
-/*
-==================================================================
-HEADER.HTML
-==================================================================
-*/
 header {
     display: flex;
     justify-content: space-between;
@@ -79,19 +72,23 @@ header {
     background-color: var(--a);
     border-bottom: 1px solid var(--e);
 }
+
 .logo {
     display: flex;
     align-items: center;
     gap: 8px;
 }
+
 .logo h1 {
     font-size: 24px;
 }
+
 .header-right {
     display: flex;
     align-items: center;
     gap: 16px;
 }
+
 .header-right button {
     background: none;
     border-radius: 8px;
@@ -103,17 +100,21 @@ header {
     width: 32px;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
+
 .header-right button:hover {
     background-color: var(--b);
     border-color: var(--accent-bright);
 }
+
 .avatar {
     border-radius: 16px;
 }
+
 .dropdown a {
     display: block;
     text-decoration: none;
 }
+
 .dropdown-content {
     visibility: hidden;
     opacity: 0;
@@ -122,17 +123,13 @@ header {
     background-color: var(--a);
     transition: opacity 0.5s ease, box-shadow 2s ease;
 }
+
 .dropdown:hover .dropdown-content {
     visibility: visible;
     opacity: 1;
     box-shadow: 0 15px 70px var(--accent-bright);
 }
 
-/*
-==================================================================
-FOOTER.HTML
-==================================================================
-*/
 footer {
     display: flex;
     flex-direction: row;
@@ -142,7 +139,6 @@ footer {
     color: var(--h);
 }
 
-/* Footer position */
 .footer-position {
     width: 100%;
     height: 10%;
@@ -153,32 +149,24 @@ footer {
     margin-bottom: -10%; /* Height of the footer */
 }
 
-/*
-==================================================================
-DARK / LIGHT MODE
-==================================================================
-*/
-/* Please can someone add the styles for dark and light mode I don't like CSS enough to do it :)*/
 .dark-mode {
     background-color: #353535;
     color: white;
 }
+
 .dark-mode a{
     color: white;
 }
+
 .light-mode {
     background-color: white;
     color: var(--a);
 }
+
 .light-mode a{
     color: var(--accent-bright);
 }
 
-/*
-==========================================================================================
-LOGIN.PHP, SIGNUP.PHP, RECOVERPASSWORD.PHP, REREGISTERPASSWORD.PHP AND CHANGEPASSWORD.PHP
-==========================================================================================
-*/
 .form {
     color: white;
     text-align: center;
@@ -241,16 +229,12 @@ LOGIN.PHP, SIGNUP.PHP, RECOVERPASSWORD.PHP, REREGISTERPASSWORD.PHP AND CHANGEPAS
     transition: outline-color 0.3s ease;
 }
 
-/*
-==================================================================
-FEEDBACK.PHP
-==================================================================
-*/
 .feedback-header {
     display: flex;
     gap: 16px;
     align-items: center;
 }
+
 .feedback-header button {
     background-color: var(--accent-bright);
     border: none;
@@ -260,10 +244,12 @@ FEEDBACK.PHP
     padding: 8px;
     transition: background-color 0.3s ease;
 }
+
 .feedback-header button:hover {
     background-color: var(--accent-pale);
     cursor: pointer;
 }
+
 .feedback-main {
     margin: 16px;
     display: flex;
@@ -272,6 +258,7 @@ FEEDBACK.PHP
     gap: 16px;
     text-align: left;
 }
+
 .feedback-comment {
     background-color: var(--a);
     border-radius: 8px;
@@ -282,10 +269,12 @@ FEEDBACK.PHP
     padding: 8px;
     transition: outline-color 1s ease;
 }
+
 .feedback-comment:focus {
     border-color: var(--accent-bright);
     outline-style: solid;
 }
+
 .feedback-button {
     background-color: var(--accent-bright);
     border: none;
@@ -296,6 +285,7 @@ FEEDBACK.PHP
     width: 300px;
     transition: background-color 1s ease;
 }
+
 .feedback-button:hover {
     background-color: var(--accent-pale);
     cursor: pointer;
@@ -305,6 +295,7 @@ FEEDBACK.PHP
     border-radius: 8px;
     border: 1px solid var(--e);
 }
+
 .comment-header {
     padding: 16px;
     border-top-left-radius: 8px;
@@ -312,17 +303,12 @@ FEEDBACK.PHP
     border-bottom: 1px solid var(--e);
     background-color: var(--c);
 }
+
 .comment-main {
     border-radius: 8px;
     padding: 16px;
 }
 
-
-/*
-==================================================================
-INDEX.PHP
-==================================================================
-*/
 .index-header {
     display: flex;
     justify-content: center; 
@@ -342,10 +328,12 @@ INDEX.PHP
     padding: 8px 16px; /* Uniform padding */
     transition: background-color 0.3s ease;
 }
+
 .index-header button:hover {
     background-color: var(--accent-pale);
     cursor: pointer;
 }
+
 .index-main {
     margin: 16px auto;
     width: 100%;
@@ -357,8 +345,6 @@ INDEX.PHP
     text-align: center;
 }
 
-
-
 .search-bar {
     background-color: var(--a);
     border-radius: 8px;
@@ -369,36 +355,36 @@ INDEX.PHP
     padding: 8px;
     transition: outline-color 1s ease;
 }
+
 .search-bar:focus {
     border-color: var(--accent-bright);
     outline-style: solid;
 }
 
-/*
-==================================================================
-PROFILE.PHP
-==================================================================
-*/
 .profile-content {
     display: flex;
     text-align: left;
     background-color: var(--a);
     color: white;
 }
+
 .user-picture {
     padding: 10px;
     flex: 1;
     border-right: 1px solid white;
 }
+
 .user-description {
     padding: 10px;
     flex: 1;
     border-right: 1px solid white;
 }
+
 .user-data {
     padding: 10px;
     flex: 1;
 }
+
 .edit-profile {
     display: flex;
     background-color: var(--a);
@@ -406,20 +392,24 @@ PROFILE.PHP
     border-bottom: 1px solid var(--e);
     color: white;
 }
+
 .change-picture {
     padding: 10px;
     flex: 1;
     border-right: 1px solid white;
 }
+
 .edit-description {
     padding: 10px;
     flex: 1;
     border-right: 1px solid white;
 }
+
 .edit-data {
     padding: 10px;
     flex: 1;
 }
+
 .profile-button {
     background-color: var(--accent-bright);
     border: none;
@@ -430,16 +420,12 @@ PROFILE.PHP
     width: 150px;
     transition: background-color 1s ease;
 }
+
 .profile-button:hover {
     background-color: var(--accent-pale);
     cursor: pointer;
 }
 
-/*
-==================================================================
-SETTINGS.PHP
-==================================================================
-*/
 .settings {
     text-align: center;
     width: 33%;
@@ -449,6 +435,7 @@ SETTINGS.PHP
     background-color: var(--a);
     border-bottom: 1px solid var(--e);
 }
+
 .popup-form {
     color: white;
     text-align: center;
