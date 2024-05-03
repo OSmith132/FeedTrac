@@ -10,6 +10,7 @@
     --e: #666;
     --f: #aaa;
     --g: #eee;
+    --alt: deeppink;
 }
 
 .rubik-font {
@@ -27,7 +28,7 @@ body {
 }
 
 ::selection {
-    background-color: deeppink;
+    background-color: var(--alt);
 }
 
 /* ------ */
@@ -84,7 +85,7 @@ header {
 }
 
 .header-button-badge {
-    background-color: deeppink;
+    background-color: var(--alt);
     border-radius: 4px;
     padding: 2px 4px;
     position: absolute;
