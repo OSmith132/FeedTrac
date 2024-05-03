@@ -1,7 +1,5 @@
-<br>
-<hr>
 <footer>
-    <p>© 2024 The FeedTrac Team</p>
+    <p>The FeedTrac Team © 2024</p>
 
     <a href="https://github.com/OSmith132/FeedTrac?tab=GPL-3.0-1-ov-file#readme">Terms</a>
 
@@ -14,4 +12,3 @@
 
 <!-- Include JavaScript -->
 <script src="scripts/main.js"></script>
-<hr>

@@ -6,9 +6,6 @@
     </a>
 
     <div class="header-right">
-
-    
-
         <!-- Light/dark Mode switch -->
         <button title="Toggle Dark Mode" id="lightbulb-toggle" onclick="lightMode()"> <!-- Frontend crew might want to change the id to a class if you want to use this function for multiple elements -->
             <i id="lightbulb-symbol" class="fa-regular fa-lightbulb"></i>
@@ -41,20 +38,19 @@
                                                 } else {
                                                     echo "assets/profile-pictures/user-default.jpg";
                                                 }?>"
-                                            alt="User Avatar" height="32" href="profile.php">
+                                            alt="User Avatar" height="32">
             </a>
             <div class="dropdown-content">
-                <br>
                 <!-- Profile Button -->
                 <button title="Profile" onclick="window.location.href = 'profile.php'">
                     <i class="fa-solid fa-user"></i>
                 </button>
-                <br><br>
+
                 <!-- Settings Button -->
                 <button title="Settings" onclick="window.location.href = 'settings.php'">
                     <i class="fa-solid fa-gear"></i>
                 </button>
-                <br><br>
+
                 <!-- Logout Button -->
                 <button title="Logout" id="logout-button" onclick="window.location.href = 'scripts/logout.php'">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -63,7 +59,6 @@
         </div>
     </div>
 </header>
-<hr>
 
 <!-- JavaScript to show buttons when logged in -->
 <script>
