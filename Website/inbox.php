@@ -61,7 +61,7 @@ usort($feedbackRows, 'compare_by_date');
 
     <!-- Main -->
     <main>
-        <h1>[Show inbox feedback items ]</h1>
+        <h1>Inbox</h1>
         
         <div class="index-main">
             <div class="index-header">

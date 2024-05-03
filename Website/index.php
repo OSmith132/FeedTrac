@@ -48,7 +48,7 @@ $Feedback_View = new FeedbackView($user_data['userID']);
 
     <!-- Main -->
     <main>
-        <h1>[Show feedback items relevant to the user's course]</h1>
+        <h1>Homepage</h1>
         
         <div class="index-main">
             <div class="index-header">
