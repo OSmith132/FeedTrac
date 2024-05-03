@@ -1,6 +1,30 @@
+/* ---------- */
+/* EVERYWHERE */
+/* ---------- */
+
+.rubik-font {
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+}
+
+body {
+    /* background-color and color are being overridden somewhere!!! */
+    background-color: red;
+    color: red;
+    font-family: "Rubik", sans-serif;
+    margin: 0;
+}
+
+::selection {
+    background-color: deeppink;
+}
+
 /* ------- */
 /* OLD CSS */
 /* ------- */
+
 :root {
     --a: #111;
     --b: #222;
@@ -12,26 +36,6 @@
     --h: #888;
     --accent-bright: hotpink;
     --accent-pale: pink;
-}
-
-.rubik-font {
-    font-family: "Rubik", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-}
-
-::selection {
-    background-color: var(--accent-pale);
-}
-
-body {
-    margin: 0;
-    font-family: "Rubik", sans-serif;
-    color: white;
-    padding: 15px;
-    background-color: #353535;
-    font-size: 15px;
 }
 
 main {
