@@ -11,16 +11,16 @@
             <i class="fa-solid fa-sun"></i>
         </button>
 
-        <button class="header-button header-button-pointer" onclick="location.href = 'index.php'" title="Go to Homepage">
+        <button id="home-button" class="header-button header-button-pointer" onclick="location.href = 'index.php'" title="Go to Homepage">
             <i class="fa-solid fa-house"></i>
         </button>
 
-        <button class="header-button header-button-pointer" onclick="location.href = 'inbox.php'" title="Go to Inbox">
+        <button id="inbox-button" class="header-button header-button-pointer" onclick="location.href = 'inbox.php'" title="Go to Inbox">
             <i class="fa-solid fa-inbox"></i>
             <span class="header-button-badge">5</span>
         </button>
 
-        <div class="header-dropdown">
+        <div id="profile-button" class="header-dropdown">
             <img class="header-profile-picture" src="<?php
             // Get ID of current user
             $userID = $_SESSION['userID'];
@@ -48,13 +48,13 @@
     </div>
 </header>
 
-<!-- TODO: Reimplement this!!! JavaScript to show buttons when logged in -->
-<!--<script>-->
-<!--    window.onload = function(){-->
-<!--        if (loggedIn){-->
-<!--          document.getElementById("inbox-button").style.display = "inline";-->
-<!--          document.getElementById("home-button").style.display = "inline";-->
-<!--          document.getElementById("profile-button").style.display = "inline";-->
-<!--        }-->
-<!--    };-->
-<!--</script>-->
+<script>
+    window.onload = function() {
+        if (!loggedIn) {
+            console.log("HELLOOOOOOO");
+            document.getElementById("home-button").hidden = true;
+            document.getElementById("inbox-button").hidden = true;
+            document.getElementById("profile-button").hidden = true;
+        }
+    };
+</script>
