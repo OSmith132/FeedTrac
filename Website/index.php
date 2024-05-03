@@ -52,10 +52,8 @@ $Feedback_View = new FeedbackView($user_data['userID']);
         
         <div class="index-main">
             <div class="index-header">
-
                 <!-- Search-bar functionality -->
                 <form class="index-header" method="POST" action="index.php" id="index-search-form" .change() >
-
                     <!-- Filter Methods -->
                     <div class="index-toggle-box">
                         <h2>Search Feedback</h2>
@@ -70,7 +68,6 @@ $Feedback_View = new FeedbackView($user_data['userID']);
                     <!-- Filter Methods -->
                     <div class="index-toggle-box">
                         <h2>Filter Options</h2>
-                
 
                         <!-- Resolved/Unresolved Toggle -->
                         <div class="index-toggle-option">
@@ -113,52 +110,43 @@ $Feedback_View = new FeedbackView($user_data['userID']);
                             </datalist>
                             <span id="timeframe-value">All Time</span>
                         </div>
-
                     </div>
 
                     <!-- Sort Methods -->
                     <div class="sort-box">
                         <h2>Sort Options</h2>
 
-                            <!-- Sort by Rating Points -->
-                            <div class="index-sort-option">
-                                <label for="sort-type">Sort Type:</label>
-                                <select id="sort-type" name="sort-type">
-                                    <option value="relevance">Relevance</option>
-                                    <option value="date">Date</option>  
-                                    <option value="urgency">Urgency</option>
-                                    <option value="ratingPoints">Rating</option>
-                                </select>
-                            </div>
+                        <!-- Sort by Rating Points -->
+                        <div class="index-sort-option">
+                            <label for="sort-type">Sort Type:</label>
+                            <select id="sort-type" name="sort-type">
+                                <option value="relevance">Relevance</option>
+                                <option value="date">Date</option>
+                                <option value="urgency">Urgency</option>
+                                <option value="ratingPoints">Rating</option>
+                            </select>
+                        </div>
 
-
-                            <!-- Direction -->
-                            <div class="index-sort-option">
-                                <label for="Direction">Direction:</label>
-                                <select id="Direction" name="sort-direction">
-                                    <option value="asc">Ascending</option>
-                                    <option value="desc">Descending</option>
-                                </select>
-                            </div>
+                        <!-- Direction -->
+                        <div class="index-sort-option">
+                            <label for="Direction">Direction:</label>
+                            <select id="Direction" name="sort-direction">
+                                <option value="asc">Ascending</option>
+                                <option value="desc">Descending</option>
+                            </select>
+                        </div>
                     </div>
                 </form>
 
-            
                 <!-- New Feedback Button -->
                 <button onclick="window.location.href = 'newFeedback.php'">New Feedback</button> 
 
             </div>
 
-
             <!-- Table to show feedback -->
             <table class="search-table">
 
             </table>
-
-                   
-
-                
-            </div>
         </div>
     </main>
 <!-- import AJAX -->
