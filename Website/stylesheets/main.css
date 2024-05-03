@@ -212,38 +212,8 @@ th, tr:hover {
     background-color: var(--c);
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.logo h1 {
-    font-size: 24px;
-}
-
 .avatar {
     border-radius: 16px;
-}
-
-.dropdown a {
-    display: block;
-    text-decoration: none;
-}
-
-.dropdown-content {
-    visibility: hidden;
-    opacity: 0;
-    position: absolute;
-    border-radius: 8px;
-    background-color: var(--a);
-    transition: opacity 0.5s ease, box-shadow 2s ease;
-}
-
-.dropdown:hover .dropdown-content {
-    visibility: visible;
-    opacity: 1;
-    box-shadow: 0 15px 70px var(--accent-bright);
 }
 
 .form {
