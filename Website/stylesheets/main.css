@@ -13,7 +13,6 @@
 }
 
 body {
-    /* background-color and color are being overridden somewhere!!! */
     background-color: #333;
     color: #eee;
     font-family: "Rubik", sans-serif;
