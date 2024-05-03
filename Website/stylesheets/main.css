@@ -128,6 +128,19 @@ header {
     gap: 8px;
 }
 
+/* ---- */
+/* MAIN */
+/* ---- */
+
+main {
+    background-color: #222;
+    border: 1px solid #666;
+    border-radius: 8px;
+    margin: 16px;
+    padding: 16px;
+    text-align: center;
+}
+
 /* ------ */
 /* FOOTER */
 /* ------ */
@@ -170,10 +183,6 @@ footer a:hover {
     --h: #888;
     --accent-bright: hotpink;
     --accent-pale: pink;
-}
-
-main {
-    text-align: center;
 }
 
 h1, p {
