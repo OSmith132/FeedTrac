@@ -4,14 +4,21 @@
 // False - User is NOT logged in
 $logged_in = isset($_SESSION["userID"]);
 
+// Number of alerts the current user has (defaults to 0)
+$alerts_count = 0;
+
 // Path used by profile button image (defaults to "user-default.jpg")
 $avatar_path = "assets/profile-pictures/user-default.jpg";
 
-// Get the current user's avatar (if they are logged in)
-// Favours JPG over PNG
 if ($logged_in) {
+    // Get the current user's ID
     $user_id = $_SESSION["userID"];
 
+    // TODO: Get the current user's number of alerts
+    $alerts_count = 69420;
+
+    // ----------------------------------------------------
+    // Get the current user's avatar (favours JPG over PNG)
     $jpg_path = "assets/profile-pictures/user-$user_id.jpg";
 
     if (file_exists($jpg_path)) {
@@ -23,6 +30,7 @@ if ($logged_in) {
             $avatar_path = $png_path;
         }
     }
+    // ----------------------------------------------------
 }
 ?>
 
@@ -45,7 +53,9 @@ if ($logged_in) {
 
         <button class="header-button header-button-pointer" onclick="location.href = 'inbox.php'" title="Go to Inbox" <?php if (!$logged_in) echo "style='display: none;'"; ?>>
             <i class="fa-solid fa-inbox"></i>
-            <span class="header-button-badge">5</span>
+
+            <!-- Hide the alert badge when there are no alerts -->
+            <?php if ($alerts_count > 0) echo "<span class='header-button-badge'>$alerts_count</span>"; ?>
         </button>
 
         <div class="header-dropdown" <?php if (!$logged_in) echo "style='display: none;'"; ?>>
