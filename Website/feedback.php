@@ -111,12 +111,46 @@ if (isset($_POST['submit_comment'])) {
                 } else {
                     echo "assets/profile-pictures/user-default.jpg";
                 }?>"alt="User Avatar" height="32"><a href="profile.php"> <?= htmlspecialchars($feedback_user_details["username"], ENT_QUOTES, 'UTF-8'); ?> </a> raised this feedback on <?= htmlspecialchars($feedback["date"], ENT_QUOTES, 'UTF-8'); ?> · <?= htmlspecialchars($comments_count, ENT_QUOTES, 'UTF-8'); ?> comments.</p>
-                 
+
+
+
                 <!-- Heart Button -->
                 <button id="heart-toggle" title="Like" onclick="like()">
                     <i id="heart-symbol" class="fa-regular fa-heart"></i> <div style="display:inline-block;" id=heart-counter><?= htmlspecialchars($feedback["ratingPoints"], ENT_QUOTES, 'UTF-8'); ?></div>
                 </button>
+                <form method="post" action="">
+                <button id="like_post" type="submit" name="like" value="test" >test</button>
+                </form>
             </div>
+
+            <?php
+            // This should set the button look on page load
+            if ($Feedback_Controller->check_user_has_feedback($feedbackID,$user)) {
+                echo "<script>like()</script>";
+            }
+            else {
+                echo "<script>unlike()</script>";
+            }
+
+            if(isset($_POST['like'])){
+                echo "like pushed";
+                rate($Feedback_Controller,$feedbackID,$user);
+            }
+            function rate(FeedbackContr $controller, $feedback_ID, $user_ID) {
+                if ($controller->check_user_has_feedback($feedback_ID,$user_ID)) {
+                    //$controller->delete_rating($feedback_ID, $user_ID);
+                    echo "reached positive";
+                }
+                else {
+                    //$controller->set_rating(1,$feedback_ID,$user_ID);
+                    $controller->add_user_feedback_rating($feedback_ID,$user_ID);
+                    echo "reached negative";
+                }
+            }
+
+            ?>
+
+
             
            <!-- Comment Form -->
            <form method="POST" action="">

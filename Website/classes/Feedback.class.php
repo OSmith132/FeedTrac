@@ -147,7 +147,7 @@ class Feedback extends Database
 
 
         // Update the feedback_user_rating table values
-        $stmt = $this->connect()->prepare("INSERT INTO feedback (feedbackID, userID, positiveRating) VALUES feedbackID = ?, userID = ?, positiveRating = ?");
+        $stmt = $this->connect()->prepare("INSERT INTO feedback (feedbackID, userID, ratingPoints) VALUES (feedbackID = ?, userID = ?, ratingPoints = ?)");
 
         // Check if the SQL query is valid and execute
         if (!$stmt->execute([$positiveRating, $feedbackID, $userID])) {
@@ -200,6 +200,39 @@ class Feedback extends Database
             exit();
         }
     }
+
+    // Returns true or false if user has given rating to feedback or not
+    protected function check_user_given_feedback($feedbackID, $userID){
+
+        $stmt = $this->connect()->prepare("SELECT positiveRating FROM feedback_user_rating WHERE  feedbackID = ? AND userID = ?");
+        if (!$stmt->execute([$feedbackID,$userID])) {
+            header("location: feedback.php?error=BadSQLQuery");
+            exit();
+        }
+        $result = $stmt->get_result()->fetch_assoc();
+        if ($result > 0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    protected function add_feedback_rating($feedbackID, $userID){
+
+        $stmt = $this->connect()->prepare("INSERT INTO feedback_user_rating (feedbackID, userID, positiveRating) VALUES (?, ?, 1)");
+        if (!$stmt->execute([$feedbackID,$userID])) {
+            header("location: feedback.php?error=BadSQLQuery");
+            exit();
+        }
+        $stmt = $this->connect()->prepare("UPDATE feedback SET ratingPoints = ratingPoints + 1 WHERE feedbackID = ?");
+        if (!$stmt->execute()) {
+            header("location: feedback.php?error=BadSQLQuery");
+            exit();
+        }
+    }
+
+
 
     protected function get_rooms()
    {
