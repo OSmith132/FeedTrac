@@ -247,6 +247,7 @@
 * ### _04/05/24:_
   * All of the header buttons (excluding the colour mode toggle) now hide when the user is NOT logged in
   * Fixed weird whitespace under header profile button
+  * Footer is now properly stuck to the bottom of the page
 
 </details>
 
