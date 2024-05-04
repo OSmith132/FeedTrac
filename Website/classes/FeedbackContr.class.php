@@ -135,7 +135,11 @@ class FeedbackContr extends Feedback {
     }
 
 
-    
+    public function alert_reset($user){
+
+        $this->alert_update($user);
+
+    }
     
 
 }

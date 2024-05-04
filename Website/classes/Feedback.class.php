@@ -77,7 +77,22 @@ class Feedback extends Database
     
         $stmt = null;
     }
+
+    // A method to reset alerts
+    protected function alert_update($user){
+
+        // Connect to database and update all data about a feedback item
+        $stmt = $this->connect()->prepare("UPDATE user SET alert = 0 WHERE userID = ?");
     
+        // Check if the SQL query is valid
+        if (!$stmt->execute([$user])) {
+            header("location: profile.php?error=BadSQLQuery");
+            exit();
+        }
+    
+        $stmt = null;
+
+    } 
 
 
 
