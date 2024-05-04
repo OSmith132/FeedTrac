@@ -97,6 +97,7 @@ header {
 .header-profile-picture {
     border: 1px solid var(--e);
     border-radius: 50%;
+    display: block;
 }
 
 .header-dropdown {
