@@ -244,6 +244,9 @@
   * Made website colour palette modular by using root variables
   * Properly implemented light/dark mode (even the FeedTrac logo changes!)
 
+* ### _04/05/24:_
+  * All of the header buttons (excluding the colour mode toggle) now hide when the user is NOT logged in
+
 </details>
 
 ## Marco
