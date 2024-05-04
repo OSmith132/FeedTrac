@@ -101,6 +101,16 @@ class FeedbackContr extends Feedback {
         $this->update_rating($positiveRating, $feedbackID, $userID);
     }
 
+    // Update the status to open or closed
+    public function set_feedback_status($feedbackID,$newStatus){ // positiveRating: bool    feedbackID: int    userID: int
+
+        
+        // Update the rating points of a feedback item
+        $this-> update_feedback_status($feedbackID,$newStatus);
+    }
+
+   
+
 
     // Remove the rating points of a feedback item
     public function delete_rating($feedbackID, $userID){ // positiveRating: bool    feedbackID: int    userID: int

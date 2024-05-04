@@ -13,8 +13,6 @@ include ("scripts/functions.php");
 $Login_Controller = new LoginContr();
 $user_data = $Login_Controller->force_login();
 
-
-
 // Get the feedbackID from the URL
 if (isset($_GET['id'])) {
     $feedbackID = $_GET['id'];                 // THIS IS THE ID THAT SHOULD BE READ FROM THE DB -----------
@@ -25,7 +23,12 @@ else {
 
 $Feedback_Controller = new FeedbackContr($user_data['userID']);
 
+$position = $user_data['position'];
+
+echo $position;
+
 $feedback = $Feedback_Controller->feedback_get($feedbackID);
+
 
 $text = $feedback["text"];
 
@@ -36,6 +39,17 @@ $feedback_date = $feedback["date"];
 $ratingPoints_comment = 0;
 $course= $user_data["courseID"];
 $users = $Feedback_Controller->list_users($course);
+
+$feedbackStatusLabel = $feedback['closed'];
+$feedbackButtonLabel;
+
+if ($feedbackStatusLabel == "1" ){
+    $feedbackButtonLabel = "Open";
+    
+}
+else{
+    $feedbackButtonLabel = "Closed";
+}
 
 
 $comments = $Feedback_Controller->find_comments($feedbackID);
@@ -58,9 +72,6 @@ if (isset($_POST['submit_comment'])) {
     header("Location: " . $_SERVER['REQUEST_URI']); 
     exit();
 }
-
-
-
 ?>
 
 
@@ -89,7 +100,31 @@ if (isset($_POST['submit_comment'])) {
         <!-- Main -->
         <main class="feedback-main">
             <div class="feedback-header">
-                <button>Open</button>
+            <form method="POST" action="">
+                <button type="submit" name="openButton"><?= htmlspecialchars($feedbackButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
+            </form>
+            
+            <?php
+            if (isset($_POST['openButton'])) {
+                if ($feedbackStatusLabel == "1" && $position !== "student" ){
+                    $feedbackStatus = $feedback['closed'];
+                    $feedbackstatus = 0;
+                    $Feedback_Controller->set_feedback_status($feedbackID,$feedbackstatus);
+                    header("Location: " . $_SERVER['REQUEST_URI']);
+                    exit();
+                    
+                }
+                elseif($feedbackStatusLabel == "0" && $position !== "student" ){
+                    $feedbackStatus = $feedback['closed'];
+                    $feedbackstatus = 1;
+                    $Feedback_Controller->set_feedback_status($feedbackID,$feedbackstatus);
+                    header("Location: " . $_SERVER['REQUEST_URI']);
+                    exit();
+                }               
+            }
+            ?>
+
+
                 
             </div>
 
@@ -117,16 +152,21 @@ if (isset($_POST['submit_comment'])) {
                     <i id="heart-symbol" class="fa-regular fa-heart"></i> <div style="display:inline-block;" id=heart-counter><?= htmlspecialchars($feedback["ratingPoints"], ENT_QUOTES, 'UTF-8'); ?></div>
                 </button>
             </div>
+                <?php
             
-           <!-- Comment Form -->
-           <form method="POST" action="">
-            
-           <div style="display: flex; align-items: center;">
-    <textarea class="feedback-comment" name="comment_text" required style="width: 800px; height: 35px;" placeholder="Add Comment..."></textarea>
-    <button class="feedback-button" type="submit" name="submit_comment">Submit</button>
-</div>
 
-        </form>
+            if ($feedbackStatusLabel == "1") {
+            ?>
+                <!-- Comment Form -->
+                <form method="POST" action="">
+                    <div style="display: flex; align-items: center;">
+                        <textarea class="feedback-comment" name="comment_text" required style="width: 800px; height: 35px;" placeholder="Add Comment..."></textarea>
+                        <button class="feedback-button" type="submit" name="submit_comment">Submit</button>
+                    </div>
+                </form>
+                <?php
+            }
+            ?>
 
             <div><hr></div>
 

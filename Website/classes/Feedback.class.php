@@ -40,7 +40,6 @@ class Feedback extends Database
         // Return the results
         $results = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $results;
-
     }
 
 
@@ -71,6 +70,21 @@ class Feedback extends Database
     
         // Check if the SQL query is valid
         if (!$stmt->execute([$dateModifiedStr, $feedbackID])) {
+            header("location: profile.php?error=BadSQLQuery");
+            exit();
+        }
+    
+        $stmt = null;
+    }
+
+    // Update existing feedback modified date
+    protected function update_feedback_status($feedbackID,$newStatus)
+    {
+        // Connect to database and update all data about a feedback item
+        $stmt = $this->connect()->prepare("UPDATE feedback SET closed = ? WHERE feedbackID = ?");
+    
+        // Check if the SQL query is valid
+        if (!$stmt->execute([$newStatus, $feedbackID])) {
             header("location: profile.php?error=BadSQLQuery");
             exit();
         }
