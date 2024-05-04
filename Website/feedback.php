@@ -55,6 +55,17 @@ else{
 $comments = $Feedback_Controller->find_comments($feedbackID);
 $comments_count = count($comments);
 
+function achtung($users,$Feedback_Controller,$user_data){
+    foreach ($users as $user) {
+        if ($user['userID'] !== $user_data["userID"] && $user['sub'] == "1"){
+       // echo $user['userID'] . "\n";
+        $Feedback_Controller->sub_alert($user['userID']);
+        }
+    }   
+
+
+}
+
 
 if (isset($_POST['submit_comment'])) {
     $comment_text = $_POST['comment_text'];
@@ -63,12 +74,7 @@ if (isset($_POST['submit_comment'])) {
     $newDate = date_create();
     $Feedback_Controller->modify_date($feedbackID,$newDate);
 
-    foreach ($users as $user) {
-        if ($user['userID'] !== $user_data["userID"] && $user['sub'] == "1"){
-       // echo $user['userID'] . "\n";
-        $Feedback_Controller->sub_alert($user['userID']);
-        }
-    }   
+    achtung($users,$Feedback_Controller,$user_data);  
     header("Location: " . $_SERVER['REQUEST_URI']); 
     exit();
 }
@@ -110,6 +116,7 @@ if (isset($_POST['submit_comment'])) {
                     $feedbackStatus = $feedback['closed'];
                     $feedbackstatus = 0;
                     $Feedback_Controller->set_feedback_status($feedbackID,$feedbackstatus);
+                    achtung($users,$Feedback_Controller,$user_data);
                     header("Location: " . $_SERVER['REQUEST_URI']);
                     exit();
                     
@@ -118,6 +125,7 @@ if (isset($_POST['submit_comment'])) {
                     $feedbackStatus = $feedback['closed'];
                     $feedbackstatus = 1;
                     $Feedback_Controller->set_feedback_status($feedbackID,$feedbackstatus);
+                    achtung($users,$Feedback_Controller,$user_data);
                     header("Location: " . $_SERVER['REQUEST_URI']);
                     exit();
                 }               
