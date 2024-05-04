@@ -123,6 +123,9 @@ class FeedbackContr extends Feedback {
         $this->add_feedback_rating($feedbackID,$userID);
     }
 
+    public function remove_user_feedback_rating($feedbackID, $userID){
+        $this->remove_feedback_rating($feedbackID,$userID);
+    }
 
 
     public function list_rooms(){ // positiveRating: bool    feedbackID: int    userID: int

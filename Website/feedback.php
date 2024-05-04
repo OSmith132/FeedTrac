@@ -59,6 +59,26 @@ if (isset($_POST['submit_comment'])) {
     exit();
 }
 
+if ($Feedback_Controller->check_user_has_feedback($feedbackID,$user)) {
+    echo "setup run user has feedback";
+    echo "<script>
+            let button = document.getElementById('heart-toggle'); 
+            let content = document.getElementById('heart-symbol');
+            button.title = 'Like';
+            content.className = 'fa-regular fa-heart';
+            button.onclick = like;
+         </script>";
+}
+else {
+    echo "setup run user has no feedback";
+    echo "<script>
+            let button = document.getElementById('heart-toggle'); 
+            let content = document.getElementById('heart-symbol');
+            button.title = 'Like';
+            content.className = 'fa-solid fa-heart';
+            button.onclick = unlike;
+         </script>";
+}
 
 
 ?>
@@ -115,7 +135,7 @@ if (isset($_POST['submit_comment'])) {
 
 
                 <!-- Heart Button -->
-                <button id="heart-toggle" title="Like" onclick="like()">
+                <button id="heart-toggle" title="Like" onclick="//like()">
                     <i id="heart-symbol" class="fa-regular fa-heart"></i> <div style="display:inline-block;" id=heart-counter><?= htmlspecialchars($feedback["ratingPoints"], ENT_QUOTES, 'UTF-8'); ?></div>
                 </button>
                 <form method="post" action="">
@@ -125,27 +145,21 @@ if (isset($_POST['submit_comment'])) {
 
             <?php
             // This should set the button look on page load
-            if ($Feedback_Controller->check_user_has_feedback($feedbackID,$user)) {
-                echo "<script>like()</script>";
-            }
-            else {
-                echo "<script>unlike()</script>";
-            }
 
             if(isset($_POST['like'])){
                 echo "like pushed";
-                rate($Feedback_Controller,$feedbackID,$user);
-            }
-            function rate(FeedbackContr $controller, $feedback_ID, $user_ID) {
-                if ($controller->check_user_has_feedback($feedback_ID,$user_ID)) {
-                    //$controller->delete_rating($feedback_ID, $user_ID);
-                    echo "reached positive";
+                echo "feedback id = " . $feedbackID;
+                echo "user id = " . $user;
+                if ($Feedback_Controller->check_user_has_feedback($feedbackID,$user)) {
+                    $Feedback_Controller->remove_user_feedback_rating($feedbackID, $user);
+                    echo "user has feedback";
                 }
                 else {
                     //$controller->set_rating(1,$feedback_ID,$user_ID);
-                    $controller->add_user_feedback_rating($feedback_ID,$user_ID);
-                    echo "reached negative";
+                    $Feedback_Controller->add_user_feedback_rating($feedbackID,$user);
+                    echo "user has no feedback";
                 }
+
             }
 
             ?>
