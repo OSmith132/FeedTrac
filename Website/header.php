@@ -15,7 +15,7 @@ if ($logged_in) {
     $user_id = $_SESSION["userID"];
 
     // TODO: Get the current user's number of alerts
-    $alerts_count = 69420;
+    $alerts_count = $user_data["alert"];
 
     // ----------------------------------------------------
     // Get the current user's avatar (favours JPG over PNG)

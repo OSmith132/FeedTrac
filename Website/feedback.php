@@ -25,7 +25,6 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
 
 $position = $user_data['position'];
 
-echo $position;
 
 $feedback = $Feedback_Controller->feedback_get($feedbackID);
 
