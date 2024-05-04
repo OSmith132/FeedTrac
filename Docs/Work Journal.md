@@ -246,6 +246,7 @@
 
 * ### _04/05/24:_
   * All of the header buttons (excluding the colour mode toggle) now hide when the user is NOT logged in
+  * Fixed weird whitespace under header profile button
 
 </details>
 
