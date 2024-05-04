@@ -1,8 +1,14 @@
 <?php
+// Boolean
+// True  - User is logged in
+// False - User is NOT logged in
 $logged_in = isset($_SESSION["userID"]);
 
+// Path used by profile button image (defaults to "user-default.jpg")
 $avatar_path = "assets/profile-pictures/user-default.jpg";
 
+// Get the current user's avatar (if they are logged in)
+// Favours JPG over PNG
 if ($logged_in) {
     $user_id = $_SESSION["userID"];
 
