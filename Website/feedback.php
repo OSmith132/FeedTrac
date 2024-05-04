@@ -42,7 +42,7 @@ $users = $Feedback_Controller->list_users($course);
 $feedbackStatusLabel = $feedback['closed'];
 $feedbackButtonLabel;
 
-if ($feedbackStatusLabel == "1" ){
+if ($feedbackStatusLabel == "0" ){
     $feedbackButtonLabel = "Open";
     
 }
@@ -111,18 +111,18 @@ if (isset($_POST['submit_comment'])) {
             
             <?php
             if (isset($_POST['openButton'])) {
-                if ($feedbackStatusLabel == "1" && $position !== "student" ){
+                if ($feedbackStatusLabel == "0" && $position !== "student" ){
                     $feedbackStatus = $feedback['closed'];
-                    $feedbackstatus = 0;
+                    $feedbackstatus = 1;
                     $Feedback_Controller->set_feedback_status($feedbackID,$feedbackstatus);
                     achtung($users,$Feedback_Controller,$user_data);
                     header("Location: " . $_SERVER['REQUEST_URI']);
                     exit();
                     
                 }
-                elseif($feedbackStatusLabel == "0" && $position !== "student" ){
+                elseif($feedbackStatusLabel == "1" && $position !== "student" ){
                     $feedbackStatus = $feedback['closed'];
-                    $feedbackstatus = 1;
+                    $feedbackstatus = 0;
                     $Feedback_Controller->set_feedback_status($feedbackID,$feedbackstatus);
                     achtung($users,$Feedback_Controller,$user_data);
                     header("Location: " . $_SERVER['REQUEST_URI']);
@@ -162,7 +162,7 @@ if (isset($_POST['submit_comment'])) {
                 <?php
             
 
-            if ($feedbackStatusLabel == "1") {
+            if ($feedbackStatusLabel == "0") {
             ?>
                 <!-- Comment Form -->
                 <form method="POST" action="">
@@ -172,11 +172,19 @@ if (isset($_POST['submit_comment'])) {
                     </div>
                 </form>
                 <?php
+
+            } else { ?>
+
+
+                <div class="feedback-closed">
+                    <strong><i>This feedback is closed and no longer accepting comments.</i></strong>
+                </div>
+                
+            <?php        
             }
             ?>
 
             <div><hr></div>
-
 
             <?php foreach ($comments as $comment): 
                 $comment_userID = $comment['userID'];

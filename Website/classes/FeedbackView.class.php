@@ -60,12 +60,12 @@ class FeedbackView extends Feedback {
     }
 
     // Check if resolved is valid if checked
-    if ($feedbackRow['resolved'] != $resolved  &&  $resolved == 1){
+    if ($feedbackRow['resolved'] == $resolved  &&  $resolved == 1){
         return false;
     }
 
     // Check if closed is valid if checked
-    if ($feedbackRow['closed'] != $closed  &&  $closed == 1){
+    if ($feedbackRow['closed'] == $closed  &&  $closed == 1){
         return false;
     }
 

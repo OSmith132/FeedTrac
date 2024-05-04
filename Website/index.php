@@ -66,14 +66,14 @@ $Feedback_View = new FeedbackView($user_data['userID']);
                         <!-- Resolved/Unresolved Toggle -->
                         <div class="index-toggle-option">
                             <label>
-                                <input type="checkbox" name="resolved" value="0" >Only Resolved
+                                <input type="checkbox" name="resolved" value="0" >Only Unresolved
                             </label>
                         </div>
 
                         <!-- Closed Toggle -->
                         <div class="index-toggle-option">
                             <label>
-                                <input type="checkbox" name="closed" value="0">Only Closed
+                                <input type="checkbox" name="closed" value="0">Only Open
                             </label>
                         </div>
 
