@@ -27,7 +27,7 @@
   * ~~Create page~~_Marco (30/04/24)_
   * ~~Add feedback creation functionality~~_Marco (30/04/24)_
   * ~~Link with database~~ _Marco (30/04/24)_
-  * (OPTIONAL) Add extra options such as anonymous posting or the ability to disable comments
+  ~~* (OPTIONAL) Add extra options such as anonymous posting or the ability to disable comments~~ - (anonymous posting = trolling, so we're no, disable comments done by closing item in feedback.php) _Marco (04/05/24)_
 
 * Home/Index page
   * ~~Display feedback data on the home/index page~~               _- Oliver (29/04/24)_
@@ -77,7 +77,7 @@
 * Admin/Moderation page
   * Create page
   * Moderation Tool (for admins to remove content)
-  * Staff could resolve / force close issues as well as reply
+  * Staff could resolve / force close issues as well as reply - (close feedback implemented in feedback.php) - _Marco (04/05/24)_
   * (OPTIONAL) Only the relevant staff to recieve the feedback
 
 * Database
