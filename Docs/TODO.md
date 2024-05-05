@@ -19,7 +19,7 @@
   * ~~Header buttons need to hide when not logged in~~ - _Archie (04/05/24)_
   * ~~Remove weird whitespace under header profile button~~ - _Archie (04/05/24)_
   * ~~Alert badge on inbox button needs to be connected to the database~~ -  _Marco (02/05/24)_
-  * There is still some "hardcoded" CSS styling going on that isn't compatible with the dark/light mode toggle (see the "unsorted" section of main.css)
+  * ~~There is still some "hardcoded" CSS styling going on that isn't compatible with the dark/light mode toggle (see the "unsorted" section of main.css)~~ - _Archie (05/05/24)_
   * Ensure entire project is actually compliant with our style guide (style guide may also need updating)
   * Ensure .php files are organised into suitable subdirectories
   * < head > should be moved into its own file and then reused like header.php and footer.php because it's bad to keep duplicating it (I assume this is possible?)
@@ -32,6 +32,7 @@
   ~~* (OPTIONAL) Add extra options such as anonymous posting or the ability to disable comments~~ - (anonymous posting = trolling, so we're not doing it, disable comments done by closing item in feedback.php) _Marco (04/05/24)_
 
 * Home/Index page
+  * (OPTIONAL) Table should be sorted by most recent first, by default
   * ~~Display feedback data on the home/index page~~               _- Oliver (29/04/24)_
   * Add filters for:
       *  ~~resolved~~                                              _-Oliver (30/04/24)_
@@ -45,7 +46,8 @@
   * ~~Allow the user to press on row and redirect to feedback~~    _-Oliver (01/5/24)_
   
 
-* Feedback page - Marco - In progress, done
+* Feedback page
+  * Buttons should be hidden/disabled if they cannot be used by the current user
   * ~~Implement feedback rating system~~ -  _Toby (05/05/24)_
   * ~~Page title in < head > should reflect the title of the feedback~~ -  _Oliver _
   * ~~Implement commenting system < prioritizing this~~ _Marco (30/04/24)_
