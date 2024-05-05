@@ -174,7 +174,7 @@ if(isset($_POST['like'])){
                 }
 
                 if (isset($_POST['resolvedButton'])) {
-                    if ($feedbackResolvedLabel == "0" && $_SESSION['userID'] == $feedbackUserData['userID'] || $position == "admin"){
+                    if ($feedbackResolvedLabel == "0" && ($_SESSION['userID'] == $feedbackUserData['userID'] || $position == "admin")){
                         $feedbackResolved = $feedback['resolved'];
                         $feedbackresolved = 1;
                         $Feedback_Controller->set_feedback_resolved($feedbackID,$feedbackresolved);
@@ -183,7 +183,7 @@ if(isset($_POST['like'])){
                         exit();
                         
                     }
-                    elseif($feedbackResolvedLabel == "1" && $_SESSION['userID'] == $feedbackUserData['userID'] || $position == "admin"){
+                    elseif($feedbackResolvedLabel == "1" && ($_SESSION['userID'] == $feedbackUserData['userID'] || $position == "admin")){
                         $feedbackResolved = $feedback['resolved'];
                         $feedbackresolved = 0;
                         $Feedback_Controller->set_feedback_resolved($feedbackID,$feedbackresolved);
