@@ -270,8 +270,8 @@ if (isset($_POST['submit_comment'])) {
                         <p><img class="avatar" src="<?php
                             // Get user info and find either jpg or png profile picture
                             $userID = $_SESSION['userID'];
-                            $jpg_path = "assets/profile-pictures/user-$comment_userID.jpg";
-                            $png_path = "assets/profile-pictures/user-$comment_userID.png";
+                            $jpg_path = "assets/profile-pictures/user-$commentUserID.jpg";
+                            $png_path = "assets/profile-pictures/user-$commentUserID.png";
 
                             // Return
                             if (file_exists($jpg_path)) {
