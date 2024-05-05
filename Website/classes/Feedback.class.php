@@ -56,7 +56,7 @@ class Feedback extends Database
             exit();
         }
 
-        $stmt = null;
+        return true;
     }
 
     // Update existing feedback modified date
@@ -73,11 +73,12 @@ class Feedback extends Database
             header("location: profile.php?error=BadSQLQuery");
             exit();
         }
-    
-        $stmt = null;
+
+
+        return true;
     }
 
-    // Update existing feedback modified date
+    // Update existing feedback status
     protected function update_feedback_status($feedbackID,$newStatus)
     {
         // Connect to database and update all data about a feedback item
@@ -85,12 +86,29 @@ class Feedback extends Database
     
         // Check if the SQL query is valid
         if (!$stmt->execute([$newStatus, $feedbackID])) {
-            header("location: profile.php?error=BadSQLQuery");
+            header("location: feedback.php?error=BadSQLQuery");
             exit();
         }
     
-        $stmt = null;
+
+        return true;
     }
+
+     // Update resolved status
+     protected function update_resolved($feedbackID,$newResolved)
+     {
+         // Connect to database and update all data about a feedback item
+         $stmt = $this->connect()->prepare("UPDATE feedback SET resolved = ? WHERE feedbackID = ?");
+     
+         // Check if the SQL query is valid
+         if (!$stmt->execute([$newResolved, $feedbackID])) {
+             header("location: feedback.php?error=BadSQLQuery");
+             exit();
+         }
+     
+ 
+         return true;
+     }
 
     // A method to reset alerts
     protected function alert_update($user){
@@ -104,7 +122,7 @@ class Feedback extends Database
             exit();
         }
     
-        $stmt = null;
+        return true;
 
     } 
 
@@ -123,7 +141,7 @@ class Feedback extends Database
             exit();
         }
 
-        $stmt = null;
+        return true;
     }
 
      // Create new comment
@@ -138,8 +156,8 @@ class Feedback extends Database
              header("location: profile.php?error=BadSQLQuery");
              exit();
          }
- 
-         $stmt = null;
+
+    return true;
      }
 
     // Create new inbox alert
@@ -195,7 +213,8 @@ class Feedback extends Database
         }
 
 
-        $stmt = null;
+        return true;
+
     }
 
 
@@ -228,6 +247,8 @@ class Feedback extends Database
             header("location: feedback.php?error=BadSQLQuery");
             exit();
         }
+
+        return true;
     }
 
     protected function get_rooms()
@@ -269,7 +290,7 @@ class Feedback extends Database
     {
 
         $stmt = $this->connect()->prepare(" SELECT 
-                                                user.userID,
+                                                user.userID as userID,
                                                 username,
                                                 fname,
                                                 lname,
@@ -338,6 +359,8 @@ class Feedback extends Database
         $results = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $results;
     }
+
+
     protected function get_all_rows_inbox($dateTime)
     {
         // Prepare an SQL statement to select all feedback where the date is greater than $dateTime
@@ -406,4 +429,27 @@ class Feedback extends Database
         $results = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $results;
     }
+
+
+    protected function feedback_exists($feedbackID){
+
+        // Check if the feedback exists
+        $stmt = $this->connect()->prepare("SELECT feedbackID FROM feedback WHERE feedbackID = ? LIMIT 1");
+
+        // Check if the SQL query is valid and execute
+        if (!$stmt->execute([$feedbackID])) {
+            header("location: feedback.php?error=BadSQLQuery");
+            exit();
+        }
+
+        // Returns true if the feedback exists
+        $results = $stmt->get_result();
+        return $results->num_rows > 0;
+    }
+
+
+
+
+
+
 }

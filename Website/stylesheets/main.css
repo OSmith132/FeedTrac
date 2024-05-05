@@ -319,6 +319,16 @@ th, tr:hover {
     transition: outline-color 1s ease;
 }
 
+.feedback-closed{
+    font-size: 24px;
+    text-align: center;
+    color: deeppink;
+    top: 50%;
+    left: 50%;
+    height: 50px;
+    transform: translate(0, 10px);
+}
+
 .feedback-comment:focus {
     border-color: var(--old-bright);
     outline-style: solid;
