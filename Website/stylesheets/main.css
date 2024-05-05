@@ -187,17 +187,51 @@ footer a:hover {
 /* TAGS */
 /* ---- */
 
+.urgency-tag {
+    border-radius: 4px;
+    cursor: default;
+    font-size: 12px;
+    padding: 2px 4px;
+}
+
 .tag {
     border-radius: 4px;
     cursor: default;
     padding: 4px 8px;
 }
 
+/* This does NOT affect urgency tags, just "normal" tags :) */
 table .tag {
+    background: none;
+    border-color: var(--d);
     border-radius: 2px;
-    filter: saturate(50%);
+    color: var(--f);
     font-size: 12px;
     padding: 2px 4px;
+}
+
+.tag-low {
+    background-color: rgb(0%, 50%, 0%);
+    border: 1px solid rgb(0%, 100%, 0%);
+    color: rgb(0%, 100%, 0%);
+}
+
+.tag-medium {
+    background-color: rgb(50%, 50%, 0%);
+    border: 1px solid rgb(100%, 100%, 0%);
+    color: rgb(100%, 100%, 0%);
+}
+
+.tag-high {
+    background-color: rgb(50%, 25%, 0%);
+    border: 1px solid rgb(100%, 50%, 0%);
+    color: rgb(100%, 50%, 0%);
+}
+
+.tag-critical {
+    background-color: rgb(50%, 0%, 0%);
+    border: 1px solid rgb(100%, 0%, 0%);
+    color: rgb(100%, 0%, 0%);
 }
 
 .tag-open {
@@ -222,38 +256,6 @@ table .tag {
     background-color: rgb(25%, 50%, 50%);
     border: 1px solid rgb(25%, 100%, 100%);
     color: rgb(25%, 100%, 100%);
-}
-
-.urgency-tag {
-    border-radius: 8px;
-    cursor: default;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 2px 4px;
-}
-
-.urgency-tag-low {
-    background-color: rgb(0%, 50%, 0%);
-    border: 2px solid rgb(0%, 100%, 0%);
-    color: rgb(0%, 100%, 0%);
-}
-
-.urgency-tag-medium {
-    background-color: rgb(50%, 50%, 0%);
-    border: 2px solid rgb(100%, 100%, 0%);
-    color: rgb(100%, 100%, 0%);
-}
-
-.urgency-tag-high {
-    background-color: rgb(50%, 25%, 0%);
-    border: 2px solid rgb(100%, 50%, 0%);
-    color: rgb(100%, 50%, 0%);
-}
-
-.urgency-tag-critical {
-    background-color: rgb(50%, 0%, 0%);
-    border: 2px solid rgb(100%, 0%, 0%);
-    color: rgb(100%, 0%, 0%);
 }
 
 /* -------- */

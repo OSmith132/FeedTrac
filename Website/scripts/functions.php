@@ -4,10 +4,10 @@
 
 // Get the string representation of the urgency level
 $get_urgency_string = array(
-    "<p class='urgency-tag urgency-tag-low'>Low</p>",          // => 0
-    "<p class='urgency-tag urgency-tag-medium'>Medium</p>",    // => 1
-    "<p class='urgency-tag urgency-tag-high'>High</p>",        // => 2
-    "<p class='urgency-tag urgency-tag-critical'>Critical</p>" // => 3
+    "<p class='urgency-tag tag-low'>Low</p>",          // => 0
+    "<p class='urgency-tag tag-medium'>Medium</p>",    // => 1
+    "<p class='urgency-tag tag-high'>High</p>",        // => 2
+    "<p class='urgency-tag tag-critical'>Critical</p>" // => 3
 );
 
 // Get the string representation of the resolved status
