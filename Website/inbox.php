@@ -119,7 +119,7 @@ usort($feedbackRows, 'compare_by_date');
     </main>
 
     <!-- Footer -->
-    <div class="footer-position"><?php include("footer.php"); ?></div>
+    <?php include("footer.php"); ?>
     <script>
     document.querySelector('.search-table').addEventListener('click', function(event) {
         // Select closest element with clickable-row to the clicked element

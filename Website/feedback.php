@@ -70,7 +70,7 @@ if (!$Feedback_View->get_feedback_exists($feedbackID)){ ?>
         </main>
 
         <!-- Footer -->
-        <div class="footer-position"><?php include("footer.php"); ?></div>
+        <?php include("footer.php"); ?>
 
     <?php 
     exit();
@@ -307,7 +307,7 @@ if (isset($_POST['submit_comment'])) {
         </main> 
 
         <!-- Footer -->
-        <div class="footer-position"><?php include("footer.php"); ?></div>
+        <?php include("footer.php"); ?>
     </body>
     
 </html>

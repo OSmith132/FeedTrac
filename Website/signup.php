@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </head>
 	<body>
 		<!-- Header -->
-		<?php include("header.php");?>
+		<?php include("header.php"); ?>
 
 		<!-- Main -->
 		<main>
@@ -179,6 +179,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		</main>
 
         <!-- Footer -->
-        <div class="footer-position"><?php include("footer.php");?></div>
+        <?php include("footer.php"); ?>
     </body>
 </html>

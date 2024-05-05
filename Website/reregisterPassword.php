@@ -121,10 +121,6 @@ if (count($postData) == count(array_filter($postData))) {
         </main>
 
         <!-- Footer -->
-        <div class="footer-position"><?php include("footer.php"); ?></div>
-        
+        <?php include("footer.php"); ?>
     </body>
 </html>
-
-
-
