@@ -52,9 +52,11 @@
   * ~~get avatars on comments to work~~ _Toby (02/05/24)_
   * Maybe add Photos / files to report
   * ~~Link with database~~ _Marco (30/04/24)_
+  * closing your own feedback
   * ~~TODO STRETCH - Assign correct student ID to feedback item, assign correct course.~~ _Marco (30/04/24)_
 
 * Course page (Deprecated by committee)
+  * Needs link removing
   * ~~Create page (Contains posts relevant to a specific course)~~ 
   * ~~Allow for individual course pages by linking with database~~
  
@@ -63,7 +65,7 @@
   * ~~Display feedback data on the inbox page~~_Marco (03/05/24)_
   * ~~Add an observer to subscribe and get updates to courses and comments (Design Pattern)~~_Marco (03/05/24)_
   * ~~Convert page into dropdown menu, with alert counter on corner of the icon.~~ _Deprecated by committee_
-
+  
 * Profile page
   * ~~Need to be able to see other users profile when clicking on their names~~ _Toby (02/05/24)_
   * ~~Allow for individual profile pages per account to replace the template~~
@@ -76,6 +78,7 @@
   * Need to check old password before allowing change
   * ~~(OPTIONAL) Add additional user settings~~ _Toby (01/05/24)_
   * ~~Edit personal information~~ _Toby (01/05/24)_
+  * old password check before changing passwords
 
 * Admin/Moderation page
   * Create page

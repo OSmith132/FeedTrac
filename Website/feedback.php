@@ -41,11 +41,12 @@ $feedback_date = $feedback["date"];
 $ratingPoints_comment = 0;
 $course= $user_data["courseID"];
 $users = $Feedback_Controller->list_users($course);
+$hasRated = $Feedback_Controller->check_user_has_feedback_rating($feedbackID, $user);
 $feedbackUserData = $Feedback_View->get_user_info($feedbackID);;
-
 // Generates text for the closed button
 $feedbackClosedLabel = $feedback['closed'];
 $feedbackClosedButtonLabel;
+
 
 if ($feedbackClosedLabel == "0" ) {
     $feedbackClosedButtonLabel = "Open";
@@ -87,7 +88,28 @@ if (isset($_POST['submit_comment'])) {
 
     $Feedback_Controller->modify_date($feedbackID,$newDate);
 
+
+if(isset($_POST['like'])){
+    echo "like pushed";
+    echo "feedback id = " . $feedbackID;
+    echo "user id = " . $user;
+    if ($Feedback_Controller->check_user_has_feedback_rating($feedbackID,$user)) {
+        $Feedback_Controller->remove_user_feedback_rating($feedbackID, $user);
+        echo "user has feedback";
+        header("Location: " . $_SERVER['REQUEST_URI']);
+        exit();
+    }
+    else {
+        //$controller->set_rating(1,$feedback_ID,$user_ID);
+        $Feedback_Controller->add_user_feedback_rating($feedbackID,$user);
+        echo "user has no feedback";
+        header("Location: " . $_SERVER['REQUEST_URI']);
+        exit();
+    }
+}
+
     achtung($users,$Feedback_Controller,$user_data);
+
 
     header("Location: " . $_SERVER['REQUEST_URI']);
 
@@ -96,6 +118,36 @@ if (isset($_POST['submit_comment'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en-gb">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <link rel="icon" type="image/x-icon" href="assets/icon.png">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="stylesheets/main.css">
+
+        <script src="https://kit.fontawesome.com/7e1870387e.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+
+        <!-- Header -->
+        <?php include("header.php"); ?>
+
+        <!-- Main -->
+        <main class="feedback-main">
+
+
+            <div class="feedback-header">
+                <button>Open</button>
+                
+            </div>
+=======
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -172,6 +224,7 @@ if (isset($_POST['submit_comment'])) {
                 }
             }
 
+
             ?>
         </div>
 
@@ -193,6 +246,30 @@ if (isset($_POST['submit_comment'])) {
                 } else {
                     echo "assets/profile-pictures/user-default.jpg";
                 }?>"alt="User Avatar" height="32"><a href="profile.php"> <?= htmlspecialchars($feedback_user_details["username"], ENT_QUOTES, 'UTF-8'); ?> </a> raised this feedback on <?= htmlspecialchars($feedback["date"], ENT_QUOTES, 'UTF-8'); ?> · <?= htmlspecialchars($comments_count, ENT_QUOTES, 'UTF-8'); ?> comments.</p>
+
+
+
+
+                <!-- Heart Button -->
+                <button id="heart-toggle" title="Like" onclick="like()">
+                    <i id="heart-symbol" class="<?php if($hasRated){echo"fa-solid fa-heart";}else{echo"fa-regular fa-heart";}?>"></i> <div style="display:inline-block;" id=heart-counter><?= htmlspecialchars($feedback["ratingPoints"], ENT_QUOTES, 'UTF-8'); ?></div>
+                </button>
+
+                <form method="post" action="" enctype="multipart/form-data">
+                <button id="like_post" type="submit" name="like" hidden="hidden">test</button>
+                </form>
+            </div>
+            
+           <!-- Comment Form -->
+           <form method="POST" action="">
+            
+           <div style="display: flex; align-items: center;">
+    <textarea class="feedback-comment" name="comment_text" required style="width: 800px; height: 35px;" placeholder="Add Comment..."></textarea>
+    <button class="feedback-button" type="submit" name="submit_comment">Submit</button>
+</div>
+
+        </form>
+
 
             <!-- Heart Button -->
             <button id="heart-toggle" title="Like" onclick="like()">
