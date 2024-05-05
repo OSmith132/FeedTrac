@@ -155,6 +155,15 @@ main {
     text-align: center;
 }
 
+main a {
+    color: inherit;
+    text-decoration: none;
+}
+
+main a:hover {
+    text-decoration: underline;
+}
+
 /* ------ */
 /* FOOTER */
 /* ------ */
