@@ -51,89 +51,83 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en-gb">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeedTrac</title>
 
-        <title>FeedTrac</title>
+    <link rel="icon" type="image/x-icon" href="assets/icon.png">
 
-        <link rel="icon" type="image/x-icon" href="assets/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/main.css">
 
-        <link rel="stylesheet" href="stylesheets/main.css">
+    <script src="https://kit.fontawesome.com/7e1870387e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header -->
+    <?php include("header.php"); ?>
 
-        <script src="https://kit.fontawesome.com/7e1870387e.js" crossorigin="anonymous"></script>
-    </head>
-   
+    <!-- Main -->
+    <main>
+        <h1>Create New Feedback Page</h1>
+    </main>
 
+     <!-- Main -->
+    <main>
+        <div class="form">
+            <!-- Sign-Up Form -->
+            <h2>New Feedback</h2>
 
-    <body>
-        <!-- Header -->
-        <?php include("header.php"); ?>
+            <form action="newFeedback.php" method="post">
+                <br>
+                <?php
+                    // Fetch all rooms
+                    $rooms = $Feedback_Controller->list_rooms();
 
-        <!-- Main -->
-        <main><h1>Create New Feedback Page</h1></main>
-         <!-- Main -->
-		<main>
+                    // Start the select element
+                    echo '<select name="roomID" required>';
 
-<div class="form">
+                    // Add a hidden option
+                    echo '<option value="" selected disabled hidden>Room Number</option>';
 
-    <!-- Sign-Up Form -->
-    <h2>New Feedback</h2>
-    <form action="newFeedback.php" method="post">
-    
-        <br>
-        <?php
-            // Fetch all rooms
-            $rooms = $Feedback_Controller->list_rooms();
+                    // Loop through the rooms and create an option for each
+                    foreach ($rooms as $room) {
+                        echo '<option value="' . $room['roomID'] . '">' . $room['roomName'] . '</option>';
+                    }
 
-            // Start the select element
-            echo '<select name="roomID" required>';
+                    // End the select element
+                    echo '</select>';
+                ?>
+                <br><br>
 
-            // Add a hidden option
-            echo '<option value="" selected disabled hidden>Room Number</option>';
+                Title:<br>
+                <input type="text" name="title" required>
+                <br><br>
 
-            // Loop through the rooms and create an option for each
-            foreach ($rooms as $room) {
-                echo '<option value="' . $room['roomID'] . '">' . $room['roomName'] . '</option>';
-            }
+                Enter your feedback:<br>
+                <textarea name="text" required style="width: 570px; height: 100px;"placeholder="Add feedback..."></textarea>
+                <br><br>
 
-            // End the select element
-            echo '</select>';
-        ?>
-         <br><br>
+                <select name="urgency" required>
+                    <option value = ""selected disabled hidden>Urgency</option>
+                    <option value="0">Low</option>
+                    <option value="1">Medium</option>
+                    <option value="2">High</option>
+                    <option value="3">Critical</option>
+                </select><br><br>
 
-        Title:<br>
-        <input type="text" name="title" required>
-        <br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </main>
 
-        Enter your feedback:<br>
-        <textarea name="text" required style="width: 570px; height: 100px;"placeholder="Add feedback..."></textarea>
-        <br><br>
-        
-        <select name="urgency" required>
-            <option value = ""selected disabled hidden>Urgency</option>
-            <option value="0">Low</option>
-            <option value="1">Medium</option>
-            <option value="2">High</option>
-            <option value="3">Critical</option>
-        </select><br><br>
-
-        <input type="submit" value="Submit">
-    </form>
-</div>
-</main>
-
-        <!-- Footer -->
-        <div class="footer-position"><?php include("footer.php"); ?></div>
-    </body>
+    <!-- Footer -->
+    <?php include("footer.php"); ?>
+</body>
 </html>
