@@ -41,107 +41,107 @@ $Feedback_View = new FeedbackView($user_data['userID']);
     <?php include("header.php"); ?>
 
     <!-- Main -->
-    <main>
-        <h1>Homepage</h1>
-        
-        <div class="index-content">
-            <div class="index-header">
-                <!-- Search-bar functionality -->
-                <form class="index-header" method="POST" action="index.php" id="index-search-form" .change() >
-                    <!-- Filter Methods -->
-                    <div class="index-toggle-box">
-                        <h2>Search Feedback</h2>
+    <main class="index-main">
+        <!-- Title -->
+        <h1>Welcome to FeedTrac</h1>
 
-                        <input type="hidden" name="action" value="search">
+        <!-- New Feedback Button -->
+        <button class="new-feedback-button" onclick="window.location.href = 'newFeedback.php';">Create New Feedback</button>
 
-                        <input class="search-bar" type="text" name="searchTerm" placeholder="Search for existing feedback">
+        <!-- Search-bar functionality -->
+        <form class="index-options" method="POST" action="index.php" id="index-search-form" .change() >
+            <div class="index-options-group">
+                <!-- Filter -->
+                <div class="index-option-box">
+                    <h2>Filter</h2>
 
-                        <!-- <button name="submit">Search</button> -->
+                    <!-- Resolved/Unresolved Toggle -->
+                    <div>
+                        <label>
+                            <input type="checkbox" name="resolved" value="0" >Only Unresolved
+                        </label>
                     </div>
 
-                    <!-- Filter Methods -->
-                    <div class="index-toggle-box">
-                        <h2>Filter Options</h2>
-
-                        <!-- Resolved/Unresolved Toggle -->
-                        <div class="index-toggle-option">
-                            <label>
-                                <input type="checkbox" name="resolved" value="0" >Only Unresolved
-                            </label>
-                        </div>
-
-                        <!-- Closed Toggle -->
-                        <div class="index-toggle-option">
-                            <label>
-                                <input type="checkbox" name="closed" value="0">Only Open
-                            </label>
-                        </div>
-
-                        <!-- Urgency Level Slider -->
-                        <div class="index-toggle-option">
-                            <label for="urgency">Urgency:</label>
-                            <input type="range" id="urgency" name="urgency" min="-1" max="3" value="-1" list="urgency-levels">
-                            <datalist id="urgency-levels">
-                                <option value="-1">All</option>
-                                <option value="0">Low</option>
-                                <option value="1">Medium</option>
-                                <option value="2">High</option>
-                                <option value="3">Critical</option>
-                            </datalist>
-                            <span id="urgency-value">All</span>
-                        </div>
-
-                        <!-- Timeframe Slider -->
-                        <div class="index-toggle-option">
-                            <label for="timeframe">Timeframe:</label>
-                            <input type="range" id="timeframe" name="timeframe" min="0" max="4" value="4" list="timeframe-options">
-                            <datalist id="timeframe-options">
-                                <option value="0">1 Hour</option>
-                                <option value="1">1 Day</option>
-                                <option value="2">1 Week</option>
-                                <option value="3">1 Month</option>
-                                <option value="4">All Time</option>
-                            </datalist>
-                            <span id="timeframe-value">All Time</span>
-                        </div>
+                    <!-- Closed Toggle -->
+                    <div>
+                        <label>
+                            <input type="checkbox" name="closed" value="0">Only Open
+                        </label>
                     </div>
 
-                    <!-- Sort Methods -->
-                    <div class="sort-box">
-                        <h2>Sort Options</h2>
+                    <!-- Urgency Level Slider -->
+                    <div>
+                        <label for="urgency">Urgency:</label>
+                        <input type="range" id="urgency" name="urgency" min="-1" max="3" value="-1" list="urgency-levels">
 
-                        <!-- Sort by Rating Points -->
-                        <div class="index-sort-option">
-                            <label for="sort-type">Sort Type:</label>
-                            <select id="sort-type" name="sort-type">
-                                <option value="relevance">Relevance</option>
-                                <option value="date">Date</option>
-                                <option value="urgency">Urgency</option>
-                                <option value="ratingPoints">Rating</option>
-                            </select>
-                        </div>
+                        <datalist id="urgency-levels">
+                            <option value="-1">All</option>
+                            <option value="0">Low</option>
+                            <option value="1">Medium</option>
+                            <option value="2">High</option>
+                            <option value="3">Critical</option>
+                        </datalist>
 
-                        <!-- Direction -->
-                        <div class="index-sort-option">
-                            <label for="Direction">Direction:</label>
-                            <select id="Direction" name="sort-direction">
-                                <option value="asc">Ascending</option>
-                                <option value="desc">Descending</option>
-                            </select>
-                        </div>
+                        <span id="urgency-value">All</span>
                     </div>
-                </form>
 
-                <!-- New Feedback Button -->
-                <button onclick="window.location.href = 'newFeedback.php'">New Feedback</button> 
+                    <!-- Timeframe Slider -->
+                    <div>
+                        <label for="timeframe">Timeframe:</label>
+                        <input type="range" id="timeframe" name="timeframe" min="0" max="4" value="4" list="timeframe-options">
 
+                        <datalist id="timeframe-options">
+                            <option value="0">1 Hour</option>
+                            <option value="1">1 Day</option>
+                            <option value="2">1 Week</option>
+                            <option value="3">1 Month</option>
+                            <option value="4">All Time</option>
+                        </datalist>
+
+                        <span id="timeframe-value">All Time</span>
+                    </div>
+                </div>
+
+                <!-- Sort -->
+                <div class="index-option-box">
+                    <h2>Sort</h2>
+
+                    <!-- Sort by Rating Points -->
+                    <div>
+                        <label for="sort-type">Focus:</label>
+                        <select id="sort-type" name="sort-type">
+                            <option value="relevance">Relevance</option>
+                            <option value="date">Date</option>
+                            <option value="urgency">Urgency</option>
+                            <option value="ratingPoints">Rating</option>
+                        </select>
+                    </div>
+
+                    <!-- Direction -->
+                    <div>
+                        <label for="Direction">Direction:</label>
+                        <select id="Direction" name="sort-direction">
+                            <option value="asc">Ascending</option>
+                            <option value="desc">Descending</option>
+                        </select>
+                    </div>
+                </div>
             </div>
 
-            <!-- Table to show feedback -->
-            <table class="search-table">
+            <!-- Search -->
+            <div class="index-option-box">
+                <h2>Search</h2>
 
-            </table>
-        </div>
+                <input type="hidden" name="action" value="search">
+
+                <input class="index-search-bar" type="text" name="searchTerm" placeholder="Search for existing feedback...">
+
+                <!-- <button name="submit">Search</button> -->
+            </div>
+        </form>
+
+        <!-- Table to show feedback -->
+        <table class="search-table"></table>
     </main>
 
     <!-- Footer -->

@@ -258,6 +258,68 @@ table .tag {
     color: rgb(25%, 100%, 100%);
 }
 
+/* ----- */
+/* INDEX */
+/* ----- */
+
+.index-main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.new-feedback-button {
+    background-color: var(--accent-bright);
+    border: none;
+    border-radius: 4px;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    padding: 8px 16px;
+    transition: background-color 0.3s;
+}
+
+.new-feedback-button:hover {
+    background-color: var(--accent-pale);
+}
+
+.index-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.index-options-group {
+    align-items: start;
+    display: flex;
+    gap: 8px;
+}
+
+.index-option-box {
+    background-color: var(--c);
+    border: 1px solid var(--e);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+}
+
+.index-search-bar {
+    background-color: var(--b);
+    border: 1px solid var(--e);
+    border-radius: 8px;
+    color: var(--g);
+    font: inherit;
+    padding: 8px;
+}
+
+.index-search-bar:focus {
+    border-color: var(--accent-bright);
+    outline: none;
+}
+
 /* -------- */
 /* UNSORTED */
 /* -------- */
@@ -294,7 +356,7 @@ table .tag {
     background-color: var(--accent-pale);
 }
 
-h1, p {
+h1, h2, p {
     margin: 0;
 }
 
@@ -466,7 +528,7 @@ th, tr:hover {
     padding: 16px;
 }
 
-.index-header {
+.inbox-header {
     display: flex;
     justify-content: center; 
     align-items: center; 
@@ -477,7 +539,7 @@ th, tr:hover {
 }
 
 
-.index-header button {
+.inbox-header button {
     background-color: var(--accent-bright);
     border: none;
     border-radius: 8px;
@@ -487,12 +549,12 @@ th, tr:hover {
     transition: background-color 0.3s ease;
 }
 
-.index-header button:hover {
+.inbox-header button:hover {
     background-color: var(--accent-pale);
     cursor: pointer;
 }
 
-.index-content {
+.inbox-content {
     margin: 16px auto;
     width: 100%;
     display: flex;
@@ -501,23 +563,6 @@ th, tr:hover {
     gap: 16px;
     align-items: center;
     text-align: center;
-}
-
-.search-bar {
-    width: 100%;
-    background-color: var(--a);
-    border-radius: 8px;
-    border: 1px solid var(--d);
-    color: var(--f);
-    flex-grow: 1;
-    font-size: 16px;
-    padding: 8px;
-    transition: outline-color 1s ease;
-}
-
-.search-bar:focus {
-    border-color: var(--accent-bright);
-    outline-style: solid;
 }
 
 .profile-content {
