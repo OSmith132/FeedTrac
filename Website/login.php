@@ -69,8 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     </head>
 	<body>
 		<!-- Header -->
-        <!-- Header Removed, shouldn't be at login -->
-        <?php //include("header.php"); ?>
+        <?php include("header.php"); ?>
 
         <!-- Main -->
         <main>
