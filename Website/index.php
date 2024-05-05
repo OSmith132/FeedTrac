@@ -44,7 +44,7 @@ $Feedback_View = new FeedbackView($user_data['userID']);
     <main>
         <h1>Homepage</h1>
         
-        <div class="index-main">
+        <div class="index-content">
             <div class="index-header">
                 <!-- Search-bar functionality -->
                 <form class="index-header" method="POST" action="index.php" id="index-search-form" .change() >

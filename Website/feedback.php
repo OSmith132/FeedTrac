@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 include ("classes/Database.class.php");
@@ -10,71 +9,26 @@ include ("classes/FeedbackContr.class.php");
 include ("classes/FeedbackView.class.php");
 include ("scripts/functions.php");
 
-
-
 $Login_Controller = new LoginContr();
 $user_data = $Login_Controller->force_login();
-
-
 
 // Get the feedbackID from the URL
 if (isset($_GET['id'])) {
     $feedbackID = $_GET['id'];                 // THIS IS THE ID THAT SHOULD BE READ FROM THE DB -----------
-}
-else {
+} else {
     $feedbackID = 0;                           // WHEN ID = 0 IT WILL NEED TO SHOW A DEFAULT PAGE
 }
-
-
 
 $Feedback_Controller = new FeedbackContr($user_data['userID']);
 $Feedback_View = new FeedbackView($user_data['userID']);
 
-
 $position = $user_data['position'];
 
-// Show default page if feedbackID is not found in db (This is very lazily made. Sorry about that. - Oliver)
-if (!$Feedback_View->get_feedback_exists($feedbackID)){ ?>
-
-        <!-- Header -->
-        <?php include("header.php"); ?>
-
-        <!DOCTYPE html>
-        <html lang="en-gb">
-
-        <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-        <link rel="icon" type="image/x-icon" href="assets/icon.png">
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-
-        <link rel="stylesheet" href="stylesheets/main.css">
-
-        <script src="https://kit.fontawesome.com/7e1870387e.js" crossorigin="anonymous"></script>
-        </head>
-
-        <!-- Main -->
-        <main class="feedback-main">
-
-            <h1>Feedback</h1>
-
-            <div class="feedback-header">
-                <i>Feedback not found in database.</i>
-            </div>
-
-        </main>
-
-        <!-- Footer -->
-        <?php include("footer.php"); ?>
-
-    <?php 
+// Show feedback 404 page if feedbackID is not found in db
+if (!$Feedback_View->get_feedback_exists($feedbackID)) {
+    header("location: feedback404.php");
     exit();
-    }
+}
 
 $feedback = $Feedback_Controller->feedback_get($feedbackID);
 
@@ -93,11 +47,9 @@ $feedbackUserData = $Feedback_View->get_user_info($feedbackID);;
 $feedbackClosedLabel = $feedback['closed'];
 $feedbackClosedButtonLabel;
 
-if ($feedbackClosedLabel == "0" ){
+if ($feedbackClosedLabel == "0" ) {
     $feedbackClosedButtonLabel = "Open";
-    
-}
-else{
+} else {
     $feedbackClosedButtonLabel = "Closed";
 }
 
@@ -105,11 +57,9 @@ else{
 $feedbackResolvedLabel = $feedback['resolved'];
 $feedbackResolvedButtonLabel;
 
-if ($feedbackResolvedLabel == "0" ){
+if ($feedbackResolvedLabel == "0" ) {
     $feedbackResolvedButtonLabel = "Unresolved";
-    
-}
-else{
+} else {
     $feedbackResolvedButtonLabel = "Resolved";
 }
 
@@ -120,54 +70,57 @@ $comments_count = count($comments);
 
 function achtung($users,$Feedback_Controller,$user_data){
     foreach ($users as $user) {
-        if ($user['userID'] !== $user_data["userID"] && $user['sub'] == "1"){
-       // echo $user['userID'] . "\n";
-        $Feedback_Controller->sub_alert($user['userID']);
+        if ($user['userID'] !== $user_data["userID"] && $user['sub'] == "1") {
+            // echo $user['userID'] . "\n";
+            $Feedback_Controller->sub_alert($user['userID']);
         }
     }   
 }
 
-
 if (isset($_POST['submit_comment'])) {
     $comment_text = $_POST['comment_text'];
+
     $Feedback_Controller->new_comment($user, $feedbackID, $comment_text, $ratingPoints_comment);
+
     date_default_timezone_set('Europe/London');
+
     $newDate = date_create();
+
     $Feedback_Controller->modify_date($feedbackID,$newDate);
 
-    achtung($users,$Feedback_Controller,$user_data);  
-    header("Location: " . $_SERVER['REQUEST_URI']); 
+    achtung($users,$Feedback_Controller,$user_data);
+
+    header("Location: " . $_SERVER['REQUEST_URI']);
+
     exit();
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en-gb">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- TODO: This should be the title of the feedback -->
+    <title>Feedback - Feedtrac</title>
 
-        <link rel="icon" type="image/x-icon" href="assets/icon.png">
+    <link rel="icon" type="image/x-icon" href="assets/icon.png">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="stylesheet" href="stylesheets/main.css">
 
-        <script src="https://kit.fontawesome.com/7e1870387e.js" crossorigin="anonymous"></script>
-    </head>
-    <body>
+    <script src="https://kit.fontawesome.com/7e1870387e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header -->
+    <?php include("header.php"); ?>
 
-        <!-- Header -->
-        <?php include("header.php"); ?>
-
-        <!-- Main -->
-        <main class="feedback-main">
-            <div class="feedback-header">
-
+    <!-- Main -->
+    <main class="feedback-main">
+        <div class="feedback-header">
             <form method="POST" action="">
                 <button type="submit" name="openButton"><?= htmlspecialchars($feedbackClosedButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
             </form>
@@ -255,11 +208,10 @@ if (isset($_POST['submit_comment'])) {
                 
             </div>
 
-            <h1><?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?></h1>
-            <h2><?= htmlspecialchars($text, ENT_QUOTES, 'UTF-8'); ?></h2>
+        <h1><?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?></h1>
+        <h2><?= htmlspecialchars($text, ENT_QUOTES, 'UTF-8'); ?></h2>
 
-            <div class="feedback-header">
-
+        <div class="feedback-header">
             <p><img class="avatar" src="<?php
                 // Get user info and find either jpg or png profile picture
                 $userID = $_SESSION['userID'];
@@ -274,38 +226,38 @@ if (isset($_POST['submit_comment'])) {
                 } else {
                     echo "assets/profile-pictures/user-default.jpg";
                 }?>"alt="User Avatar" height="32"><a href="profile.php"> <?= htmlspecialchars($feedback_user_details["username"], ENT_QUOTES, 'UTF-8'); ?> </a> raised this feedback on <?= htmlspecialchars($feedback["date"], ENT_QUOTES, 'UTF-8'); ?> · <?= htmlspecialchars($comments_count, ENT_QUOTES, 'UTF-8'); ?> comments.</p>
-                 
-                <!-- Heart Button -->
-                <button id="heart-toggle" title="Like" onclick="like()">
-                    <i id="heart-symbol" class="fa-regular fa-heart"></i> <div style="display:inline-block;" id=heart-counter><?= htmlspecialchars($feedback["ratingPoints"], ENT_QUOTES, 'UTF-8'); ?></div>
-                </button>
-            </div>
-                <?php
-            
 
-            if ($feedbackClosedLabel == "0") {
-            ?>
-                <!-- Comment Form -->
-                <form method="POST" action="">
-                    <div style="display: flex; align-items: center;">
-                        <textarea class="feedback-comment" name="comment_text" required style="width: 800px; height: 35px;" placeholder="Add Comment..."></textarea>
-                        <button class="feedback-button" type="submit" name="submit_comment">Submit</button>
-                    </div>
-                </form>
-                <?php
-
-            } else { ?>
+            <!-- Heart Button -->
+            <button id="heart-toggle" title="Like" onclick="like()">
+                <i id="heart-symbol" class="fa-regular fa-heart"></i> <div style="display:inline-block;" id=heart-counter><?= htmlspecialchars($feedback["ratingPoints"], ENT_QUOTES, 'UTF-8'); ?></div>
+            </button>
+        </div>
+            <?php
 
 
-                <div class="feedback-closed">
-                    <strong><i>This feedback is closed and no longer accepting comments.</i></strong>
+        if ($feedbackClosedLabel == "0") {
+        ?>
+            <!-- Comment Form -->
+            <form method="POST" action="">
+                <div style="display: flex; align-items: center;">
+                    <textarea class="feedback-comment" name="comment_text" required style="width: 800px; height: 35px;" placeholder="Add Comment..."></textarea>
+                    <button class="feedback-button" type="submit" name="submit_comment">Submit</button>
                 </div>
-                
-            <?php        
-            }
-            ?>
+            </form>
+            <?php
 
-            <div><hr></div>
+        } else { ?>
+
+
+            <div class="feedback-closed">
+                <strong><i>This feedback is closed and no longer accepting comments.</i></strong>
+            </div>
+
+        <?php
+        }
+        ?>
+
+        <div><hr></div>
 
             <?php foreach ($comments as $comment): 
                 $commentUserID = $comment['userID'];
@@ -347,8 +299,7 @@ if (isset($_POST['submit_comment'])) {
 
         </main> 
 
-        <!-- Footer -->
-        <?php include("footer.php"); ?>
-    </body>
-    
+    <!-- Footer -->
+    <?php include("footer.php"); ?>
+</body>
 </html>

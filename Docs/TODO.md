@@ -8,7 +8,6 @@
 
 ## GitHub:
 
-* Organise GitHub workflow with personal branches?
 * Update Flowchart (can put directly in report)
 
 ---
@@ -23,6 +22,7 @@
   * There is still some "hardcoded" CSS styling going on that isn't compatible with the dark/light mode toggle (see the "unsorted" section of main.css)
   * Ensure entire project is actually compliant with our style guide (style guide may also need updating)
   * Ensure .php files are organised into suitable subdirectories
+  * < head > should be moved into its own file and then reused like header.php and footer.php because it's bad to keep duplicating it (I assume this is possible?)
   * (OPTIONAL) Add fancy CSS transitions
 
 * New Feedback page - Marco - Done
@@ -47,6 +47,7 @@
 
 * Feedback page - Marco - In progress, mostly done.
   * Implement feedback rating system
+  * Page title in < head > should reflect the title of the feedback
   * ~~Implement commenting system < prioritizing this~~ _Marco (30/04/24)_
   * ~~get avatars on comments to work~~ _Toby (02/05/24)_
   * Maybe add Photos / files to report
