@@ -187,19 +187,12 @@ footer a:hover {
 /* UNSORTED */
 /* -------- */
 
-:root {
-    --old-a: #111;
-    --old-b: #333;
-    --old-c: #555;
-    --old-d: #888;
-}
-
 h1, p {
     margin: 0;
 }
 
 table, th, td {
-    border: 1px solid var(--old-c);
+    border: 1px solid var(--d);
     border-collapse: collapse;
 }
 
@@ -208,7 +201,7 @@ th, td {
 }
 
 th, tr:hover {
-    background-color: var(--old-b);
+    background-color: var(--c);
 }
 
 .avatar {
@@ -222,8 +215,8 @@ th, tr:hover {
     margin: auto;
     border-radius: 10px;
     padding: 16px;
-    background-color: var(--old-a);
-    border-bottom: 1px solid var(--old-c);
+    background-color: var(--a);
+    border-bottom: 1px solid var(--d);
 
     /* Use a flexbox instead of hardcoding <br> tags */
     display: flex;
@@ -307,10 +300,10 @@ th, tr:hover {
 }
 
 .feedback-comment {
-    background-color: var(--old-a);
+    background-color: var(--a);
     border-radius: 8px;
-    border: 1px solid var(--old-c);
-    color: var(--old-d);
+    border: 1px solid var(--d);
+    color: var(--f);
     flex-grow: 1;
     font-size: 16px;
     padding: 8px;
@@ -350,15 +343,15 @@ th, tr:hover {
 
 .comment {
     border-radius: 8px;
-    border: 1px solid var(--old-c);
+    border: 1px solid var(--d);
 }
 
 .comment-header {
     padding: 16px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    border-bottom: 1px solid var(--old-c);
-    background-color: var(--old-b);
+    border-bottom: 1px solid var(--d);
+    background-color: var(--c);
 }
 
 .comment-content {
@@ -403,10 +396,10 @@ th, tr:hover {
 }
 
 .search-bar {
-    background-color: var(--old-a);
+    background-color: var(--a);
     border-radius: 8px;
-    border: 1px solid var(--old-c);
-    color: var(--old-d);
+    border: 1px solid var(--d);
+    color: var(--f);
     flex-grow: 1;
     font-size: 16px;
     padding: 8px;
@@ -421,7 +414,7 @@ th, tr:hover {
 .profile-content {
     display: flex;
     text-align: left;
-    background-color: var(--old-a);
+    background-color: var(--a);
     color: white;
 }
 
@@ -444,9 +437,9 @@ th, tr:hover {
 
 .edit-profile {
     display: flex;
-    background-color: var(--old-a);
+    background-color: var(--a);
     border-top: 1px solid white;
-    border-bottom: 1px solid var(--old-c);
+    border-bottom: 1px solid var(--d);
     color: white;
 }
 
@@ -489,8 +482,8 @@ th, tr:hover {
     margin: auto;
     border-radius: 10px;
     padding: 30px;
-    background-color: var(--old-a);
-    border-bottom: 1px solid var(--old-c);
+    background-color: var(--a);
+    border-bottom: 1px solid var(--d);
 }
 
 .popup-form {
@@ -500,11 +493,11 @@ th, tr:hover {
     margin: auto;
     border-radius: 10px;
     padding: 30px;
-    background-color: var(--old-a);
-    border-bottom: 1px solid var(--old-c);
+    background-color: var(--a);
+    border-bottom: 1px solid var(--d);
     visibility: hidden;
     opacity: 0;
-    box-shadow: 2px 2px 5px var(--old-a);
+    box-shadow: 2px 2px 5px var(--a);
     transition: opacity 0.5s ease;
 }
 
