@@ -100,6 +100,9 @@ if (isset($_POST['submit_comment'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- TODO: This should be the title of the feedback -->
+    <title>Feedback - Feedtrac</title>
+
     <link rel="icon" type="image/x-icon" href="assets/icon.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
