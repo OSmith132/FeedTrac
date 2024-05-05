@@ -21,6 +21,7 @@
   * ~~Remove weird whitespace under header profile button~~ - _Archie (04/05/24)_
   * Alert badge on inbox button needs to be connected to the database
   * There is still some "hardcoded" CSS styling going on that isn't compatible with the dark/light mode toggle (see the "unsorted" section of main.css)
+  * Ensure entire project is actually compliant with our style guide (style guide may also need updating)
   * (OPTIONAL) Add fancy CSS transitions
 
 * New Feedback page - Marco - Done
