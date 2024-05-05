@@ -69,10 +69,8 @@ function like() {
 
     button.title = "Unlike"
     content.className = "fa-solid fa-heart";
-    // counter = counter.textContent++;
-
+    counter = counter.textContent++;
     button.onclick = unlike;
-    document.getElementById("like_post").click()
 }
 
 function unlike() {
@@ -82,9 +80,8 @@ function unlike() {
 
     button.title = "Like"
     content.className = "fa-regular fa-heart";
-    // counter = counter.textContent--;
+    counter = counter.textContent--;
     button.onclick = like;
-    document.getElementById("like_post").click()
 }
 
 // For making table rows with an href clickable

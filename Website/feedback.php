@@ -47,7 +47,6 @@ $feedbackUserData = $Feedback_View->get_user_info($feedbackID);;
 $feedbackClosedLabel = $feedback['closed'];
 $feedbackClosedButtonLabel;
 
-
 if ($feedbackClosedLabel == "0" ) {
     $feedbackClosedButtonLabel = "Open";
 } else {
@@ -187,7 +186,6 @@ if(isset($_POST['like'])){
                     exit();
                 }
             }
-
 
             ?>
         </div>
