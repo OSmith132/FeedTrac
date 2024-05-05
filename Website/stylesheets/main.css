@@ -11,8 +11,8 @@
     --e: #666;
     --f: #aaa;
     --g: #eee;
-    --alt-bright: deeppink;
-    --alt-pale: pink;
+    --accent-bright: green;
+    --accent-pale: lightgreen;
 }
 
 .rubik-font {
@@ -33,7 +33,7 @@ body {
 }
 
 ::selection {
-    background-color: var(--alt-bright);
+    background-color: var(--accent-bright);
 }
 
 /* ------ */
@@ -90,7 +90,7 @@ header {
 }
 
 .header-button-badge {
-    background-color: var(--alt-bright);
+    background-color: var(--accent-bright);
     border-radius: 4px;
     padding: 2px 4px;
     position: absolute;
@@ -243,7 +243,7 @@ th, tr:hover {
 
 .form input[type="submit"] {
     color: var(--g);
-    background-color: var(--alt-bright);
+    background-color: var(--accent-bright);
     border-radius: 8px;
     font-weight: bold;
     padding: 4px;
@@ -254,18 +254,18 @@ th, tr:hover {
 }
 
 .form input[type="submit"]:hover {
-    background-color: var(--alt-pale);
+    background-color: var(--accent-pale);
     cursor: pointer;
 }
 
 .form input:focus {
-    outline-color: var(--alt-bright);
+    outline-color: var(--accent-bright);
     outline-style: solid;
     transition: outline-color 0.3s ease;
 }
 
 .form select:focus {
-    outline-color: var(--alt-bright);
+    outline-color: var(--accent-bright);
     outline-style: solid;
     transition: outline-color 0.3s ease;
 }
@@ -277,7 +277,7 @@ th, tr:hover {
 }
 
 .feedback-header button {
-    background-color: var(--alt-bright);
+    background-color: var(--accent-bright);
     border: none;
     border-radius: 8px;
     color: var(--g);
@@ -287,7 +287,7 @@ th, tr:hover {
 }
 
 .feedback-header button:hover {
-    background-color: var(--alt-pale);
+    background-color: var(--accent-pale);
     cursor: pointer;
 }
 
@@ -313,7 +313,7 @@ th, tr:hover {
 .feedback-closed {
     font-size: 24px;
     text-align: center;
-    color: var(--alt-bright);
+    color: var(--accent-bright);
     top: 50%;
     left: 50%;
     height: 50px;
@@ -321,12 +321,12 @@ th, tr:hover {
 }
 
 .feedback-comment:focus {
-    border-color: var(--alt-bright);
+    border-color: var(--accent-bright);
     outline-style: solid;
 }
 
 .feedback-button {
-    background-color: var(--alt-bright);
+    background-color: var(--accent-bright);
     border: none;
     border-radius: 8px;
     color: var(--g);
@@ -337,7 +337,7 @@ th, tr:hover {
 }
 
 .feedback-button:hover {
-    background-color: var(--alt-pale);
+    background-color: var(--accent-pale);
     cursor: pointer;
 }
 
@@ -370,7 +370,7 @@ th, tr:hover {
 }
 
 .index-header button {
-    background-color: var(--alt-bright);
+    background-color: var(--accent-bright);
     border: none;
     border-radius: 8px;
     color: var(--g);
@@ -380,7 +380,7 @@ th, tr:hover {
 }
 
 .index-header button:hover {
-    background-color: var(--alt-pale);
+    background-color: var(--accent-pale);
     cursor: pointer;
 }
 
@@ -407,7 +407,7 @@ th, tr:hover {
 }
 
 .search-bar:focus {
-    border-color: var(--alt-bright);
+    border-color: var(--accent-bright);
     outline-style: solid;
 }
 
@@ -461,7 +461,7 @@ th, tr:hover {
 }
 
 .profile-button {
-    background-color: var(--alt-bright);
+    background-color: var(--accent-bright);
     border: none;
     border-radius: 8px;
     color: var(--g);
@@ -472,7 +472,7 @@ th, tr:hover {
 }
 
 .profile-button:hover {
-    background-color: var(--alt-pale);
+    background-color: var(--accent-pale);
     cursor: pointer;
 }
 
@@ -503,7 +503,7 @@ th, tr:hover {
 
 .popup-form button {
     color: var(--g);
-    background-color: var(--alt-bright);
+    background-color: var(--accent-bright);
     width: 30%;
     border-radius: 8px;
     padding: 4px;
@@ -513,18 +513,18 @@ th, tr:hover {
 }
 
 .popup-form button:hover {
-    background-color: var(--alt-pale);
+    background-color: var(--accent-pale);
     cursor: pointer;
 }
 
 .popup-form input:focus {
-    outline-color: var(--alt-bright);
+    outline-color: var(--accent-bright);
     outline-style: solid;
     transition: outline-color 0.3s ease;
 }
 
 .popup-form select:focus {
-    outline-color: var(--alt-bright);
+    outline-color: var(--accent-bright);
     outline-style: solid;
     transition: outline-color 0.3s ease;
 }
