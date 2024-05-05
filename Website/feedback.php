@@ -1,4 +1,3 @@
-
 <?php
 
 session_start();
@@ -8,10 +7,15 @@ include ("classes/login.class.php");
 include ("classes/LoginContr.class.php");
 include ("classes/Feedback.class.php");
 include ("classes/FeedbackContr.class.php");
+include ("classes/FeedbackView.class.php");
 include ("scripts/functions.php");
+
+
 
 $Login_Controller = new LoginContr();
 $user_data = $Login_Controller->force_login();
+
+
 
 // Get the feedbackID from the URL
 if (isset($_GET['id'])) {
@@ -21,16 +25,61 @@ else {
     $feedbackID = 0;                           // WHEN ID = 0 IT WILL NEED TO SHOW A DEFAULT PAGE
 }
 
+
+
 $Feedback_Controller = new FeedbackContr($user_data['userID']);
+$Feedback_View = new FeedbackView($user_data['userID']);
+
 
 $position = $user_data['position'];
 
+// Show default page if feedbackID is not found in db (This is very lazily made. Sorry about that. - Oliver)
+if (!$Feedback_View->get_feedback_exists($feedbackID)){ ?>
+
+        <!-- Header -->
+        <?php include("header.php"); ?>
+
+        <!DOCTYPE html>
+        <html lang="en-gb">
+
+        <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <link rel="icon" type="image/x-icon" href="assets/icon.png">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="stylesheets/main.css">
+
+        <script src="https://kit.fontawesome.com/7e1870387e.js" crossorigin="anonymous"></script>
+        </head>
+
+        <!-- Main -->
+        <main class="feedback-main">
+
+            <h1>Feedback</h1>
+
+            <div class="feedback-header">
+                <i>Feedback not found in database.</i>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <div class="footer-position"><?php include("footer.php"); ?></div>
+
+    <?php 
+    exit();
+    }
 
 $feedback = $Feedback_Controller->feedback_get($feedbackID);
 
 
 $text = $feedback["text"];
-
 $user = $user_data['userID'];
 $feedback_userID = $feedback["userID"];
 $feedback_user_details = $Login_Controller->get_feedback_user_details($feedback_userID);
@@ -38,19 +87,33 @@ $feedback_date = $feedback["date"];
 $ratingPoints_comment = 0;
 $course= $user_data["courseID"];
 $users = $Feedback_Controller->list_users($course);
+$feedbackUserData = $Feedback_View->get_user_info($feedbackID);;
 
-$feedbackStatusLabel = $feedback['closed'];
-$feedbackButtonLabel;
+// Generates text for the closed button
+$feedbackClosedLabel = $feedback['closed'];
+$feedbackClosedButtonLabel;
 
-if ($feedbackStatusLabel == "0" ){
-    $feedbackButtonLabel = "Open";
+if ($feedbackClosedLabel == "0" ){
+    $feedbackClosedButtonLabel = "Open";
     
 }
 else{
-    $feedbackButtonLabel = "Closed";
+    $feedbackClosedButtonLabel = "Closed";
 }
 
+// Generates text for the resolved button
+$feedbackResolvedLabel = $feedback['resolved'];
+$feedbackResolvedButtonLabel;
 
+if ($feedbackResolvedLabel == "0" ){
+    $feedbackResolvedButtonLabel = "Unresolved";
+    
+}
+else{
+    $feedbackResolvedButtonLabel = "Resolved";
+}
+
+// Get comments
 $comments = $Feedback_Controller->find_comments($feedbackID);
 $comments_count = count($comments);
 
@@ -105,13 +168,21 @@ if (isset($_POST['submit_comment'])) {
         <!-- Main -->
         <main class="feedback-main">
             <div class="feedback-header">
+
             <form method="POST" action="">
-                <button type="submit" name="openButton"><?= htmlspecialchars($feedbackButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
+                <button type="submit" name="openButton"><?= htmlspecialchars($feedbackClosedButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
             </form>
+
+            <!-- User can only set to resolved if they created the feedback item, or are a system admin -->
+            <?php if ($_SESSION['userID'] == $feedbackUserData['userID'] || $position == "admin") {?>
+                <form method="POST" action=""> <?php } ?>
+                    <button type="submit" name="resolvedButton"><?= htmlspecialchars($feedbackResolvedButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
+                </form>
+           
             
             <?php
             if (isset($_POST['openButton'])) {
-                if ($feedbackStatusLabel == "0" && $position !== "student" ){
+                if ($feedbackClosedLabel == "0" && $position !== "student"){
                     $feedbackStatus = $feedback['closed'];
                     $feedbackstatus = 1;
                     $Feedback_Controller->set_feedback_status($feedbackID,$feedbackstatus);
@@ -120,7 +191,7 @@ if (isset($_POST['submit_comment'])) {
                     exit();
                     
                 }
-                elseif($feedbackStatusLabel == "1" && $position !== "student" ){
+                elseif($feedbackClosedLabel == "1" && $position !== "student"){
                     $feedbackStatus = $feedback['closed'];
                     $feedbackstatus = 0;
                     $Feedback_Controller->set_feedback_status($feedbackID,$feedbackstatus);
@@ -129,6 +200,27 @@ if (isset($_POST['submit_comment'])) {
                     exit();
                 }               
             }
+
+            if (isset($_POST['resolvedButton'])) {
+                if ($feedbackResolvedLabel == "0" && ($position !== "student" || $_SESSION['userID'] == $feedbackUserData['userID']) ){
+                    $feedbackResolved = $feedback['resolved'];
+                    $feedbackresolved = 1;
+                    $Feedback_Controller->set_feedback_resolved($feedbackID,$feedbackresolved);
+                    achtung($users,$Feedback_Controller,$user_data);
+                    header("Location: " . $_SERVER['REQUEST_URI']);
+                    exit();
+                    
+                }
+                elseif($feedbackResolvedLabel == "1" && ($position !== "student" || $_SESSION['userID'] == $feedbackUserData['userID']) ){
+                    $feedbackResolved = $feedback['resolved'];
+                    $feedbackresolved = 0;
+                    $Feedback_Controller->set_feedback_resolved($feedbackID,$feedbackresolved);
+                    achtung($users,$Feedback_Controller,$user_data);
+                    header("Location: " . $_SERVER['REQUEST_URI']);
+                    exit();
+                }               
+            }
+            
             ?>
 
 
@@ -162,7 +254,7 @@ if (isset($_POST['submit_comment'])) {
                 <?php
             
 
-            if ($feedbackStatusLabel == "0") {
+            if ($feedbackClosedLabel == "0") {
             ?>
                 <!-- Comment Form -->
                 <form method="POST" action="">

@@ -116,4 +116,19 @@ class FeedbackView extends Feedback {
 
     }
 
+
+
+
+    public function get_feedback_exists($feedbackID){
+
+        // Check if any input is empty
+        if ($this->empty_input_check($feedbackID)){
+            header("location: feedback.php?error=emptyinput");
+            exit();
+        }
+
+        // Update the rating points of a feedback item
+        return $this->feedback_exists($feedbackID);
+    }
+
 }
