@@ -104,15 +104,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
     <!-- Main -->
     <main>
-        <h1><?php
-            echo "Profile for ";
-            /*echo $Login_Controller->get_current_user_first_name();*/
-            echo $profile_data->username;
-            echo " ";
-            /*echo $Login_Controller->get_current_user_last_name();*/
-            echo $profile_data->lName;
-        ?>
-        </h1>
+        <h1><?php echo "Profile for " . $profile_data->fName . " " . $profile_data->lName . " (" . $profile_data->username . ")"; ?></h1>
 
         <!-- Content -->
         <div class="profile-content">
