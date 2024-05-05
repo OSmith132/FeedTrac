@@ -115,10 +115,8 @@ foreach ($feedbackRows as $row) {
 
 
         // Status 
-        $html .= '<td>';
-        $html .= $get_urgency_string[$row['urgency']]   . "<br>" // Resolved Status - Refer to functions.php for the array
-            .  $get_resolved_string[$row['resolved']] . "<br>" // Urgency Level   - Refer to functions.php for the array
-            .  $get_closed_string[$row['closed']];
+        $html .= '<td class="table-status">';
+        $html .= $get_urgency_string[$row['urgency']] . $get_resolved_string[$row['resolved']] . $get_closed_string[$row['closed']]; // Please see functions.php
         $html .= '</td>';         
               
         

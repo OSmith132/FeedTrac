@@ -193,33 +193,78 @@ footer a:hover {
     padding: 4px 8px;
 }
 
+table .tag {
+    border-radius: 2px;
+    filter: saturate(50%);
+    font-size: 12px;
+    padding: 2px 4px;
+}
+
 .tag-open {
-    background-color: rgb(0%, 50%, 0%);
-    border: 1px solid rgb(0%, 100%, 0%);
-    color: rgb(0%, 100%, 0%);
+    background-color: rgb(25%, 50%, 25%);
+    border: 1px solid rgb(25%, 100%, 25%);
+    color: rgb(25%, 100%, 25%);
 }
 
 .tag-closed {
-    background-color: rgb(50%, 0%, 0%);
-    border: 1px solid rgb(100%, 0%, 0%);
-    color: rgb(100%, 0%, 0%);
+    background-color: rgb(50%, 25%, 25%);
+    border: 1px solid rgb(100%, 25%, 25%);
+    color: rgb(100%, 25%, 25%);
 }
 
 .tag-unresolved {
-    background-color: rgb(50%, 50%, 0%);
-    border: 1px solid rgb(100%, 100%, 0%);
-    color: rgb(100%, 100%, 0%);
+    background-color: rgb(50%, 50%, 25%);
+    border: 1px solid rgb(100%, 100%, 25%);
+    color: rgb(100%, 100%, 25%);
 }
 
 .tag-resolved {
-    background-color: rgb(0%, 50%, 50%);
-    border: 1px solid rgb(0%, 100%, 100%);
-    color: rgb(0%, 100%, 100%);
+    background-color: rgb(25%, 50%, 50%);
+    border: 1px solid rgb(25%, 100%, 100%);
+    color: rgb(25%, 100%, 100%);
+}
+
+.urgency-tag {
+    border-radius: 8px;
+    cursor: default;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 4px;
+}
+
+.urgency-tag-low {
+    background-color: rgb(0%, 50%, 0%);
+    border: 2px solid rgb(0%, 100%, 0%);
+    color: rgb(0%, 100%, 0%);
+}
+
+.urgency-tag-medium {
+    background-color: rgb(50%, 50%, 0%);
+    border: 2px solid rgb(100%, 100%, 0%);
+    color: rgb(100%, 100%, 0%);
+}
+
+.urgency-tag-high {
+    background-color: rgb(50%, 25%, 0%);
+    border: 2px solid rgb(100%, 50%, 0%);
+    color: rgb(100%, 50%, 0%);
+}
+
+.urgency-tag-critical {
+    background-color: rgb(50%, 0%, 0%);
+    border: 2px solid rgb(100%, 0%, 0%);
+    color: rgb(100%, 0%, 0%);
 }
 
 /* -------- */
 /* UNSORTED */
 /* -------- */
+
+.table-status {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
 
 .feedback-toolbar {
     display: flex;
