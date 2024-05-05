@@ -311,6 +311,7 @@
 * ### _04/05/2024:_
     * Implemented an alert reset when a user accesses the inbox.
     * Implemented a way to open and close feedback items, for admin and lecturers.
+    * Implemented a way to disable commenting system when an item has been closed.
     * Added extra alerts to the event of a feedback item being opened or closed.
     * Connected header alert counter to database data.
     * Helped Toby troubleshoot rating system updates.
