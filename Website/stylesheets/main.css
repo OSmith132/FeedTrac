@@ -363,7 +363,7 @@ th, tr:hover {
     background-color: var(--old-b);
 }
 
-.comment-main {
+.comment-content {
     border-radius: 8px;
     padding: 16px;
 }

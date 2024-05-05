@@ -247,7 +247,7 @@ if (isset($_POST['submit_comment'])) {
                             echo "assets/profile-pictures/user-default.jpg";
                         }?>" alt="User Avatar" height="32"><a href="profile.php"> <?= htmlspecialchars($comment_user_details['username'], ENT_QUOTES, 'UTF-8'); ?></a> commented <?= htmlspecialchars($comment['date'], ENT_QUOTES, 'UTF-8'); ?></p>
                 </div>
-                <div class="comment-main">
+                <div class="comment-content">
                     <p><?= htmlspecialchars($comment['text'], ENT_QUOTES, 'UTF-8'); ?></p>
                 </div>
             </div>
