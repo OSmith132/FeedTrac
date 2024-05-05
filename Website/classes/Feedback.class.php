@@ -110,6 +110,30 @@ class Feedback extends Database
          return true;
      }
 
+     // Update existing subscription status
+    protected function update_subscription_status($userID,$status)
+    {
+        if($status == 1){
+            $status = 0;
+        }
+        else{
+            $status = 1;
+        }
+        // Connect to database and update all data about a feedback item
+        $stmt = $this->connect()->prepare("UPDATE user SET sub = ? WHERE userID = ?");
+    
+        // Check if the SQL query is valid
+        if (!$stmt->execute([$status,$userID])) {
+            $errorInfo = $stmt->errorInfo();
+            echo "SQL Error: " . $errorInfo[2];
+            header("location: feedback.php?error=BadSQLQuery");
+            exit();
+        }
+    
+
+        return true;
+    }
+
     // A method to reset alerts
     protected function alert_update($user){
 

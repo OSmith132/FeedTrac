@@ -115,6 +115,16 @@ class FeedbackContr extends Feedback {
     }
 
 
+    public function change_subscription_status($userID,$status){ // positiveRating: bool    feedbackID: int    userID: int
+
+        
+        
+        // Update the rating points of a feedback item
+        $this-> update_subscription_status($userID,$status);
+    }
+
+
+
      // Update the resolved status of a feedback item
      public function set_feedback_resolved($feedbackID,$newResolved){ // positiveRating: bool    feedbackID: int    userID: int
 
