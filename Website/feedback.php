@@ -48,9 +48,9 @@ $feedbackClosedLabel = $feedback['closed'];
 $feedbackClosedButtonLabel;
 
 if ($feedbackClosedLabel == "0" ) {
-    $feedbackClosedButtonLabel = "Open";
+    $feedbackClosedButtonLabel = "Close Feedback";
 } else {
-    $feedbackClosedButtonLabel = "Closed";
+    $feedbackClosedButtonLabel = "Reopen Feedback";
 }
 
 // Generates text for the resolved button
@@ -58,9 +58,9 @@ $feedbackResolvedLabel = $feedback['resolved'];
 $feedbackResolvedButtonLabel;
 
 if ($feedbackResolvedLabel == "0" ) {
-    $feedbackResolvedButtonLabel = "Unresolved";
+    $feedbackResolvedButtonLabel = "Mark as Resolved";
 } else {
-    $feedbackResolvedButtonLabel = "Resolved";
+    $feedbackResolvedButtonLabel = "Mark as Unresolved";
 }
 
 // Get comments
@@ -135,23 +135,24 @@ if(isset($_POST['like'])){
 
     <!-- Main -->
     <main class="feedback-main">
-        <div class="feedback-header">
-            <form method="POST" action="">
-                <button type="submit" name="openButton"><?= htmlspecialchars($feedbackClosedButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
-            </form>
+        <div class="feedback-toolbar">
+            <div class="feedback-toolbar-box">
+                <?php echo ($feedbackClosedLabel == 0) ? ("
+                <p class='tag tag-open'>Open</p>") : ("<p class='tag tag-closed'>Closed</p>"); ?>
+                <?php echo ($feedbackResolvedLabel == 0) ? ("
+                <p class='tag tag-unresolved'>Unresolved</p>") : ("<p class='tag tag-resolved'>Resolved</p>"); ?>
+            </div>
 
-            <form method="POST" action="">
-                <button type="submit" name="deleteFeedback">Delete Feedback</button>
-            </form>
+            <div class="feedback-toolbar-box">
+                <form method="POST" action="">
+                    <button type="submit" name="openButton"><?= htmlspecialchars($feedbackClosedButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
+                </form>
 
-            
-
-            <!-- User can only set to resolved if they created the feedback item, or are a system admin -->
-            <?php if ($_SESSION['userID'] == $feedbackUserData['userID'] || $position == "admin") {?>
-                <form method="POST" action=""> <?php } ?>
+                <!-- User can only set to resolved if they created the feedback item, or are a system admin -->
+                <?php if ($_SESSION['userID'] == $feedbackUserData['userID'] || $position == "admin") {?>
+                <form method="POST" action=""><?php } ?>
                     <button type="submit" name="resolvedButton"><?= htmlspecialchars($feedbackResolvedButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
-                </form>           
-            
+                </form>
                 <?php
                 if (isset($_POST['openButton'])) {
                     if ($feedbackClosedLabel == "0" && $position !== "student"){
@@ -161,7 +162,7 @@ if(isset($_POST['like'])){
                         achtung($users,$Feedback_Controller,$user_data);
                         header("Location: " . $_SERVER['REQUEST_URI']);
                         exit();
-                        
+
                     }
                     elseif($feedbackClosedLabel == "1" && $position !== "student"){
                         $feedbackStatus = $feedback['closed'];
@@ -170,7 +171,7 @@ if(isset($_POST['like'])){
                         achtung($users,$Feedback_Controller,$user_data);
                         header("Location: " . $_SERVER['REQUEST_URI']);
                         exit();
-                    }               
+                    }
                 }
 
                 if (isset($_POST['resolvedButton'])) {
@@ -181,7 +182,7 @@ if(isset($_POST['like'])){
                         achtung($users,$Feedback_Controller,$user_data);
                         header("Location: " . $_SERVER['REQUEST_URI']);
                         exit();
-                        
+
                     }
                     elseif($feedbackResolvedLabel == "1" && ($_SESSION['userID'] == $feedbackUserData['userID'] || $position == "admin")){
                         $feedbackResolved = $feedback['resolved'];
@@ -190,17 +191,17 @@ if(isset($_POST['like'])){
                         achtung($users,$Feedback_Controller,$user_data);
                         header("Location: " . $_SERVER['REQUEST_URI']);
                         exit();
-                    } 
-                                  
+                    }
+
                 }
 
                 if (isset($_POST['deleteFeedback'])) {
                     if ($_SESSION['userID'] == $feedbackUserData['userID'] || $position !== "student"){
-                        
+
                         $Feedback_Controller->remove_feedback($feedbackID);
                         header("Location: " . $_SERVER['REQUEST_URI']);
                         exit();
-                        
+
                     }
                 }
 
@@ -214,11 +215,15 @@ if(isset($_POST['like'])){
                         header("Location: " . $_SERVER['REQUEST_URI']);
                         exit();
                     }
-                }               
-            
-            ?>
+                }
 
+                ?>
+
+                <form method="POST" action="">
+                    <button type="submit" name="deleteFeedback">Delete Feedback</button>
+                </form>
             </div>
+        </div>
 
         <h1><?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?></h1>
         <h2><?= htmlspecialchars($text, ENT_QUOTES, 'UTF-8'); ?></h2>
