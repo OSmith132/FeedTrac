@@ -115,7 +115,7 @@ class FeedbackContr extends Feedback {
         $this->remove_rating($feedbackID, $userID);
     }
 
-    public function check_user_has_feedback($feedbackID, $userID){
+    public function check_user_has_feedback_rating($feedbackID, $userID){
         return $this->check_user_given_feedback($feedbackID,$userID);
     }
 

@@ -36,7 +36,7 @@ $feedback_date = $feedback["date"];
 $ratingPoints_comment = 0;
 $course= $user_data["courseID"];
 $users = $Feedback_Controller->list_users($course);
-
+$hasRated = $Feedback_Controller->check_user_has_feedback_rating($feedbackID, $user);
 
 $comments = $Feedback_Controller->find_comments($feedbackID);
 $comments_count = count($comments);
@@ -59,25 +59,23 @@ if (isset($_POST['submit_comment'])) {
     exit();
 }
 
-if ($Feedback_Controller->check_user_has_feedback($feedbackID,$user)) {
-    echo "setup run user has feedback";
-    echo "<script>
-            let button = document.getElementById('heart-toggle'); 
-            let content = document.getElementById('heart-symbol');
-            button.title = 'Like';
-            content.className = 'fa-regular fa-heart';
-            button.onclick = like;
-         </script>";
-}
-else {
-    echo "setup run user has no feedback";
-    echo "<script>
-            let button = document.getElementById('heart-toggle'); 
-            let content = document.getElementById('heart-symbol');
-            button.title = 'Like';
-            content.className = 'fa-solid fa-heart';
-            button.onclick = unlike;
-         </script>";
+if(isset($_POST['like'])){
+    echo "like pushed";
+    echo "feedback id = " . $feedbackID;
+    echo "user id = " . $user;
+    if ($Feedback_Controller->check_user_has_feedback_rating($feedbackID,$user)) {
+        $Feedback_Controller->remove_user_feedback_rating($feedbackID, $user);
+        echo "user has feedback";
+        header("Location: " . $_SERVER['REQUEST_URI']);
+        exit();
+    }
+    else {
+        //$controller->set_rating(1,$feedback_ID,$user_ID);
+        $Feedback_Controller->add_user_feedback_rating($feedbackID,$user);
+        echo "user has no feedback";
+        header("Location: " . $_SERVER['REQUEST_URI']);
+        exit();
+    }
 }
 
 
@@ -108,6 +106,8 @@ else {
 
         <!-- Main -->
         <main class="feedback-main">
+
+
             <div class="feedback-header">
                 <button>Open</button>
                 
@@ -135,36 +135,14 @@ else {
 
 
                 <!-- Heart Button -->
-                <button id="heart-toggle" title="Like" onclick="//like()">
-                    <i id="heart-symbol" class="fa-regular fa-heart"></i> <div style="display:inline-block;" id=heart-counter><?= htmlspecialchars($feedback["ratingPoints"], ENT_QUOTES, 'UTF-8'); ?></div>
+                <button id="heart-toggle" title="Like" onclick="like()">
+                    <i id="heart-symbol" class="<?php if($hasRated){echo"fa-solid fa-heart";}else{echo"fa-regular fa-heart";}?>"></i> <div style="display:inline-block;" id=heart-counter><?= htmlspecialchars($feedback["ratingPoints"], ENT_QUOTES, 'UTF-8'); ?></div>
                 </button>
-                <form method="post" action="">
-                <button id="like_post" type="submit" name="like" value="test" >test</button>
+
+                <form method="post" action="" enctype="multipart/form-data">
+                <button id="like_post" type="submit" name="like" hidden="hidden">test</button>
                 </form>
             </div>
-
-            <?php
-            // This should set the button look on page load
-
-            if(isset($_POST['like'])){
-                echo "like pushed";
-                echo "feedback id = " . $feedbackID;
-                echo "user id = " . $user;
-                if ($Feedback_Controller->check_user_has_feedback($feedbackID,$user)) {
-                    $Feedback_Controller->remove_user_feedback_rating($feedbackID, $user);
-                    echo "user has feedback";
-                }
-                else {
-                    //$controller->set_rating(1,$feedback_ID,$user_ID);
-                    $Feedback_Controller->add_user_feedback_rating($feedbackID,$user);
-                    echo "user has no feedback";
-                }
-
-            }
-
-            ?>
-
-
             
            <!-- Comment Form -->
            <form method="POST" action="">
