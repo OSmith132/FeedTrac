@@ -61,8 +61,6 @@ function achtung($users,$Feedback_Controller,$user_data){
         $Feedback_Controller->sub_alert($user['userID']);
         }
     }   
-
-
 }
 
 
@@ -203,9 +201,7 @@ if (isset($_POST['submit_comment'])) {
                         <p><?= htmlspecialchars($comment['text'], ENT_QUOTES, 'UTF-8'); ?></p>
                     </div>
                 </div>
-            <?php endforeach; ?>       
-
-
+            <?php endforeach; ?>     
 
         </main> 
 

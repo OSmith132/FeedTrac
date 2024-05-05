@@ -226,7 +226,7 @@ class LoginContr extends Login {
 
         // Send email
         /* mail($email, $subject, $message, $headers);*/
-        echo $message; // THIS IS ONLY UNTIL WE HAVE A WORKING EMAIL SERVER (just a proof of concept as we can't send emails from localhost)
+       echo $message; // THIS IS ONLY UNTIL WE HAVE A WORKING EMAIL SERVER (just a proof of concept as we can't send emails from localhost)
 
         return true;
         
