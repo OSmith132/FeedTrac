@@ -8,7 +8,6 @@
 
 ## GitHub:
 
-* Organise GitHub workflow with personal branches?
 * Update Flowchart (can put directly in report)
 
 ---
