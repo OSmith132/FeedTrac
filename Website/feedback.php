@@ -81,13 +81,13 @@ if (isset($_POST['submit_comment'])) {
     $comment_text = $_POST['comment_text'];
 
     $Feedback_Controller->new_comment($user, $feedbackID, $comment_text, $ratingPoints_comment);
-
     date_default_timezone_set('Europe/London');
-
     $newDate = date_create();
-
     $Feedback_Controller->modify_date($feedbackID,$newDate);
-
+    achtung($users,$Feedback_Controller,$user_data);
+    header("Location: " . $_SERVER['REQUEST_URI']);
+    exit();
+}
 
 if(isset($_POST['like'])){
     echo "like pushed";
@@ -107,47 +107,11 @@ if(isset($_POST['like'])){
         exit();
     }
 }
-
-    achtung($users,$Feedback_Controller,$user_data);
-
-
-    header("Location: " . $_SERVER['REQUEST_URI']);
-
-    exit();
-}
 ?>
 <!DOCTYPE html>
 <html lang="en-gb">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-        <link rel="icon" type="image/x-icon" href="assets/icon.png">
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-
-        <link rel="stylesheet" href="stylesheets/main.css">
-
-        <script src="https://kit.fontawesome.com/7e1870387e.js" crossorigin="anonymous"></script>
-    </head>
-    <body>
-
-        <!-- Header -->
-        <?php include("header.php"); ?>
-
-        <!-- Main -->
-        <main class="feedback-main">
-
-
-            <div class="feedback-header">
-                <button>Open</button>
-                
-            </div>
-=======
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -256,26 +220,11 @@ if(isset($_POST['like'])){
                 </button>
 
                 <form method="post" action="" enctype="multipart/form-data">
-                <button id="like_post" type="submit" name="like" hidden="hidden">test</button>
+                <button id="like_post" type="submit" name="like">test</button>
                 </form>
             </div>
-            
-           <!-- Comment Form -->
-           <form method="POST" action="">
-            
-           <div style="display: flex; align-items: center;">
-    <textarea class="feedback-comment" name="comment_text" required style="width: 800px; height: 35px;" placeholder="Add Comment..."></textarea>
-    <button class="feedback-button" type="submit" name="submit_comment">Submit</button>
-</div>
-
-        </form>
 
 
-            <!-- Heart Button -->
-            <button id="heart-toggle" title="Like" onclick="like()">
-                <i id="heart-symbol" class="fa-regular fa-heart"></i> <div style="display:inline-block;" id=heart-counter><?= htmlspecialchars($feedback["ratingPoints"], ENT_QUOTES, 'UTF-8'); ?></div>
-            </button>
-        </div>
             <?php
 
 
