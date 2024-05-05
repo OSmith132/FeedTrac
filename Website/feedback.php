@@ -199,13 +199,10 @@ if (isset($_POST['submit_comment'])) {
                         header("Location: " . $_SERVER['REQUEST_URI']);
                         exit();
                     }
-                }
-                
+                }               
             
             ?>
 
-
-                
             </div>
 
         <h1><?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?></h1>
@@ -285,12 +282,8 @@ if (isset($_POST['submit_comment'])) {
                                 <input type="hidden" name="commentID" value="<?= $commentID ?>">
                                 <input type="hidden" name="commentUserID" value="<?= $commentUserID ?>">
                                 <button class="feedback-button" type="submit" name="deleteComment">Delete Comment</button>             
-                            </form>
-
-                            
-                            
-
-                    </div>
+                            </form>                
+                        </div>
                     <div class="comment-main">
                         <p><?= htmlspecialchars($comment['text'], ENT_QUOTES, 'UTF-8'); ?></p>
                     </div>
