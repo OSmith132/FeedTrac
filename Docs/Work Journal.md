@@ -308,6 +308,14 @@
     * Completely reworked and fixed inbox to display items sorted by newest modified feedback item (comments), now fixed and redirecting to correct feedback item.
     * Fixed modified date to reflect our timezone.
     * Many database fixes and tweaks.
+
+* ### _04/05/2024:_
+    * Implemented an alert reset when a user accesses the inbox.
+    * Implemented a way to open and close feedback items, for admin and lecturers.
+    * Added extra alerts to the event of a feedback item being opened or closed.
+    * Connected header alert counter to database data.
+    * Helped Toby troubleshoot rating system updates.
+    * Fixed password recovery process, now displays token for debugging with same message as what would be sent through email.
     
 
 </details>
