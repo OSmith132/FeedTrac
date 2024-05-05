@@ -240,7 +240,7 @@ if (isset($_POST['submit_comment'])) {
             <!-- Comment Form -->
             <form method="POST" action="">
                 <div style="display: flex; align-items: center;">
-                    <textarea class="feedback-comment" name="comment_text" required style="width: 800px; height: 35px;" placeholder="Add Comment..."></textarea>
+                    <textarea class="feedback-comment" name="comment_text" required style="width: 300px; height: 35px;" placeholder="Add Comment..."></textarea>
                     <button class="feedback-button" type="submit" name="submit_comment">Submit</button>
                 </div>
             </form>
