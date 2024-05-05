@@ -248,7 +248,7 @@ if(isset($_POST['like'])){
                 </button>
 
                 <form method="post" action="" enctype="multipart/form-data">
-                <button id="like_post" type="submit" name="like">test</button>
+                <button id="like_post" type="submit" name="like" hidden="hidden">test</button>
                 </form>
             </div>
 

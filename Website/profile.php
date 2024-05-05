@@ -33,7 +33,7 @@ $profile_data = new LoginView($profileID);
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     if(isset($_POST['Upload'])){
         switch ($_POST['Upload']) {
-            case 'Picture':
+            case 'Upload':
                 $target_dir = "assets/profile-pictures/";
                 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
                 $uploadOk = 1;
@@ -78,6 +78,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 if ($uploadOk = 1){
                     $Login_Controller->update_user_bio($new_text, $User_ID);
                 }
+                break;
         }
     }
 }

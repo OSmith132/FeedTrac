@@ -65,11 +65,11 @@ function setColourMode(lightMode) {
 function like() {
     let button = document.getElementById("heart-toggle");
     let content = document.getElementById("heart-symbol");
-    let counter = document.getElementById("heart-counter");
+
 
     button.title = "Unlike"
-    content.className = "fa-solid fa-heart";
-    counter = counter.textContent++;
+    //content.className = "fa-solid fa-heart";
+
     button.onclick = unlike;
     document.getElementById("like_post").click()
 }
@@ -77,11 +77,11 @@ function like() {
 function unlike() {
     let button = document.getElementById("heart-toggle");
     let content = document.getElementById("heart-symbol");
-    let counter = document.getElementById("heart-counter");
+
 
     button.title = "Like"
-    content.className = "fa-regular fa-heart";
-    counter = counter.textContent--;
+    //content.className = "fa-regular fa-heart";
+
     button.onclick = like;
     document.getElementById("like_post").click()
 }
