@@ -11,7 +11,8 @@
     --e: #666;
     --f: #aaa;
     --g: #eee;
-    --alt: deeppink;
+    --alt-bright: deeppink;
+    --alt-pale: pink;
 }
 
 .rubik-font {
@@ -32,7 +33,7 @@ body {
 }
 
 ::selection {
-    background-color: var(--alt);
+    background-color: var(--alt-bright);
 }
 
 /* ------ */
@@ -89,7 +90,7 @@ header {
 }
 
 .header-button-badge {
-    background-color: var(--alt);
+    background-color: var(--alt-bright);
     border-radius: 4px;
     padding: 2px 4px;
     position: absolute;
@@ -191,8 +192,6 @@ footer a:hover {
     --old-b: #333;
     --old-c: #555;
     --old-d: #888;
-    --old-bright: hotpink;
-    --old-pale: pink;
 }
 
 h1, p {
@@ -251,7 +250,7 @@ th, tr:hover {
 
 .form input[type="submit"] {
     color: white;
-    background-color: var(--old-bright);
+    background-color: var(--alt-bright);
     border-radius: 8px;
     font-weight: bold;
     padding: 4px;
@@ -262,18 +261,18 @@ th, tr:hover {
 }
 
 .form input[type="submit"]:hover {
-    background-color: var(--old-pale);
+    background-color: var(--alt-pale);
     cursor: pointer;
 }
 
 .form input:focus {
-    outline-color: var(--old-bright);
+    outline-color: var(--alt-bright);
     outline-style: solid;
     transition: outline-color 0.3s ease;
 }
 
 .form select:focus {
-    outline-color: var(--old-bright);
+    outline-color: var(--alt-bright);
     outline-style: solid;
     transition: outline-color 0.3s ease;
 }
@@ -285,7 +284,7 @@ th, tr:hover {
 }
 
 .feedback-header button {
-    background-color: var(--old-bright);
+    background-color: var(--alt-bright);
     border: none;
     border-radius: 8px;
     color: white;
@@ -295,7 +294,7 @@ th, tr:hover {
 }
 
 .feedback-header button:hover {
-    background-color: var(--old-pale);
+    background-color: var(--alt-pale);
     cursor: pointer;
 }
 
@@ -329,12 +328,12 @@ th, tr:hover {
 }
 
 .feedback-comment:focus {
-    border-color: var(--old-bright);
+    border-color: var(--alt-bright);
     outline-style: solid;
 }
 
 .feedback-button {
-    background-color: var(--old-bright);
+    background-color: var(--alt-bright);
     border: none;
     border-radius: 8px;
     color: white;
@@ -345,7 +344,7 @@ th, tr:hover {
 }
 
 .feedback-button:hover {
-    background-color: var(--old-pale);
+    background-color: var(--alt-pale);
     cursor: pointer;
 }
 
@@ -378,7 +377,7 @@ th, tr:hover {
 }
 
 .index-header button {
-    background-color: var(--old-bright);
+    background-color: var(--alt-bright);
     border: none;
     border-radius: 8px;
     color: white;
@@ -388,7 +387,7 @@ th, tr:hover {
 }
 
 .index-header button:hover {
-    background-color: var(--old-pale);
+    background-color: var(--alt-pale);
     cursor: pointer;
 }
 
@@ -415,7 +414,7 @@ th, tr:hover {
 }
 
 .search-bar:focus {
-    border-color: var(--old-bright);
+    border-color: var(--alt-bright);
     outline-style: solid;
 }
 
@@ -469,7 +468,7 @@ th, tr:hover {
 }
 
 .profile-button {
-    background-color: var(--old-bright);
+    background-color: var(--alt-bright);
     border: none;
     border-radius: 8px;
     color: white;
@@ -480,7 +479,7 @@ th, tr:hover {
 }
 
 .profile-button:hover {
-    background-color: var(--old-pale);
+    background-color: var(--alt-pale);
     cursor: pointer;
 }
 
@@ -511,7 +510,7 @@ th, tr:hover {
 
 .popup-form button {
     color: white;
-    background-color: var(--old-bright);
+    background-color: var(--alt-bright);
     width: 30%;
     border-radius: 8px;
     padding: 4px;
@@ -521,18 +520,18 @@ th, tr:hover {
 }
 
 .popup-form button:hover {
-    background-color: var(--old-pale);
+    background-color: var(--alt-pale);
     cursor: pointer;
 }
 
 .popup-form input:focus {
-    outline-color: var(--old-bright);
+    outline-color: var(--alt-bright);
     outline-style: solid;
     transition: outline-color 0.3s ease;
 }
 
 .popup-form select:focus {
-    outline-color: var(--old-bright);
+    outline-color: var(--alt-bright);
     outline-style: solid;
     transition: outline-color 0.3s ease;
 }
