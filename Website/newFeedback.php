@@ -47,6 +47,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }   
     
+    // Redirect to index.php after submitting the form
+    header("Location: index.php");
+    exit;
+    
 }
 
 ?>
