@@ -369,6 +369,7 @@ th, tr:hover {
     padding-bottom: 16px;
 }
 
+
 .index-header button {
     background-color: var(--accent-bright);
     border: none;
@@ -396,6 +397,7 @@ th, tr:hover {
 }
 
 .search-bar {
+    width: 100%;
     background-color: var(--a);
     border-radius: 8px;
     border: 1px solid var(--d);
