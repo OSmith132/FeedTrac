@@ -18,7 +18,7 @@
   * ~~Light/dark mode~~ - _Archie (03/05/24)_
   * ~~Header buttons need to hide when not logged in~~ - _Archie (04/05/24)_
   * ~~Remove weird whitespace under header profile button~~ - _Archie (04/05/24)_
-  * Alert badge on inbox button needs to be connected to the database
+  * ~~Alert badge on inbox button needs to be connected to the database~~ -  _Marco (02/05/24)_
   * There is still some "hardcoded" CSS styling going on that isn't compatible with the dark/light mode toggle (see the "unsorted" section of main.css)
   * Ensure entire project is actually compliant with our style guide (style guide may also need updating)
   * Ensure .php files are organised into suitable subdirectories
@@ -45,12 +45,12 @@
   * ~~Allow the user to press on row and redirect to feedback~~    _-Oliver (01/5/24)_
   
 
-* Feedback page - Marco - In progress, mostly done.
-  * Implement feedback rating system
-  * Page title in < head > should reflect the title of the feedback
+* Feedback page - Marco - In progress, done
+  * ~~Implement feedback rating system~~ -  _Toby (05/05/24)_
+  * ~~Page title in < head > should reflect the title of the feedback~~ -  _Oliver _
   * ~~Implement commenting system < prioritizing this~~ _Marco (30/04/24)_
   * ~~get avatars on comments to work~~ _Toby (02/05/24)_
-  * Maybe add Photos / files to report
+  * ~~Maybe add Photos / files to report~~ - Oliver and Toby?
   * ~~Link with database~~ _Marco (30/04/24)_
   * ~~TODO STRETCH - Assign correct student ID to feedback item, assign correct course.~~ _Marco (30/04/24)_
 
@@ -58,7 +58,7 @@
   * ~~Create page (Contains posts relevant to a specific course)~~ 
   * ~~Allow for individual course pages by linking with database~~
  
-* Inbox page - Marco - Done?
+* Inbox page - Marco - Done
   * ~~Create page (Contains user notifications on updates to their personal and subscribed posts)~~_Marco (03/05/24)_
   * ~~Display feedback data on the inbox page~~_Marco (03/05/24)_
   * ~~Add an observer to subscribe and get updates to courses and comments (Design Pattern)~~_Marco (03/05/24)_
@@ -78,10 +78,10 @@
   * ~~Edit personal information~~ _Toby (01/05/24)_
 
 * Admin/Moderation page
-  * Create page
-  * Moderation Tool (for admins to remove content)
-  * Staff could resolve / force close issues as well as reply - (close feedback implemented in feedback.php) - _Marco (04/05/24)_
-  * (OPTIONAL) Only the relevant staff to recieve the feedback
+  * ~~Create page~~ - (idea absorbed by other pages)
+  * ~~Moderation Tool (for admins to remove content)~~ - _Marco (05/05/24)_
+  * ~~Staff could resolve / force close issues as well as reply~~ - (close feedback implemented in feedback.php) - _Marco (04/05/24)_
+  * ~~(OPTIONAL) Only the relevant staff to recieve the feedback~~ - decided against
 
 * Database
   * ~~Ensure that the database includes tables for all necessary data and add fake data to help with testing~~   _-Oliver (01/5/24)_
