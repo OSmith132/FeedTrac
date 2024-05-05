@@ -328,6 +328,15 @@
     * Connected header alert counter to database data.
     * Helped Toby troubleshoot rating system updates.
     * Fixed password recovery process, now displays token for debugging with same message as what would be sent through email.
+ 
+* ### _05/05/2024:_
+    *   Implemented sub/unsub button to alerts.
+    *   Implemented delete feedback.
+    *   Implemented delete comments.
+    *   Fixed comment pics after my variable name change broke them.
+    *   Changed redirection of new feedback page to index.
+    *   Fixed accessing errors to login.php while already logged in.
+      
     
 
 </details>
