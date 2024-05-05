@@ -94,18 +94,22 @@ class FeedbackView extends Feedback {
     
             
         // Get the current timestamp
+        date_default_timezone_set('UTC');
         $currentTimestamp = time();
 
+        
+
         // Get the timestamp for the date $timeframe ago
-        $timeframeTimestamp = strtotime("-" .$timeframe , $currentTimestamp);
+        $timeframeTimestamp = strtotime("-" . $timeframe , $currentTimestamp);
+
 
         // Convert feedback row date to a timestamp
         $feedbackRowTimestamp = strtotime($feedbackRow['date']);
 
+
         // Check if the feedback row date is within the specified timeframe
         if ($feedbackRowTimestamp < $timeframeTimestamp) {
             // The feedback row date is within the timeframe
-            // Return true or perform any other actions
             return false;
         }
 
