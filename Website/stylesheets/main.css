@@ -300,7 +300,6 @@ th, tr:hover {
 }
 
 .feedback-main {
-    margin: 16px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
