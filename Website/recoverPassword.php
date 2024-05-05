@@ -84,10 +84,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
                     <div><?php echo $error ?></div>
 
-                    <input type="submit" value="Send a code.">
+                    <input type="submit" value="Send a token.">
                 </form>
 
-                <a href="reregisterPassword.php" class="button">Click here if you've received a token.</a>
+                <a href="reregisterPassword.php" class="button">Click here if you have received a token.</a>
 
                 
                 
