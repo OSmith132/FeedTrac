@@ -11,6 +11,7 @@ $alerts_count = 0;
 $avatar_path = "assets/profile-pictures/user-default.jpg";
 
 if ($logged_in) {
+    
     // Get the current user's ID
     $user_id = $_SESSION["userID"];
 

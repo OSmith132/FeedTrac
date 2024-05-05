@@ -14,6 +14,13 @@ $Login_Controller = new LoginContr();
 // Check user isn't logged in
 $Login_Controller->check_login();
 
+$logged_in = isset($_SESSION["userID"]);
+if ($logged_in) {
+header("Location: index.php");
+exit;
+}
+
+
 $error = "";
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){

@@ -31,7 +31,7 @@ class LoginContr extends Login {
             header("Location: index.php");
         }
 
-        return false;
+        return true;
     }
 
 
