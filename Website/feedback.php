@@ -41,7 +41,7 @@ $feedback_date = $feedback["date"];
 $ratingPoints_comment = 0;
 $course= $user_data["courseID"];
 $users = $Feedback_Controller->list_users($course);
-$hasRated = $Feedback_Controller->check_user_has_feedback_rating($feedbackID, $user);
+//$hasRated = $Feedback_Controller->check_user_has_feedback_rating($feedbackID, $user);
 $feedbackUserData = $Feedback_View->get_user_info($feedbackID);;
 // Generates text for the closed button
 $feedbackClosedLabel = $feedback['closed'];
