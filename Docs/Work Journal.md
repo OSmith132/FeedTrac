@@ -261,6 +261,22 @@
   * Fixed weird whitespace under header profile button
   * Footer is now properly stuck to the bottom of the page
 
+* ### _05/05/24:_
+  * Removed more whitespace and redundant div tags
+  * Fixed weird indentation on feedback page
+  * Created new feedback 404 page (user gets redirect here when they try to access an invalid/deleted feedback)
+  * Fixed < head > < title > on feedback page
+  * Renamed various HTML classes to be more clear
+  * Fixed footer on feedback page
+  * Replaced hardcoded colours (and --old colours) with proper root vars to enable full dark/light mode support
+  * Added stylised tags to feedback items and renamed confusing buttons
+
+* ### _06/05/24:_
+  * Restyled index.php to be more consistent with the rest of the website
+  * Made < a > tags less ugly
+  * Fixed footer and general styling of profile page
+  * Fixed title/header on profile page
+
 </details>
 
 ## Marco
