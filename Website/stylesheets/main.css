@@ -209,7 +209,7 @@ th, tr:hover {
 }
 
 .form {
-    color: white;
+    color: var(--g);
     text-align: center;
     width: 50%;
     margin: auto;
@@ -242,7 +242,7 @@ th, tr:hover {
 }
 
 .form input[type="submit"] {
-    color: white;
+    color: var(--g);
     background-color: var(--alt-bright);
     border-radius: 8px;
     font-weight: bold;
@@ -280,7 +280,7 @@ th, tr:hover {
     background-color: var(--alt-bright);
     border: none;
     border-radius: 8px;
-    color: white;
+    color: var(--g);
     font-size: 16px;
     padding: 8px;
     transition: background-color 0.3s ease;
@@ -310,10 +310,10 @@ th, tr:hover {
     transition: outline-color 1s ease;
 }
 
-.feedback-closed{
+.feedback-closed {
     font-size: 24px;
     text-align: center;
-    color: deeppink;
+    color: var(--alt-bright);
     top: 50%;
     left: 50%;
     height: 50px;
@@ -329,7 +329,7 @@ th, tr:hover {
     background-color: var(--alt-bright);
     border: none;
     border-radius: 8px;
-    color: white;
+    color: var(--g);
     font-size: 16px;
     padding: 8px;
     width: 300px;
@@ -373,7 +373,7 @@ th, tr:hover {
     background-color: var(--alt-bright);
     border: none;
     border-radius: 8px;
-    color: white;
+    color: var(--g);
     font-size: 16px;
     padding: 8px 16px; /* Uniform padding */
     transition: background-color 0.3s ease;
@@ -415,19 +415,19 @@ th, tr:hover {
     display: flex;
     text-align: left;
     background-color: var(--a);
-    color: white;
+    color: var(--g);
 }
 
 .user-picture {
     padding: 10px;
     flex: 1;
-    border-right: 1px solid white;
+    border-right: 1px solid var(--g);
 }
 
 .user-description {
     padding: 10px;
     flex: 1;
-    border-right: 1px solid white;
+    border-right: 1px solid var(--g);
 }
 
 .user-data {
@@ -438,21 +438,21 @@ th, tr:hover {
 .edit-profile {
     display: flex;
     background-color: var(--a);
-    border-top: 1px solid white;
+    border-top: 1px solid var(--g);
     border-bottom: 1px solid var(--d);
-    color: white;
+    color: var(--g);
 }
 
 .change-picture {
     padding: 10px;
     flex: 1;
-    border-right: 1px solid white;
+    border-right: 1px solid var(--g);
 }
 
 .edit-description {
     padding: 10px;
     flex: 1;
-    border-right: 1px solid white;
+    border-right: 1px solid var(--g);
 }
 
 .edit-data {
@@ -464,7 +464,7 @@ th, tr:hover {
     background-color: var(--alt-bright);
     border: none;
     border-radius: 8px;
-    color: white;
+    color: var(--g);
     font-size: 14px;
     padding: 8px;
     width: 150px;
@@ -487,7 +487,7 @@ th, tr:hover {
 }
 
 .popup-form {
-    color: white;
+    color: var(--g);
     text-align: center;
     width: 33%;
     margin: auto;
@@ -502,7 +502,7 @@ th, tr:hover {
 }
 
 .popup-form button {
-    color: white;
+    color: var(--g);
     background-color: var(--alt-bright);
     width: 30%;
     border-radius: 8px;
