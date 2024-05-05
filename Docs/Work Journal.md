@@ -116,6 +116,18 @@
     * Fixed error in database.php where variables with values 0 or false were being flagged as empty and failing checks they should have passed.
     * Probably some other random tasks I found.
 
+* ### _05/05/2024:_
+    * Fixed bug in header caused by a variable sometimes being undefined.
+    * Fixed bug in feedback.php where feedback was being shown as open when closed and vice versa.
+    * Changed Homepage so filters so only closed and only resolved are now only open and only unresolved because it made more sense.
+    * Added the ability to resolve feedback items as an admin or author
+    * Added new methods to feedback view 'get_feedback_exists'
+    * Added a message informing the user's when the feedback is closed and that they are unable to comment.
+    * Added titles to the feedback page as there was only the text being shown before.
+    * Added padding to divs in feedback.php so the page looks nicer
+    * Added guard clauses to multiple methods that were missing them
+    * Added return statements to multiple methods that were missing them
+    * 
 
    
 </details>
@@ -244,6 +256,11 @@
   * Made website colour palette modular by using root variables
   * Properly implemented light/dark mode (even the FeedTrac logo changes!)
 
+* ### _04/05/24:_
+  * All of the header buttons (excluding the colour mode toggle) now hide when the user is NOT logged in
+  * Fixed weird whitespace under header profile button
+  * Footer is now properly stuck to the bottom of the page
+
 </details>
 
 ## Marco
@@ -289,7 +306,6 @@
     * Changed counter to only update if user is still subbed, and not alert for own feedback submissions.
     * Debugged issues with date time in database, with help from Toby.
     * Inbox now displays items newer than user account creation date, as intended, decisions made to change it to a dropdown menu displaying the same content as inbox page, with added alert counter on icon.
-    * TODO - Button up inbox after the new format change.
     * Started work on commenting system.
  
 * ### _02/05/2024:_
@@ -303,6 +319,15 @@
     * Completely reworked and fixed inbox to display items sorted by newest modified feedback item (comments), now fixed and redirecting to correct feedback item.
     * Fixed modified date to reflect our timezone.
     * Many database fixes and tweaks.
+
+* ### _04/05/2024:_
+    * Implemented an alert reset when a user accesses the inbox.
+    * Implemented a way to open and close feedback items, for admin and lecturers.
+    * Implemented a way to disable commenting system when an item has been closed.
+    * Added extra alerts to the event of a feedback item being opened or closed.
+    * Connected header alert counter to database data.
+    * Helped Toby troubleshoot rating system updates.
+    * Fixed password recovery process, now displays token for debugging with same message as what would be sent through email.
     
 
 </details>

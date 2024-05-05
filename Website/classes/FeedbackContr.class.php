@@ -101,6 +101,45 @@ class FeedbackContr extends Feedback {
         $this->update_rating($positiveRating, $feedbackID, $userID);
     }
 
+    // Update the status to open or closed
+    public function set_feedback_status($feedbackID,$newStatus){ // positiveRating: bool    feedbackID: int    userID: int
+
+        // Check if any input is empty
+        if ($this->empty_input_check($feedbackID, $newStatus)){
+            header("location: feedback.php?error=emptyinput");
+            exit();
+        }
+        
+        // Update the rating points of a feedback item
+        $this-> update_feedback_status($feedbackID,$newStatus);
+    }
+
+
+    public function change_subscription_status($userID,$status){ // positiveRating: bool    feedbackID: int    userID: int
+
+        
+        
+        // Update the rating points of a feedback item
+        $this-> update_subscription_status($userID,$status);
+    }
+
+
+
+     // Update the resolved status of a feedback item
+     public function set_feedback_resolved($feedbackID,$newResolved){ // positiveRating: bool    feedbackID: int    userID: int
+
+        // Check if any input is empty
+        if ($this->empty_input_check($feedbackID, $newResolved)){
+            header("location: feedback.php?error=emptyinput");
+            exit();
+        }
+        
+        // Update the rating points of a feedback item
+        $this-> update_resolved($feedbackID,$newResolved);
+    }
+
+   
+
 
     // Remove the rating points of a feedback item
     public function delete_rating($feedbackID, $userID){ // positiveRating: bool    feedbackID: int    userID: int
@@ -113,6 +152,8 @@ class FeedbackContr extends Feedback {
 
         // Update the rating points of a feedback item
         $this->remove_rating($feedbackID, $userID);
+
+        return true;
     }
 
     public function check_user_has_feedback_rating($feedbackID, $userID){
@@ -130,11 +171,23 @@ class FeedbackContr extends Feedback {
 
     public function list_rooms(){ // positiveRating: bool    feedbackID: int    userID: int
 
+        //Check if any input is empty
+        if ($this->empty_input_check()){
+            header("location: feedback.php?error=emptyinput");
+            exit();
+        }
+
         return $this->get_rooms();
 
     }
 
     public function list_users($course){ // positiveRating: bool    feedbackID: int    userID: int
+
+        //Check if any input is empty
+        if ($this->empty_input_check($course)){
+            header("location: feedback.php?error=emptyinput");
+            exit();
+        }
 
         return $this->get_users($course);
 
@@ -142,12 +195,32 @@ class FeedbackContr extends Feedback {
 
     public function modify_date($feedbackID, $dateModified){ // positiveRating: bool    feedbackID: int    userID: int
 
+        //Check if any input is empty
+        if ($this->empty_input_check($feedbackID, $dateModified)){
+            header("location: feedback.php?error=emptyinput");
+            exit();
+        }
+
         $this->update_feedback_dateModified($feedbackID, $dateModified);
+
+        return true;
 
     }
 
 
-    
+    public function alert_reset($user){
+
+        //Check if any input is empty
+        if ($this->empty_input_check($user)){
+            header("location: feedback.php?error=emptyinput");
+            exit();
+        }
+
+        $this->alert_update($user);
+
+        return true;
+
+    }
     
 
 }

@@ -11,10 +11,7 @@ include ("scripts/functions.php");
 
 $Login_Controller = new LoginContr();
 
-// Check user isn't logged in
-$Login_Controller->check_login();
 
-$error = "";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 //something was posted
@@ -117,7 +114,6 @@ if (count($postData) == count(array_filter($postData))) {
                         <input type="checkbox" onclick="togglePasswordVisibility('password2')"> Show Characters<br>
                     </label><br>
 
-                    <div><?php echo $error ?></div>
 
                     <input type="submit" value="Submit">
                 </form>
@@ -125,10 +121,6 @@ if (count($postData) == count(array_filter($postData))) {
         </main>
 
         <!-- Footer -->
-        <div class="footer-position"><?php include("footer.php"); ?></div>
-        
+        <?php include("footer.php"); ?>
     </body>
 </html>
-
-
-

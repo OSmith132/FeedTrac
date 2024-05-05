@@ -8,12 +8,9 @@ class LoginContr extends Login {
     public function force_login(){
 
         if(!isset($_SESSION['userID'])){
-            echo "<script>var loggedIn = false;</script>";
             header("Location: login.php");
             die;
         }
-        
-        echo "<script>var loggedIn = true;</script>";
 
         $user_data = $this->get_user_data();
         
@@ -229,7 +226,7 @@ class LoginContr extends Login {
 
         // Send email
         /* mail($email, $subject, $message, $headers);*/
-        echo $message; // THIS IS ONLY UNTIL WE HAVE A WORKING EMAIL SERVER (just a proof of concept as we can't send emails from localhost)
+       echo $message; // THIS IS ONLY UNTIL WE HAVE A WORKING EMAIL SERVER (just a proof of concept as we can't send emails from localhost)
 
         return true;
         

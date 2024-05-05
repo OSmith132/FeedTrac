@@ -30,7 +30,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
             $Login_Controller->send_recovery_email($email);
 
-            header("Location: reregisterPassword.php");
+            //header("Location: reregisterPassword.php");
+
+            $_SESSION['recovery_email_sent'] = true;
 
         } else {
             $error = "<span style='color: red;'>No user with this email address found</span><br><br>";
@@ -82,15 +84,19 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
                     <div><?php echo $error ?></div>
 
-                    <input type="submit" value="Submit">
+                    <input type="submit" value="Send a token.">
                 </form>
+
+                <a href="reregisterPassword.php" class="button">Click here if you have received a token.</a>
+
+                
+                
             </div>
+
+            
         </main>
 
         <!-- Footer -->
-        <div class="footer-position"><?php include("footer.php"); ?></div>
+        <?php include("footer.php"); ?>
     </body>
 </html>
-
-
-

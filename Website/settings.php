@@ -13,9 +13,30 @@ include ("scripts/functions.php");
 
 $Login_Controller = new LoginContr();
 $user_data = $Login_Controller->force_login();
+$Feedback_Controller = new FeedbackContr($user_data['userID']);
 
 $error = "";
+$userID = $user_data["userID"];
+$subscriptionStatus = $user_data["sub"];
+$subButtonLabel;
+if($subscriptionStatus == 1){
+    $subButtonLabel = "Unsubscribe to alerts (email/inbox)";
 
+}
+else{
+    $subButtonLabel = "Subscribe to alerts (email/inbox)";
+
+}
+
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+    if(isset($_POST['changeSubscriptionStatus'])) {
+        $Feedback_Controller->change_subscription_status($userID, $subscriptionStatus); 
+        header("Location: " . $_SERVER['REQUEST_URI']); 
+        exit();       
+        
+    }
+    
+}
 
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
@@ -77,6 +98,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     <br><br>
                     <button id="editButton" class="feedback-button" onclick="window.location.href = 'changeDetails.php'">Edit Personal Details</button>
                     <br><br>
+                    <button id="subscribeButton" class="feedback-button" onclick="document.getElementById('changeSubscriptionStatusForm').submit()"><?= htmlspecialchars($subButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
+                    <form id="changeSubscriptionStatusForm" action="settings.php" method="post" style="display: none;">
+                        <input type="hidden" name="changeSubscriptionStatus" value="1">
+                    </form>
+                    <br><br>
                     <button id="deleteButton" class="feedback-button" onclick="openForm('deletion-form')" >Delete Account</button>
                     <div><?php echo $error ?></div>
                 </div>
@@ -101,6 +127,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         </main>
 
         <!-- Footer -->
-        <div class="footer-position"><?php include("footer.php"); ?></div>
+        <?php include("footer.php"); ?>
     </body>
 </html>

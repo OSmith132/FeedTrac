@@ -8,7 +8,6 @@
 
 ## GitHub:
 
-* Organise GitHub workflow with personal branches?
 * Update Flowchart (can put directly in report)
 
 ---
@@ -17,16 +16,20 @@
 
 * All pages
   * ~~Light/dark mode~~ - _Archie (03/05/24)_
-  * Header buttons need to hide when not logged in
+  * ~~Header buttons need to hide when not logged in~~ - _Archie (04/05/24)_
+  * ~~Remove weird whitespace under header profile button~~ - _Archie (04/05/24)_
   * Alert badge on inbox button needs to be connected to the database
   * There is still some "hardcoded" CSS styling going on that isn't compatible with the dark/light mode toggle (see the "unsorted" section of main.css)
+  * Ensure entire project is actually compliant with our style guide (style guide may also need updating)
+  * Ensure .php files are organised into suitable subdirectories
+  * < head > should be moved into its own file and then reused like header.php and footer.php because it's bad to keep duplicating it (I assume this is possible?)
   * (OPTIONAL) Add fancy CSS transitions
 
 * New Feedback page - Marco - Done
   * ~~Create page~~_Marco (30/04/24)_
   * ~~Add feedback creation functionality~~_Marco (30/04/24)_
   * ~~Link with database~~ _Marco (30/04/24)_
-  * (OPTIONAL) Add extra options such as anonymous posting or the ability to disable comments
+  ~~* (OPTIONAL) Add extra options such as anonymous posting or the ability to disable comments~~ - (anonymous posting = trolling, so we're not doing it, disable comments done by closing item in feedback.php) _Marco (04/05/24)_
 
 * Home/Index page
   * ~~Display feedback data on the home/index page~~               _- Oliver (29/04/24)_
@@ -44,6 +47,7 @@
 
 * Feedback page - Marco - In progress, mostly done.
   * Implement feedback rating system
+  * Page title in < head > should reflect the title of the feedback
   * ~~Implement commenting system < prioritizing this~~ _Marco (30/04/24)_
   * ~~get avatars on comments to work~~ _Toby (02/05/24)_
   * Maybe add Photos / files to report
@@ -79,7 +83,7 @@
 * Admin/Moderation page
   * Create page
   * Moderation Tool (for admins to remove content)
-  * Staff could resolve / force close issues as well as reply
+  * Staff could resolve / force close issues as well as reply - (close feedback implemented in feedback.php) - _Marco (04/05/24)_
   * (OPTIONAL) Only the relevant staff to recieve the feedback
 
 * Database
