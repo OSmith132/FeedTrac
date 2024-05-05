@@ -117,6 +117,7 @@ else{
 $comments = $Feedback_Controller->find_comments($feedbackID);
 $comments_count = count($comments);
 
+
 function achtung($users,$Feedback_Controller,$user_data){
     foreach ($users as $user) {
         if ($user['userID'] !== $user_data["userID"] && $user['sub'] == "1"){
@@ -171,53 +172,82 @@ if (isset($_POST['submit_comment'])) {
                 <button type="submit" name="openButton"><?= htmlspecialchars($feedbackClosedButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
             </form>
 
+            <form method="POST" action="">
+                <button type="submit" name="deleteFeedback">Delete Feedback</button>
+            </form>
+
+            
+
             <!-- User can only set to resolved if they created the feedback item, or are a system admin -->
             <?php if ($_SESSION['userID'] == $feedbackUserData['userID'] || $position == "admin") {?>
                 <form method="POST" action=""> <?php } ?>
                     <button type="submit" name="resolvedButton"><?= htmlspecialchars($feedbackResolvedButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
-                </form>
-           
+                </form>           
             
-            <?php
-            if (isset($_POST['openButton'])) {
-                if ($feedbackClosedLabel == "0" && $position !== "student"){
-                    $feedbackStatus = $feedback['closed'];
-                    $feedbackstatus = 1;
-                    $Feedback_Controller->set_feedback_status($feedbackID,$feedbackstatus);
-                    achtung($users,$Feedback_Controller,$user_data);
-                    header("Location: " . $_SERVER['REQUEST_URI']);
-                    exit();
-                    
+                <?php
+                if (isset($_POST['openButton'])) {
+                    if ($feedbackClosedLabel == "0" && $position !== "student"){
+                        $feedbackStatus = $feedback['closed'];
+                        $feedbackstatus = 1;
+                        $Feedback_Controller->set_feedback_status($feedbackID,$feedbackstatus);
+                        achtung($users,$Feedback_Controller,$user_data);
+                        header("Location: " . $_SERVER['REQUEST_URI']);
+                        exit();
+                        
+                    }
+                    elseif($feedbackClosedLabel == "1" && $position !== "student"){
+                        $feedbackStatus = $feedback['closed'];
+                        $feedbackstatus = 0;
+                        $Feedback_Controller->set_feedback_status($feedbackID,$feedbackstatus);
+                        achtung($users,$Feedback_Controller,$user_data);
+                        header("Location: " . $_SERVER['REQUEST_URI']);
+                        exit();
+                    }               
                 }
-                elseif($feedbackClosedLabel == "1" && $position !== "student"){
-                    $feedbackStatus = $feedback['closed'];
-                    $feedbackstatus = 0;
-                    $Feedback_Controller->set_feedback_status($feedbackID,$feedbackstatus);
-                    achtung($users,$Feedback_Controller,$user_data);
-                    header("Location: " . $_SERVER['REQUEST_URI']);
-                    exit();
-                }               
-            }
 
-            if (isset($_POST['resolvedButton'])) {
-                if ($feedbackResolvedLabel == "0" && $_SESSION['userID'] == $feedbackUserData['userID'] || $position == "admin"){
-                    $feedbackResolved = $feedback['resolved'];
-                    $feedbackresolved = 1;
-                    $Feedback_Controller->set_feedback_resolved($feedbackID,$feedbackresolved);
-                    achtung($users,$Feedback_Controller,$user_data);
-                    header("Location: " . $_SERVER['REQUEST_URI']);
-                    exit();
-                    
+                if (isset($_POST['resolvedButton'])) {
+                    if ($feedbackResolvedLabel == "0" && $_SESSION['userID'] == $feedbackUserData['userID'] || $position == "admin"){
+                        $feedbackResolved = $feedback['resolved'];
+                        $feedbackresolved = 1;
+                        $Feedback_Controller->set_feedback_resolved($feedbackID,$feedbackresolved);
+                        achtung($users,$Feedback_Controller,$user_data);
+                        header("Location: " . $_SERVER['REQUEST_URI']);
+                        exit();
+                        
+                    }
+                    elseif($feedbackResolvedLabel == "1" && $_SESSION['userID'] == $feedbackUserData['userID'] || $position == "admin"){
+                        $feedbackResolved = $feedback['resolved'];
+                        $feedbackresolved = 0;
+                        $Feedback_Controller->set_feedback_resolved($feedbackID,$feedbackresolved);
+                        achtung($users,$Feedback_Controller,$user_data);
+                        header("Location: " . $_SERVER['REQUEST_URI']);
+                        exit();
+                    } 
+                                  
                 }
-                elseif($feedbackResolvedLabel == "1" && $_SESSION['userID'] == $feedbackUserData['userID'] || $position == "admin"){
-                    $feedbackResolved = $feedback['resolved'];
-                    $feedbackresolved = 0;
-                    $Feedback_Controller->set_feedback_resolved($feedbackID,$feedbackresolved);
-                    achtung($users,$Feedback_Controller,$user_data);
-                    header("Location: " . $_SERVER['REQUEST_URI']);
-                    exit();
-                }               
-            }
+
+                if (isset($_POST['deleteFeedback'])) {
+                    if ($_SESSION['userID'] == $feedbackUserData['userID'] || $position !== "student"){
+                        
+                        $Feedback_Controller->remove_feedback($feedbackID);
+                        header("Location: " . $_SERVER['REQUEST_URI']);
+                        exit();
+                        
+                    }
+                }
+
+                if (isset($_POST['deleteComment'])) {
+
+                    if ($_SESSION['userID'] == $_POST['commentUserID'] || $position !== "student"){
+                        $Feedback_Controller->remove_comment($_POST['commentID']);
+                        echo $_POST['commentID'];
+                        echo $user_data['userID'];
+                        echo $_POST['commentUserID'];
+                        header("Location: " . $_SERVER['REQUEST_URI']);
+                        exit();
+                    }
+                }
+                
             
             ?>
 
@@ -278,8 +308,10 @@ if (isset($_POST['submit_comment'])) {
             <div><hr></div>
 
             <?php foreach ($comments as $comment): 
-                $comment_userID = $comment['userID'];
-                $comment_user_details = $Login_Controller->get_feedback_user_details($comment_userID);
+                $commentUserID = $comment['userID'];
+                $commentUserDetails = $Login_Controller->get_feedback_user_details($commentUserID);
+                $commentID = $comment['commentID'];
+
             ?>
                 <div class="comment">
                     <div class="comment-header">
@@ -296,7 +328,16 @@ if (isset($_POST['submit_comment'])) {
                                 echo $png_path;
                             } else {
                                 echo "assets/profile-pictures/user-default.jpg";
-                            }?>" alt="User Avatar" height="32"><a href="profile.php"> <?= htmlspecialchars($comment_user_details['username'], ENT_QUOTES, 'UTF-8'); ?></a> commented <?= htmlspecialchars($comment['date'], ENT_QUOTES, 'UTF-8'); ?></p>
+                            }?>" alt="User Avatar" height="32"><a href="profile.php"> <?= htmlspecialchars($commentUserDetails['username'], ENT_QUOTES, 'UTF-8'); ?></a> commented <?= htmlspecialchars($comment['date'], ENT_QUOTES, 'UTF-8'); ?></p>
+                            <form method="POST" action="">
+                                <input type="hidden" name="commentID" value="<?= $commentID ?>">
+                                <input type="hidden" name="commentUserID" value="<?= $commentUserID ?>">
+                                <button class="feedback-button" type="submit" name="deleteComment">Delete Comment</button>             
+                            </form>
+
+                            
+                            
+
                     </div>
                     <div class="comment-main">
                         <p><?= htmlspecialchars($comment['text'], ENT_QUOTES, 'UTF-8'); ?></p>

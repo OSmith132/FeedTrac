@@ -79,6 +79,48 @@ class Feedback extends Database
     }
 
     // Update existing feedback status
+    protected function delete_feedback($feedbackID)
+    {
+
+        // Connect to database and update all data about a feedback item
+        $stmt = $this->connect()->prepare("DELETE FROM comment WHERE feedbackID = ?");
+    
+        // Check if the SQL query is valid
+        if (!$stmt->execute([$feedbackID])) {
+            
+        }
+        // Connect to database and update all data about a feedback item
+        $stmt = $this->connect()->prepare("DELETE FROM feedback WHERE feedbackID = ?");
+    
+        // Check if the SQL query is valid
+        if (!$stmt->execute([$feedbackID])) {
+            header("location: feedback.php?error=BadSQLQuery");
+            exit();
+        }
+    
+
+        return true;
+    }
+
+    // Update existing feedback status
+    protected function delete_comment($commentID)
+    {
+
+        // Connect to database and update all data about a feedback item
+        $stmt = $this->connect()->prepare("DELETE FROM comment WHERE commentID = ?");
+    
+        // Check if the SQL query is valid
+        if (!$stmt->execute([$commentID])) {
+            header("location: feedback.php?error=BadSQLQuery");
+            exit();
+            
+        }          
+
+        return true;
+    }
+    
+
+    // Update existing feedback status
     protected function update_feedback_status($feedbackID,$newStatus)
     {
         // Connect to database and update all data about a feedback item
@@ -94,8 +136,8 @@ class Feedback extends Database
         return true;
     }
 
-     // Update resolved status
-     protected function update_resolved($feedbackID,$newResolved)
+    // Update resolved status
+    protected function update_resolved($feedbackID,$newResolved)
      {
          // Connect to database and update all data about a feedback item
          $stmt = $this->connect()->prepare("UPDATE feedback SET resolved = ? WHERE feedbackID = ?");
@@ -124,8 +166,6 @@ class Feedback extends Database
     
         // Check if the SQL query is valid
         if (!$stmt->execute([$status,$userID])) {
-            $errorInfo = $stmt->errorInfo();
-            echo "SQL Error: " . $errorInfo[2];
             header("location: feedback.php?error=BadSQLQuery");
             exit();
         }
