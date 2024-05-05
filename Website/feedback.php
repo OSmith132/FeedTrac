@@ -78,7 +78,7 @@ if (!$Feedback_View->get_feedback_exists($feedbackID)){ ?>
 
 $feedback = $Feedback_Controller->feedback_get($feedbackID);
 
-
+$title = $feedback["title"];
 $text = $feedback["text"];
 $user = $user_data['userID'];
 $feedback_userID = $feedback["userID"];
@@ -202,7 +202,7 @@ if (isset($_POST['submit_comment'])) {
             }
 
             if (isset($_POST['resolvedButton'])) {
-                if ($feedbackResolvedLabel == "0" && ($position !== "student" || $_SESSION['userID'] == $feedbackUserData['userID']) ){
+                if ($feedbackResolvedLabel == "0" && $_SESSION['userID'] == $feedbackUserData['userID'] || $position == "admin"){
                     $feedbackResolved = $feedback['resolved'];
                     $feedbackresolved = 1;
                     $Feedback_Controller->set_feedback_resolved($feedbackID,$feedbackresolved);
@@ -211,7 +211,7 @@ if (isset($_POST['submit_comment'])) {
                     exit();
                     
                 }
-                elseif($feedbackResolvedLabel == "1" && ($position !== "student" || $_SESSION['userID'] == $feedbackUserData['userID']) ){
+                elseif($feedbackResolvedLabel == "1" && $_SESSION['userID'] == $feedbackUserData['userID'] || $position == "admin"){
                     $feedbackResolved = $feedback['resolved'];
                     $feedbackresolved = 0;
                     $Feedback_Controller->set_feedback_resolved($feedbackID,$feedbackresolved);
@@ -227,7 +227,8 @@ if (isset($_POST['submit_comment'])) {
                 
             </div>
 
-            <h1><?= htmlspecialchars($text, ENT_QUOTES, 'UTF-8'); ?></h1>
+            <h1><?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?></h1>
+            <h2><?= htmlspecialchars($text, ENT_QUOTES, 'UTF-8'); ?></h2>
 
             <div class="feedback-header">
 
