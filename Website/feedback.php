@@ -41,8 +41,8 @@ $feedback_date = $feedback["date"];
 $ratingPoints_comment = 0;
 $course= $user_data["courseID"];
 $users = $Feedback_Controller->list_users($course);
+$hasRated = $Feedback_Controller->check_user_has_feedback_rating($feedbackID, $user);
 $feedbackUserData = $Feedback_View->get_user_info($feedbackID);;
-
 // Generates text for the closed button
 $feedbackClosedLabel = $feedback['closed'];
 $feedbackClosedButtonLabel;
@@ -81,22 +81,37 @@ if (isset($_POST['submit_comment'])) {
     $comment_text = $_POST['comment_text'];
 
     $Feedback_Controller->new_comment($user, $feedbackID, $comment_text, $ratingPoints_comment);
-
     date_default_timezone_set('Europe/London');
-
     $newDate = date_create();
-
     $Feedback_Controller->modify_date($feedbackID,$newDate);
-
     achtung($users,$Feedback_Controller,$user_data);
-
     header("Location: " . $_SERVER['REQUEST_URI']);
-
     exit();
+}
+
+if(isset($_POST['like'])){
+    echo "like pushed";
+    echo "feedback id = " . $feedbackID;
+    echo "user id = " . $user;
+    if ($Feedback_Controller->check_user_has_feedback_rating($feedbackID,$user)) {
+        $Feedback_Controller->remove_user_feedback_rating($feedbackID, $user);
+        echo "user has feedback";
+        header("Location: " . $_SERVER['REQUEST_URI']);
+        exit();
+    }
+    else {
+        //$controller->set_rating(1,$feedback_ID,$user_ID);
+        $Feedback_Controller->add_user_feedback_rating($feedbackID,$user);
+        echo "user has no feedback";
+        header("Location: " . $_SERVER['REQUEST_URI']);
+        exit();
+    }
 }
 ?>
 <!DOCTYPE html>
 <html lang="en-gb">
+
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -224,11 +239,20 @@ if (isset($_POST['submit_comment'])) {
                     echo "assets/profile-pictures/user-default.jpg";
                 }?>"alt="User Avatar" height="32"><a href="profile.php"> <?= htmlspecialchars($feedback_user_details["username"], ENT_QUOTES, 'UTF-8'); ?> </a> raised this feedback on <?= htmlspecialchars($feedback["date"], ENT_QUOTES, 'UTF-8'); ?> · <?= htmlspecialchars($comments_count, ENT_QUOTES, 'UTF-8'); ?> comments.</p>
 
-            <!-- Heart Button -->
-            <button id="heart-toggle" title="Like" onclick="like()">
-                <i id="heart-symbol" class="fa-regular fa-heart"></i> <div style="display:inline-block;" id=heart-counter><?= htmlspecialchars($feedback["ratingPoints"], ENT_QUOTES, 'UTF-8'); ?></div>
-            </button>
-        </div>
+
+
+
+                <!-- Heart Button -->
+                <button id="heart-toggle" title="Like" onclick="like()">
+                    <i id="heart-symbol" class="<?php if($hasRated){echo"fa-solid fa-heart";}else{echo"fa-regular fa-heart";}?>"></i> <div style="display:inline-block;" id=heart-counter><?= htmlspecialchars($feedback["ratingPoints"], ENT_QUOTES, 'UTF-8'); ?></div>
+                </button>
+
+                <form method="post" action="" enctype="multipart/form-data">
+                <button id="like_post" type="submit" name="like">test</button>
+                </form>
+            </div>
+
+
             <?php
 
 
