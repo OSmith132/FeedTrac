@@ -97,6 +97,7 @@ header {
     color: inherit;
     height: 32px;
     position: relative;
+    transition: background-color 0.3s;
     width: 32px;
 }
 
@@ -149,6 +150,7 @@ header {
     font-family: inherit;
     font-size: inherit;
     padding: 8px;
+    transition: background-color 0.3s;
 }
 
 .header-dropdown-content button:hover {
