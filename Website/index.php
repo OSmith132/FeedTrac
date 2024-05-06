@@ -46,7 +46,7 @@ $Feedback_View = new FeedbackView($user_data['userID']);
         <h1>Welcome to FeedTrac</h1>
 
         <!-- New Feedback Button -->
-        <button class="new-feedback-button" onclick="window.location.href = 'newFeedback.php';">Create New Feedback</button>
+        <button class="accent-button" onclick="window.location.href = 'newFeedback.php';">Create New Feedback</button>
 
         <!-- Search-bar functionality -->
         <form class="index-options" method="POST" action="index.php" id="index-search-form" .change() >
