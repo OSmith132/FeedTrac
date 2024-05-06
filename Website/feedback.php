@@ -144,15 +144,23 @@ if(isset($_POST['like'])){
             </div>
 
             <div class="feedback-toolbar-box">
+                <!-- BEHAVIOUR (BUTTON REQUIREMENTS) -->
+                <!-- Open/Close - Any non-student -->
+                <!-- Resolve - Feedback author or admin -->
+                <!-- Delete - Feedback author or any non-student -->
+
+                <!-- OPEN/CLOSE BUTTON -->
                 <form method="POST" action="">
-                    <button class="accent-button" type="submit" name="openButton"><?= htmlspecialchars($feedbackClosedButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
+                    <button class="accent-button" type="submit" name="openButton" <?php if ($position == "student") echo "hidden=''" ?>><?= htmlspecialchars($feedbackClosedButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
                 </form>
 
+                <!-- RESOLVE BUTTON -->
                 <!-- User can only set to resolved if they created the feedback item, or are a system admin -->
                 <?php if ($_SESSION['userID'] == $feedbackUserData['userID'] || $position == "admin") {?>
                 <form method="POST" action=""><?php } ?>
-                    <button class="accent-button" type="submit" name="resolvedButton"><?= htmlspecialchars($feedbackResolvedButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
+                    <button class="accent-button" type="submit" name="resolvedButton" <?php if ($_SESSION["userID"] != $feedbackUserData["userID"] && $position != "admin") echo "hidden=''" ?>><?= htmlspecialchars($feedbackResolvedButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
                 </form>
+
                 <?php
                 if (isset($_POST['openButton'])) {
                     if ($feedbackClosedLabel == "0" && $position !== "student"){
@@ -219,8 +227,9 @@ if(isset($_POST['like'])){
 
                 ?>
 
+                <!-- DELETE BUTTON -->
                 <form method="POST" action="">
-                    <button class="accent-button" type="submit" name="deleteFeedback">Delete Feedback</button>
+                    <button class="accent-button" type="submit" name="deleteFeedback" <?php if ($_SESSION["userID"] != $feedbackUserData["userID"] && $position == "student") echo "hidden=''" ?>>Delete Feedback</button>
                 </form>
             </div>
         </div>
