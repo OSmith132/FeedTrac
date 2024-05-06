@@ -21,9 +21,9 @@
   * ~~Alert badge on inbox button needs to be connected to the database~~ -  _Marco (02/05/24)_
   * ~~There is still some "hardcoded" CSS styling going on that isn't compatible with the dark/light mode toggle (see the "unsorted" section of main.css)~~ - _Archie (05/05/24)_
   * Ensure entire project is actually compliant with our style guide (style guide may also need updating)
-  * Ensure .php files are organised into suitable subdirectories
-  * < head > should be moved into its own file and then reused like header.php and footer.php because it's bad to keep duplicating it (I assume this is possible?)
-  * (OPTIONAL) Add fancy CSS transitions
+  * (OPTIONAL) Ensure .php files are organised into suitable subdirectories
+  * (OPTIONAL) < head > should be moved into its own file and then reused like header.php and footer.php because it's bad to keep duplicating it (I assume this is possible?)
+  * ~~(OPTIONAL) Add fancy CSS transitions~~ - _Archie (06/05/24)_
 
 * New Feedback page - Marco - Done
   * ~~Create page~~_Marco (30/04/24)_
@@ -38,18 +38,17 @@
       *  ~~resolved~~                                              _-Oliver (30/04/24)_
       *  ~~urgency~~                                               _-Oliver (30/04/24)_
       *  ~~date range (1 hour, 1 day, 1 week, 1 month, All time)~~ _-Oliver (30/04/24)_
-      *  tags (Might add this as an optional task later)
-  * Add sorting for:
+      *  (OPTIONAL) tags
+  * ~~Add sorting for:~~
       * ~~Date Ranges~~                                            _-Oliver (30/04/24)_
       * ~~RatingPoints~~                                           _-Oliver (30/04/24)_
   * ~~Search bar for feedback titles~~                             _-Oliver (30/04/24)_
   * ~~Allow the user to press on row and redirect to feedback~~    _-Oliver (01/5/24)_
-  
 
 * Feedback page
-  * Buttons should be hidden/disabled if they cannot be used by the current user
-  * ~~Implement feedback rating system~~ -  _Toby (05/05/24)_
-  * ~~Page title in < head > should reflect the title of the feedback~~ -  _Oliver _
+  * ~~Buttons should be hidden/disabled if they cannot be used by the current user~~ - _Archie (06/05/24)_
+  * ~~Implement feedback rating system~~ - _Toby (05/05/24)_
+  * ~~Page title in < head > should reflect the title of the feedback~~ - _Oliver_
   * ~~Implement commenting system < prioritizing this~~ _Marco (30/04/24)_
   * ~~get avatars on comments to work~~ _Toby (02/05/24)_
   * ~~Maybe add Photos / files to report~~ - Oliver and Toby?
