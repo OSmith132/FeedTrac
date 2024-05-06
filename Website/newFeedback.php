@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>FeedTrac</title>
+    <title>New Feedback - FeedTrac</title>
 
     <link rel="icon" type="image/x-icon" href="assets/icon.png">
 
