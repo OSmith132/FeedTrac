@@ -145,13 +145,13 @@ if(isset($_POST['like'])){
 
             <div class="feedback-toolbar-box">
                 <form method="POST" action="">
-                    <button type="submit" name="openButton"><?= htmlspecialchars($feedbackClosedButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
+                    <button class="accent-button" type="submit" name="openButton"><?= htmlspecialchars($feedbackClosedButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
                 </form>
 
                 <!-- User can only set to resolved if they created the feedback item, or are a system admin -->
                 <?php if ($_SESSION['userID'] == $feedbackUserData['userID'] || $position == "admin") {?>
                 <form method="POST" action=""><?php } ?>
-                    <button type="submit" name="resolvedButton"><?= htmlspecialchars($feedbackResolvedButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
+                    <button class="accent-button" type="submit" name="resolvedButton"><?= htmlspecialchars($feedbackResolvedButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
                 </form>
                 <?php
                 if (isset($_POST['openButton'])) {
@@ -220,7 +220,7 @@ if(isset($_POST['like'])){
                 ?>
 
                 <form method="POST" action="">
-                    <button type="submit" name="deleteFeedback">Delete Feedback</button>
+                    <button class="accent-button" type="submit" name="deleteFeedback">Delete Feedback</button>
                 </form>
             </div>
         </div>
