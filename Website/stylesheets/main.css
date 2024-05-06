@@ -514,22 +514,6 @@ th, tr:hover {
     outline-style: solid;
 }
 
-.feedback-button {
-    background-color: var(--accent-bright);
-    border: none;
-    border-radius: 8px;
-    color: var(--g);
-    font-size: 16px;
-    padding: 8px;
-    width: 300px;
-    transition: background-color 1s ease;
-}
-
-.feedback-button:hover {
-    background-color: var(--accent-pale);
-    cursor: pointer;
-}
-
 .comment {
     border-radius: 8px;
     border: 1px solid var(--d);
