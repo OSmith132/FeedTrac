@@ -625,11 +625,6 @@ th, tr:hover {
     border-right: 1px solid var(--g);
 }
 
-.edit-data {
-    padding: 10px;
-    flex: 1;
-}
-
 .profile-button {
     background-color: var(--accent-bright);
     border: none;
