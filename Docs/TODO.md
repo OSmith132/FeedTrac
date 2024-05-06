@@ -74,7 +74,7 @@
 
 * Settings page
   * ~~changePassword.php has now been created, but the form to change the password isn't functional~~ _Toby (02/05/24)_
-  * Need to check old password before allowing change
+  * ~~Need to check old password before allowing change~~ - _Toby_
   * ~~(OPTIONAL) Add additional user settings~~ _Toby (01/05/24)_
   * ~~Edit personal information~~ _Toby (01/05/24)_
 
