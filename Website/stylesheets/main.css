@@ -625,22 +625,6 @@ th, tr:hover {
     border-right: 1px solid var(--g);
 }
 
-.profile-button {
-    background-color: var(--accent-bright);
-    border: none;
-    border-radius: 8px;
-    color: var(--g);
-    font-size: 14px;
-    padding: 8px;
-    width: 150px;
-    transition: background-color 1s ease;
-}
-
-.profile-button:hover {
-    background-color: var(--accent-pale);
-    cursor: pointer;
-}
-
 .settings {
     text-align: center;
     width: 33%;

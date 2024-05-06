@@ -163,13 +163,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 <form action="profile.php" method="post" enctype="multipart/form-data" class="upload-form">
                     <label for="profile-picture">Upload a profile picture:</label><br><br>
                     <input type="file" accept="image/png"  name="fileToUpload" id="fileToUpload"><br><br>
-                    <input type="submit" name="Upload" value="Upload" class="profile-button" id="profile-picture-button">
+                    <input class="accent-button" type="submit" name="Upload" value="Upload" id="profile-picture-button">
                 </form>
             </div>
 
             <div class="edit-description">
-                <button class="profile-button" id="description_edit_button" onclick="edit_description()">Edit About Section</button>
-                <button class="profile-button" id="description_save_button" hidden="hidden" onclick="save_description()">Accept</button>
+                <button class="accent-button" id="description_edit_button" onclick="edit_description()">Edit About Section</button>
+                <button class="accent-button" id="description_save_button" hidden="hidden" onclick="save_description()">Accept</button>
 
                 <!-- Input box hidden to allow content box to look nice -->
                 <form action="profile.php" method="post" enctype="multipart/form-data" hidden="hidden">
