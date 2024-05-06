@@ -333,6 +333,13 @@ table .tag {
 /* UNSORTED */
 /* -------- */
 
+.feedback404-main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 .table-status {
     display: flex;
     flex-direction: column;

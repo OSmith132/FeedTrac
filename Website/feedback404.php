@@ -36,12 +36,12 @@ $Feedback_View = new FeedbackView($user_data['userID']);
     <?php include("header.php"); ?>
 
     <!-- Main -->
-    <main>
+    <main class="feedback404-main">
         <h1>This feedback doesn't exist!</h1>
 
         <p>Perhaps the feedback you were trying to access has been deleted?</p>
 
-        <button onclick="location.href = 'index.php';">Return to the Homepage</button>
+        <button class="accent-button" onclick="location.href = 'index.php';">Return to the Homepage</button>
     </main>
 
     <!-- Footer -->
