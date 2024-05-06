@@ -45,7 +45,7 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
         <!-- Main -->
         <main>
             <h1>Your account has been deleted</h1><br>
-            <button id="deleteButton" class="feedback-button" onclick="window.location.href = 'scripts/logout.php'" >Return to login page</button>
+            <button class="accent-button" id="deleteButton" onclick="window.location.href = 'scripts/logout.php'" >Return to login page</button>
         </main>
 
         <!-- Footer -->

@@ -93,16 +93,16 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             <br>
             <div class="settings-container">
                 <div class="settings">
-                    <button id="recoverButton" class="feedback-button" onclick="window.location.href = 'changePassword.php'" >Change Password</button>
+                    <button class="accent-button accent-button-wide" id="recoverButton" onclick="window.location.href = 'changePassword.php'" >Change Password</button>
                     <br><br>
-                    <button id="editButton" class="feedback-button" onclick="window.location.href = 'changeDetails.php'">Edit Personal Details</button>
+                    <button class="accent-button accent-button-wide" id="editButton" onclick="window.location.href = 'changeDetails.php'">Edit Personal Details</button>
                     <br><br>
-                    <button id="subscribeButton" class="feedback-button" onclick="document.getElementById('changeSubscriptionStatusForm').submit()"><?= htmlspecialchars($subButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
+                    <button class="accent-button accent-button-wide" id="subscribeButton" onclick="document.getElementById('changeSubscriptionStatusForm').submit()"><?= htmlspecialchars($subButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
                     <form id="changeSubscriptionStatusForm" action="settings.php" method="post" style="display: none;">
                         <input type="hidden" name="changeSubscriptionStatus" value="1">
                     </form>
                     <br><br>
-                    <button id="deleteButton" class="feedback-button" onclick="openForm('deletion-form')" >Delete Account</button>
+                    <button class="accent-button accent-button-wide" id="deleteButton" onclick="openForm('deletion-form')" >Delete Account</button>
                     <div><?php echo $error ?></div>
                 </div>
 
