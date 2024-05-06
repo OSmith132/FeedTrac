@@ -29,7 +29,7 @@
   * ~~Create page~~_Marco (30/04/24)_
   * ~~Add feedback creation functionality~~_Marco (30/04/24)_
   * ~~Link with database~~ _Marco (30/04/24)_
-  ~~* (OPTIONAL) Add extra options such as anonymous posting or the ability to disable comments~~ - (anonymous posting = trolling, so we're not doing it, disable comments done by closing item in feedback.php) _Marco (04/05/24)_
+  * ~~(OPTIONAL) Add extra options such as anonymous posting or the ability to disable comments~~ - (anonymous posting = trolling, so we're not doing it, disable comments done by closing item in feedback.php) _Marco (04/05/24)_
 
 * Home/Index page
   * (OPTIONAL) Table should be sorted by most recent first, by default
