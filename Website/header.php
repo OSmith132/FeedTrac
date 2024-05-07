@@ -15,7 +15,7 @@ if ($logged_in) {
     // Get the current user's ID
     $user_id = $_SESSION["userID"];
 
-    // TODO: Get the current user's number of alerts
+    // Get the current user's number of alerts
     $alerts_count = $user_data["alert"];
 
     // ----------------------------------------------------

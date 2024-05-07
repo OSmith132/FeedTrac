@@ -22,7 +22,7 @@ if (isset($_GET['id'])) {
 $Feedback_Controller = new FeedbackContr($user_data['userID']);
 $Feedback_View = new FeedbackView($user_data['userID']);
 
-$position = $user_data['position'];
+$position = $user_data['position']; // Gets position of currently logged in user to check if it can use moderation tools.
 
 // Show feedback 404 page if feedbackID is not found in db
 if (!$Feedback_View->get_feedback_exists($feedbackID)) {
@@ -30,8 +30,9 @@ if (!$Feedback_View->get_feedback_exists($feedbackID)) {
     exit();
 }
 
-$feedback = $Feedback_Controller->feedback_get($feedbackID);
+$feedback = $Feedback_Controller->feedback_get($feedbackID); // Get's feedback item as an array.
 
+//Gets all variables needed using keys.
 $title = $feedback["title"];
 $text = $feedback["text"];
 $user = $user_data['userID'];
@@ -41,19 +42,21 @@ $feedback_date = $feedback["date"];
 $ratingPoints_comment = 0;
 $course= $user_data["courseID"];
 $users = $Feedback_Controller->list_users($course);
-$hasRated = $Feedback_Controller->check_user_has_feedback_rating($feedbackID, $user);
-$feedbackUserData = $Feedback_View->get_user_info($feedbackID);;
-// Generates text for the closed button
-$feedbackClosedLabel = $feedback['closed'];
-$feedbackClosedButtonLabel;
+$hasRated = $Feedback_Controller->check_user_has_feedback_rating($feedbackID, $user); // Checks if user has rated this item to prevent repeated votes.
+$feedbackUserData = $Feedback_View->get_user_info($feedbackID);
 
+// Generates text for the closed button depending on status in database.
+$feedbackClosedLabel = $feedback['closed'];
+$feedbackClosedButtonLabel; // Label for displaying status in tag
+
+// Checks for status and applies correct label to moderation button to open/close
 if ($feedbackClosedLabel == "0" ) {
     $feedbackClosedButtonLabel = "Close Feedback";
 } else {
     $feedbackClosedButtonLabel = "Reopen Feedback";
 }
 
-// Generates text for the resolved button
+// Generates text for the resolved button same as open/close button above
 $feedbackResolvedLabel = $feedback['resolved'];
 $feedbackResolvedButtonLabel;
 
@@ -63,32 +66,33 @@ if ($feedbackResolvedLabel == "0" ) {
     $feedbackResolvedButtonLabel = "Mark as Unresolved";
 }
 
-// Get comments
+// Gets comments
 $comments = $Feedback_Controller->find_comments($feedbackID);
-$comments_count = count($comments);
+$comments_count = count($comments); // Counts comments to display in feeback item.
 
-
-function achtung($users,$Feedback_Controller,$user_data){
+// small local function to call the alert when a new comment or any action is taken involving the feedback item only alerts subbed users.
+function achtung($users,$Feedback_Controller,$user_data){ 
     foreach ($users as $user) {
         if ($user['userID'] !== $user_data["userID"] && $user['sub'] == "1") {
-            // echo $user['userID'] . "\n";
             $Feedback_Controller->sub_alert($user['userID']);
         }
     }   
 }
 
-if (isset($_POST['submit_comment'])) {
+if (isset($_POST['submit_comment'])) { // Check to submit comments if a comment hs been posted.
     $comment_text = $_POST['comment_text'];
 
-    $Feedback_Controller->new_comment($user, $feedbackID, $comment_text, $ratingPoints_comment);
-    date_default_timezone_set('Europe/London');
+    $Feedback_Controller->new_comment($user, $feedbackID, $comment_text, $ratingPoints_comment); // New comment saved in database.
+    date_default_timezone_set('Europe/London'); // Sets date for correct timezone, to date comments and feedback items.
     $newDate = date_create();
-    $Feedback_Controller->modify_date($feedbackID,$newDate);
-    achtung($users,$Feedback_Controller,$user_data);
-    header("Location: " . $_SERVER['REQUEST_URI']);
+    $Feedback_Controller->modify_date($feedbackID,$newDate); // Changes date of last update to feedback item.
+    achtung($users,$Feedback_Controller,$user_data);  // Calls alerts again.
+    header("Location: " . $_SERVER['REQUEST_URI']);  // Refreshes page and ends scripts to show updates.
     exit();
 }
 
+
+// Same logic as open or closed button, checks for status to toggle rating vote.
 if(isset($_POST['like'])){
     echo "like pushed";
     echo "feedback id = " . $feedbackID;
@@ -116,7 +120,7 @@ if(isset($_POST['like'])){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- TODO: This should be the title of the feedback -->
+    <!-- Title of the feedback, fetching title from database. -->
     <title><?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?> - FeedTrac</title>
 
     <link rel="icon" type="image/x-icon" href="assets/icon.png">
@@ -161,6 +165,7 @@ if(isset($_POST['like'])){
                     <button class="accent-button" type="submit" name="resolvedButton" <?php if ($_SESSION["userID"] != $feedbackUserData["userID"] && $position != "admin") echo "hidden=''" ?>><?= htmlspecialchars($feedbackResolvedButtonLabel, ENT_QUOTES, 'UTF-8'); ?></button>
                 </form>
 
+                <!-- Open/close BUTTON same logic as above. -->
                 <?php
                 if (isset($_POST['openButton'])) {
                     if ($feedbackClosedLabel == "0" && $position !== "student"){
@@ -181,7 +186,8 @@ if(isset($_POST['like'])){
                         exit();
                     }
                 }
-
+                
+                // Same logic again, reusing as much code as possible.
                 if (isset($_POST['resolvedButton'])) {
                     if ($feedbackResolvedLabel == "0" && ($_SESSION['userID'] == $feedbackUserData['userID'] || $position == "admin")){
                         $feedbackResolved = $feedback['resolved'];
@@ -203,6 +209,7 @@ if(isset($_POST['like'])){
 
                 }
 
+                // Post from delete feedback button, removes feedback but first deletes comments, my solution for not being able to cascade deletes in myphpadmin.
                 if (isset($_POST['deleteFeedback'])) {
                     if ($_SESSION['userID'] == $feedbackUserData['userID'] || $position !== "student"){
 
@@ -212,7 +219,7 @@ if(isset($_POST['like'])){
 
                     }
                 }
-
+                // Same method as above, only tweaked to work for comments, uses hidden comment variables to be able to cross check with current user logged to enforce privilege rules.
                 if (isset($_POST['deleteComment'])) {
 
                     if ($_SESSION['userID'] == $_POST['commentUserID'] || $position !== "student"){
@@ -269,7 +276,7 @@ if(isset($_POST['like'])){
 
             <?php
 
-
+                // Checks if feedback is open before offering option to comment.
         if ($feedbackClosedLabel == "0") {
         ?>
             <!-- Comment Form -->
@@ -293,8 +300,8 @@ if(isset($_POST['like'])){
         ?>
 
         <div><hr></div>
-
-            <?php foreach ($comments as $comment): 
+            
+            <?php foreach ($comments as $comment): // Generates comments for each comment found with this feedback id, presents delete buttons.
                 $commentUserID = $comment['userID'];
                 $commentUserDetails = $Login_Controller->get_feedback_user_details($commentUserID);
                 $commentID = $comment['commentID'];

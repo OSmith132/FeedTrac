@@ -10,29 +10,27 @@ include ("scripts/functions.php");
 
 $Login_Controller = new LoginContr();
 
-// Check user isn't logged in
+// Checks user isn't logged in
 $Login_Controller->check_login();
 
 $error = "";
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-	//something was posted
+	// Something was posted
 	$email = $_POST['email'];
 
 
 	if(!empty($email)){
 
-        // Get the recovery code
+        // Gets the recovery code
         $recovery_code = $Login_Controller->create_recovery_token($email);
 
-        // Check if the user exists
+        // Checks if the user exists
         if($recovery_code != -1) {           
 
-            $Login_Controller->send_recovery_email($email);
+            $Login_Controller->send_recovery_email($email); // Calls method that sends recovery email, currently disabled and echoes token above header for testing purposes.
 
-            //header("Location: reregisterPassword.php");
-
-            $_SESSION['recovery_email_sent'] = true;
+            $_SESSION['recovery_email_sent'] = true; // Checks if it has been sent.
 
         } else {
             $error = "<span style='color: red;'>No user with this email address found</span><br><br>";
@@ -76,7 +74,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
                 <!-- Login Form -->
                 <h2>Recover Password:</h2>
-                <form action="recoverPassword.php" method="post">
+                <form action="recoverPassword.php" method="post"> 
 
                     Enter registered email address:<br><br>
                     <input type="text" name="email" required>
@@ -87,7 +85,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     <input type="submit" value="Send a token.">
                 </form>
 
-                <a href="reregisterPassword.php" class="button">Click here if you have received a token.</a>
+                <!-- Redirects to reregister page if a token was confirmed to be received by user. -->
+                <a href="reregisterPassword.php" class="button">Click here if you have received a token.</a> 
 
                 
                 

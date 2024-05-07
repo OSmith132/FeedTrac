@@ -90,21 +90,7 @@ class FeedbackContr extends Feedback {
     
     }
 
-    // Update existing feedback item
-    public function set_feedback($feedbackID, $roomID, $date, $urgency, $resolved, $closed, $title, $text){
-
-        // Check if any input is empty
-        if ($this->empty_input_check($feedbackID, $date, $urgency, $resolved, $closed, $title, $text)){
-            header("location: feedback.php?error=emptyinput");
-            exit();
-        }
-
-        // Create new feedback
-        $this->update_feedback($feedbackID, $roomID, $date, $urgency, $resolved, $closed, $title, $text);
-
-        return true;
-    
-    }
+ 
 
     // Delete Feedback Item
     public function remove_feedback($feedbackID){ 
@@ -194,25 +180,6 @@ class FeedbackContr extends Feedback {
         return true;
     }
 
-
-
-   
-
-
-    // Remove the rating points of a feedback item
-    public function delete_rating($feedbackID, $userID){ // positiveRating: bool    feedbackID: int    userID: int
-
-        // Check if any input is empty
-        if ($this->empty_input_check($feedbackID, $userID)){
-            header("location: feedback.php?error=emptyinput");
-            exit();
-        }
-
-        // Update the rating points of a feedback item
-        $this->remove_rating($feedbackID, $userID);
-
-        return true;
-    }
 
     public function check_user_has_feedback_rating($feedbackID, $userID){
 

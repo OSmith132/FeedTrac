@@ -18,14 +18,14 @@ $user = $user_data['userID'];
 $dateTime = $user_data["accountDate"];
 $feedbackRows = $Feedback_View->get_inbox_feedback($dateTime);
 
-$Feedback_Controller->alert_reset($user);
+$Feedback_Controller->alert_reset($user); // Upon accessing the inbox, user alerts are reset.
 
-// Define a comparison function for usort
-function compare_by_date($a, $b) {
+// Defines a comparison function for usort
+function compare_by_date($a, $b) { // Checks if items are newer than user's account creation date.
     return strtotime($b['modifiedDate']) - strtotime($a['modifiedDate']);
 }
 
-// Sort the feedback rows by modifiedDate
+// Sorts the feedback rows by modifiedDate
 usort($feedbackRows, 'compare_by_date');
 
 
@@ -90,15 +90,16 @@ usort($feedbackRows, 'compare_by_date');
 
         <th>Comments Count</th>
     </tr>
-                <?php
+                <?php // For loop fetches the data to be presented in table.
                 foreach ($feedbackRows as $row) {
 
-                    $feedback_userID = $row["userID"];
-                    $feedback_user_details = $Login_Controller->get_feedback_user_details($feedback_userID); 
-                    $feedbackID =  $row["feedbackID"];
-                    $comments = $Feedback_Controller->find_comments($feedbackID);
-                    $comments_count = count($comments);                 
+                    $feedback_userID = $row["userID"]; // Gets user ID of feedback creators.
+                    $feedback_user_details = $Login_Controller->get_feedback_user_details($feedback_userID); // Gets details of feedback creator
+                    $feedbackID =  $row["feedbackID"];  //Gets feedback ID
+                    $comments = $Feedback_Controller->find_comments($feedbackID);  // Gets comments for specified feedback item.
+                    $comments_count = count($comments);                 //Counts how many comments a feedback item has.
 
+                    //Outputs all information in a sorted table.
                     echo "<tr class='clickable-row' data-id='{$row['feedbackID']}'>";
                     echo "<td>{$feedback_user_details['username']}</td>";
                     echo "<td>{$row['title']}</td>";                    

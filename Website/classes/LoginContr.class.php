@@ -89,6 +89,7 @@ class LoginContr extends Login {
 
    }
 
+   // Get the user details
    public function get_feedback_user_details($userID){
 
     // Check if any input is empty
@@ -143,12 +144,9 @@ class LoginContr extends Login {
         return $this->get_all_courses();
     }
 
-    public function get_user_course_name($courseID)
-    {
-        return $this->get_course_name($courseID);
-    }
+  
 
-
+     // Creates password recovery token
     public function create_recovery_token($email){
 
         
@@ -162,6 +160,7 @@ class LoginContr extends Login {
         
     }
 
+    // Clears used token.
     public function delete_recovery_record($userID){
        
         // Check if any input is empty
@@ -237,10 +236,7 @@ class LoginContr extends Login {
         return $this->get_column_from_id("username", $_SESSION['userID']);
     }
 
-    // Get email address of current user
-    public function get_current_user_email() {
-        return $this->get_column_from_id("email", $_SESSION['userID']);
-    }
+  
 
     // Get first name of current user
     public function get_current_user_first_name() {
@@ -257,20 +253,11 @@ class LoginContr extends Login {
         return $this->get_column_from_id("yearOfStudy", $_SESSION['userID']);
     }
 
-    // Get pronouns of current user
-    public function get_current_user_pronouns() {
-        return $this->get_column_from_id("pronouns", $_SESSION["userID"]);
-    }
+   
 
-    // Get position of current user
-    public function get_current_user_position() {
-        return $this->get_column_from_id("position", $_SESSION["userID"]);
-    }
+   
 
-    // Get about of current user (bio)
-    public function get_current_user_description() {
-        return $this->get_column_from_id("description", $_SESSION['userID']);
-    }
+   
 
     // Delete Account
     public function delete_account(){
@@ -279,19 +266,5 @@ class LoginContr extends Login {
 
 
 
-    // //Check to see if account has been deleted 
-    // public function is_active($username){
-
-    //     //prepare the SQL query
-    //     $stmt = $this->connect()->prepare("SELECT activeAccount FROM user WHERE username = ?");
-
-    //     // Check if the SQL query is valid
-    //     if(!$stmt->execute([$username])){
-    //         header("location: settings.php?error=BadSQLQuery");
-    //         exit();
-    //     }
-
-    //     $result = $stmt->get_result()->fetch_assoc()['activeAccount'];
-    //     return $result;
-    // }
+ 
 }

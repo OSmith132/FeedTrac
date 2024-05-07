@@ -14,12 +14,12 @@ $Login_Controller = new LoginContr();
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-//something was posted
+// Something was posted
 
-// store post data in a variable (this is so we can remove optional fields later as we can't remove from $_POST)
+// Stores post data in a variable (this is so we can remove optional fields later as we can't remove from $_POST)
 $postData = $_POST;
 
-// Check if all fields are filled
+// Checks if all fields are filled
 if (count($postData) == count(array_filter($postData))) {
     # Token and email entered in forms by user.
     $token = $_POST['token'];
@@ -38,15 +38,15 @@ if (count($postData) == count(array_filter($postData))) {
 
     if ($token == $registeredToken) {
 
-        // Check if the passwords match
+        // Checks if the passwords match
         if ($password1 == $password2) {
 
             // Password encryption implementation, usign password hash, by assigning Password_default as the algo, the latest best algorithm for encryption will be picked, even if updated.
             $hashed_password = password_hash($password1, PASSWORD_DEFAULT);
 
             # New implementation using the new login and database classes.
-            $deleteToken = $Login_Controller->delete_recovery_record($userID);
-            $updatepassword = $Login_Controller->update_user_password($hashed_password,$userID);
+            $deleteToken = $Login_Controller->delete_recovery_record($userID); // Removes the token from the database, to make it a temporary value.
+            $updatepassword = $Login_Controller->update_user_password($hashed_password,$userID); // Updates the password.
            
             header("Location: login.php");
             die;

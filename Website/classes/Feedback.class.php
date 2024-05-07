@@ -43,21 +43,7 @@ class Feedback extends Database
     }
 
 
-    // Update existing feedback (use update_rating() to update the rating points)
-    protected function update_feedback($feedbackID, $roomID, $date, $urgency, $resolved, $closed, $title, $text)
-    {
-
-        // Connect  to database and update all data about a feedback item
-        $stmt = $this->connect()->prepare("UPDATE feedback SET roomID = ?, date = ?, urgency = ?, resolved = ?, closed = ?, title = ?, text = ? WHERE feedbackID = ?");
-
-        // Check if the SQL query is valid
-        if (!$stmt->execute([$roomID, $date, $urgency, $resolved, $closed, $title, $text, $feedbackID])) {
-            header("location: profile.php?error=BadSQLQuery");
-            exit();
-        }
-
-        return true;
-    }
+    
 
     // Update existing feedback modified date
     protected function update_feedback_dateModified($feedbackID, $dateModified)

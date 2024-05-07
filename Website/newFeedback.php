@@ -24,30 +24,29 @@ $users = $Feedback_Controller->list_users($course);
 
 
 
-// Check if the form has been submitted
+// Checks if the form has been submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
     // Get the form data
     $roomID = $_POST['roomID'];
     $urgency = $_POST['urgency'];
-    $resolved = 0; // Set this based on your form data
-    $closed = 0; // Set this based on your form data
+    $resolved = 0; // Some variables are defaulted to 0.
+    $closed = 0; 
     $title = $_POST['title'];
     $text = $_POST['text'];
 
 
-    // Call new_feedback with the form data
+    // Calls new_feedback with the form data
     $Feedback_Controller->new_feedback($roomID, $urgency, $resolved, $closed, $title, $text);
 
-    
-    foreach ($users as $user) {
+    // Triggers a new alert for subbed users.
+    foreach ($users as $user) { 
         if ($user['userID'] !== $user_data["userID"] && $user['sub'] == "1"){
-       // echo $user['userID'] . "\n";
         $Feedback_Controller->sub_alert($user['userID']);
         }
     }   
     
-    // Redirect to index.php after submitting the form
+    // Redirects to index.php after submitting the form
     header("Location: index.php");
     exit;
     
@@ -91,16 +90,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form action="newFeedback.php" method="post">
                 <br>
                 <?php
-                    // Fetch all rooms
+                    // Fetches all rooms to be valid options on the drop down selectioon
                     $rooms = $Feedback_Controller->list_rooms();
 
-                    // Start the select element
+                    // Starts the select element
                     echo '<select name="roomID" required>';
 
-                    // Add a hidden option
+                    // Adds a hidden option
                     echo '<option value="" selected disabled hidden>Room Number</option>';
 
-                    // Loop through the rooms and create an option for each
+                    // Loops through the rooms and creates an option for each
                     foreach ($rooms as $room) {
                         echo '<option value="' . $room['roomID'] . '">' . $room['roomName'] . '</option>';
                     }

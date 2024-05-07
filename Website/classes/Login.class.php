@@ -79,21 +79,7 @@ class Login extends Database {
     
 
 
-    // private function get_courseid($courseName){
-
-    //     $stmt = $this->connect()->prepare("SELECT courseID FROM course WHERE courseName = ?");
-
-    //     // Check if the SQL query is valid
-    //     if(!$stmt->execute([$courseName])){
-    //         header("location: login.php?error=BadCourseName");
-    //         exit();
-    //     }
-
-    //     // return true if the user exists
-    //     $results = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-    //     return $results;
-
-    // }
+   
     
 
     // Check if the user exists
@@ -286,39 +272,39 @@ class Login extends Database {
     }
     
 
-// Delete Account
-protected function delete_account_id($userID){
+    // Delete Account
+    protected function delete_account_id($userID){
 
-    //prepare the SQL query
-    $stmt = $this->connect()->prepare(
-       "DELETE FROM user
-        WHERE userID = ?"
-    );
+        //prepare the SQL query
+        $stmt = $this->connect()->prepare(
+        "DELETE FROM user
+            WHERE userID = ?"
+        );
 
-    // Check if the SQL query is valid
-    if(!$stmt->execute([$userID])){
-        header("location: settings.php?error=BadSQLQuery");
-        exit();
+        // Check if the SQL query is valid
+        if(!$stmt->execute([$userID])){
+            header("location: settings.php?error=BadSQLQuery");
+            exit();
+        }
+
+        return true;
     }
 
-    return true;
-}
+    // Update password
+    protected function update_password($hashed_password,$userID){
 
-// Update password
-protected function update_password($hashed_password,$userID){
+        // prepare the SQL query
+        $stmt = $this->connect()->prepare("UPDATE user SET passwordHash = ? WHERE userID = ?");
 
-    // prepare the SQL query
-    $stmt = $this->connect()->prepare("UPDATE user SET passwordHash = ? WHERE userID = ?");
+        // Check if the SQL query is valid
+        if(!$stmt->execute([$hashed_password,$userID])){
+            header("location: login.php?error=BadSQLQuery");
+            exit();
+        }
 
-    // Check if the SQL query is valid
-    if(!$stmt->execute([$hashed_password,$userID])){
-        header("location: login.php?error=BadSQLQuery");
-        exit();
+        // return true if the password was updated successfully
+        return true;
     }
-
-    // return true if the password was updated successfully
-    return true;
-}
 
     protected function update_bio($bio,$userID){
 
