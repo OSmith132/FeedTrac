@@ -30,7 +30,7 @@
   * Implemented LoginView with associated functions
   * Fixed password hiding/unhiding in change password
   * Fixed password change not changing password
-  * 
+  * Added Like system
 
 
 </details>
