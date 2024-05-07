@@ -20,6 +20,12 @@ class FeedbackView extends Feedback {
      // Get all feedback items from the database
      public function get_inbox_feedback($dateTime){
 
+        // Check if any input is empty
+        if ($this->empty_input_check($dateTime)){
+            header("location: feedback.php?error=emptyinput");
+            exit();
+        }
+
         // Update the rating points of a feedback item
         return $this->get_all_rows_inbox($dateTime);
     }
