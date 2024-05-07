@@ -2,19 +2,11 @@
 
 session_start();
 
+// remove all session variables
+session_unset();
 
-include ("classes/Database.class.php");
-include ("classes/login.class.php");
-include ("classes/LoginContr.class.php");
-include ("classes/Feedback.class.php");
-include ("classes/FeedbackContr.class.php");
-include ("scripts/functions.php");
-
-
-$Login_Controller = new LoginContr();
-$user_data = $Login_Controller->force_login();
-
-$Feedback_Controller = new FeedbackContr($user_data['userID']);
+// destroy the session
+session_destroy(); 
 
 ?>
 
@@ -45,7 +37,7 @@ $Feedback_Controller = new FeedbackContr($user_data['userID']);
         <!-- Main -->
         <main>
             <h1>Your account has been deleted</h1><br>
-            <button class="accent-button" id="deleteButton" onclick="window.location.href = 'scripts/logout.php'" >Return to login page</button>
+            <button class="accent-button" id="deleteButton" onclick="window.location.href = 'scripts/signin.php'" >Return to login page</button>
         </main>
 
         <!-- Footer -->
