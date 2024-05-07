@@ -31,7 +31,6 @@ TRUNCATE TABLE `building`;
 --
 
 INSERT INTO `building` (`buildingID`, `buildingName`) VALUES
-(0, 'Default Building'),
 (1, 'Computer Science Building A'),
 (2, 'Computer Science Building B'),
 (3, 'Engineering Workshop'),
@@ -65,7 +64,6 @@ TRUNCATE TABLE `course`;
 --
 
 INSERT INTO `course` (`courseID`, `departmentID`, `name`) VALUES
-(0, 0, 'Default Course'),
 (1, 1, 'Computer Science'),
 (2, 2, 'Engineering');
 
@@ -79,7 +77,6 @@ TRUNCATE TABLE `department`;
 --
 
 INSERT INTO `department` (`departmentID`, `name`) VALUES
-(0, 'Default Department'),
 (1, 'School Of Computer Science'),
 (2, 'School Of Engineering');
 
@@ -124,7 +121,6 @@ TRUNCATE TABLE `room`;
 --
 
 INSERT INTO `room` (`roomID`, `roomName`, `buildingID`) VALUES
-(0, 'Default Room', 0),
 (1, 'Lecture Hall 1', 1),
 (2, 'Lecture Hall 2', 1),
 (3, 'Computer Lab 1', 2),
