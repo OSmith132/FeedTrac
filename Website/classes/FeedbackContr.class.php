@@ -24,6 +24,8 @@ class FeedbackContr extends Feedback {
 
         // Create new feedback
         $this->create_feedback($this->userID, $roomID, $urgency, $resolved, $closed, $title, $text);
+
+        return true;
     
     }
 
@@ -38,6 +40,8 @@ class FeedbackContr extends Feedback {
 
         // Create new feedback
         $this->create_comment($userID,$feedbackID, $text, $ratingPoints);
+
+        return true;
     
     }
 
@@ -59,6 +63,12 @@ class FeedbackContr extends Feedback {
      // Create a new alert for subbed users
      public function sub_alert($userID){
 
+        // Check if any input is empty
+        if ($this->empty_input_check($userID)){
+            header("location: feedback.php?error=emptyinput");
+            exit();
+        }
+
          
          // Create new feedback
          $this->alert($userID);
@@ -67,6 +77,12 @@ class FeedbackContr extends Feedback {
 
       // Create a new alert for subbed users
       public function feedback_get($feedbackID){
+
+        // Check if any input is empty
+        if ($this->empty_input_check($feedbackID)){
+            header("location: feedback.php?error=emptyinput");
+            exit();
+        }
 
          
         // Create new feedback
@@ -85,6 +101,8 @@ class FeedbackContr extends Feedback {
 
         // Create new feedback
         $this->update_feedback($feedbackID, $roomID, $date, $urgency, $resolved, $closed, $title, $text);
+
+        return true;
     
     }
 
@@ -112,6 +130,8 @@ class FeedbackContr extends Feedback {
         
         // Calls feedback class to delete item.
         $this-> delete_comment($commentID);
+
+        return true;
     }
 
     // Update the rating points of a feedback item
@@ -125,6 +145,8 @@ class FeedbackContr extends Feedback {
 
         // Update the rating points of a feedback item
         $this->update_rating($positiveRating, $feedbackID, $userID);
+
+        return true;
     }
 
     // Update the status to open or closed
@@ -138,11 +160,18 @@ class FeedbackContr extends Feedback {
         
         // Update the rating points of a feedback item
         $this-> update_feedback_status($feedbackID,$newStatus);
+
+        return true;
     }
 
 
     public function change_subscription_status($userID,$status){ // positiveRating: bool    feedbackID: int    userID: int
 
+        // Check if any input is empty
+        if ($this->empty_input_check($userID, $status)){
+            header("location: feedback.php?error=emptyinput");
+            exit();
+        }
         
         
         // Update the rating points of a feedback item
@@ -161,6 +190,8 @@ class FeedbackContr extends Feedback {
         
         // Update the rating points of a feedback item
         $this-> update_resolved($feedbackID,$newResolved);
+
+        return true;
     }
 
 
@@ -184,14 +215,35 @@ class FeedbackContr extends Feedback {
     }
 
     public function check_user_has_feedback_rating($feedbackID, $userID){
+
+        //Check if any input is empty
+        if ($this->empty_input_check($feedbackID, $userID)){
+            header("location: feedback.php?error=emptyinput");
+            exit();
+        }
+
         return $this->check_user_given_feedback($feedbackID,$userID);
     }
 
     public function add_user_feedback_rating($feedbackID,$userID){
+
+        //Check if any input is empty
+        if ($this->empty_input_check($feedbackID, $userID)){
+            header("location: feedback.php?error=emptyinput");
+            exit();
+        }
+
         $this->add_feedback_rating($feedbackID,$userID);
     }
 
     public function remove_user_feedback_rating($feedbackID, $userID){
+
+        //Check if any input is empty
+        if ($this->empty_input_check($feedbackID, $userID)){
+            header("location: feedback.php?error=emptyinput");
+            exit();
+        }
+
         $this->remove_feedback_rating($feedbackID,$userID);
     }
 
