@@ -10,7 +10,7 @@
 
 ## SQL Styles
   * No quotation marks for column names
-  * Backticks for table names
+  * No Backticks for table names
   * Snake case for table, index and constraint names
   * Singular table names
 
