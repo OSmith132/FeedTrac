@@ -226,7 +226,7 @@ $Feedback_View = new FeedbackView($user_data['userID']);
         urgencyInput.value === '0' ? 'Low' :
         urgencyInput.value === '1' ? 'Medium' :
         urgencyInput.value === '2' ? 'High':
-        'Critial';
+        'Critical';
     });
 
     //Update timeframe value when slider is moved
