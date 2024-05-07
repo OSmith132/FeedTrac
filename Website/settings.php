@@ -49,7 +49,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
         if($Login_Controller->check_password($username, $password)) {
 
-            $Login_Controller->delete_account();
+            $Login_Controller->delete_user_account($userID);
 
             header("Location: accountDeleted.php");
             die;

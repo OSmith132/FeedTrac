@@ -172,6 +172,18 @@ class LoginContr extends Login {
         return $this->delete_record($userID);
     }
 
+     // Deletes account.
+     public function delete_user_account($userID){
+       
+        // Check if any input is empty
+        if ($this->empty_input_check($userID)){
+            header("location: login.php?error=BadSQLQuery");
+            exit();
+        }    
+
+        return $this->delete_account_id($userID);
+    }
+
 
     public function update_user_password($hashed_password,$userID){
 
@@ -259,11 +271,7 @@ class LoginContr extends Login {
 
    
 
-    // Delete Account
-    public function delete_account(){
-        return $this->get_column_from_id("username", $_SESSION['userID']);
-    }
-
+    
 
 
  
