@@ -14,5 +14,5 @@
   * Snake case for table, index and constraint names
   * Singular table names
 
-## JavaScript Styles
+
 
