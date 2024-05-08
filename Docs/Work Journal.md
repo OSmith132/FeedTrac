@@ -316,6 +316,9 @@
   * Selectively hidden feedback action buttons based on current user permissions
   * Added fancy CSS transitions to header buttons
 
+* ### _09/05/24:_
+  * Made sign-up prompt on login page slightly more obvious
+
 </details>
 
 ## Marco

@@ -83,7 +83,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             <h1>Log in to your FeedTrac account</h1><br>
 
             <div class="form">
-                <a href="signup.php">Sign Up</a>
+                <a href="signup.php">New to FeedTrac? Sign-up here instead.</a>
                 <h2>Login:</h2>
                 <!-- Login Form -->
                 <form action="login.php" method="post">
