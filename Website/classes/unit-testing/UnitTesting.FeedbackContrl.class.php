@@ -1,20 +1,15 @@
 <?php
 
-include "../Database.class.php";
-include "../Feedback.class.php";
-include "../FeedbackContr.class.php";
+// Include statements may need to be uncommented depending where testing is being executed
+// include "../Database.class.php";
+// include "../Feedback.class.php";
+// include "../FeedbackContr.class.php";
 
 
-$feedbackContr = new FeedbackView(1);
 
-class FeedbackContr_UnitTesting
+class FeedbackContr_UnitTesting extends FeedbackContr
 {
-    private $feedbackContr;
 
-    public function __construct($feedbackContr)
-    {
-        $this->feedbackContr = $feedbackContr;
-    }
 
     public function test_new_feedback()
     {
@@ -26,7 +21,7 @@ class FeedbackContr_UnitTesting
         $text = 'Test Text';
 
         // Assert that the feedback was created successfully (STILL NEED TO CHECK DB TO ENSURE DATA IS CORRECT)
-        assert($this->feedbackContr->new_feedback($roomID, $urgency, $resolved, $closed, $title, $text));
+        assert($this->new_feedback($roomID, $urgency, $resolved, $closed, $title, $text));
     }
     
 
@@ -39,24 +34,17 @@ class FeedbackContr_UnitTesting
 
 
         // Assert that the comment was created successfully (STILL NEED TO CHECK DB TO ENSURE DATA IS CORRECT)
-        assert($this->feedbackContr->new_comment($userID, $feedbackID, $text, $ratingPoints));
+        assert($this->new_comment($userID, $feedbackID, $text, $ratingPoints));
     }
 
 
-    public function test_set_feedback()
+    public function test_change_subscription_status()
     {
-        $feedbackID = 1;
-        $roomID = 1;
-        $date = '2024-04-01';
-        $urgency = 1;
-        $resolved = 0;
-        $closed = 0;
-        $title = 'Test Title';
-        $text = 'Test Text';
+        $userID = 1;
+        $subscribed = 1;
 
-
-        // Assert that the feedback was created successfully (STILL NEED TO CHECK DB TO ENSURE DATA IS CORRECT)
-        assert($this->feedbackContr->set_feedback($feedbackID, $roomID, $date, $urgency, $resolved, $closed, $title, $text));
+        // Assert that the subscription status was changed successfully (STILL NEED TO CHECK DB TO ENSURE DATA IS CORRECT)
+        assert($this->change_subscription_status($userID, $subscribed));
     }
 
 
@@ -67,7 +55,7 @@ class FeedbackContr_UnitTesting
         $ratingPoints = 5;
 
         // Assert that the rating was set successfully (STILL NEED TO CHECK DB TO ENSURE DATA IS CORRECT)
-        assert($this->feedbackContr->set_rating($positiveRating, $feedbackID, $ratingPoints));
+        assert($this->set_rating($positiveRating, $feedbackID, $ratingPoints));
     }
 
 
@@ -77,7 +65,7 @@ class FeedbackContr_UnitTesting
         $newStatus = 1;
 
         // Assert that the feedback status was set successfully (STILL NEED TO CHECK DB TO ENSURE DATA IS CORRECT)
-        assert($this->feedbackContr->set_feedback_status($feedbackID, $newStatus));
+        assert($this->set_feedback_status($feedbackID, $newStatus));
     }   
 
 
@@ -87,7 +75,7 @@ class FeedbackContr_UnitTesting
         $newResolved = 1;
 
         // Assert that the feedback status was set successfully (STILL NEED TO CHECK DB TO ENSURE DATA IS CORRECT)
-        assert($this->feedbackContr->set_feedback_resolved($feedbackID, $newResolved));
+        assert($this->set_feedback_resolved($feedbackID, $newResolved));
     }
 
 
@@ -97,7 +85,7 @@ class FeedbackContr_UnitTesting
         $newDate = '2021-04-02';
 
         // Assert that the date was modified successfully (STILL NEED TO CHECK DB TO ENSURE DATA IS CORRECT)
-        assert($this->feedbackContr->modify_date($date, $newDate));
+        assert($this->modify_date($date, $newDate));
     }
 
 

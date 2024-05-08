@@ -38,7 +38,7 @@ class FeedbackContr extends Feedback {
         exit();
     }
 
-        // Create new feedback
+        // Create new comment
         $this->create_comment($userID,$feedbackID, $text, $ratingPoints);
 
         return true;

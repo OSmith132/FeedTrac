@@ -1,20 +1,13 @@
 <?php
 
+// Include statements may need to be uncommented depending where testing is being executed
+// include "../Database.class.php";
+// include "../Feedback.class.php";
+// include "../FeedbackView.class.php";
 
-include "../Database.class.php";
-include "../Feedback.class.php";
-include "../FeedbackView.class.php";
 
-$LoginContr = new LoginContr();
-
-class loginContr_UnitTesting
+class loginContr_UnitTesting extends LoginContr
 {
-    private $LoginContr;
-
-    public function __construct($LoginContr)
-    {
-        $this->LoginContr = $LoginContr;
-    }
 
 
 
@@ -25,7 +18,7 @@ class loginContr_UnitTesting
         $_SESSION['userID'] = $userID;
 
         // Invoke the method
-        assert($this->LoginContr->force_login()); // Make sure to still test both logged in and out
+        assert($this->force_login()); // Make sure to still test both logged in and out
     }
 
 
@@ -36,7 +29,7 @@ class loginContr_UnitTesting
         $_SESSION['userID'] = $userID;
 
         // Invoke the method
-        assert($this->LoginContr->check_login()); // Make sure to still test both logged in and out
+        assert($this->check_login()); // Make sure to still test both logged in and out
     }
 
 
@@ -55,7 +48,7 @@ class loginContr_UnitTesting
         $position = 'admin';
 
         // Invoke the method
-        assert($this->LoginContr->sign_up($email, $username, $hashed_password, $fname, $lname, $courseID, $yearOfStudy, $pronouns, $position)); // STILL CHECK DB TO ENSURE DATA IS CORRECT
+        assert($this->sign_up($email, $username, $hashed_password, $fname, $lname, $courseID, $yearOfStudy, $pronouns, $position)); // STILL CHECK DB TO ENSURE DATA IS CORRECT
 
     }
 
@@ -67,24 +60,21 @@ class loginContr_UnitTesting
         $new_password = 'newpass';
 
         // Invoke the method
-        assert($this->LoginContr->update_user_password($userID, $new_password)); // STILL CHECK DB TO ENSURE DATA IS CORRECT
+        assert($this->update_user_password($userID, $new_password)); // STILL CHECK DB TO ENSURE DATA IS CORRECT
     }
 
     public function test_update_user_info()
     {
         // make row data
         $userID = 0;
-        $email = 'test@email.com';
-        $username = 'utest';
         $fname = 'ftest';
         $lname = 'ltest';
-        $courseID = 1;
-        $yearOfStudy = 1;
-        $pronouns = 'he/him';
-        $position = 'admin';
+        $year = 1;
+        $pronoun = 'he/him';
+
         
         // Invoke the method
-        assert($this->LoginContr->update_user_info($userID, $email, $username, $fname, $lname, $courseID, $yearOfStudy, $pronouns, $position)); // STILL CHECK DB TO ENSURE DATA IS CORRECT
+        assert($this->update_user_info($fname,$lname,$year,$pronoun,$userID)); // STILL CHECK DB TO ENSURE DATA IS CORRECT
 
     }
 
@@ -95,7 +85,7 @@ class loginContr_UnitTesting
         $bio = 'test bio';
 
         // Invoke the method
-        assert($this->LoginContr->update_user_bio($userID, $bio)); // STILL CHECK DB TO ENSURE DATA IS CORRECT
+        assert($this->update_user_bio($userID, $bio)); // STILL CHECK DB TO ENSURE DATA IS CORRECT
     }
     
 }

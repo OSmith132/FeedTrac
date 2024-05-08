@@ -1,22 +1,24 @@
 <?php
 
-include "../Database.class.php";
-include "../Feedback.class.php";
-include "../FeedbackView.class.php";
 
-$feedbackView = new FeedbackView(1);
+// Include statements may need to be uncommented depending where testing is being executed
+// include "../Database.class.php";
+// include "../Feedback.class.php";
+// include "../FeedbackView.class.php";
 
-class FeedbackView_UnitTesting
+class FeedbackView_UnitTesting extends FeedbackView
 {
-    private $feedbackView;
 
-    public function __construct($feedbackView)
-    {
-        $this->feedbackView = $feedbackView;
-    }
-    
+
     public function test_row_passes_filters()
     {
+
+        // Get the current timestamp
+        date_default_timezone_set('UTC');
+        $date = time();
+
+        // Get the timestamp for 30 mins ago
+        $date = date('Y-m-d H:i:s', $date - (30 * 60));
 
         // make row data
         $feedbackRow = array(
@@ -27,15 +29,15 @@ class FeedbackView_UnitTesting
             'resolved' => 1,
             'closed' => 0,
             'urgency' => 1,
-            'timeframe' => '2021-01-01 00:00:00'
+            'date' => $date
         );
-        $resolved = 0;
-        $closed = 0;
-        $urgency = 1;
-        $timeframe = '2021-01-01 00:00:00';
+        $resolved = 0;  // Resolved
+        $closed = 0;    // Open
+        $urgency = 1;   // Medium
+        $timeframe = 0; // 1 hour
 
         // Invoke the method
-        assert($this->feedbackView->row_passes_filters($feedbackRow, $resolved, $closed, $urgency, $timeframe));// STILL CHECK DB TO ENSURE DATA IS CORRECT
+        assert($this->row_passes_filters($feedbackRow, $resolved, $closed, $urgency, $timeframe));
     }
 
 
@@ -44,7 +46,7 @@ class FeedbackView_UnitTesting
         $dateTime = '2021-01-01 00:00:00';
 
         // Invoke the method
-        assert($this->feedbackView->get_inbox_feedback($dateTime));// STILL CHECK DB TO ENSURE DATA IS CORRECT
+        assert($this->get_inbox_feedback($dateTime));// STILL CHECK DB TO ENSURE DATA IS CORRECT
     }
 
     public function test_get_user_info()
@@ -52,7 +54,7 @@ class FeedbackView_UnitTesting
         $feedbackID = 1;
 
         // Invoke the method
-        assert($this->feedbackView->get_user_info($feedbackID));// STILL CHECK DB TO ENSURE DATA IS CORRECT
+        assert($this->get_user_info($feedbackID));// STILL CHECK DB TO ENSURE DATA IS CORRECT
     }
 
     public function test_search_feedback()
@@ -60,7 +62,7 @@ class FeedbackView_UnitTesting
         $searchTerm = '';
 
         // Invoke the method
-        assert($this->feedbackView->search_feedback($searchTerm));// STILL CHECK DB TO ENSURE DATA IS CORRECT
+        assert($this->search_feedback($searchTerm));// STILL CHECK DB TO ENSURE DATA IS CORRECT
     }
 
 

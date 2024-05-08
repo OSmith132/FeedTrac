@@ -45,6 +45,7 @@ $Feedback_View = new FeedbackView($user_data['userID']);
         <!-- Title -->
         <h1>Welcome to FeedTrac</h1>
 
+
         <!-- New Feedback Button -->
         <button class="accent-button" onclick="window.location.href = 'newFeedback.php';">Create New Feedback</button>
 
