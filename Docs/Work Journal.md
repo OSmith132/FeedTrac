@@ -120,14 +120,23 @@
     * Fixed bug in header caused by a variable sometimes being undefined.
     * Fixed bug in feedback.php where feedback was being shown as open when closed and vice versa.
     * Changed Homepage so filters so only closed and only resolved are now only open and only unresolved because it made more sense.
-    * Added the ability to resolve feedback items as an admin or author
-    * Added new methods to feedback view 'get_feedback_exists'
+    * Added the ability to resolve feedback items as an admin or author.
+    * Added new methods to feedback view 'get_feedback_exists'.
     * Added a message informing the user's when the feedback is closed and that they are unable to comment.
     * Added titles to the feedback page as there was only the text being shown before.
-    * Added padding to divs in feedback.php so the page looks nicer
-    * Added guard clauses to multiple methods that were missing them
-    * Added return statements to multiple methods that were missing them
-    * 
+    * Added padding to divs in feedback.php so the page looks nicer.
+    * Added guard clauses to multiple methods that were missing them.
+    * Added return statements to multiple methods that were missing them.
+ 
+* ### _06/05/2024:_
+    * Started work on the report.
+
+* ### _07/05/2024:_
+    * Continued owrk on the report.
+    * Added Unit tests to GitHub repo.
+    * Fixed bug where user was not being deleted.
+    * Amended database to ensure no errors occur after deleting user, feedback, or comments.
+    * General bug fixes throughout codebase.
 
    
 </details>
