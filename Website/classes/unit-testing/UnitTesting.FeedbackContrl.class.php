@@ -32,7 +32,6 @@ class FeedbackContr_UnitTesting
 
     public function test_new_comment()
     {
-        $feedbackContr = new FeedbackContr(1); // Assuming a user ID of 1
         $userID = 1;
         $feedbackID = 1;
         $text = 'Test Comment';
@@ -46,10 +45,9 @@ class FeedbackContr_UnitTesting
 
     public function test_set_feedback()
     {
-        $feedbackContr = new FeedbackContr(1); // Assuming a user ID of 1
         $feedbackID = 1;
         $roomID = 1;
-        $date = '2021-04-01';
+        $date = '2024-04-01';
         $urgency = 1;
         $resolved = 0;
         $closed = 0;
@@ -64,19 +62,17 @@ class FeedbackContr_UnitTesting
 
     public function test_set_rating()
     {
-        $feedbackContr = new FeedbackContr(1); // Assuming a user ID of 1
         $positiveRating = 1;
         $feedbackID = 1;
         $ratingPoints = 5;
 
         // Assert that the rating was set successfully (STILL NEED TO CHECK DB TO ENSURE DATA IS CORRECT)
-        assert($feedbackContr->set_rating($positiveRating, $feedbackID, $ratingPoints));
+        assert($this->feedbackContr->set_rating($positiveRating, $feedbackID, $ratingPoints));
     }
 
 
     public function test_set_feedback_status()
     {
-        $feedbackContr = new FeedbackContr(1); // Assuming a user ID of 1
         $feedbackID = 1;
         $newStatus = 1;
 
@@ -87,7 +83,6 @@ class FeedbackContr_UnitTesting
 
     public function test_set_feedback_resolved()
     {
-        $feedbackContr = new FeedbackContr(1); // Assuming a user ID of 1
         $feedbackID = 1;
         $newResolved = 1;
 
@@ -98,7 +93,6 @@ class FeedbackContr_UnitTesting
 
     public function testModifyDate()
     {
-        $feedbackContr = new FeedbackContr(1); // Assuming a user ID of 1
         $date = '2021-04-01';
         $newDate = '2021-04-02';
 
