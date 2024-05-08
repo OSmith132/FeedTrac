@@ -161,7 +161,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         <div class="edit-profile">
             <div class="change-picture">
                 <form action="profile.php" method="post" enctype="multipart/form-data" class="upload-form">
-                    <label for="profile-picture">Upload a profile picture:</label><br><br>
+                    <label for="profile-picture" id="profile-picture-text">Upload a profile picture:</label><br><br>
                     <input type="file" accept="image/png"  name="fileToUpload" id="fileToUpload"><br><br>
                     <input class="accent-button" type="submit" name="Upload" value="Upload" id="profile-picture-button">
                 </form>
@@ -183,6 +183,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                         document.getElementById("description_save_button").hidden = true;
                         document.getElementById("fileToUpload").hidden = true;
                         document.getElementById("profile-picture-button").hidden = true;
+                        document.getElementById("profile-picture-text").hidden = true;
                     }
 
                     function edit_description() {
