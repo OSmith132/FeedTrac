@@ -210,6 +210,30 @@
     * Added "Show Characters" checkboxes to every password box so that the user can check what password they have typed.
     * Updated the light mode/dark mode scripts so that the current theme is stored and is retrieved when moving across webpages.
 
+* ### _3/05/24:_
+    * Started work on the report.
+    * Completed version control section.
+ 
+* ### _5/05/24:_
+    * Continued work on the report.
+    * Added lists of requirements to all sections from the assignment brief.
+
+* ### _6/05/24:_
+    * Continued work on the report.
+    * Worked on Software Engineering and Planning section.
+    * Completed my personal evaluation.
+ 
+* ### _7/05/24:_
+    * Continued work on the report.
+    * Completed Software Engineering and Planning section.
+    * Worked on the Evaluation section.
+    * Worked on Group Work Conclusion section.
+    * Added references.
+ 
+* ### _8/05/24:_
+    * Continued work on the report.
+    * Reduced word count.
+
 </details>
 
 ## Archie
