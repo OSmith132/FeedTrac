@@ -276,6 +276,12 @@
   * Made < a > tags less ugly
   * Fixed footer and general styling of profile page
   * Fixed title/header on profile page
+  * Added styling to feedback404.php page
+  * Replaced many duplicated button classes with one single class (accent-button)
+  * Added proper < head > < title > tags to various pages
+  * Removed unused course.php page
+  * Selectively hidden feedback action buttons based on current user permissions
+  * Added fancy CSS transitions to header buttons
 
 </details>
 
