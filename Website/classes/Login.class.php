@@ -5,7 +5,7 @@ class Login extends Database {
 
 
     // Check if user is logged in and redirect to login if not
-    protected function get_user_data(){ //
+    protected function get_user_data(){ 
 
         if(isset($_SESSION['userID'])){
             
@@ -28,11 +28,12 @@ class Login extends Database {
         
         //redirect to login
         header("Location: login.php");
-        die;
+        die; 
         
     }
 
-    protected function get_feedback_user_data($userID){ //
+    // Get user data from userID
+    protected function get_feedback_user_data($userID){
 
         if(isset($_SESSION['userID'])){
             
@@ -47,6 +48,7 @@ class Login extends Database {
 
             $result = $stmt->get_result();
 
+            // return user data 
             if(mysqli_num_rows($result) > 0){
                 $user_data = $result -> fetch_assoc();
                 return $user_data;
@@ -205,6 +207,7 @@ class Login extends Database {
         return $results;
     }
 
+    // Gets the course name from the courseID
     protected function get_course_name($courseID){
         //prepare the SQL query
         $stmt = $this->connect()->prepare("SELECT name FROM course where courseID = ?");
@@ -214,11 +217,13 @@ class Login extends Database {
             header("location: login.php?error=BadSQLQuery");
             exit();
         }
+
+        // return the course name
         return $stmt->get_result()->fetch_assoc()['name'];
     }
 
 
-
+    // Create a recovery code
     protected function create_recovery_code($email){
 
         if ($this->get_id_email($email) != null){
@@ -257,6 +262,7 @@ class Login extends Database {
 
     }
 
+    // Delete recovery code
     protected function delete_record($userID){
             
              //prepare the SQL query
@@ -306,6 +312,7 @@ class Login extends Database {
         return true;
     }
 
+    // Update bio
     protected function update_bio($bio,$userID){
 
         // prepare the SQL query
@@ -316,10 +323,11 @@ class Login extends Database {
             header("location: login.php?error=BadSQLQuery");
             exit();
         }
-        // return true if the password was updated successfully
+        // return true if the bit was updated successfully
         return true;
     }
 
+    // Update info
     protected function update_info($fname,$lname,$year,$pronoun,$userID){
 
         // prepare the SQL query
@@ -330,10 +338,11 @@ class Login extends Database {
             header("location: login.php?error=BadSQLQuery");
             exit();
         }
-        // return true if the password was updated successfully
+        // return true if the info was updated successfully
         return true;
     }
 
+    // Get recovery code
     protected function get_recovery_code($userID){
 
         // Get the user ID from the email
@@ -345,6 +354,7 @@ class Login extends Database {
             exit();
         }
 
+        // Return the recovery code
         $result = $stmt->get_result()->fetch_assoc()['token'];
         return $result;
     }

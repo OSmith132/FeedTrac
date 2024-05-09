@@ -58,6 +58,7 @@ class LoginContr extends Login {
             exit();
         }
 
+        // Return true if user created successfully
         return $this->create_user($email, $username, $hashed_password, $fname, $lname, $courseID, $yearOfStudy, $pronouns, $position);
    }
 
@@ -71,6 +72,7 @@ class LoginContr extends Login {
             exit();     
         }
 
+        // Return true if username and email are unique
         return $this->check_unique_email_username($username, $email);
 
     }
@@ -85,8 +87,8 @@ class LoginContr extends Login {
            exit();
        }
 
-       return $this->compare_password($username, $password);
 
+       return $this->compare_password($username, $password);
    }
 
    // Get the user details
@@ -184,7 +186,7 @@ class LoginContr extends Login {
         return $this->delete_account_id($userID);
     }
 
-
+    // Updates user password
     public function update_user_password($hashed_password,$userID){
 
         // Check if any input is empty
@@ -196,6 +198,7 @@ class LoginContr extends Login {
         return $this->update_password($hashed_password,$userID);
     }
 
+    // Updates user bio
     public function update_user_bio($bio,$userID){
 
         // Check if any input is empty
@@ -207,7 +210,7 @@ class LoginContr extends Login {
         return $this->update_bio($bio,$userID);
     }
 
-
+    // Updates user info
     public function update_user_info($fname,$lname,$year,$pronoun,$userID){
 
         // Check if any input is empty
@@ -219,6 +222,7 @@ class LoginContr extends Login {
         return $this->update_info($fname,$lname,$year,$pronoun,$userID);
     }
 
+    // Send recovery email [NOT FUNCTIONAL AS WE CAN'T SEND EMAILS FROM LOCALHOST]
     public function send_recovery_email($email){
 
         // Check if any input is empty
@@ -260,12 +264,7 @@ class LoginContr extends Login {
         return $this->get_column_from_id("lName", $_SESSION['userID']);
     }
 
-    // Get study year of current user
-    public function get_current_user_study_year() {
-        return $this->get_column_from_id("yearOfStudy", $_SESSION['userID']);
-    }
 
-   
 
    
 

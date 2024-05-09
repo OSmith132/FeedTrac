@@ -23,7 +23,7 @@ class Database{
     }
 
 
-    // Query the database
+    // Query the database ()
     protected function query($sql){ // THIS TAKES A STRING NOT A PREPARED STATEMENT
         
         $stmt = $this->connect()->prepare($sql);
@@ -40,11 +40,12 @@ class Database{
     }
 
     protected function empty_input_check(...$inputs){
+
         // Check if any input is empty
         foreach ($inputs as $input){
 
             if (empty($input) and $input != 0 and $input != "0" and $input != false){
-
+                return true;
             }
         }
         // If no input is empty, return false

@@ -109,7 +109,7 @@ $Feedback_View = new FeedbackView($user_data['userID']);
 
                     <!-- Sort by Rating Points -->
                     <div>
-                        <label for="sort-type">Focus:</label>
+                        <label for="sort-type">Type:</label>
                         <select id="sort-type" name="sort-type">
                             <option value="relevance">Relevance</option>
                             <option value="date">Date</option>
@@ -122,8 +122,8 @@ $Feedback_View = new FeedbackView($user_data['userID']);
                     <div>
                         <label for="Direction">Direction:</label>
                         <select id="Direction" name="sort-direction">
-                            <option value="asc">Ascending</option>
                             <option value="desc">Descending</option>
+                            <option value="asc">Ascending</option>
                         </select>
                     </div>
                 </div>

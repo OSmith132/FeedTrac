@@ -46,7 +46,7 @@ class FeedbackContr extends Feedback {
     }
 
 
-    // Create a comment on feedback item
+    // Find all comments on a feedback item
     public function find_comments($feedbackID){
 
         // Check if any input is empty
@@ -55,7 +55,7 @@ class FeedbackContr extends Feedback {
         exit();
     }
 
-        // Create new feedback
+        // return comments
         return $this->get_comments($feedbackID);
     
     }
@@ -70,12 +70,13 @@ class FeedbackContr extends Feedback {
         }
 
          
-         // Create new feedback
+         // add alert
          $this->alert($userID);
      
+         return true;
      }
 
-      // Create a new alert for subbed users
+      // Get feedback item
       public function feedback_get($feedbackID){
 
         // Check if any input is empty
@@ -85,7 +86,7 @@ class FeedbackContr extends Feedback {
         }
 
          
-        // Create new feedback
+        // Return feedback item
         return $this->get_feedback($feedbackID);
     
     }
@@ -101,7 +102,7 @@ class FeedbackContr extends Feedback {
             exit();
         }
         
-        // Calls feedback class to delete item.
+        // Calls feedback class to delete item
         $this-> delete_feedback($feedbackID);
     }
 
@@ -114,7 +115,7 @@ class FeedbackContr extends Feedback {
             exit();
         }
         
-        // Calls feedback class to delete item.
+        // Calls feedback class to delete comment
         $this-> delete_comment($commentID);
 
         return true;
@@ -144,13 +145,13 @@ class FeedbackContr extends Feedback {
             exit();
         }
         
-        // Update the rating points of a feedback item
+        // Update the closed status of a feedback item
         $this-> update_feedback_status($feedbackID,$newStatus);
 
         return true;
     }
 
-
+    // Update the subscription status of a feedback item
     public function change_subscription_status($userID,$status){ // positiveRating: bool    feedbackID: int    userID: int
 
         // Check if any input is empty
@@ -160,8 +161,10 @@ class FeedbackContr extends Feedback {
         }
         
         
-        // Update the rating points of a feedback item
+        // Update the subscriptions status of a user
         $this-> update_subscription_status($userID,$status);
+
+        return true;
     }
 
 
@@ -174,13 +177,13 @@ class FeedbackContr extends Feedback {
             exit();
         }
         
-        // Update the rating points of a feedback item
+        // Update the resolved status of a feedback item
         $this-> update_resolved($feedbackID,$newResolved);
 
         return true;
     }
 
-
+    // Check if a user has given feedback rating
     public function check_user_has_feedback_rating($feedbackID, $userID){
 
         //Check if any input is empty
@@ -189,9 +192,11 @@ class FeedbackContr extends Feedback {
             exit();
         }
 
+        // return true if user has given feedback rating
         return $this->check_user_given_feedback($feedbackID,$userID);
     }
 
+    // Add a feedback rating to a feedback item
     public function add_user_feedback_rating($feedbackID,$userID){
 
         //Check if any input is empty
@@ -200,9 +205,11 @@ class FeedbackContr extends Feedback {
             exit();
         }
 
+        // adds a feedback rating to feedback item
         $this->add_feedback_rating($feedbackID,$userID);
     }
 
+    // Remove a feedback rating from a feedback item
     public function remove_user_feedback_rating($feedbackID, $userID){
 
         //Check if any input is empty
@@ -214,6 +221,7 @@ class FeedbackContr extends Feedback {
         $this->remove_feedback_rating($feedbackID,$userID);
     }
 
+    // List all rooms 
     public function list_rooms(){ // positiveRating: bool    feedbackID: int    userID: int
 
         //Check if any input is empty
@@ -222,10 +230,11 @@ class FeedbackContr extends Feedback {
             exit();
         }
 
+        // return all rooms
         return $this->get_rooms();
-
     }
 
+    // List all users
     public function list_users($course){ // positiveRating: bool    feedbackID: int    userID: int
 
         //Check if any input is empty
@@ -234,10 +243,12 @@ class FeedbackContr extends Feedback {
             exit();
         }
 
+        // Return all users
         return $this->get_users($course);
 
     }
 
+    // Modify the date modified of a feedback item
     public function modify_date($feedbackID, $dateModified){ // positiveRating: bool    feedbackID: int    userID: int
 
         //Check if any input is empty
@@ -246,13 +257,14 @@ class FeedbackContr extends Feedback {
             exit();
         }
 
+        // Update the date modified of a feedback item
         $this->update_feedback_dateModified($feedbackID, $dateModified);
 
         return true;
 
     }
 
-
+    // Resets alerts back to 0
     public function alert_reset($user){
 
         //Check if any input is empty
@@ -261,6 +273,7 @@ class FeedbackContr extends Feedback {
             exit();
         }
 
+        // Reset alerts
         $this->alert_update($user);
 
         return true;
