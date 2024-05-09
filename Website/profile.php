@@ -104,7 +104,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
     <!-- Main -->
     <main>
-        <h1><?php echo "Profile for " . $profile_data->fName . " " . $profile_data->lName . " (" . $profile_data->username . ")"; ?></h1>
+        <h1><?php echo "Profile for " . $profile_data->fName . " " . $profile_data->lName . " (" . $profile_data->username . ")"; ?></h1><hr><br>
 
         <!-- Content -->
         <div class="profile-content">
@@ -125,6 +125,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     echo "assets/profile-pictures/user-default.jpg";
                 }?>" alt="User Avatar" height="250">
                 <br><br>
+                <div class="change-picture">
+                    <form action="profile.php" method="post" enctype="multipart/form-data" class="upload-form">
+                        <label for="profile-picture" id="profile-picture-text">Upload a profile picture:</label><br><br>
+                        <input type="file" accept="image/png"  name="fileToUpload" id="fileToUpload"><br><br>
+                        <input class="accent-button" type="submit" name="Upload" value="Upload" id="profile-picture-button">
+                    </form>
+                </div>
             </div>
 
             <div class="user-description">
@@ -159,13 +166,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
         <!-- Buttons -->
         <div class="edit-profile">
-            <div class="change-picture">
-                <form action="profile.php" method="post" enctype="multipart/form-data" class="upload-form">
-                    <label for="profile-picture" id="profile-picture-text">Upload a profile picture:</label><br><br>
-                    <input type="file" accept="image/png"  name="fileToUpload" id="fileToUpload"><br><br>
-                    <input class="accent-button" type="submit" name="Upload" value="Upload" id="profile-picture-button">
-                </form>
-            </div>
+
 
             <div class="edit-description">
                 <button class="accent-button" id="description_edit_button" onclick="edit_description()">Edit About Section</button>

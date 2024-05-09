@@ -591,13 +591,11 @@ th, tr:hover {
 .change-picture {
     padding: 10px;
     flex: 1;
-    border-right: 1px solid var(--g);
 }
 
 .edit-description {
     padding: 10px;
     flex: 1;
-    border-right: 1px solid var(--g);
 }
 
 .settings {
