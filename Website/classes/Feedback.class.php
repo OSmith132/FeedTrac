@@ -14,7 +14,7 @@ class Feedback extends Database
 
         // Check if the SQL query is valid
         if (!$stmt->execute([$feedbackID])) {
-            header("location: profile.php?error=BadSQLQuery");
+            header("location: feedback.php?error=BadSQLQuery");
             exit();
         }      
 
@@ -27,23 +27,21 @@ class Feedback extends Database
     protected function get_comments($feedbackID)
     {
 
-        // Connect  to database and retrieves all data about feedback
+        // Connect to database and retrieve all comments
         $stmt = $this->connect()->prepare("SELECT * FROM comment WHERE feedbackID = ?");
 
         // Check if the SQL query is valid
         if (!$stmt->execute([$feedbackID])) {
-            header("location: profile.php?error=BadSQLQuery");
+            header("location: feedback.php?error=BadSQLQuery");
             exit();
         }      
 
-        // Return the results
+
         // Return the results
         $results = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $results;
     }
 
-
-    
 
     // Update existing feedback modified date
     protected function update_feedback_dateModified($feedbackID, $dateModified)
@@ -56,25 +54,25 @@ class Feedback extends Database
     
         // Check if the SQL query is valid
         if (!$stmt->execute([$dateModifiedStr, $feedbackID])) {
-            header("location: profile.php?error=BadSQLQuery");
+            header("location: feedback.php?error=BadSQLQuery");
             exit();
         }
-
 
         return true;
     }
 
-    // Update existing feedback status
+    // Delete existing feedback item
     protected function delete_feedback($feedbackID)
     {
 
-        // Connect to database and update all data about a feedback item
+        // Connect to database and delete all comments accociated with feedback item
         $stmt = $this->connect()->prepare("DELETE FROM comment WHERE feedbackID = ?");
     
         // Check if the SQL query is valid
         if (!$stmt->execute([$feedbackID])) {
             
         }
+
         // Connect to database and update all data about a feedback item
         $stmt = $this->connect()->prepare("DELETE FROM feedback WHERE feedbackID = ?");
     
@@ -83,16 +81,15 @@ class Feedback extends Database
             header("location: feedback.php?error=BadSQLQuery");
             exit();
         }
-    
 
         return true;
     }
 
-    // Update existing feedback status
+    // Delete existing comment
     protected function delete_comment($commentID)
     {
 
-        // Connect to database and update all data about a feedback item
+        // Connect to database and delete comment
         $stmt = $this->connect()->prepare("DELETE FROM comment WHERE commentID = ?");
     
         // Check if the SQL query is valid
@@ -109,7 +106,7 @@ class Feedback extends Database
     // Update existing feedback status
     protected function update_feedback_status($feedbackID,$newStatus)
     {
-        // Connect to database and update all data about a feedback item
+        // Connect to database and update the closed status of a feedback item
         $stmt = $this->connect()->prepare("UPDATE feedback SET closed = ? WHERE feedbackID = ?");
     
         // Check if the SQL query is valid
@@ -117,7 +114,6 @@ class Feedback extends Database
             header("location: feedback.php?error=BadSQLQuery");
             exit();
         }
-    
 
         return true;
     }
@@ -125,7 +121,7 @@ class Feedback extends Database
     // Update resolved status
     protected function update_resolved($feedbackID,$newResolved)
      {
-         // Connect to database and update all data about a feedback item
+         // Connect to database and update the resolved status of a feedback item
          $stmt = $this->connect()->prepare("UPDATE feedback SET resolved = ? WHERE feedbackID = ?");
      
          // Check if the SQL query is valid
@@ -134,7 +130,6 @@ class Feedback extends Database
              exit();
          }
      
- 
          return true;
      }
 
@@ -147,7 +142,7 @@ class Feedback extends Database
         else{
             $status = 1;
         }
-        // Connect to database and update all data about a feedback item
+        // Connect to database and update the subscription status of a user
         $stmt = $this->connect()->prepare("UPDATE user SET sub = ? WHERE userID = ?");
     
         // Check if the SQL query is valid
@@ -155,15 +150,14 @@ class Feedback extends Database
             header("location: feedback.php?error=BadSQLQuery");
             exit();
         }
-    
 
         return true;
     }
 
-    // A method to reset alerts
+    // Update alert number
     protected function alert_update($user){
 
-        // Connect to database and update all data about a feedback item
+        // Connect to database and update the number of alerts for a user's inbox
         $stmt = $this->connect()->prepare("UPDATE user SET alert = 0 WHERE userID = ?");
     
         // Check if the SQL query is valid
@@ -198,7 +192,7 @@ class Feedback extends Database
      protected function create_comment($userID,$feedbackID,$text,$ratingPoints)
      {
  
-         // Connect  to database and create new feedback item
+         // Connect  to database and create new comment
          $stmt = $this->connect()->prepare("INSERT INTO comment (userID, feedbackID, text, ratingPoints) VALUES (?, ?, ?, ?)");
  
          // Check if the SQL query is valid
@@ -207,12 +201,13 @@ class Feedback extends Database
              exit();
          }
 
-    return true;
+        return true;
      }
 
     // Create new inbox alert
     protected function alert($userID)
     {
+        // Add 1 to inbox alert for user
         $stmt = $this->connect()->prepare("UPDATE user SET alert = alert + 1 where userID = ? ");
 
          // Check if the SQL query is valid and execute
@@ -221,8 +216,8 @@ class Feedback extends Database
             exit();
         }
 
+        return true;
     }
-
 
 
     // Update the rating points of a feedback item
@@ -304,6 +299,7 @@ class Feedback extends Database
     // Returns true or false if user has given rating to feedback or not
     protected function check_user_given_feedback($feedbackID, $userID){
 
+        // Check if the user has rated the feedback item and return true if they have
         $stmt = $this->connect()->prepare("SELECT COUNT(*) AS count FROM feedback_user_rating WHERE  feedbackID = ? AND userID = ?");
         if (!$stmt->execute([$feedbackID,$userID])) {
             header("location: feedback.php?error=BadSQLQuery");
@@ -320,11 +316,14 @@ class Feedback extends Database
 
     protected function add_feedback_rating($feedbackID, $userID){
 
+        // Add the user to the feedback_user_rating table
         $stmt = $this->connect()->prepare("INSERT INTO feedback_user_rating (feedbackID, userID, positiveRating) VALUES (?, ?, 1)");
         if (!$stmt->execute([$feedbackID,$userID])) {
             header("location: feedback.php?error=BadSQLQuery");
             exit();
         }
+
+        // Update the rating points of a feedback item
         $stmt = $this->connect()->prepare("UPDATE feedback SET ratingPoints = ratingPoints + 1 WHERE feedbackID = ?");
         if (!$stmt->execute([$feedbackID])) {
             header("location: feedback.php?error=BadSQLQuery");
@@ -333,11 +332,14 @@ class Feedback extends Database
     }
 
     protected function remove_feedback_rating($feedbackID, $userID){
+        // Remove the user from the feedback_user_rating table
         $stmt = $this->connect()->prepare("DELETE FROM feedback_user_rating WHERE feedbackID = ? and userID = ?");
         if (!$stmt->execute([$feedbackID,$userID])) {
             header("location: feedback.php?error=BadSQLQuery");
             exit();
         }
+
+        // Update the rating points of a feedback item
         $stmt = $this->connect()->prepare("UPDATE feedback SET ratingPoints = ratingPoints - 1 WHERE feedbackID = ?");
         if (!$stmt->execute([$feedbackID])) {
             header("location: feedback.php?error=BadSQLQuery");
@@ -348,7 +350,7 @@ class Feedback extends Database
 
     protected function get_rooms()
    {
-
+        // Connect to database and retrieve all rooms
         $stmt = $this->connect()->prepare("SELECT roomID, roomName FROM room");
 
         // Check if the SQL query is valid and execute
@@ -365,18 +367,18 @@ class Feedback extends Database
 
     protected function get_users($course)
     {
+        // Connect to database and retrieve all users in a course
+        $stmt = $this->connect()->prepare("SELECT *  FROM user where courseID = ? ");
  
-         $stmt = $this->connect()->prepare("SELECT *  FROM user where courseID = ? ");
- 
-         // Check if the SQL query is valid and execute
+        // Check if the SQL query is valid and execute
         if (!$stmt->execute([$course])) {
             header("location: feedback.php?error=BadSQLQuery");
             exit();
         }
  
  
-         $users = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-         return $users;
+        $users = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $users;
     }
 
 

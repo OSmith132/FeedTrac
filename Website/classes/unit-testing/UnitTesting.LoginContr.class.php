@@ -18,7 +18,7 @@ class loginContr_UnitTesting extends LoginContr
         $_SESSION['userID'] = $userID;
 
         // Invoke the method
-        assert($this->force_login()); // Make sure to still test both logged in and out
+        assert($this->force_login()); // Make sure to still test both logged in and out above
     }
 
 
@@ -29,7 +29,7 @@ class loginContr_UnitTesting extends LoginContr
         $_SESSION['userID'] = $userID;
 
         // Invoke the method
-        assert($this->check_login()); // Make sure to still test both logged in and out
+        assert($this->check_login()); // Make sure to still test both logged in and out above
     }
 
 

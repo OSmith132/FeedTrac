@@ -17,7 +17,7 @@ class FeedbackView_UnitTesting extends FeedbackView
         date_default_timezone_set('UTC');
         $date = time();
 
-        // Get the timestamp for 30 mins ago
+        // Minus 30 minutes (30 * 60 seconds)
         $date = date('Y-m-d H:i:s', $date - (30 * 60));
 
         // make row data

@@ -7,17 +7,27 @@ class FeedbackView extends Feedback {
 
     // Create a new feedback item off userID
     public function __construct($userID){
+
+        // Check if any input is empty
+        if ($this->empty_input_check($userID)){
+            header("location: feedback.php?error=emptyinput");
+            exit();
+        }
+    
+        // Set the userID
         $this->userID = $userID;
+
+
     }
 
     // Get all feedback items from the database
     public function get_all_feedback(){
 
-       // Update the rating points of a feedback item
+       // Return all feedback rows
        return $this->get_all_rows();
    }
 
-     // Get all feedback items from the database
+     // Get all feedback for the inbox
      public function get_inbox_feedback($dateTime){
 
         // Check if any input is empty
@@ -26,7 +36,7 @@ class FeedbackView extends Feedback {
             exit();
         }
 
-        // Update the rating points of a feedback item
+        // Return all feedback rows
         return $this->get_all_rows_inbox($dateTime);
     }
 
@@ -39,11 +49,12 @@ class FeedbackView extends Feedback {
            exit();
        }
 
-       // Update the rating points of a feedback item
+       // Gets all user info (including name, email, and course) for a feedback item
        return $this->get_user($feedbackID);
    }
 
 
+   // Searches for feedback on search term
    public function search_feedback($searchTerm){
 
        // Check if any input is empty
@@ -51,7 +62,7 @@ class FeedbackView extends Feedback {
            return false;
        }
 
-       // Update the rating points of a feedback item
+       // returns all feedback rows that match the search term
        return $this->search($searchTerm);
    }
     
@@ -128,7 +139,7 @@ class FeedbackView extends Feedback {
 
 
 
-
+    // Get feedback exists
     public function get_feedback_exists($feedbackID){
 
         // Check if any input is empty
@@ -137,7 +148,7 @@ class FeedbackView extends Feedback {
             exit();
         }
 
-        // Update the rating points of a feedback item
+        // returns true if feedback exists
         return $this->feedback_exists($feedbackID);
     }
 

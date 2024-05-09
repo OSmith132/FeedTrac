@@ -37,7 +37,7 @@ session_destroy();
         <!-- Main -->
         <main>
             <h1>Your account has been deleted</h1><br>
-            <button class="accent-button" id="deleteButton" onclick="window.location.href = 'scripts/signin.php'" >Return to login page</button>
+            <button class="accent-button" id="deleteButton" onclick="window.location.href = 'login.php'" >Return to login page</button>
         </main>
 
         <!-- Footer -->
